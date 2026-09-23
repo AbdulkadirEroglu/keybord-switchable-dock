@@ -1,0 +1,181 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "e7f715eb-7c18-4c70-befb-dbed60a95ef2")
+	(paper "A4")
+	(lib_symbols)
+	(sheet
+		(at 20.00 20.00)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(fields_autoplaced yes)
+		(stroke (width 0.1524) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "74c381cb-0daa-436f-a851-98673af19deb")
+		(property "Sheetname" "BATTERY_CHARGER"
+			(at 20.00 19.10 0)
+			(effects (font (size 1.27 1.27)) (justify left bottom))
+		)
+		(property "Sheetfile" "battery_charger.kicad_sch"
+			(at 20.00 46.30 0)
+			(effects (font (size 1.27 1.27)) (justify left top))
+		)
+		(instances
+			(project "pad"
+				(path "/"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 80.00 20.00)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(fields_autoplaced yes)
+		(stroke (width 0.1524) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "b1a810d1-f739-479c-af93-bdf7422a894d")
+		(property "Sheetname" "POWER_RAILS"
+			(at 80.00 19.10 0)
+			(effects (font (size 1.27 1.27)) (justify left bottom))
+		)
+		(property "Sheetfile" "power_rails.kicad_sch"
+			(at 80.00 46.30 0)
+			(effects (font (size 1.27 1.27)) (justify left top))
+		)
+		(instances
+			(project "pad"
+				(path "/"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 140.00 20.00)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(fields_autoplaced yes)
+		(stroke (width 0.1524) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "f913b2b7-06cc-4745-bf8c-45e5b76c74d5")
+		(property "Sheetname" "NRF52840"
+			(at 140.00 19.10 0)
+			(effects (font (size 1.27 1.27)) (justify left bottom))
+		)
+		(property "Sheetfile" "nrf52840.kicad_sch"
+			(at 140.00 46.30 0)
+			(effects (font (size 1.27 1.27)) (justify left top))
+		)
+		(instances
+			(project "pad"
+				(path "/"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 20.00 70.00)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(fields_autoplaced yes)
+		(stroke (width 0.1524) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "1ad558bd-a7bf-4f0d-a00d-a460e3150a0f")
+		(property "Sheetname" "INPUTS"
+			(at 20.00 69.10 0)
+			(effects (font (size 1.27 1.27)) (justify left bottom))
+		)
+		(property "Sheetfile" "inputs.kicad_sch"
+			(at 20.00 96.30 0)
+			(effects (font (size 1.27 1.27)) (justify left top))
+		)
+		(instances
+			(project "pad"
+				(path "/"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 80.00 70.00)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(fields_autoplaced yes)
+		(stroke (width 0.1524) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "8d3cba08-2a7f-425b-9040-887fd06dda8d")
+		(property "Sheetname" "RGB"
+			(at 80.00 69.10 0)
+			(effects (font (size 1.27 1.27)) (justify left bottom))
+		)
+		(property "Sheetfile" "rgb.kicad_sch"
+			(at 80.00 96.30 0)
+			(effects (font (size 1.27 1.27)) (justify left top))
+		)
+		(instances
+			(project "pad"
+				(path "/"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 140.00 70.00)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(fields_autoplaced yes)
+		(stroke (width 0.1524) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "8b44d6bf-e745-4972-adb2-725bc882c1ab")
+		(property "Sheetname" "DISPLAY"
+			(at 140.00 69.10 0)
+			(effects (font (size 1.27 1.27)) (justify left bottom))
+		)
+		(property "Sheetfile" "display.kicad_sch"
+			(at 140.00 96.30 0)
+			(effects (font (size 1.27 1.27)) (justify left top))
+		)
+		(instances
+			(project "pad"
+				(path "/"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 20.00 120.00)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(fields_autoplaced yes)
+		(stroke (width 0.1524) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "30e58080-c3f2-4749-81da-0a887226aa47")
+		(property "Sheetname" "DOCK_INTERFACE"
+			(at 20.00 119.10 0)
+			(effects (font (size 1.27 1.27)) (justify left bottom))
+		)
+		(property "Sheetfile" "dock_interface.kicad_sch"
+			(at 20.00 146.30 0)
+			(effects (font (size 1.27 1.27)) (justify left top))
+		)
+		(instances
+			(project "pad"
+				(path "/"
+					(page "8")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+)

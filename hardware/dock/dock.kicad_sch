@@ -1,0 +1,157 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "b7c42e8e-d530-48de-8d78-684e37659179")
+	(paper "A4")
+	(lib_symbols)
+	(sheet
+		(at 20.00 20.00)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(fields_autoplaced yes)
+		(stroke (width 0.1524) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "24132b53-1561-4c3c-b5d8-5a49938127df")
+		(property "Sheetname" "POWER"
+			(at 20.00 19.10 0)
+			(effects (font (size 1.27 1.27)) (justify left bottom))
+		)
+		(property "Sheetfile" "power.kicad_sch"
+			(at 20.00 46.30 0)
+			(effects (font (size 1.27 1.27)) (justify left top))
+		)
+		(instances
+			(project "dock"
+				(path "/"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 80.00 20.00)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(fields_autoplaced yes)
+		(stroke (width 0.1524) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "98883f25-7d99-4f4b-aa56-5fa5d0f10650")
+		(property "Sheetname" "USB_KEYBOARD_HOST"
+			(at 80.00 19.10 0)
+			(effects (font (size 1.27 1.27)) (justify left bottom))
+		)
+		(property "Sheetfile" "usb_keyboard_host.kicad_sch"
+			(at 80.00 46.30 0)
+			(effects (font (size 1.27 1.27)) (justify left top))
+		)
+		(instances
+			(project "dock"
+				(path "/"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 140.00 20.00)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(fields_autoplaced yes)
+		(stroke (width 0.1524) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "303efcab-0b38-45ae-8d53-a92f068d125b")
+		(property "Sheetname" "RP2350_HOST"
+			(at 140.00 19.10 0)
+			(effects (font (size 1.27 1.27)) (justify left bottom))
+		)
+		(property "Sheetfile" "rp2350_host.kicad_sch"
+			(at 140.00 46.30 0)
+			(effects (font (size 1.27 1.27)) (justify left top))
+		)
+		(instances
+			(project "dock"
+				(path "/"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 20.00 70.00)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(fields_autoplaced yes)
+		(stroke (width 0.1524) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "1e48719d-5706-44f0-9309-b5d8ee5bd63e")
+		(property "Sheetname" "HID_PERSONAL"
+			(at 20.00 69.10 0)
+			(effects (font (size 1.27 1.27)) (justify left bottom))
+		)
+		(property "Sheetfile" "hid_personal.kicad_sch"
+			(at 20.00 96.30 0)
+			(effects (font (size 1.27 1.27)) (justify left top))
+		)
+		(instances
+			(project "dock"
+				(path "/"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 80.00 70.00)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(fields_autoplaced yes)
+		(stroke (width 0.1524) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "22f7f0d8-cebf-4bfb-a7b6-cd9fc1ba10ee")
+		(property "Sheetname" "HID_WORK"
+			(at 80.00 69.10 0)
+			(effects (font (size 1.27 1.27)) (justify left bottom))
+		)
+		(property "Sheetfile" "hid_work.kicad_sch"
+			(at 80.00 96.30 0)
+			(effects (font (size 1.27 1.27)) (justify left top))
+		)
+		(instances
+			(project "dock"
+				(path "/"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 140.00 70.00)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(fields_autoplaced yes)
+		(stroke (width 0.1524) (type solid))
+		(fill (color 0 0 0 0.0000))
+		(uuid "be836d87-c701-4200-884d-989299465396")
+		(property "Sheetname" "BLE_BASE"
+			(at 140.00 69.10 0)
+			(effects (font (size 1.27 1.27)) (justify left bottom))
+		)
+		(property "Sheetfile" "ble_base.kicad_sch"
+			(at 140.00 96.30 0)
+			(effects (font (size 1.27 1.27)) (justify left top))
+		)
+		(instances
+			(project "dock"
+				(path "/"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+)
