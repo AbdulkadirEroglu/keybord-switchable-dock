@@ -1,0 +1,15 @@
+# KiCad temporary / local files
+*.lck
+~*.lck
+*-backups/
+.history/
+_autosave-*
+fp-info-cache
+*.bak
+
+# Freerouting exchange files (regenerated from the PCB)
+*.dsn
+*.ses
+
+# Claude Code local working files
+.claude/

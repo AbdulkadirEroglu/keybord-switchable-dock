@@ -1,0 +1,5 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "dock") (type "KiCad") (uri "/home/ae/Work/dock-pad/hardware/libraries/dock.pretty") (options "") (descr ""))
+	(lib (name "xiao") (type "KiCad") (uri "/home/ae/Work/dock-pad/hardware/libraries/seed-xio") (options "") (descr ""))
+)

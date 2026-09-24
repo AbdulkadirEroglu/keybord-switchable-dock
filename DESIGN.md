@@ -148,6 +148,29 @@ Connections:
 
 This allows deliberate keyboard power cycling for recovery/re-enumeration.
 
+### 4.3 Power Budget and Port Current Sensing
+
+The whole dock (three MCUs, keyboard up to ~1 A, pad charging up to ~1 A) runs from one PC port at a time, which can exceed a USB 2.0 port's 500 mA. The dock therefore measures what the active port allows instead of assuming it.
+
+Each HID RP2040 reads its own port's USB-C CC pins through 10 kΩ series resistors:
+
+```text
+CC1 → 10k → GP26 (ADC0)
+CC2 → 10k → GP27 (ADC1)
+```
+
+With the 5.1 kΩ Rd pull-downs, the active CC pin (the other stays near 0 V, depending on plug orientation) reads:
+
+| CC voltage | Port advertises |
+|---|---|
+| 0.25–0.61 V | Default USB (500 mA / 900 mA) |
+| 0.70–1.16 V | 1.5 A |
+| 1.31–2.04 V | 3.0 A |
+
+A USB-A-to-C cable always reads as Default, which is the safe result. Each RP2040 reports its reading to the RP2350 over its UART link; `MUX_STATUS` tells the RP2350 which port is currently powering the dock.
+
+Firmware policy: full pad charging when the active port advertises 1.5 A or 3 A; reduced or paused pad charging on a Default port, particularly while the keyboard draws high current. Enable keyboard VBUS only after the dock has booted, so the keyboard inrush does not coincide with the plug-in inrush.
+
 ---
 
 ## 5. USB HID Endpoint Architecture
@@ -177,6 +200,7 @@ Each endpoint remains enumerated with its PC even when it is not the selected ta
 ### 6.1 Dock nRF52840 ↔ RP2350
 
 - Full-duplex UART
+- RP2350 side implemented in PIO, not a hardware UART (see §6.3)
 - 3.3 V logic
 - Target baud: 1 Mbaud
 - Dedicated protocol UART; do not mix debug logging into the stream
@@ -197,7 +221,21 @@ Target baud: 1 Mbaud.
 
 No level shifting required on-board.
 
-### 6.3 Packet Framing
+### 6.3 RP2350 UART Allocation
+
+The RP2350 has only two hardware UARTs, but three links are required. The two HID links carry every keystroke and use the hardware UARTs; the lower-traffic BLE link uses a PIO-implemented UART.
+
+| Link | RP2350 TX | RP2350 RX | Implementation |
+|---|---|---|---|
+| HID-A / Personal | GP0 | GP1 | Hardware UART0 |
+| HID-B / Work | GP4 | GP5 | Hardware UART1 |
+| BLE base | GP8 | GP9 | PIO UART (TX + RX state machines) |
+
+A PIO UART is electrically identical on the wire to a hardware UART; the nRF52840 side needs no special handling. PIO does not provide hardware framing-error flags, so link integrity relies on the packet CRC (§6.4).
+
+Do not reassign GP8/GP9 to hardware UART1 — it is already used by the HID-B link.
+
+### 6.4 Packet Framing
 
 Baseline:
 
@@ -465,6 +503,8 @@ Design targets:
 
 Exact VSET/ILIM/ISET/TS networks must be verified from the current datasheet during schematic capture.
 
+The charge current must be switchable by the pad nRF52840 between two levels, for example fast ≈ 500 mA and slow ≈ 150 mA, such as a second ISET resistor switched by a small MOSFET. The dock commands the level over BLE based on the active PC port's advertised current (§4.3). Verify the switching method against the BQ25185 datasheet during pad schematic capture.
+
 ### 12.3 Secondary Protection
 
 No separate LFP protection IC is currently planned.
@@ -542,6 +582,10 @@ Normal behavior:
 - `+5V`: powers charger/pad
 - `DET`: dock presence
 - BLE remains the normal data link
+
+The pad must tie DET to GND. Without that the pogo stays off.
+
+The dock's pogo `+5V` is switched by a TPS2552 whose active-low `EN` is driven directly by `DET` (pulled up to 3.3 V on the dock). With no pad docked the contacts are unpowered; when docked the output is current-limited to approximately 1 A and `FAULT` is reported to the RP2350.
 
 `RX/TX` are reserved for:
 
@@ -653,6 +697,59 @@ Initial expectation:
 - Keep switching-regulator hot loops compact.
 - Keep RGB high-current paths away from sensitive RF/analog areas.
 - Separate functional blocks clearly in placement.
+
+### 18.1 Dock MCU Module Mounting (Pico 2 + Spring Probes)
+
+All three dock MCUs (RP2350 host, HID-A, HID-B) are Raspberry Pi Pico 2 boards, socketed so they can be swapped without desoldering:
+
+- Pico 2: two 1×20 2.54 mm male headers soldered on, pointing down.
+- Dock PCB: two 1×20 2.54 mm female sockets, 8.5 mm tall. Pico underside sits ≈11 mm above the dock PCB.
+- Footprint: `dock:RaspberryPi_Pico2_Socket_Pogo` (KiCad Pico THT footprint plus probe holes).
+
+USB and SWD are only on pads on the Pico 2 underside, not on the header pins. They are reached with P50-B1 spring probes (0.68 mm barrel, 16.35 mm long, 2.65 mm stroke, 75 g, 45° spear tip) soldered into 0.8 mm holes in the dock PCB:
+
+| Pico 2 pad | Signal | Probe |
+|---|---|---|
+| TP2 / TP3 | USB D− / D+ | required |
+| D1 / D3 | SWCLK / SWDIO | required |
+| TP1 / D2 | GND | optional (GND is also on the header pins) |
+
+Positions come from the Pico 2 datasheet, Figures 3 and 5. Leave the factory tinning on the Pico pads; the spear tip cuts through the surface oxide.
+
+Probe soldering procedure (sets ≈1.5 mm compression, whatever the header height):
+
+1. Solder the female sockets to the dock PCB first.
+2. Drop the probes loose into their holes, spring end up. Each sinks until its Ø0.9 mm tip head rests on the board.
+3. Put a ≈1.5 mm shim (1.6 mm PCB offcut or two stacked ID cards) on the sockets and plug the Pico in on top of it.
+4. Turn the stack upside down. The probes slide until their tips rest on the Pico pads.
+5. Solder the probe barrels on the dock PCB underside. Keep the joints quick.
+6. Remove the shim and seat the Pico fully.
+
+Solder each Pico's probe set against that Pico. The barrels protrude ≈2.7 mm below the dock PCB; the enclosure needs 3–4 mm clearance there. Do not cut the barrels, because the spring is inside.
+
+Never connect a cable to a docked Pico's micro-USB port: its USB lines share the bus with the probes.
+
+The dock BLE module (Seeed XIAO nRF52840) is mounted the same way:
+
+- Two 1×7 male headers on the XIAO and two 1×7 female sockets on the dock, 15.24 mm apart. Footprint: `dock:XIAO_nRF52840_Socket_Pogo`.
+- Its underside debug pads (2×2 grid, 2.54 mm pitch, next to the USB connector) are reached with P50-B1 probes: SWDIO, SWCLK and RST are required, GND is optional. Pad identities come from Seeed's back-side pinout; positions come from Seeed's XIAO-nRF52840-SMD footprint.
+- The footprint carries a copper keep-out under the antenna end, opposite the USB connector.
+- Do not connect a cable to the docked XIAO's USB-C port: its VBUS pin is tied to `SYS_5V`.
+- SWD access is through J8, which uses the same pinout as J2/J3/J6.
+
+Before ordering the PCB, print the layout at 1:1 and check the Pico and XIAO pads against the probe holes.
+
+### 18.2 Endpoint Reset Control
+
+The RP2350 can reset the other three MCUs through 1 kΩ series resistors, so a debug probe on the SWD header can still override the line:
+
+| RP2350 GPIO | Target |
+|---|---|
+| GP19 (`HID_PERSONAL_RUN_CTRL`) | HID-A RUN |
+| GP21 (`HID_WORK_RUN_CTRL`) | HID-B RUN |
+| GP22 (`BLE_RST_CTRL`) | XIAO RST |
+
+Each Pico RUN line has an external 10 kΩ pull-up; the XIAO has its own 10 kΩ on RST. This keeps the endpoints out of reset while the RP2350's default GPIO pull-downs are active during its own boot. Firmware keeps these GPIOs as inputs with no pull and drives them low only to reset a target.
 
 ---
 
