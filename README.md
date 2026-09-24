@@ -42,15 +42,15 @@ The project consists of two custom PCBs:
                     ▼
 ┌────────────────── MAIN DOCK ─────────────────┐
 │                                             │
-│ Dock nRF52840 ── UART ──► RP2350            │
+│ XIAO nRF52840 ── UART ──► Host Pico 2       │
 │                              ▲              │
 │ Keyboard ───── USB Host ─────┘              │
 │                              │              │
 │                   ┌──────────┴─────────┐    │
 │                   │                    │    │
-│               UART 1M             UART 1M  │
+│               UART 1M             UART 1M   │
 │                   │                    │    │
-│               RP2040-A             RP2040-B│
+│            HID-A Pico 2       HID-B Pico 2  │
 │                   │                    │    │
 │                  USB                  USB   │
 └───────────────────┼────────────────────┼────┘
@@ -62,10 +62,10 @@ The project consists of two custom PCBs:
 
 | Function | Selected Part / Design |
 |---|---|
-| Dock main MCU / USB host | RP2350 |
-| Personal PC HID endpoint | RP2040 |
-| Work PC HID endpoint | RP2040 |
-| Dock wireless MCU | nRF52840 |
+| Dock main MCU / USB host | Raspberry Pi Pico 2 (RP2350), socketed |
+| Personal PC HID endpoint | Raspberry Pi Pico 2 (RP2350), socketed |
+| Work PC HID endpoint | Raspberry Pi Pico 2 (RP2350), socketed |
+| Dock wireless MCU | Seeed XIAO nRF52840, socketed |
 | Pad MCU / wireless | nRF52840 |
 | Pad GPIO expander | TCA9555 |
 | Pad charger / power path | BQ25185 |
@@ -75,9 +75,12 @@ The project consists of two custom PCBs:
 | OLED load switch | TPS22919 |
 | RGB logic buffer | SN74AHCT1G125 |
 | RGB LEDs | 36 × WS2812C-2020 class |
-| Dock dual-input power mux | TPS2121 |
+| Dock dual-input power mux | TPS2116 |
 | Keyboard VBUS switch | TPS2553 |
+| Pogo +5V switch | TPS2552 (enabled by dock detect) |
 | USB data ESD | 3 × TPD2EUSB30 |
+| Pogo contact ESD | TPD4E1U06 |
+| Module USB/SWD contacts | P50-B1 spring probes to the modules' underside pads |
 | Keys | 12 × MX-compatible mechanical switches |
 | Encoders | 2 × rotary encoder with push |
 | Target selector | Metal SPDT ON-OFF-ON toggle |
@@ -100,7 +103,7 @@ PERSONAL
 The mechanical switch is the source of truth. Its state travels:
 
 ```text
-Toggle → Pad nRF52840 → BLE → Dock nRF52840 → UART → RP2350
+Toggle → Pad nRF52840 → BLE → Dock XIAO nRF52840 → UART → Host RP2350
 ```
 
 If the pad/BLE connection is lost, the RP2350 must eventually release all active HID states and enter `OFF`.
@@ -109,11 +112,11 @@ If the pad/BLE connection is lost, the RP2350 must eventually release all active
 
 - Keyboard → RP2350: USB Host
 - Pad ↔ Dock: BLE
-- Dock nRF52840 ↔ RP2350: 1 Mbaud full-duplex UART
-- RP2350 ↔ RP2040-A: independent 1 Mbaud UART
-- RP2350 ↔ RP2040-B: independent 1 Mbaud UART
-- RP2040-A → Personal PC: USB HID
-- RP2040-B → Work PC: USB HID
+- Dock XIAO nRF52840 ↔ Host RP2350: 1 Mbaud full-duplex UART (PIO on the RP2350 side)
+- Host ↔ HID-A: independent 1 Mbaud UART
+- Host ↔ HID-B: independent 1 Mbaud UART
+- HID-A → Personal PC: USB HID
+- HID-B → Work PC: USB HID
 - Pogo UART: debug/recovery only
 
 The internal UART protocol uses framed binary packets:
@@ -133,7 +136,7 @@ Examples:
 - Target change → release previous endpoint before changing route.
 - `OFF` → release both endpoints.
 - BLE/pad timeout → release all and route OFF.
-- RP2040 communication timeout → local HID endpoint sends released state and enters safe idle.
+- Host communication timeout → local HID endpoint sends released state and enters safe idle.
 - Keyboard host faults → RP2350 can power-cycle keyboard VBUS.
 - Every MCU receives a physical debug/recovery interface.
 
@@ -158,7 +161,7 @@ GND | +5V | DET | RX | TX | GND
 ## Repository Layout
 
 ```text
-keyboard-router/
+dock-pad/
 ├── hardware/
 │   ├── dock/
 │   └── pad/
@@ -166,9 +169,9 @@ keyboard-router/
 │   ├── dock/
 │   └── pad/
 ├── firmware/
-│   ├── rp2350/
-│   ├── rp2040-hid/
-│   ├── dock-nrf52840/
+│   ├── host-rp2350/
+│   ├── hid-endpoint/
+│   ├── dock-ble-nrf52840/
 │   └── pad-nrf52840/
 ├── datasheets/
 ├── docs/
@@ -178,22 +181,17 @@ keyboard-router/
 
 ## Current Project State
 
-The V1 system architecture and major IC selections are considered frozen. The next phase is KiCad schematic capture, beginning with the main dock and then the wireless pad.
+The V1 architecture is frozen. The **dock schematic is captured and reviewed**; next are the dock PCB layout and then the wireless pad schematic.
 
-Implementation details still to finalize during schematic/PCB work include:
+Still to finalize:
 
-- Exact MCU/module variants and footprints
-- USB-C connector SKUs and CC networks
-- Passive values and decoupling
-- TPS2121 configuration
-- TPS2553 current-limit resistor
-- BQ25185 configuration and NTC network
+- Dock PCB outline, placement, routing and enclosure clearances (spring-probe tails need 3–4 mm below the dock PCB)
+- BQ25185 configuration, NTC network and switchable charge current
 - TPS63802 and TPS61023 magnetics/passives
 - OLED module/controller
 - Encoder and mechanical switch SKUs
-- nRF52840 antenna keepout
+- Pad nRF52840 antenna keepout
 - Battery ADC divider
-- Debug connector pinouts
 - PCB layer count and final stack-up
 - Enclosure CAD and exact dimensions
 

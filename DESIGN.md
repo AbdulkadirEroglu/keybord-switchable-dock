@@ -29,20 +29,24 @@ Responsibilities:
 - Parse incoming HID reports.
 - Maintain target routing state.
 - Forward HID state to one of two independent USB-device endpoints.
-- Receive pad events/status over the dock nRF52840.
+- Receive pad events/status over the dock BLE module.
 - Provide USB power to the keyboard.
 - Select power automatically from Personal or Work PC.
 - Charge/power the pad through the pogo interface.
 
 Primary devices:
 
-- RP2350 — host/router
-- RP2040-A — Personal HID endpoint
-- RP2040-B — Work HID endpoint
-- nRF52840 — BLE base
-- TPS2121 — PC VBUS power mux
-- TPS2553 — keyboard VBUS current-limited switch
-- 3 × TPD2EUSB30 — USB D+/D− ESD protection
+- Host/router — Raspberry Pi Pico 2 (RP2350), `A1`
+- HID-A / Personal endpoint — Raspberry Pi Pico 2 (RP2350), `A2`
+- HID-B / Work endpoint — Raspberry Pi Pico 2 (RP2350), `A3`
+- BLE base — Seeed XIAO nRF52840, `U7`
+- TPS2116 — PC VBUS priority power mux, `U1`
+- TPS2553 — keyboard VBUS current-limited switch, `U3`
+- TPS2552 — pogo +5V current-limited switch, enabled by `DET`, `U8`
+- 3 × TPD2EUSB30 — USB D+/D− ESD protection, `U4`–`U6`
+- TPD4E1U06 — pogo contact ESD protection, `U9`
+
+All three Pico 2 boards and the XIAO are socketed modules (see §18.1). Each module generates its own 3.3 V from `SYS_5V`; the dock has no separate 3.3 V regulator.
 
 ### 2.2 Wireless Control Pad
 
@@ -89,9 +93,12 @@ Requirements:
 
 - RP2350 USB host data
 - Correct USB-C source-side CC configuration
-- VBUS supplied from `SYS_5V` through TPS2553
+- VBUS supplied from `SYS_5V` through TPS2553 (≈0.92–1.07 A limit, R<sub>ILIM</sub> 26.1 kΩ)
+- 2 × 100 µF + 1 µF on `KEYBOARD_VBUS` (≥120 µF USB host requirement, met even at −20% tolerance)
+- 100 kΩ pull-down on `KEYBOARD_VBUS_EN` so the keyboard stays off until firmware enables it
+- CC1/CC2 → 56 kΩ Rp to `KEYBOARD_VBUS` (default USB power advertisement)
 - TPD2EUSB30 close to connector
-- Shield termination strategy with configurable 0-ohm/RC option if useful
+- Shield termination: 330 Ω ∥ 100 nF to GND
 
 #### Personal PC Port
 
@@ -101,15 +108,16 @@ Role:
 
 Requirements:
 
-- RP2040-A D+/D−
+- HID-A (Pico 2) D+/D− via the Pico's USB test pads (§18.1)
 - CC1 → 5.1 kΩ → GND
 - CC2 → 5.1 kΩ → GND
-- VBUS routed only to TPS2121 input and optional sensing
+- CC1/CC2 also sensed by the HID endpoint's ADC (§4.3)
+- VBUS routed to the TPS2116 input and to the endpoint's VBUS sense divider (§5)
 - TPD2EUSB30 close to connector
 
 #### Work PC Port
 
-Same electrical architecture as Personal PC, using RP2040-B and the second TPS2121 input.
+Same electrical architecture as Personal PC, using HID-B and the second TPS2116 input.
 
 No USB Power Delivery is required.
 
@@ -120,19 +128,20 @@ No USB Power Delivery is required.
 ### 4.1 Dual-PC Input
 
 ```text
-PERSONAL_VBUS ──► TPS2121 IN1
-WORK_VBUS     ──► TPS2121 IN2
+PERSONAL_VBUS ──► TPS2116 VIN1 (priority)
+WORK_VBUS     ──► TPS2116 VIN2
 
-TPS2121 OUT   ──► SYS_5V
+TPS2116 VOUT  ──► SYS_5V  (1 µF + 2 × 100 µF)
 ```
 
-Desired behavior:
+Implementation (TPS2116 priority mode):
 
-- Personal input preferred when available.
-- Work input automatically takes over otherwise.
-- Reverse current into either computer must be prevented.
-- Local bulk capacitance should support source transitions.
-- Exact priority/current-limit configuration is finalized from the TPS2121 datasheet during schematic capture.
+- `MODE` tied to VIN1; PR1 divider 300 kΩ / 100 kΩ from `PERSONAL_VBUS` → switches to Work when Personal VBUS falls below ≈4.0 V (3.7–4.3 V over V<sub>REF</sub> tolerance).
+- Reverse current blocking: neither PC is back-fed.
+- Switchover is break-before-make (t<sub>SW</sub> ≈ 8 µs); the 2 × 100 µF bulk holds `SYS_5V` droop to ≈0.08 V at 2 A.
+- Plug-in inrush is limited by the TPS2116 soft start: ≈0.6 A for ≈1.7 ms with ≈211 µF total. Do not substantially increase `SYS_5V` bulk capacitance without re-checking this.
+- `ST` (open drain, high when VIN1 is in use) → `MUX_STATUS` → RP2350 GP18, pulled up to `HOST_3V3`.
+- The TPS2116 has no current limit; downstream loads are limited individually (TPS2553 keyboard, TPS2552 pogo).
 
 ### 4.2 Keyboard VBUS
 
@@ -142,9 +151,9 @@ SYS_5V → TPS2553 → KEYBOARD_VBUS
 
 Connections:
 
-- `EN` → RP2350
-- `FAULT` → RP2350
-- Current limit target approximately 0.9–1.0 A; calculate exact resistor from datasheet.
+- `EN` (active high) → RP2350 GP16 (`KEYBOARD_VBUS_EN`), 100 kΩ pull-down
+- `FAULT` (open drain) → RP2350 GP17 (`KEYBOARD_VBUS_FAULT`), 10 kΩ pull-up to `HOST_3V3`
+- Current limit: R<sub>ILIM</sub> = 26.1 kΩ → 0.92–1.07 A (TPS2553 datasheet I<sub>OS</sub> equations). Non-latching version: current is held at the limit during an overload and `FAULT` stays asserted.
 
 This allows deliberate keyboard power cycling for recovery/re-enumeration.
 
@@ -152,7 +161,7 @@ This allows deliberate keyboard power cycling for recovery/re-enumeration.
 
 The whole dock (three MCUs, keyboard up to ~1 A, pad charging up to ~1 A) runs from one PC port at a time, which can exceed a USB 2.0 port's 500 mA. The dock therefore measures what the active port allows instead of assuming it.
 
-Each HID RP2040 reads its own port's USB-C CC pins through 10 kΩ series resistors:
+Each HID endpoint reads its own port's USB-C CC pins through 10 kΩ series resistors:
 
 ```text
 CC1 → 10k → GP26 (ADC0)
@@ -167,7 +176,7 @@ With the 5.1 kΩ Rd pull-downs, the active CC pin (the other stays near 0 V, dep
 | 0.70–1.16 V | 1.5 A |
 | 1.31–2.04 V | 3.0 A |
 
-A USB-A-to-C cable always reads as Default, which is the safe result. Each RP2040 reports its reading to the RP2350 over its UART link; `MUX_STATUS` tells the RP2350 which port is currently powering the dock.
+A USB-A-to-C cable always reads as Default, which is the safe result. Each endpoint reports its reading to the RP2350 over its UART link; `MUX_STATUS` tells the RP2350 which port is currently powering the dock.
 
 Firmware policy: full pad charging when the active port advertises 1.5 A or 3 A; reduced or paused pad charging on a Default port, particularly while the keyboard draws high current. Enable keyboard VBUS only after the dock has booted, so the keyboard inrush does not coincide with the plug-in inrush.
 
@@ -175,9 +184,9 @@ Firmware policy: full pad charging when the active port advertises 1.5 A or 3 A;
 
 ## 5. USB HID Endpoint Architecture
 
-Two RP2040 devices are used rather than switching a single USB device electrically between computers.
+Two independent HID endpoint MCUs (Pico 2 modules) are used rather than switching a single USB device electrically between computers.
 
-Each RP2040 exposes at minimum:
+Each endpoint exposes at minimum:
 
 - Keyboard HID
 - Consumer Control HID
@@ -186,18 +195,20 @@ Optional future interface:
 
 - Vendor HID
 
-Both RP2040s should use the same firmware image. A hardware role strap identifies:
+Both endpoints use the same firmware image. A hardware role strap on GP2 identifies them:
 
-- HID-A / Personal
-- HID-B / Work
+- HID-A / Personal: GP2 pulled low (10 kΩ to GND)
+- HID-B / Work: GP2 pulled high (10 kΩ to the endpoint's 3.3 V)
 
 Each endpoint remains enumerated with its PC even when it is not the selected target.
+
+VBUS sense: each endpoint reads its own PC's VBUS on GP4 through a 22 kΩ / 33 kΩ divider (5.25 V → 3.15 V). The endpoints are powered from `SYS_5V` even when their own PC is off, so firmware must only enable the USB D+ pull-up (connect) while GP4 is high, and disconnect when it goes low. Otherwise the endpoint would back-feed a powered-down PC's USB port.
 
 ---
 
 ## 6. Internal UART Architecture
 
-### 6.1 Dock nRF52840 ↔ RP2350
+### 6.1 Dock BLE (XIAO nRF52840) ↔ RP2350
 
 - Full-duplex UART
 - RP2350 side implemented in PIO, not a hardware UART (see §6.3)
@@ -205,17 +216,19 @@ Each endpoint remains enumerated with its PC even when it is not the selected ta
 - Target baud: 1 Mbaud
 - Dedicated protocol UART; do not mix debug logging into the stream
 
-### 6.2 RP2350 ↔ RP2040-A/B
+### 6.2 RP2350 ↔ HID-A/B
 
 Two independent full-duplex UART links:
 
 ```text
-RP2350 TX-A → RP2040-A RX
-RP2350 RX-A ← RP2040-A TX
+RP2350 TX-A → HID-A RX
+RP2350 RX-A ← HID-A TX
 
-RP2350 TX-B → RP2040-B RX
-RP2350 RX-B ← RP2040-B TX
+RP2350 TX-B → HID-B RX
+RP2350 RX-B ← HID-B TX
 ```
+
+Each endpoint uses hardware UART0 on GP0 (TX) / GP1 (RX). Net names are from the RP2350's point of view: `HID_PERSONAL_TX` is driven by the RP2350.
 
 Target baud: 1 Mbaud.
 
@@ -291,9 +304,9 @@ If the dock stops receiving valid pad state for the defined timeout:
 - Release all keyboard/consumer states.
 - Route OFF.
 
-### RP2350 ↔ RP2040 Loss
+### RP2350 ↔ HID Endpoint Loss
 
-Each RP2040 independently watches its command link.
+Each HID endpoint independently watches its command link.
 
 On timeout:
 
@@ -605,23 +618,25 @@ Every programmable MCU receives a physical debug/recovery path.
 
 ### Dock
 
-- RP2350 SWD
-- RP2040-A SWD
-- RP2040-B SWD
-- nRF52840 SWD
+- Host (Pico 2) SWD — J2
+- HID-A (Pico 2) SWD — J3
+- HID-B (Pico 2) SWD — J6
+- BLE (XIAO nRF52840) SWD — J8
+
+The SWD pads on the modules are reached with spring probes (§18.1). The RP2350 can also reset HID-A, HID-B and BLE (§18.2).
 
 ### Pad
 
 - nRF52840 SWD
 
-Preferred development header exposes:
+Dock SWD header pinout (1×5, 2.54 mm), identical on J2/J3/J6/J8:
 
 ```text
-SWDIO
-SWDCLK
-RESET
-VCC
-GND
+1  SWCLK
+2  SWDIO
+3  GND
+4  RUN / RESET
+5  3V3 (target voltage reference only; do not power the target from the probe)
 ```
 
 UART test access should also be available where practical.
@@ -801,16 +816,18 @@ ROOT
 
 ### Dock
 
+Schematic captured and reviewed (ERC clean apart from the intentional Pico ground-pin exclusions). Next: PCB outline, placement and routing. Order used:
+
 1. USB-C Personal/Work power inputs
-2. TPS2121 and `SYS_5V`
-3. RP2350 core power/clock/debug
+2. TPS2116 and `SYS_5V` bulk capacitance
+3. Host Pico 2 (power, SWD, control GPIOs)
 4. Keyboard USB host connector + ESD + TPS2553
-5. RP2040-A core + Personal USB
-6. RP2040-B core + Work USB
-7. Dock nRF52840
+5. HID-A Pico 2 + Personal USB (VBUS/CC sensing, role strap)
+6. HID-B Pico 2 + Work USB
+7. BLE XIAO nRF52840 + pogo interface (TPS2552, ESD, series resistors)
 8. Three internal UART links
-9. SWD/debug headers
-10. Power decoupling and final ERC review
+9. SWD headers and reset control
+10. Final ERC review
 
 ### Pad
 
@@ -834,14 +851,18 @@ ROOT
 
 The architecture is frozen, but the following are intentionally finalized during schematic work:
 
-- Exact RP2350/RP2040 implementation and packages
-- Exact nRF52840 module/SoC implementation
-- Crystal requirements
-- USB-C connector footprints
-- CC resistor implementation
-- Decoupling networks
-- TPS2121 settings
-- TPS2553 RILIM
+Resolved for the dock during schematic capture:
+
+- MCU implementation: Raspberry Pi Pico 2 modules (host, HID-A, HID-B) and Seeed XIAO nRF52840 (BLE), all socketed; no crystals or MCU decoupling needed on the dock
+- USB-C connector: KLS L-KLS1-5416-L1-01-R (footprint checked against the manufacturer drawing)
+- CC resistors: 5.1 kΩ Rd on PC ports, 56 kΩ Rp on the keyboard port
+- Power mux: TPS2116 (replaces TPS2121), priority mode, ≈4.0 V switchover
+- TPS2553 R<sub>ILIM</sub> 26.1 kΩ (≈1 A); TPS2552 on pogo +5V with the same limit
+- SWD connector standard: 1×5 2.54 mm header (§16)
+
+Still open (mostly pad side):
+
+- PCB outline, stack-up and routing (dock)
 - BQ25185 VSET/ILIM/ISET/TS values
 - TPS63802 inductor/passives
 - TPS61023 inductor/passives
@@ -854,7 +875,6 @@ The architecture is frozen, but the following are intentionally finalized during
 - Toggle switch SKU/panel hole
 - Key-switch footprints
 - Pogo connector dimensions
-- SWD connector standard
 - Final PCB stack-up
 - Final mechanical dimensions
 

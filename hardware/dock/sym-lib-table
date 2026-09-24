@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "dock_custom") (type "KiCad") (uri "${KIPRJMOD}/dock_custom.kicad_sym") (options "") (descr "Project symbols"))
+)

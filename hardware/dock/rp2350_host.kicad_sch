@@ -1731,54 +1731,6 @@
 		)
 		(uuid "92ee3783-a757-466d-9aaf-ff50aaff218a")
 	)
-	(global_label "HOST_3V3"
-		(shape output)
-		(at 109.22 74.93 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "d75bd3a2-1ec3-4b56-9639-07b828653f50")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 109.22 74.93 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "HOST_3V3"
-		(shape output)
-		(at 147.32 57.15 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "1cf2856c-030b-417f-8635-e5f77ef8ae8a")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 147.32 57.15 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "SYS_5V"
 		(shape input)
 		(at 137.16 57.15 90)
@@ -1848,6 +1800,78 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+	)
+	(global_label "HOST_3V3"
+		(shape output)
+		(at 147.32 57.15 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1cf2856c-030b-417f-8635-e5f77ef8ae8a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 147.32 57.15 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "BLE_RST_CTRL"
+		(shape output)
+		(at 165.1 97.79 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1f08d262-27a9-4595-819c-6a8982458df2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.1 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "POGO_5V_FAULT"
+		(shape input)
+		(at 165.1 92.71 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1fe8e15f-daec-4f79-88a9-3380124a47ac")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.1 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 	)
@@ -1947,6 +1971,30 @@
 			)
 		)
 	)
+	(global_label "HID_WORK_RUN_CTRL"
+		(shape output)
+		(at 165.1 95.25 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "861b0256-854e-44b2-8bba-ca0ae2644ff1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.1 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "BLE_UART_RX"
 		(shape input)
 		(at 119.38 102.87 180)
@@ -1995,7 +2043,55 @@
 			)
 		)
 	)
-	(global_label "USB_HOST_DM"
+	(global_label "HID_PERSONAL_RUN_CTRL"
+		(shape output)
+		(at 165.1 90.17 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d24ebf2c-d8de-4f24-a1bf-f6f124a03ee3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.1 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "HOST_3V3"
+		(shape output)
+		(at 109.22 74.93 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d75bd3a2-1ec3-4b56-9639-07b828653f50")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 109.22 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "USB_HOST_D_N"
 		(shape input)
 		(at 165.1 67.31 0)
 		(fields_autoplaced yes)
@@ -2019,7 +2115,7 @@
 			)
 		)
 	)
-	(global_label "USB_HOST_DP"
+	(global_label "USB_HOST_D_P"
 		(shape input)
 		(at 165.1 69.85 0)
 		(fields_autoplaced yes)
@@ -2169,7 +2265,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "RaspberryPi_Pico"
+		(property "Value" "Raspberry Pi Pico 2"
 			(at 144.3833 132.08 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2691,102 +2787,6 @@
 					(reference "#PWR019")
 					(unit 1)
 				)
-			)
-		)
-	)
-	(global_label "POGO_5V_FAULT"
-		(shape input)
-		(at 165.1 92.71 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "1fe8e15f-daec-4f79-88a9-3380124a47ac")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.1 92.71 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "HID_PERSONAL_RUN_CTRL"
-		(shape output)
-		(at 165.1 90.17 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "d24ebf2c-d8de-4f24-a1bf-f6f124a03ee3")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.1 90.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "HID_WORK_RUN_CTRL"
-		(shape output)
-		(at 165.1 95.25 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "861b0256-854e-44b2-8bba-ca0ae2644ff1")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.1 95.25 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "BLE_RST_CTRL"
-		(shape output)
-		(at 165.1 97.79 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "1f08d262-27a9-4595-819c-6a8982458df2")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.1 97.79 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 			)
 		)
 	)
