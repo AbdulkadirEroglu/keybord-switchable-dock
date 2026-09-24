@@ -43,8 +43,7 @@ Primary devices:
 - TPS2116 — PC VBUS priority power mux, `U1`
 - TPS2553 — keyboard VBUS current-limited switch, `U3`
 - TPS2552 — pogo +5V current-limited switch, enabled by `DET`, `U8`
-- 3 × TPD2EUSB30 — USB D+/D− ESD protection, `U4`–`U6`
-- TPD4E1U06 — pogo contact ESD protection, `U9`
+- 4 × TPD4E1U06 — ESD protection: each USB-C port's D+, D−, CC1, CC2 (`U4`–`U6`) and the pogo contacts (`U9`). SOT-23-6, each channel clamps to GND only (no VBUS rail pin, so no back-feed path into an unpowered PC's VBUS)
 
 All three Pico 2 boards and the XIAO are socketed modules (see §18.1). Each module generates its own 3.3 V from `SYS_5V`; the dock has no separate 3.3 V regulator.
 
@@ -97,7 +96,7 @@ Requirements:
 - 2 × 100 µF + 1 µF on `KEYBOARD_VBUS` (≥120 µF USB host requirement, met even at −20% tolerance)
 - 100 kΩ pull-down on `KEYBOARD_VBUS_EN` so the keyboard stays off until firmware enables it
 - CC1/CC2 → 56 kΩ Rp to `KEYBOARD_VBUS` (default USB power advertisement)
-- TPD2EUSB30 close to connector
+- TPD4E1U06 close to connector, protecting D+, D−, CC1 and CC2
 - Shield termination: 330 Ω ∥ 100 nF to GND
 
 #### Personal PC Port
@@ -113,7 +112,7 @@ Requirements:
 - CC2 → 5.1 kΩ → GND
 - CC1/CC2 also sensed by the HID endpoint's ADC (§4.3)
 - VBUS routed to the TPS2116 input and to the endpoint's VBUS sense divider (§5)
-- TPD2EUSB30 close to connector
+- TPD4E1U06 close to connector, protecting D+, D−, CC1 and CC2
 
 #### Work PC Port
 

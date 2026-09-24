@@ -78,8 +78,7 @@ The project consists of two custom PCBs:
 | Dock dual-input power mux | TPS2116 |
 | Keyboard VBUS switch | TPS2553 |
 | Pogo +5V switch | TPS2552 (enabled by dock detect) |
-| USB data ESD | 3 × TPD2EUSB30 |
-| Pogo contact ESD | TPD4E1U06 |
+| ESD protection | 4 × TPD4E1U06 (each USB-C port: D+, D−, CC1, CC2; pogo contacts) |
 | Module USB/SWD contacts | P50-B1 spring probes to the modules' underside pads |
 | Keys | 12 × MX-compatible mechanical switches |
 | Encoders | 2 × rotary encoder with push |
