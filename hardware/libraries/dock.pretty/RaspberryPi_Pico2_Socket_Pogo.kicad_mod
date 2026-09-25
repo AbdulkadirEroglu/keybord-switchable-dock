@@ -658,42 +658,6 @@
 		(layer "F.Fab")
 		(uuid "ab39f587-ad53-4c95-a966-93478de9f6bb")
 	)
-	(fp_text user "USB Cable"
-		(at 8.89 -13.335 0)
-		(unlocked yes)
-		(layer "Cmts.User")
-		(uuid "4490f857-159d-49f0-97e0-6a9f068c7780")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(fp_text user "Possible Antenna"
-		(at 8.89 43.815 0)
-		(unlocked yes)
-		(layer "Cmts.User")
-		(uuid "dfb4a4de-ee63-4bf4-aeb7-75c490658d61")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(fp_text user "Keep Out"
-		(at 8.89 45.72 0)
-		(unlocked yes)
-		(layer "Cmts.User")
-		(uuid "b732b1a2-52fb-4cad-8c4f-5aa2ad8a1cae")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
 	(fp_text user "${REFERENCE}"
 		(at 8.89 24.13 90)
 		(layer "F.Fab")
@@ -1302,75 +1266,6 @@
 		(size 1 1)
 		(layers "F.Cu")
 		(uuid "563aa698-ea0c-4adc-b213-2d167c8266b0")
-	)
-	(zone
-		(layers "F.Cu" "B.Cu" "In1.Cu" "In2.Cu" "In3.Cu" "In4.Cu" "In5.Cu" "F.Paste"
-			"In6.Cu" "B.Paste" "In7.Cu" "In8.Cu" "In9.Cu" "In10.Cu" "In11.Cu" "In12.Cu"
-			"In13.Cu" "In14.Cu" "In15.Cu" "In16.Cu" "In17.Cu" "In18.Cu" "In19.Cu"
-			"In20.Cu" "In21.Cu" "In22.Cu" "In23.Cu" "In24.Cu" "In25.Cu" "In26.Cu"
-			"In27.Cu" "In28.Cu" "In29.Cu" "In30.Cu"
-		)
-		(uuid "0c8f0fa8-080c-4028-8e49-bd5e88dd3411")
-		(name "Antenna Copper Keep Out")
-		(hatch full 0.5)
-		(connect_pads
-			(clearance 0)
-		)
-		(min_thickness 0.254)
-		(keepout
-			(tracks not_allowed)
-			(vias not_allowed)
-			(pads not_allowed)
-			(copperpour not_allowed)
-			(footprints allowed)
-		)
-		(placement
-			(enabled no)
-			(sheetname "")
-		)
-		(fill
-			(thermal_gap 0.508)
-			(thermal_bridge_width 0.508)
-			(island_removal_mode 0)
-		)
-		(polygon
-			(pts
-				(xy 6.49 49.119895) (xy 1.79 45.469895) (xy 1.79 41.13) (xy 15.99 41.13) (xy 15.99 45.469895) (xy 11.29 49.119895)
-				(xy 11.29 50.13) (xy 6.49 50.13)
-			)
-		)
-	)
-	(zone
-		(layer "F.CrtYd")
-		(uuid "6185ce7e-ad0b-42bd-af08-230bf98fa590")
-		(name "USB Cable")
-		(hatch edge 0.5)
-		(connect_pads
-			(clearance 0)
-		)
-		(min_thickness 0.254)
-		(keepout
-			(tracks allowed)
-			(vias allowed)
-			(pads allowed)
-			(copperpour allowed)
-			(footprints allowed)
-		)
-		(placement
-			(enabled no)
-			(sheetname "")
-		)
-		(fill
-			(thermal_gap 0.508)
-			(thermal_bridge_width 0.508)
-			(island_removal_mode 0)
-		)
-		(polygon
-			(pts
-				(xy 3.14 -3.57) (xy 4.95 -3.57) (xy 4.95 -3.17) (xy 12.83 -3.17) (xy 12.83 -3.57) (xy 14.64 -3.57)
-				(xy 14.64 -23.07) (xy 3.14 -23.07)
-			)
-		)
 	)
 	(group ""
 		(uuid "7a1bae87-6ff0-44c5-b610-2211ecef619f")

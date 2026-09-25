@@ -2114,6 +2114,190 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "dock_custom:TPD4E1U06DBV"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 10.16 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TPD4E1U06DBVR"
+				(at 0 7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd4e1u06.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Quad-channel unidirectional ESD protection, 5.5V standoff, SOT-23-6"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "TPD4E1U06DBV_0_1"
+				(rectangle
+					(start -5.08 6.35)
+					(end 5.08 -8.89)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "TPD4E1U06DBV_1_1"
+				(pin passive line
+					(at -7.62 3.81 0)
+					(length 2.54)
+					(name "D1+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 2.54 -11.43 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -7.62 -1.27 0)
+					(length 2.54)
+					(name "D2+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -7.62 -3.81 0)
+					(length 2.54)
+					(name "D2-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "NC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -7.62 1.27 0)
+					(length 2.54)
+					(name "D1-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "power:GND"
 			(power global)
 			(pin_numbers
@@ -2344,190 +2528,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "dock_custom:TPD4E1U06DBV"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "U"
-				(at 0 10.16 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "TPD4E1U06DBVR"
-				(at 0 7.62 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tpd4e1u06.pdf"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Quad-channel unidirectional ESD protection, 5.5V standoff, SOT-23-6"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "TPD4E1U06DBV_0_1"
-				(rectangle
-					(start -5.08 6.35)
-					(end 5.08 -8.89)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-			)
-			(symbol "TPD4E1U06DBV_1_1"
-				(pin passive line
-					(at -7.62 3.81 0)
-					(length 2.54)
-					(name "D1+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 2.54 -11.43 90)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -7.62 -1.27 0)
-					(length 2.54)
-					(name "D2+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -7.62 -3.81 0)
-					(length 2.54)
-					(name "D2-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin no_connect line
-					(at 7.62 0 180)
-					(length 2.54)
-					(name "NC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -7.62 1.27 0)
-					(length 2.54)
-					(name "D1-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 	)
 	(text "Role_Strap\n"
 		(exclude_from_sim no)
@@ -2612,6 +2612,10 @@
 	(no_connect
 		(at 179.07 99.06)
 		(uuid "84dd7892-3e05-498a-9659-623904535297")
+	)
+	(no_connect
+		(at 109.22 121.92)
+		(uuid "8541b19c-7b27-4e17-adbb-7863ecf861ff")
 	)
 	(no_connect
 		(at 179.07 119.38)
@@ -2909,6 +2913,16 @@
 		)
 		(uuid "37b66f74-b3ad-401c-902f-2ee31c2cceee")
 	)
+	(label "CC2"
+		(at 93.98 125.73 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "39f45e95-dfad-4e77-9479-45a39a1599e4")
+	)
 	(label "USB_WORK_D_N"
 		(at 67.31 100.33 0)
 		(effects
@@ -2929,6 +2943,16 @@
 		)
 		(uuid "76ae42d6-c2dc-4dc5-ab63-8624a7d28ce4")
 	)
+	(label "USB_WORK_D_N"
+		(at 93.98 120.65 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "79187a41-b6da-428a-b8a5-51195a151585")
+	)
 	(label "PICO_3V3"
 		(at 121.92 92.71 180)
 		(effects
@@ -2938,6 +2962,16 @@
 			(justify right bottom)
 		)
 		(uuid "87aca02b-8b98-4976-90a1-034e0291e7ad")
+	)
+	(label "CC1"
+		(at 93.98 123.19 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "8a22daad-8a7b-421b-98d4-c72f4eec91ce")
 	)
 	(label "USB_WORK_D_N"
 		(at 67.31 95.25 0)
@@ -2968,6 +3002,16 @@
 			(justify left bottom)
 		)
 		(uuid "c7a50d85-cfa0-4e96-837d-526c4af024bc")
+	)
+	(label "USB_WORK_D_P"
+		(at 93.98 118.11 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ca90e9ee-06c7-4284-9ba5-285bc27c20f2")
 	)
 	(label "USB_WORK_D_N"
 		(at 179.07 73.66 0)
@@ -5235,6 +5279,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 104.14 133.35 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "defa7354-0820-41f7-a03e-df216cb321ef")
+		(property "Reference" "#PWR032"
+			(at 104.14 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 104.14 138.43 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 104.14 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 104.14 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 104.14 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0dc334a5-bd66-428e-ae6d-bfeebffba1fd")
+		)
+		(instances
+			(project "dock"
+				(path "/b7c42e8e-d530-48de-8d78-684e37659179/22f7f0d8-cebf-4bfb-a7b6-cd9fc1ba10ee"
+					(reference "#PWR032")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:PWR_FLAG")
 		(at 76.2 63.5 90)
 		(unit 1)
@@ -5308,89 +5430,6 @@
 			(project "dock"
 				(path "/b7c42e8e-d530-48de-8d78-684e37659179/22f7f0d8-cebf-4bfb-a7b6-cd9fc1ba10ee"
 					(reference "#FLG02")
-					(unit 1)
-				)
-			)
-		)
-	)
-
-
-	(symbol
-		(lib_id "Device:R")
-		(at 185.42 116.84 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "f7d24a6e-4c68-4b79-ac4e-d4ea042de241")
-		(property "Reference" "R32"
-			(at 187.198 118.872 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10k"
-			(at 186.944 116.84 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 185.42 118.618 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 185.42 116.84 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 185.42 116.84 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "c028e22b-82b3-4d03-b682-294a6d09939b")
-		)
-		(pin "1"
-			(uuid "62f7152d-a537-4374-aab0-a8b032388545")
-		)
-		(instances
-			(project "dock"
-				(path "/b7c42e8e-d530-48de-8d78-684e37659179/22f7f0d8-cebf-4bfb-a7b6-cd9fc1ba10ee"
-					(reference "R32")
 					(unit 1)
 				)
 			)
@@ -5488,8 +5527,8 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 104.14 133.35 0)
+		(lib_id "Device:R")
+		(at 185.42 116.84 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5497,31 +5536,31 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "defa7354-0820-41f7-a03e-df216cb321ef")
-		(property "Reference" "#PWR032"
-			(at 104.14 139.7 0)
-			(hide yes)
+		(uuid "f7d24a6e-4c68-4b79-ac4e-d4ea042de241")
+		(property "Reference" "R32"
+			(at 187.198 118.872 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "GND"
-			(at 104.14 138.43 0)
+		(property "Value" "10k"
+			(at 186.944 116.84 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Footprint" ""
-			(at 104.14 133.35 0)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 185.42 118.618 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5532,7 +5571,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 104.14 133.35 0)
+			(at 185.42 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5542,8 +5581,8 @@
 				)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 104.14 133.35 0)
+		(property "Description" "Resistor"
+			(at 185.42 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5552,61 +5591,20 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+		(pin "2"
+			(uuid "c028e22b-82b3-4d03-b682-294a6d09939b")
 		)
 		(pin "1"
-			(uuid "0dc334a5-bd66-428e-ae6d-bfeebffba1fd")
+			(uuid "62f7152d-a537-4374-aab0-a8b032388545")
 		)
 		(instances
 			(project "dock"
 				(path "/b7c42e8e-d530-48de-8d78-684e37659179/22f7f0d8-cebf-4bfb-a7b6-cd9fc1ba10ee"
-					(reference "#PWR032")
+					(reference "R32")
 					(unit 1)
 				)
 			)
 		)
-	)
-	(no_connect
-		(at 109.22 121.92)
-		(uuid "8541b19c-7b27-4e17-adbb-7863ecf861ff")
-	)
-	(label "USB_WORK_D_P"
-		(at 93.98 118.11 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "ca90e9ee-06c7-4284-9ba5-285bc27c20f2")
-	)
-	(label "USB_WORK_D_N"
-		(at 93.98 120.65 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "79187a41-b6da-428a-b8a5-51195a151585")
-	)
-	(label "CC1"
-		(at 93.98 123.19 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "8a22daad-8a7b-421b-98d4-c72f4eec91ce")
-	)
-	(label "CC2"
-		(at 93.98 125.73 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "39f45e95-dfad-4e77-9479-45a39a1599e4")
 	)
 )
