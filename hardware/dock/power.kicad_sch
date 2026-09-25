@@ -1803,7 +1803,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-583-8"
+		(property "Footprint" "dock:SOT-583-8_HandSolder"
 			(at 104.14 118.872 0)
 			(hide yes)
 			(show_name no)
