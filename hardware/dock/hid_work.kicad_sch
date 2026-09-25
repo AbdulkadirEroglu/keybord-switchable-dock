@@ -2570,16 +2570,8 @@
 		(uuid "1f5aea2d-7cd4-4ea9-abee-3d0ef90fd7a0")
 	)
 	(no_connect
-		(at 133.35 116.84)
-		(uuid "20889979-8e0a-45a8-bca1-5f758f13d0d8")
-	)
-	(no_connect
 		(at 133.35 129.54)
 		(uuid "22e30af0-8301-4872-a7b6-0c908ffbb71a")
-	)
-	(no_connect
-		(at 133.35 119.38)
-		(uuid "38e92aa7-28e2-4f17-b5ac-7086fe36fba6")
 	)
 	(no_connect
 		(at 179.07 101.6)
@@ -3097,30 +3089,6 @@
 			)
 		)
 	)
-	(global_label "HID_WORK_RX"
-		(shape output)
-		(at 133.35 86.36 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "47870053-2b1e-489e-9c6d-e9505d93255b")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 117.7253 86.36 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "WORK_VBUS"
 		(shape input)
 		(at 123.19 104.14 180)
@@ -3166,30 +3134,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
-			)
-		)
-	)
-	(global_label "HID_WORK_TX"
-		(shape input)
-		(at 133.35 88.9 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "ce1f1c07-cb21-4059-965a-e5ea56a93afe")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 117.4229 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 			)
 		)
 	)
@@ -5606,5 +5550,61 @@
 				)
 			)
 		)
+	)
+	(global_label "HID_WORK_RX"
+		(shape output)
+		(at 133.35 116.84 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c01998b5-1d7a-431c-b86e-d1342fc0c0d9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 133.35 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "HID_WORK_TX"
+		(shape input)
+		(at 133.35 119.38 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "2d6552ea-de46-404f-9943-e63e0d1ad316")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 133.35 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(no_connect
+		(at 133.35 88.9)
+		(uuid "568820a8-17db-4f26-b95c-276e9bb9455a")
+	)
+	(no_connect
+		(at 133.35 86.36)
+		(uuid "94945f51-c752-4979-ab8f-2511e3ea187d")
 	)
 )

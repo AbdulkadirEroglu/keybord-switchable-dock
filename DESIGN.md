@@ -139,7 +139,7 @@ Implementation (TPS2116 priority mode):
 - Reverse current blocking: neither PC is back-fed.
 - Switchover is break-before-make (t<sub>SW</sub> ≈ 8 µs); the 2 × 100 µF bulk holds `SYS_5V` droop to ≈0.08 V at 2 A.
 - Plug-in inrush is limited by the TPS2116 soft start: ≈0.6 A for ≈1.7 ms with ≈211 µF total. Do not substantially increase `SYS_5V` bulk capacitance without re-checking this.
-- `ST` (open drain, high when VIN1 is in use) → `MUX_STATUS` → RP2350 GP18, pulled up to `HOST_3V3`.
+- `ST` (open drain, high when VIN1 is in use) → `MUX_STATUS` → RP2350 GP28, pulled up to `HOST_3V3`.
 - The TPS2116 has no current limit; downstream loads are limited individually (TPS2553 keyboard, TPS2552 pogo).
 
 ### 4.2 Keyboard VBUS
@@ -150,8 +150,8 @@ SYS_5V → TPS2553 → KEYBOARD_VBUS
 
 Connections:
 
-- `EN` (active high) → RP2350 GP16 (`KEYBOARD_VBUS_EN`), 100 kΩ pull-down
-- `FAULT` (open drain) → RP2350 GP17 (`KEYBOARD_VBUS_FAULT`), 10 kΩ pull-up to `HOST_3V3`
+- `EN` (active high) → RP2350 GP26 (`KEYBOARD_VBUS_EN`), 100 kΩ pull-down
+- `FAULT` (open drain) → RP2350 GP27 (`KEYBOARD_VBUS_FAULT`), 10 kΩ pull-up to `HOST_3V3`
 - Current limit: R<sub>ILIM</sub> = 26.1 kΩ → 0.92–1.07 A (TPS2553 datasheet I<sub>OS</sub> equations). Non-latching version: current is held at the limit during an overload and `FAULT` stays asserted.
 
 This allows deliberate keyboard power cycling for recovery/re-enumeration.
@@ -227,7 +227,7 @@ RP2350 TX-B → HID-B RX
 RP2350 RX-B ← HID-B TX
 ```
 
-Each endpoint uses hardware UART0 on GP0 (TX) / GP1 (RX). Net names are from the RP2350's point of view: `HID_PERSONAL_TX` is driven by the RP2350.
+Each endpoint uses hardware UART0 on the pins facing the host: HID-A on GP16 (TX) / GP17 (RX), HID-B on GP12 (TX) / GP13 (RX). Firmware selects the pin pair from the role strap (GP2). Net names are from the RP2350's point of view: `HID_PERSONAL_TX` is driven by the RP2350.
 
 Target baud: 1 Mbaud.
 
@@ -239,13 +239,27 @@ The RP2350 has only two hardware UARTs, but three links are required. The two HI
 
 | Link | RP2350 TX | RP2350 RX | Implementation |
 |---|---|---|---|
-| HID-A / Personal | GP0 | GP1 | Hardware UART0 |
-| HID-B / Work | GP4 | GP5 | Hardware UART1 |
-| BLE base | GP8 | GP9 | PIO UART (TX + RX state machines) |
+| HID-A / Personal | GP12 | GP13 | Hardware UART0 |
+| HID-B / Work | GP20 | GP21 | Hardware UART1 |
+| BLE base | GP16 | GP17 | PIO UART (TX + RX state machines) |
 
 A PIO UART is electrically identical on the wire to a hardware UART; the nRF52840 side needs no special handling. PIO does not provide hardware framing-error flags, so link integrity relies on the packet CRC (§6.4).
 
-Do not reassign GP8/GP9 to hardware UART1 — it is already used by the HID-B link.
+Do not move the BLE link onto a hardware UART: UART0 and UART1 are both in use by the HID links.
+
+Pins were chosen by PCB position so each link leaves the host on the side facing its destination: HID-A (left) on the host's left column, HID-B (right) and the XIAO (bottom right) on its right column.
+
+Other host control pins:
+
+| RP2350 GPIO | Signal |
+|---|---|
+| GP26 | `KEYBOARD_VBUS_EN` |
+| GP27 | `KEYBOARD_VBUS_FAULT` |
+| GP28 | `MUX_STATUS` |
+| GP18 | `POGO_5V_FAULT` |
+| GP2 | `HID_PERSONAL_RUN_CTRL` |
+| GP19 | `HID_WORK_RUN_CTRL` |
+| GP22 | `BLE_RST_CTRL` |
 
 ### 6.4 Packet Framing
 
@@ -759,8 +773,8 @@ The RP2350 can reset the other three MCUs through 1 kΩ series resistors, so a d
 
 | RP2350 GPIO | Target |
 |---|---|
-| GP19 (`HID_PERSONAL_RUN_CTRL`) | HID-A RUN |
-| GP21 (`HID_WORK_RUN_CTRL`) | HID-B RUN |
+| GP2 (`HID_PERSONAL_RUN_CTRL`) | HID-A RUN |
+| GP19 (`HID_WORK_RUN_CTRL`) | HID-B RUN |
 | GP22 (`BLE_RST_CTRL`) | XIAO RST |
 
 Each Pico RUN line has an external 10 kΩ pull-up; the XIAO has its own 10 kΩ on RST. This keeps the endpoints out of reset while the RP2350's default GPIO pull-downs are active during its own boot. Firmware keeps these GPIOs as inputs with no pull and drives them low only to reset a target.

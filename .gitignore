@@ -13,3 +13,6 @@ fp-info-cache
 
 # Claude Code local working files
 .claude/
+
+# KiCad local-history restore backups
+_restore_backup_*/
