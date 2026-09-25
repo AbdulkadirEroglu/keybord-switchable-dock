@@ -1899,6 +1899,30 @@
 			)
 		)
 	)
+	(global_label "POGO_RX"
+		(shape input)
+		(at 165.1 85.09 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "666364d2-74a9-4e49-919f-b095ccc7c22a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.1 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "HID_PERSONAL_RX"
 		(shape input)
 		(at 119.38 113.03 180)
@@ -1923,6 +1947,30 @@
 			)
 		)
 	)
+	(global_label "POGO_TX"
+		(shape output)
+		(at 165.1 82.55 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b19cec3f-660b-4073-addb-49940535f670")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.1 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "KEYBOARD_VBUS_EN"
 		(shape output)
 		(at 165.1 107.95 0)
@@ -1936,6 +1984,30 @@
 		(uuid "bfcd779e-2f40-4cd5-aa25-c52b66858626")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 165.1 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "POGO_DET"
+		(shape input)
+		(at 165.1 97.79 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d0b031f6-cb7d-4985-b250-578f372f9bb9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.1 97.79 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2715,78 +2787,6 @@
 					(reference "#PWR019")
 					(unit 1)
 				)
-			)
-		)
-	)
-	(global_label "POGO_TX"
-		(shape output)
-		(at 165.1 82.55 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "b19cec3f-660b-4073-addb-49940535f670")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.1 82.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "POGO_RX"
-		(shape input)
-		(at 165.1 85.09 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "666364d2-74a9-4e49-919f-b095ccc7c22a")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.1 85.09 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "POGO_DET"
-		(shape input)
-		(at 165.1 97.79 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "d0b031f6-cb7d-4985-b250-578f372f9bb9")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.1 97.79 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 			)
 		)
 	)
