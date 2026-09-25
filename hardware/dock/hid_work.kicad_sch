@@ -2582,6 +2582,10 @@
 		(uuid "4e068c8a-d20d-45dc-b058-8662525da4b1")
 	)
 	(no_connect
+		(at 133.35 88.9)
+		(uuid "568820a8-17db-4f26-b95c-276e9bb9455a")
+	)
+	(no_connect
 		(at 179.07 96.52)
 		(uuid "5dc238e0-0ec5-4f94-b830-7271a28ed45e")
 	)
@@ -2616,6 +2620,10 @@
 	(no_connect
 		(at 67.31 105.41)
 		(uuid "8c509599-cb3b-4585-811d-13d9a8c795a7")
+	)
+	(no_connect
+		(at 133.35 86.36)
+		(uuid "94945f51-c752-4979-ab8f-2511e3ea187d")
 	)
 	(no_connect
 		(at 179.07 83.82)
@@ -3089,6 +3097,30 @@
 			)
 		)
 	)
+	(global_label "HID_WORK_TX"
+		(shape input)
+		(at 133.35 119.38 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "2d6552ea-de46-404f-9943-e63e0d1ad316")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 133.35 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "WORK_VBUS"
 		(shape input)
 		(at 123.19 104.14 180)
@@ -3102,6 +3134,30 @@
 		(uuid "73e6061f-9b1e-4c7b-b36e-2ebe0c153524")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 107.2629 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "HID_WORK_RX"
+		(shape output)
+		(at 133.35 116.84 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c01998b5-1d7a-431c-b86e-d1342fc0c0d9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 133.35 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5550,61 +5606,5 @@
 				)
 			)
 		)
-	)
-	(global_label "HID_WORK_RX"
-		(shape output)
-		(at 133.35 116.84 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "c01998b5-1d7a-431c-b86e-d1342fc0c0d9")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 133.35 116.84 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "HID_WORK_TX"
-		(shape input)
-		(at 133.35 119.38 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "2d6552ea-de46-404f-9943-e63e0d1ad316")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 133.35 119.38 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
-	(no_connect
-		(at 133.35 88.9)
-		(uuid "568820a8-17db-4f26-b95c-276e9bb9455a")
-	)
-	(no_connect
-		(at 133.35 86.36)
-		(uuid "94945f51-c752-4979-ab8f-2511e3ea187d")
 	)
 )

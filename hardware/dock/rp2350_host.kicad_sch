@@ -1654,6 +1654,18 @@
 		(uuid "7234abdd-730d-4d48-bf19-df6c7375c6b5")
 	)
 	(no_connect
+		(at 119.38 80.01)
+		(uuid "7445ca6e-ed38-4596-acc6-a4ce01c5f913")
+	)
+	(no_connect
+		(at 119.38 102.87)
+		(uuid "975c1476-a219-4849-915d-0c51142bb1b4")
+	)
+	(no_connect
+		(at 119.38 92.71)
+		(uuid "9de85a01-3d59-4e1e-af17-b6e613efa4a0")
+	)
+	(no_connect
 		(at 119.38 118.11)
 		(uuid "9e46f057-572c-40ae-90a4-cf44d5739498")
 	)
@@ -1666,6 +1678,10 @@
 		(uuid "af983c58-39e0-4deb-a770-cce055a26eb7")
 	)
 	(no_connect
+		(at 119.38 100.33)
+		(uuid "cc0ecc9e-f3df-4acc-a010-30448d6670ac")
+	)
+	(no_connect
 		(at 119.38 107.95)
 		(uuid "de9844e1-51e2-4653-9c2b-e99e748d7e59")
 	)
@@ -1674,8 +1690,16 @@
 		(uuid "e376adec-71e7-495e-82cd-a2116a8ca508")
 	)
 	(no_connect
+		(at 119.38 90.17)
+		(uuid "e4d2ecd9-422a-4f12-8c29-a8091b66b139")
+	)
+	(no_connect
 		(at 119.38 97.79)
 		(uuid "e679aa97-9774-4816-b956-18be22fde40c")
+	)
+	(no_connect
+		(at 119.38 82.55)
+		(uuid "ec347ae8-f9ae-43bb-9b27-7be4bdc16a09")
 	)
 	(wire
 		(pts
@@ -1755,9 +1779,33 @@
 			)
 		)
 	)
-	(global_label "BLE_RST_CTRL"
+	(global_label "HID_PERSONAL_TX"
 		(shape output)
-		(at 165.1 97.79 0)
+		(at 119.38 110.49 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "292a6043-66c2-453f-b6ef-605b1639d39f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 119.38 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "MUX_STATUS"
+		(shape input)
+		(at 165.1 113.03 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1765,9 +1813,129 @@
 			)
 			(justify left)
 		)
-		(uuid "1f08d262-27a9-4595-819c-6a8982458df2")
+		(uuid "2c5411fe-f1c3-4057-832f-0d193e0cc7fb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.1 97.79 0)
+			(at 165.1 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "POGO_5V_FAULT"
+		(shape input)
+		(at 165.1 87.63 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "397f5f03-3e63-448e-b7ce-9bac34e491e9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.1 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "HID_PERSONAL_RUN_CTRL"
+		(shape output)
+		(at 119.38 85.09 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "462cdb1f-a436-4439-9d3f-f76973e19e78")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 119.38 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "HID_WORK_RUN_CTRL"
+		(shape output)
+		(at 165.1 90.17 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4e84740d-8c7f-41a1-9c2c-8c95922f6c11")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.1 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "HID_PERSONAL_RX"
+		(shape input)
+		(at 119.38 113.03 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "6e64ca91-4c68-4faf-8b65-c5e450c5706f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 119.38 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "KEYBOARD_VBUS_EN"
+		(shape output)
+		(at 165.1 107.95 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "bfcd779e-2f40-4cd5-aa25-c52b66858626")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.1 107.95 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1840,6 +2008,78 @@
 		(uuid "e63dbda8-9607-4cae-bbb0-0cab43861b49")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 181.2085 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "KEYBOARD_VBUS_FAULT"
+		(shape input)
+		(at 165.1 110.49 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "ec95ce23-cbcf-4c05-94de-3268b9ffcf98")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.1 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "HID_WORK_TX"
+		(shape output)
+		(at 165.1 92.71 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f6daf3e8-6b68-4ae7-bf41-3b4f693ae0b3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.1 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "HID_WORK_RX"
+		(shape input)
+		(at 165.1 95.25 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f7ff9ab7-afe0-4cd2-96ac-38095986f40d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.1 95.25 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1953,7 +2193,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Raspberry Pi Pico 2"
+		(property "Value" "Raspberry Pi Pico 2 W"
 			(at 144.3833 132.08 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1964,7 +2204,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "dock:RaspberryPi_Pico2_Socket_Pogo"
+		(property "Footprint" "dock:RaspberryPi_Pico2W_Socket_Pogo"
 			(at 142.24 142.24 0)
 			(hide yes)
 			(show_name no)
@@ -2478,103 +2718,7 @@
 			)
 		)
 	)
-	(global_label "HID_PERSONAL_TX"
-		(shape output)
-		(at 119.38 110.49 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "292a6043-66c2-453f-b6ef-605b1639d39f")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 119.38 110.49 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "HID_PERSONAL_RX"
-		(shape input)
-		(at 119.38 113.03 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "6e64ca91-4c68-4faf-8b65-c5e450c5706f")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 119.38 113.03 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "HID_WORK_TX"
-		(shape output)
-		(at 165.1 92.71 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "f6daf3e8-6b68-4ae7-bf41-3b4f693ae0b3")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.1 92.71 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "HID_WORK_RX"
-		(shape input)
-		(at 165.1 95.25 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "f7ff9ab7-afe0-4cd2-96ac-38095986f40d")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.1 95.25 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "BLE_UART_TX"
+	(global_label "POGO_TX"
 		(shape output)
 		(at 165.1 82.55 0)
 		(fields_autoplaced yes)
@@ -2584,7 +2728,7 @@
 			)
 			(justify left)
 		)
-		(uuid "58f77c7a-63c1-4a8d-9498-12f7be39d0be")
+		(uuid "b19cec3f-660b-4073-addb-49940535f670")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 165.1 82.55 0)
 			(hide yes)
@@ -2598,7 +2742,7 @@
 			)
 		)
 	)
-	(global_label "BLE_UART_RX"
+	(global_label "POGO_RX"
 		(shape input)
 		(at 165.1 85.09 0)
 		(fields_autoplaced yes)
@@ -2608,7 +2752,7 @@
 			)
 			(justify left)
 		)
-		(uuid "bddc6839-340f-45fc-bb8f-dc1f249a82d3")
+		(uuid "666364d2-74a9-4e49-919f-b095ccc7c22a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 165.1 85.09 0)
 			(hide yes)
@@ -2622,33 +2766,9 @@
 			)
 		)
 	)
-	(global_label "KEYBOARD_VBUS_EN"
-		(shape output)
-		(at 165.1 107.95 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "bfcd779e-2f40-4cd5-aa25-c52b66858626")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.1 107.95 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "KEYBOARD_VBUS_FAULT"
+	(global_label "POGO_DET"
 		(shape input)
-		(at 165.1 110.49 0)
+		(at 165.1 97.79 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2656,9 +2776,9 @@
 			)
 			(justify left)
 		)
-		(uuid "ec95ce23-cbcf-4c05-94de-3268b9ffcf98")
+		(uuid "d0b031f6-cb7d-4985-b250-578f372f9bb9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.1 110.49 0)
+			(at 165.1 97.79 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2669,125 +2789,5 @@
 				(justify left)
 			)
 		)
-	)
-	(global_label "MUX_STATUS"
-		(shape input)
-		(at 165.1 113.03 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "2c5411fe-f1c3-4057-832f-0d193e0cc7fb")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.1 113.03 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "POGO_5V_FAULT"
-		(shape input)
-		(at 165.1 87.63 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "397f5f03-3e63-448e-b7ce-9bac34e491e9")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.1 87.63 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "HID_PERSONAL_RUN_CTRL"
-		(shape output)
-		(at 119.38 85.09 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "462cdb1f-a436-4439-9d3f-f76973e19e78")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 119.38 85.09 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "HID_WORK_RUN_CTRL"
-		(shape output)
-		(at 165.1 90.17 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "4e84740d-8c7f-41a1-9c2c-8c95922f6c11")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.1 90.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(no_connect
-		(at 119.38 100.33)
-		(uuid "cc0ecc9e-f3df-4acc-a010-30448d6670ac")
-	)
-	(no_connect
-		(at 119.38 82.55)
-		(uuid "ec347ae8-f9ae-43bb-9b27-7be4bdc16a09")
-	)
-	(no_connect
-		(at 119.38 80.01)
-		(uuid "7445ca6e-ed38-4596-acc6-a4ce01c5f913")
-	)
-	(no_connect
-		(at 119.38 92.71)
-		(uuid "9de85a01-3d59-4e1e-af17-b6e613efa4a0")
-	)
-	(no_connect
-		(at 119.38 102.87)
-		(uuid "975c1476-a219-4849-915d-0c51142bb1b4")
-	)
-	(no_connect
-		(at 119.38 90.17)
-		(uuid "e4d2ecd9-422a-4f12-8c29-a8091b66b139")
 	)
 )

@@ -42,7 +42,7 @@ The project consists of two custom PCBs:
                     ▼
 ┌────────────────── MAIN DOCK ─────────────────┐
 │                                             │
-│ XIAO nRF52840 ── UART ──► Host Pico 2       │
+│ BLE ──► Host Pico 2 W (on-board radio)      │
 │                              ▲              │
 │ Keyboard ───── USB Host ─────┘              │
 │                              │              │
@@ -62,10 +62,9 @@ The project consists of two custom PCBs:
 
 | Function | Selected Part / Design |
 |---|---|
-| Dock main MCU / USB host | Raspberry Pi Pico 2 (RP2350), socketed |
+| Dock main MCU / USB host / BLE | Raspberry Pi Pico 2 W (RP2350 + CYW43439), socketed |
 | Personal PC HID endpoint | Raspberry Pi Pico 2 (RP2350), socketed |
 | Work PC HID endpoint | Raspberry Pi Pico 2 (RP2350), socketed |
-| Dock wireless MCU | Seeed XIAO nRF52840, socketed |
 | Pad MCU / wireless | nRF52840 |
 | Pad GPIO expander | TCA9555 |
 | Pad charger / power path | BQ25185 |
@@ -102,7 +101,7 @@ PERSONAL
 The mechanical switch is the source of truth. Its state travels:
 
 ```text
-Toggle → Pad nRF52840 → BLE → Dock XIAO nRF52840 → UART → Host RP2350
+Toggle → Pad nRF52840 → BLE → Host Pico 2 W
 ```
 
 If the pad/BLE connection is lost, the RP2350 must eventually release all active HID states and enter `OFF`.
@@ -111,7 +110,7 @@ If the pad/BLE connection is lost, the RP2350 must eventually release all active
 
 - Keyboard → RP2350: USB Host
 - Pad ↔ Dock: BLE
-- Dock XIAO nRF52840 ↔ Host RP2350: 1 Mbaud full-duplex UART (PIO on the RP2350 side)
+- Pad ↔ Host Pico 2 W: BLE (host's on-board radio)
 - Host ↔ HID-A: independent 1 Mbaud UART
 - Host ↔ HID-B: independent 1 Mbaud UART
 - HID-A → Personal PC: USB HID

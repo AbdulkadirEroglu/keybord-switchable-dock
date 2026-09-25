@@ -29,23 +29,22 @@ Responsibilities:
 - Parse incoming HID reports.
 - Maintain target routing state.
 - Forward HID state to one of two independent USB-device endpoints.
-- Receive pad events/status over the dock BLE module.
+- Receive pad events/status over BLE (the host's own radio).
 - Provide USB power to the keyboard.
 - Select power automatically from Personal or Work PC.
 - Charge/power the pad through the pogo interface.
 
 Primary devices:
 
-- Host/router — Raspberry Pi Pico 2 (RP2350), `A1`
+- Host/router + BLE — Raspberry Pi Pico 2 W (RP2350 + CYW43439 radio), `A1`
 - HID-A / Personal endpoint — Raspberry Pi Pico 2 (RP2350), `A2`
 - HID-B / Work endpoint — Raspberry Pi Pico 2 (RP2350), `A3`
-- BLE base — Seeed XIAO nRF52840, `U7`
 - TPS2116 — PC VBUS priority power mux, `U1`
 - TPS2553 — keyboard VBUS current-limited switch, `U3`
 - TPS2552 — pogo +5V current-limited switch, enabled by `DET`, `U8`
 - 4 × TPD4E1U06 — ESD protection: each USB-C port's D+, D−, CC1, CC2 (`U4`–`U6`) and the pogo contacts (`U9`). SOT-23-6, each channel clamps to GND only (no VBUS rail pin, so no back-feed path into an unpowered PC's VBUS)
 
-All three Pico 2 boards and the XIAO are socketed modules (see §18.1). Each module generates its own 3.3 V from `SYS_5V`; the dock has no separate 3.3 V regulator.
+All three Pico boards are socketed modules (see §18.1). Each module generates its own 3.3 V from `SYS_5V`; the dock has no separate 3.3 V regulator.
 
 ### 2.2 Wireless Control Pad
 
@@ -207,13 +206,13 @@ VBUS sense: each endpoint reads its own PC's VBUS on GP4 through a 22 kΩ / 33 k
 
 ## 6. Internal UART Architecture
 
-### 6.1 Dock BLE (XIAO nRF52840) ↔ RP2350
+### 6.1 Dock BLE (host Pico 2 W)
 
-- Full-duplex UART
-- RP2350 side implemented in PIO, not a hardware UART (see §6.3)
-- 3.3 V logic
-- Target baud: 1 Mbaud
-- Dedicated protocol UART; do not mix debug logging into the stream
+The host is a Pico 2 W; its on-board CYW43439 radio provides BLE to the pad directly, so the dock has no separate BLE module and no BLE UART link.
+
+- Firmware: USB host, HID routing and the HID UART links on core 0; the BLE stack on core 1, so radio activity cannot delay keystrokes.
+- Keystrokes never pass through BLE. BLE carries only pad events and the selector state.
+- The CYW43439 is driven by the RP2350 over an internal interface using GP23/GP24/GP25/GP29 and one PIO state machine; those GPIOs are not available on the header.
 
 ### 6.2 RP2350 ↔ HID-A/B
 
@@ -235,19 +234,19 @@ No level shifting required on-board.
 
 ### 6.3 RP2350 UART Allocation
 
-The RP2350 has only two hardware UARTs, but three links are required. The two HID links carry every keystroke and use the hardware UARTs; the lower-traffic BLE link uses a PIO-implemented UART.
+The two HID links carry every keystroke and use the two hardware UARTs. The pogo diagnostic UART to the pad uses a PIO-implemented UART.
 
 | Link | RP2350 TX | RP2350 RX | Implementation |
 |---|---|---|---|
 | HID-A / Personal | GP12 | GP13 | Hardware UART0 |
 | HID-B / Work | GP20 | GP21 | Hardware UART1 |
-| BLE base | GP16 | GP17 | PIO UART (TX + RX state machines) |
+| Pogo diagnostic UART (to pad) | GP16 (`POGO_TX`) | GP17 (`POGO_RX`) | PIO UART (TX + RX state machines) |
 
-A PIO UART is electrically identical on the wire to a hardware UART; the nRF52840 side needs no special handling. PIO does not provide hardware framing-error flags, so link integrity relies on the packet CRC (§6.4).
+A PIO UART is electrically identical on the wire to a hardware UART; the pad side needs no special handling. PIO does not provide hardware framing-error flags, so link integrity relies on the packet CRC (§6.4).
 
-Do not move the BLE link onto a hardware UART: UART0 and UART1 are both in use by the HID links.
+UART0 and UART1 are both in use by the HID links, so the pogo UART stays on PIO.
 
-Pins were chosen by PCB position so each link leaves the host on the side facing its destination: HID-A (left) on the host's left column, HID-B (right) and the XIAO (bottom right) on its right column.
+Pins were chosen by PCB position so each link leaves the host on the side facing its destination: HID-A (left) on the host's left column, HID-B (right) and the pogo interface on its right column.
 
 Other host control pins:
 
@@ -259,7 +258,7 @@ Other host control pins:
 | GP18 | `POGO_5V_FAULT` |
 | GP2 | `HID_PERSONAL_RUN_CTRL` |
 | GP19 | `HID_WORK_RUN_CTRL` |
-| GP22 | `BLE_RST_CTRL` |
+| GP22 | `POGO_DET` (pad docked = low) |
 
 ### 6.4 Packet Framing
 
@@ -606,14 +605,14 @@ GND | +5V | DET | RX | TX | GND
 Normal behavior:
 
 - `+5V`: powers charger/pad
-- `DET`: dock presence
+- `DET`: dock presence (read by the host on GP22, and drives the TPS2552 enable)
 - BLE remains the normal data link
 
 The pad must tie DET to GND. Without that the pogo stays off.
 
-The dock's pogo `+5V` is switched by a TPS2552 whose active-low `EN` is driven directly by `DET` (pulled up to 3.3 V on the dock). With no pad docked the contacts are unpowered; when docked the output is current-limited to approximately 1 A and `FAULT` is reported to the RP2350.
+The dock's pogo `+5V` is switched by a TPS2552 whose active-low `EN` is driven directly by `DET` (pulled up to `HOST_3V3` on the dock by R18). With no pad docked the contacts are unpowered; when docked the output is current-limited to approximately 1 A and `FAULT` is reported to the RP2350.
 
-`RX/TX` are reserved for:
+`RX/TX` connect through 1 kΩ series resistors to the host's PIO UART (GP16 TX / GP17 RX; names from the dock's side, so the pad must receive on the TX contact). They are reserved for:
 
 - diagnostics
 - recovery
@@ -634,15 +633,14 @@ Every programmable MCU receives a physical debug/recovery path.
 - Host (Pico 2) SWD — J2
 - HID-A (Pico 2) SWD — J3
 - HID-B (Pico 2) SWD — J6
-- BLE (XIAO nRF52840) SWD — J8
 
-The SWD pads on the modules are reached with spring probes (§18.1). The RP2350 can also reset HID-A, HID-B and BLE (§18.2).
+HID-A/HID-B SWD pads are reached with spring probes; the host's SWD comes through a 1×3 socket under its debug holes (§18.1). The host can also reset HID-A and HID-B (§18.2).
 
 ### Pad
 
 - nRF52840 SWD
 
-Dock SWD header pinout (1×5, 2.54 mm), identical on J2/J3/J6/J8:
+Dock SWD header pinout (1×5, 2.54 mm), identical on J2/J3/J6:
 
 ```text
 1  SWCLK
@@ -660,7 +658,6 @@ Recommended dock silkscreen identifiers:
 HOST
 HID-A
 HID-B
-BLE
 ```
 
 Pad recovery hierarchy:
@@ -720,7 +717,7 @@ Initial expectation:
 - Do not force single-layer routing.
 - 4-layer is not automatically required, but can be reconsidered if the actual placement/routing benefits justify it.
 - Maintain continuous ground reference under USB differential routing wherever possible.
-- Follow the exact nRF52840 module/reference antenna keepout.
+- Keep the host Pico 2 W antenna keep-out (14 × 9 mm at its bottom end) free of copper and components, with the antenna end at the board edge.
 - Place USB ESD devices at the connectors.
 - Keep switching-regulator hot loops compact.
 - Keep RGB high-current paths away from sensitive RF/analog areas.
@@ -757,27 +754,24 @@ Solder each Pico's probe set against that Pico. The barrels protrude ≈2.7 mm b
 
 Never connect a cable to a docked Pico's micro-USB port: its USB lines share the bus with the probes.
 
-The dock BLE module (Seeed XIAO nRF52840) is mounted the same way:
+The host is a **Pico 2 W** (footprint `dock:RaspberryPi_Pico2W_Socket_Pogo`), mounted the same way with these differences (Pico 2 W datasheet Figs 3 and 5):
 
-- Two 1×7 male headers on the XIAO and two 1×7 female sockets on the dock, 15.24 mm apart. Footprint: `dock:XIAO_nRF52840_Socket_Pogo`.
-- Its underside debug pads (2×2 grid, 2.54 mm pitch, next to the USB connector) are reached with P50-B1 probes: SWDIO, SWCLK and RST are required, GND is optional. Pad identities come from Seeed's back-side pinout; positions come from Seeed's XIAO-nRF52840-SMD footprint.
-- The footprint carries a copper keep-out under the antenna end, opposite the USB connector.
-- Do not connect a cable to the docked XIAO's USB-C port: its VBUS pin is tied to `SYS_5V`.
-- SWD access is through J8, which uses the same pinout as J2/J3/J6.
+- USB test pads TP1–TP3 are in the same place as on the Pico 2, so the USB probes are identical.
+- SWD is on three through-holes (SWCLK, GND, SWDIO) 19.8 mm from the bottom edge. Solder a 1×3 male header there pointing down, into a 1×3 female socket on the dock; no SWD probes are needed.
+- The antenna is at the bottom end (opposite USB). The footprint carries a 14 × 9 mm copper keep-out there. Place the host with its antenna end at the board edge, with nothing in front of it, and use a non-metal enclosure.
 
-Before ordering the PCB, print the layout at 1:1 and check the Pico and XIAO pads against the probe holes.
+Before ordering the PCB, print the layout at 1:1 and check the Pico pads against the probe holes.
 
 ### 18.2 Endpoint Reset Control
 
-The RP2350 can reset the other three MCUs through 1 kΩ series resistors, so a debug probe on the SWD header can still override the line:
+The host can reset the two HID endpoints through 1 kΩ series resistors, so a debug probe on the SWD header can still override the line:
 
 | RP2350 GPIO | Target |
 |---|---|
 | GP2 (`HID_PERSONAL_RUN_CTRL`) | HID-A RUN |
 | GP19 (`HID_WORK_RUN_CTRL`) | HID-B RUN |
-| GP22 (`BLE_RST_CTRL`) | XIAO RST |
 
-Each Pico RUN line has an external 10 kΩ pull-up; the XIAO has its own 10 kΩ on RST. This keeps the endpoints out of reset while the RP2350's default GPIO pull-downs are active during its own boot. Firmware keeps these GPIOs as inputs with no pull and drives them low only to reset a target.
+Each HID Pico RUN line has an external 10 kΩ pull-up. This keeps the endpoints out of reset while the RP2350's default GPIO pull-downs are active during its own boot. Firmware keeps these GPIOs as inputs with no pull and drives them low only to reset a target.
 
 ---
 
@@ -837,7 +831,7 @@ Schematic captured and reviewed (ERC clean apart from the intentional Pico groun
 4. Keyboard USB host connector + ESD + TPS2553
 5. HID-A Pico 2 + Personal USB (VBUS/CC sensing, role strap)
 6. HID-B Pico 2 + Work USB
-7. BLE XIAO nRF52840 + pogo interface (TPS2552, ESD, series resistors)
+7. Pogo interface (TPS2552, ESD, series resistors) to the host
 8. Three internal UART links
 9. SWD headers and reset control
 10. Final ERC review
@@ -866,7 +860,7 @@ The architecture is frozen, but the following are intentionally finalized during
 
 Resolved for the dock during schematic capture:
 
-- MCU implementation: Raspberry Pi Pico 2 modules (host, HID-A, HID-B) and Seeed XIAO nRF52840 (BLE), all socketed; no crystals or MCU decoupling needed on the dock
+- MCU implementation: Raspberry Pi Pico 2 W (host + BLE) and Pico 2 (HID-A, HID-B), all socketed; no crystals or MCU decoupling needed on the dock
 - USB-C connector: KLS L-KLS1-5416-L1-01-R (footprint checked against the manufacturer drawing)
 - CC resistors: 5.1 kΩ Rd on PC ports, 56 kΩ Rp on the keyboard port
 - Power mux: TPS2116 (replaces TPS2121), priority mode, ≈4.0 V switchover
@@ -911,3 +905,5 @@ The project intentionally retains:
 - fail-safe HID release behavior
 
 These are deliberate design features rather than temporary development conveniences.
+
+Exception: BLE runs on the host's own radio (Pico 2 W) rather than a separate BLE MCU, to cut cost and board space. A BLE-stack fault is contained by running BLE on its own core, by the host watchdog, and by the HID endpoints' independent link-timeout release.

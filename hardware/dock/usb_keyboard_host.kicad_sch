@@ -1659,15 +1659,15 @@
 		)
 		(uuid "f2ed9cae-d5af-451c-b164-3ebe8ae9f472")
 	)
-	(label "CC1"
-		(at 77.47 59.69 180)
+	(label "CC2"
+		(at 77.47 62.23 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right bottom)
 		)
-		(uuid "584e1129-e1d9-428d-b7a2-edcf5866cc30")
+		(uuid "0cf043d4-cbc4-4e3e-9fbe-245ae869f171")
 	)
 	(label "CC2"
 		(at 40.64 97.79 0)
@@ -1679,15 +1679,15 @@
 		)
 		(uuid "ae0ca724-87a3-4db1-bf58-fc03e529b7fd")
 	)
-	(label "CC2"
-		(at 77.47 62.23 180)
+	(label "CC1"
+		(at 77.47 59.69 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right bottom)
 		)
-		(uuid "f021331b-26b9-4131-bfa2-27bd32b669f7")
+		(uuid "f3a3384d-9896-4929-9c7c-a7efb0469761")
 	)
 	(label "CC1"
 		(at 40.64 82.55 0)
