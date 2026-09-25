@@ -3890,7 +3890,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "L-KLS1-5416-L1-01-R"
 			(at 67.31 91.44 0)
 			(show_name no)
 			(do_not_autoplace no)

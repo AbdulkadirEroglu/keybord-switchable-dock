@@ -1,5 +1,4 @@
 (fp_lib_table
 	(version 7)
 	(lib (name "dock") (type "KiCad") (uri "${KIPRJMOD}/../libraries/dock.pretty") (options "") (descr "Project footprints"))
-	(lib (name "xiao") (type "KiCad") (uri "${KIPRJMOD}/../libraries/seed-xio") (options "") (descr "Seeed XIAO footprints"))
 )

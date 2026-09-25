@@ -2941,7 +2941,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "L-KLS1-5416-L1-01-R"
 			(at 38.1 81.28 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3370,7 +3370,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "TPS2553DBVR"
 			(at 135.89 80.01 0)
 			(show_name no)
 			(do_not_autoplace no)
