@@ -22,7 +22,7 @@ The project consists of two custom PCBs:
    - 36 addressable RGB LEDs.
    - SPI OLED display.
    - Physical `PERSONAL | OFF | WORK` metal toggle switch.
-   - LiFePO4 battery and dock charging.
+   - Li-ion 21700 battery and dock charging.
    - BLE is the normal data link; pogo UART is reserved for diagnostics/recovery.
 
 ## High-Level Architecture
@@ -30,7 +30,7 @@ The project consists of two custom PCBs:
 ```text
 ┌──────────── WIRELESS CONTROL PAD ────────────┐
 │                                             │
-│ nRF52840                                    │
+│ Pico 2 WH (RP2350 + CYW43439)               │
 │ ├─ 12 × mechanical key                     │
 │ ├─ 2 × rotary encoder + push               │
 │ ├─ 36 × addressable RGB                    │
@@ -65,24 +65,25 @@ The project consists of two custom PCBs:
 | Dock main MCU / USB host / BLE | Raspberry Pi Pico 2 W (RP2350 + CYW43439), socketed |
 | Personal PC HID endpoint | Raspberry Pi Pico 2 (RP2350), socketed |
 | Work PC HID endpoint | Raspberry Pi Pico 2 (RP2350), socketed |
-| Pad MCU / wireless | nRF52840 |
+| Pad MCU / wireless | Raspberry Pi Pico 2 WH, socketed (on-board buck-boost 3.3 V) |
 | Pad GPIO expander | TCA9555 |
-| Pad charger / power path | BQ25185 |
-| Battery | Power-Xtra IFR32700, 3.2 V 5000 mAh LiFePO4 |
-| Pad 3.3 V regulator | TPS63802 |
+| Pad charger | TP4056 (switchable ≈ 146 / 510 mA, NTC 0–45 °C, Pico-controlled enable for a 70–80 % docked window) |
+| Pad power path | TPS2116 (pogo 5 V priority, battery fallback) |
+| Cell protection | DW01A + FS8205A |
+| Battery | 2 × Samsung SDI INR21700-50E in parallel (3.6 V, ≈ 9.8 Ah Li-ion), dual 21700 holder |
 | RGB 5 V boost | TPS61023 |
 | OLED load switch | TPS22919 |
 | RGB logic buffer | SN74AHCT1G125 |
-| RGB LEDs | 36 × WS2812C-2020 class |
+| RGB LEDs | 36 × SK6812MINI-E (reverse mount) |
 | Dock dual-input power mux | TPS2116 |
 | Keyboard VBUS switch | TPS2553 |
 | Pogo +5V switch | TPS2552 (enabled by dock detect) |
 | ESD protection | 4 × TPD4E1U06 (each USB-C port: D+, D−, CC1, CC2; pogo contacts) |
 | Module USB/SWD contacts | P50-B1 spring probes to the modules' underside pads |
-| Keys | 12 × MX-compatible mechanical switches |
-| Encoders | 2 × rotary encoder with push |
+| Keys | 12 × Razer Yellow Linear (3-pin MX) in Kailh hot-swap sockets, FR4 plate |
+| Encoders | 2 × Bourns PEC11R-4220F-S0024 (24 detents, push switch) |
 | Target selector | Metal SPDT ON-OFF-ON toggle |
-| Display | SPI OLED; exact controller/module TBD |
+| Display | 1.3" 128×64 SPI OLED (SH1106/SSD1306) |
 
 Exact passive values, packages, footprints, connector SKUs, inductors and configuration resistors must be verified against the current manufacturer datasheets during schematic capture.
 
@@ -101,7 +102,7 @@ PERSONAL
 The mechanical switch is the source of truth. Its state travels:
 
 ```text
-Toggle → Pad nRF52840 → BLE → Host Pico 2 W
+Toggle → Pad Pico 2 WH → BLE → Host Pico 2 W
 ```
 
 If the pad/BLE connection is lost, the RP2350 must eventually release all active HID states and enter `OFF`.
@@ -169,8 +170,7 @@ dock-pad/
 ├── firmware/
 │   ├── host-rp2350/
 │   ├── hid-endpoint/
-│   ├── dock-ble-nrf52840/
-│   └── pad-nrf52840/
+│   └── pad-rp2350/
 ├── datasheets/
 ├── docs/
 ├── README.md
@@ -179,18 +179,14 @@ dock-pad/
 
 ## Current Project State
 
-The V1 architecture is frozen. The **dock schematic is captured and reviewed**; next are the dock PCB layout and then the wireless pad schematic.
+The V1 architecture is frozen. The **dock schematic and PCB are complete** (routed, DRC clean, Gerbers generated locally); a silkscreen pass remains before ordering. The **pad parts are selected** (DESIGN.md §2.2, §8–§15); next is the pad schematic.
 
 Still to finalize:
 
-- Dock PCB outline, placement, routing and enclosure clearances (spring-probe tails need 3–4 mm below the dock PCB)
-- BQ25185 configuration, NTC network and switchable charge current
-- TPS63802 and TPS61023 magnetics/passives
-- OLED module/controller
-- Encoder and mechanical switch SKUs
-- Pad nRF52840 antenna keepout
-- Battery ADC divider
-- PCB layer count and final stack-up
+- Dock silkscreen pass and order (enclosure clearance: spring-probe tails need 3–4 mm below the dock PCB)
+- Pad schematic, PCB and FR4 switch plate
+- OLED outline measurement, encoder knobs
+- Pad Pico 2 WH antenna keep-out in the pad layout and enclosure
 - Enclosure CAD and exact dimensions
 
 See [DESIGN.md](DESIGN.md) for the detailed engineering baseline.

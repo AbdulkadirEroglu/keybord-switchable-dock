@@ -63,15 +63,22 @@ Responsibilities:
 
 Primary devices:
 
-- nRF52840
-- TCA9555
-- BQ25185
-- TPS63802
-- TPS61023
-- TPS22919
-- SN74AHCT1G125
-- Power-Xtra IFR32700 LiFePO4 cell
-- 36 × WS2812C-2020-class RGB LEDs
+- MCU + BLE — Raspberry Pi Pico 2 WH (RP2350 + CYW43439), socketed like the dock modules (§18.1)
+- TCA9555 — 16-bit I2C GPIO expander (keys, encoder switches, selector)
+- TP4056 — Li-ion linear charger (ESOP-8), Pico-controlled enable
+- TPS2116 — power path: pogo 5 V (priority) or battery → `PAD_SYS`
+- DW01A + FS8205A — cell protection (over-discharge, overcurrent, short)
+- TPS61023 — 5 V boost for the RGB LEDs
+- TPS22919 — OLED load switch
+- SN74AHCT1G125 — RGB data level shifter
+- 2 × Samsung SDI INR21700-50E Li-ion cells (4900 mAh each, 9.8 Ah total) in parallel, in a dual 21700 holder, with a 10 k NTC between them
+- 36 × SK6812MINI-E reverse-mount RGB LEDs
+- 12 × Razer Yellow Linear (MX-compatible, 3-pin) switches in Kailh hot-swap sockets, FR4 switch plate
+- 2 × Bourns PEC11R-4220F-S0024 encoders with push switch
+
+All parts are hand-solderable (leaded packages, or the TPS2116/TPS61023 TI SOT-5x3 family with extended hand-solder pads). No BGA/QFN/WSON parts: the BQ25185 and TPS63802 were dropped for that reason.
+
+The Pico 2 WH has its own buck-boost 3.3 V regulator that runs from 1.8–5.5 V on `VSYS`, so the pad needs no 3.3 V regulator; the Pico's `3V3` pin (≤ 300 mA recommended) powers the TCA9555, pull-ups and the OLED switch.
 
 ---
 
@@ -336,9 +343,12 @@ On timeout:
 V1:
 
 - 12 keys
-- MX-compatible class
+- Razer Yellow Linear (Gen-3) switches: MX-compatible, 3-pin, 45 g, transparent housing with an LED lens
+- Kailh MX hot-swap sockets on the PCB
+- 1.5 mm FR4 switch plate (14 mm cutouts), held on spacers to the pad PCB and enclosure. 3-pin switches have no PCB-locating pegs, so the plate carries them.
 - 4 × 3 arrangement
 - approximately 19.05 mm pitch
+- One SK6812MINI-E per key, reverse-mounted under the switch's LED lens (§10)
 
 ```text
 [01] [02] [03] [04]
@@ -348,14 +358,14 @@ V1:
 
 ### 8.2 Encoders
 
-Two rotary encoders with push switches.
+Two rotary encoders with push switches: Bourns PEC11R-4220F-S0024 (TME): 24 detents / 24 pulses, 20 mm metal flatted shaft, push switch, EC11-compatible 5-pin THT footprint (datasheet `datasheets/pec11r.pdf`). 24 detents = 2 clicks per LED on the 12-LED ring.
 
 Intended roles:
 
 - Encoder 1: volume
 - Encoder 2: microphone/call controls
 
-Quadrature A/B signals connect directly to nRF52840 GPIO.
+Quadrature A/B signals connect directly to Pico GPIO and are decoded by PIO. Each A/B line has a 10 kΩ pull-up to 3V3 and 10 nF to GND (debounce); the encoder common goes to GND.
 
 Push switches connect through TCA9555.
 
@@ -396,8 +406,8 @@ The selector is the authoritative target state.
 16 × GPIO
 ```
 
-- I2C SDA/SCL → nRF52840
-- INT → nRF52840
+- I2C SDA/SCL → Pico (hardware I2C)
+- INT → Pico GPIO (also the wake source from dormant sleep)
 - Exact pull-up implementation must be verified against the selected TCA9555 variant/datasheet during schematic capture.
 - Encoder A/B signals do not use the expander.
 
@@ -415,7 +425,7 @@ Key LEDs                  12
 Total                     36
 ```
 
-Candidate/frozen class: WS2812C-2020.
+LED: SK6812MINI-E (reverse mount, side legs reachable with an iron), one part for keys and rings, one chain. Each LED sits in a small PCB cutout and shines up through it. Sourced from LCSC (C5149201), combined with the JLCPCB order.
 
 Design power budget must tolerate approximately:
 
@@ -429,21 +439,28 @@ even though firmware will normally impose a much lower global brightness.
 ### 10.2 RGB Power
 
 ```text
-BQ25185 SYS
+PAD_SYS
     │
-TPS61023
+TPS61023 (boost, EN from Pico)
     │
   5V_RGB
     ├── SN74AHCT1G125
     └── RGB LEDs
 ```
 
-TPS61023 `EN` is controlled by nRF52840.
+TPS61023 (SOT-563, hand-solder footprint like the TPS2116):
+
+- Output set to ≈ 5.05 V: R1 = 750 kΩ (VOUT→FB), R2 = 100 kΩ (FB→GND); VREF ≈ 0.6 V ±2.5 %, worst case ≈ 5.2 V (< SK6812 5.5 V max).
+- Inductor 1 µH, shielded ~4 × 4 mm, I_sat ≥ 4.5 A, DCR ≤ 20 mΩ (TI-recommended: Würth 74438357010, Coilcraft XEL4030-102ME, or equivalent). Worst-case peak ≈ 3.8 A at 2.7 V in, 1.5 A out.
+- C_in 10 µF; C_out 2 × 22 µF X7R ≥ 16 V (≥ 4 µF effective after DC bias).
+- `EN` from a Pico GPIO with a 100 kΩ pull-down, so the LEDs stay off while the Pico boots.
+- True output disconnect when disabled: the LEDs draw nothing when the rail is off (SK6812 idle current would otherwise drain the cell).
+- Docked (`PAD_SYS` ≈ 5 V) the device enters pass-through; on battery it boosts.
 
 ### 10.3 RGB Data
 
 ```text
-nRF52840 3.3 V GPIO
+Pico 3.3 V GPIO (PIO)
         │
 SN74AHCT1G125
         │
@@ -451,7 +468,7 @@ SN74AHCT1G125
         │
  33–100 Ω footprint
         │
- WS2812C-2020 DIN
+ SK6812MINI-E DIN
 ```
 
 Buffer supply comes from `5V_RGB` so the RGB subsystem loses both power and data drive when disabled.
@@ -462,30 +479,31 @@ Buffer supply comes from `5V_RGB` so the RGB subsystem loses both power and data
 
 Display is required in V1.
 
-Existing module pinout:
+Module: 1.3" 128 × 64 OLED, 7-pin four-wire SPI ("1.30' OLED VER1.2 4-SPI", direnc.net). Pinout:
 
 ```text
 GND
 VCC
 SCK
-SDA
+SDA   (SPI MOSI, not I2C)
 RES
 DC
 CS
 ```
 
-It appears to be a four-wire SPI OLED module, but its controller is not yet identified.
+Controller: almost certainly SH1106 (the shop listing says SSD1306). Firmware tries one and falls back to the other; a 2-column shift means SH1106. No hardware impact.
 
-Do not hard-code SSD1306/SH1106 assumptions until the module is identified.
+VCC accepts 3–5 V (on-module regulator).
 
 Mechanical allowance:
 
 - approximately 40 × 35 mm maximum module envelope
+- Board outline and hole spacing to be measured on the real module before placement
 
 Power:
 
 ```text
-3V3_LOGIC → TPS22919 → OLED_VCC
+Pico 3V3 → TPS22919 → OLED_VCC
 ```
 
 Shutdown sequence:
@@ -500,97 +518,124 @@ Shutdown sequence:
 
 ### 12.1 Cell
 
-Power-Xtra IFR32700:
+Samsung SDI INR21700-50E (datasheet: `datasheets/samsung-inr21700-50e.pdf`, spec v0.2). Buy from TME (authorized distributor, genuine cells); verify weight ≤ 69 g on arrival.
 
-- LiFePO4
-- 1S1P
-- 3.2 V nominal
-- 5000 mAh
-- approximately 16 Wh
-- approximately Ø32 × 70 mm
+| Item | Datasheet value |
+|---|---|
+| Chemistry | Li-ion, 3.6 V nominal |
+| Capacity | ≥ 4900 mAh (0.2C), ≥ 4753 mAh (1C) |
+| Charge voltage | 4.2 V, CC-CV |
+| Standard charge | 0.5C = 2450 mA, 0.02C cut-off |
+| Max charge current | 4900 mA (not for cycle life) |
+| Discharge cut-off | 2.5 V |
+| Max continuous discharge | 9.8 A |
+| Cycle life | ≥ 80 % after 500 cycles (0.5C charge to 4.2 V / 1C discharge to 2.5 V, full depth) |
+| Charge temperature | 0 to 45 °C (cell surface) |
+| Discharge temperature | −20 to 60 °C |
+| Storage | ex-factory at ~30 % (3.43–3.63 V); 1 year at −20 to 23 °C |
+| Size / weight | Ø 21.25 × 70.80 mm max (with sleeve), flat top, 69 g max |
+
+Operating window chosen for maximum life. The datasheet gives only the hard limits; the narrower window is standard Li-ion practice (lower average voltage and shallower cycles slow both calendar and cycle ageing):
+
+| Limit | Value | Enforced by |
+|---|---|---|
+| Hard max (datasheet) | 4.20 V | Charger CV regulation |
+| Docked hold window (default) | stop at 4.00 V, resume below 3.90 V (≈ 80 % / 70 %) | Firmware via the charger enable pin |
+| Full charge on request | 4.20 V | Firmware (e.g. before a long undocked session) |
+| Charge current | ≈ 510 mA fast / 146 mA slow (≈ 0.05C / 0.015C for the 9.8 Ah pack) | TP4056 PROG network (§12.2) |
+| Charge temperature | 0 to 45 °C | Charger NTC input |
+| Low-battery warning | ≈ 3.50 V under light load | Firmware |
+| Graceful shutdown | ≈ 3.30 V under light load | Firmware |
+| Hard min (datasheet) | 2.5 V | — |
+| Hardware backstop | ≈ 2.4 V (DW01A) | §12.4 |
+
+Pack: 2 × INR21700-50E in parallel (1S2P, ≈ 9.8 Ah) in Motorobit's dual 21700 holder, which is wired in parallel internally and comes with flying leads. The holder is fixed to the case; its leads go to a 2-pin JST-XH (2.5 mm, 3 A) on the pad PCB, and the NTC to a separate 2-pin JST-XH. The holder's thin leads are adequate: the worst-case pack current is ≈ 1 A (full RGB brightness on battery). Insert both cells at the same voltage (charge each to 4.0 V first); after that they stay balanced. A 10 kΩ B3950 NTC sits between the two cells and goes to the charger's NTC input. Per-cell current is half the pack current, so every datasheet current limit has 2× margin.
 
 ### 12.2 Charger
 
-BQ25185:
+TP4056 (NanJing Top Power, ESOP-8, datasheet `datasheets/tp4056.pdf`; genuine part LCSC C16581, also sold locally). Linear 4.2 V CC-CV Li-ion charger. The CN3058E chosen earlier was LiFePO4-only.
 
 ```text
-POGO_5V → BQ25185
-             ├── BAT ↔ IFR32700
-             └── SYS → Pad power rails
+POGO_5V → SMAJ5.0A → TP4056 VCC
+                        └── BAT → DW01A/FS8205A → 2 × INR21700-50E
 ```
 
-Design targets:
+| Pin | Name | Connection |
+|---|---|---|
+| 1 | TEMP | NTC network: R1 = 5.6 kΩ (VCC→TEMP), NTC ∥ R2 = 75 kΩ (TEMP→GND). Charging runs only while TEMP is 45–80 % of VCC → ≈ 0–45 °C (the cell's charge range) |
+| 2 | PROG | R_PROG = 8.2 kΩ to GND (≈ 146 mA); a 2N7002/AO3400 N-MOSFET, gate from a Pico GPIO (100 kΩ pull-down), adds 3.3 kΩ in parallel → ≈ 2.35 kΩ (≈ 510 mA). I = 1200 / R_PROG |
+| 3 | GND + exposed pad | GND pour with vias; hand-solder hole from the back |
+| 4 | VCC | `POGO_5V` (4–8 V), 10 µF |
+| 5 | BAT | Pack + (protected side), 10 µF |
+| 6 | STDBY | Open-drain, low = charge complete. 10 kΩ pull-up to 3V3, to Pico GPIO |
+| 7 | CHRG | Open-drain, low = charging. 10 kΩ pull-up to 3V3, to Pico GPIO |
+| 8 | CE | High = charge. 100 kΩ pull-up to `POGO_5V`; a 2N7002 from CE to GND, gate from a Pico GPIO (100 kΩ pull-down), pulls it low |
 
-- LiFePO4 charge regulation: 3.65 V
-- Charge current: approximately 500 mA
-- Battery NTC/temperature monitoring
-- Proper power-path operation
+- Float voltage 4.2 V (4.137–4.263 V), C/10 termination, trickle below 2.9 V, automatic recharge, thermal regulation at 145 °C junction.
+- CE defaults to charging. The pad charges even with blank, crashed or mid-flash firmware; the Pico only ever stops charging (docked hold window 3.90–4.00 V, §12.1).
+- The charge speed is chosen by the dock over BLE from the active PC port's advertised current (§4.3). Fast ≈ 510 mA is ≈ 0.05C for the 9.8 Ah pack; dissipation ≈ (5 − 3.7) V × 0.51 A ≈ 0.65 W.
+- Both status pins high means no input, sleep, or temperature fault.
+- SMAJ5.0A TVS on the pad's `POGO_5V` (pogo contacts hot-plug; ceramic input capacitors can ring).
 
-Exact VSET/ILIM/ISET/TS networks must be verified from the current datasheet during schematic capture.
+No single leaded IC combines Li-ion charging, power path and protection (BQ2407x, BQ25185, MCP73871, ISL9301, LTC4089 are all QFN/DFN/WSON), so the pad uses three leaded blocks: TP4056 (charger), TPS2116 (power path, §12.3) and DW01A + FS8205A (protection, §12.4).
 
-The charge current must be switchable by the pad nRF52840 between two levels, for example fast ≈ 500 mA and slow ≈ 150 mA, such as a second ISET resistor switched by a small MOSFET. The dock commands the level over BLE based on the active PC port's advertised current (§4.3). Verify the switching method against the BQ25185 datasheet during pad schematic capture.
+### 12.3 Power Path
 
-### 12.3 Secondary Protection
+A TPS2116 (same part and hand-solder footprint as the dock's `U1`) selects the pad's system rail:
 
-No separate LFP protection IC is currently planned.
+```text
+POGO_5V ──► VIN1 (priority) ─┐
+                             ├──► PAD_SYS
+BAT (protected) ──► VIN2 ────┘
+```
 
-The design relies on:
+- PR1 divider 300 kΩ / 100 kΩ from `POGO_5V` (≈ 4.0 V switchover), MODE tied to VIN1, as on the dock.
+- Docked, the loads run from the pogo, so the charger sees only the cell and terminates correctly.
+- `ST` (open-drain, high when VIN1 is in use) is pulled up to 3V3 and read by the Pico as the docked signal.
+- Reverse-current blocking: with USB plugged into the Pico for flashing, VBUS reaches `PAD_SYS` but cannot flow back into the cell or the charger. No extra diode is needed.
 
-- BQ25185 protection behavior
-- NTC monitoring
-- Firmware battery monitoring
-- Controlled graceful shutdown
+### 12.4 Cell Protection
 
-This decision should be revisited if the selected physical cell or cell holder introduces different protection requirements.
+Linear chargers of this class have no battery undervoltage disconnect, so a DW01A + FS8205A pair (SOT-23-6 + TSSOP-8, the standard 1S protection) sits in the cell's negative lead:
+
+- Over-discharge cut-off ≈ 2.4 V: a last-resort backstop if firmware hangs undocked (firmware shuts down at ≈ 3.3 V)
+- Overcurrent and short-circuit protection
+- Overcharge cut-off ≈ 4.3 V: backstop above the charger's 4.2 V.
+
+Firmware remains the primary discharge limit (§14).
 
 ---
 
 ## 13. Pad Power Rails
 
 ```text
-POGO +5V
-   │
- BQ25185
-   │
-   ├──────── BAT ↔ IFR32700
-   │
-   └──────── SYS
-              │
-              ├── TPS63802 → 3V3_LOGIC
-              │      ├── nRF52840
-              │      ├── TCA9555
-              │      ├── encoders
-              │      └── TPS22919 → OLED
-              │
-              └── TPS61023 → 5V_RGB
-                              └── 36 RGB LEDs
+POGO +5V ──┬── SMAJ5.0A TVS
+           ├── Charger ──► BAT ↔ INR21700-50E (via DW01A/FS8205A)
+           │                 │
+           └── TPS2116 VIN1  └── TPS2116 VIN2
+                     │
+                  PAD_SYS  (≈ 5 V docked, 3.3–4.2 V on battery)
+                     │
+                     ├── Pico 2 WH VSYS ──► on-board buck-boost ──► 3V3
+                     │                                                ├── TCA9555
+                     │                                                ├── encoder/switch pull-ups
+                     │                                                └── TPS22919 → OLED
+                     │
+                     └── TPS61023 → 5V_RGB
+                                     ├── SN74AHCT1G125
+                                     └── 36 RGB LEDs
 ```
 
-TPS63802 component values and inductor selection must follow its reference design/datasheet.
-
-TPS61023 must be sized for the full RGB worst-case load, not merely normal firmware brightness.
+TPS61023 must be sized for the full RGB worst-case load, not merely normal firmware brightness (§10.2).
 
 ---
 
 ## 14. Battery Measurement
 
-Battery voltage is measured by the nRF52840 ADC through a switched high-value divider.
+- Cell voltage: a permanent 100 kΩ / 100 kΩ divider from BAT to a Pico ADC pin (GP26–GP28), with 100 nF at the ADC pin. It draws ≈ 18 µA, which is negligible against 5000 mAh. It reads the cell even when docked.
+- `PAD_SYS`: the Pico's own VSYS/3 on ADC3 (GP29, shared with the radio; the SDK handles the switching).
 
-Sequence:
-
-```text
-Enable divider
-Wait for settling
-Sample ADC
-Disable divider
-```
-
-Starting firmware thresholds:
-
-- approximately 3.3 V: low-battery warning
-- approximately 3.0 V: graceful shutdown
-
-These are initial engineering thresholds, not precise LiFePO4 state-of-charge percentages.
+Firmware thresholds: see the operating-window table in §12.1 (warning ≈ 3.50 V, shutdown ≈ 3.30 V, docked hold 3.90–4.00 V). Voltage-to-charge mapping is approximate; charge counting in firmware can refine it later.
 
 ---
 
@@ -622,6 +667,17 @@ Pogo UART should not automatically replace BLE during normal docking.
 
 Magnets on both sides of the pogo area provide mechanical alignment/retention.
 
+Pad side (face-to-face mating mirrors the order):
+
+```text
+GND | TX-side | RX-side | DET | +5V | GND
+```
+
+- `DET` tied to pad GND.
+- `+5V` → SMAJ5.0A TVS → `POGO_5V` (charger and TPS2116 VIN1).
+- The pad receives on the dock's TX contact and transmits on its RX contact, into a Pico UART, with 1 kΩ series resistors on the pad side as well. Docked, the link sees 2 kΩ in series; with ~20 pF of pin and trace capacitance that is a ~40 ns time constant, negligible even at 1 Mbaud. The pad-side resistors protect the pad Pico when undocked: the contacts are exposed, and a coin or tool bridging `+5V` to RX/TX then injects at most ~1.4 mA.
+- TPD4E1U06 ESD (same part as the dock) on the pad's pogo TX/RX lines. The dock's ESD only protects the dock; the pad's contacts are exposed whenever it is carried around.
+
 ---
 
 ## 16. Debug and Recovery
@@ -638,7 +694,9 @@ HID-A/HID-B SWD pads are reached with spring probes; the host's SWD comes throug
 
 ### Pad
 
-- nRF52840 SWD
+- Pico 2 WH SWD: the H version's debug connector is replaced by a 1×3 male header pointing down into the pad PCB, the same way as the dock host (§18.1)
+- USB on the Pico itself (BOOTSEL/UF2) when the enclosure is open
+- Pogo UART (§15) when docked
 
 Dock SWD header pinout (1×5, 2.54 mm), identical on J2/J3/J6:
 
@@ -810,7 +868,7 @@ Recommended pad hierarchical sheets:
 ROOT
 ├── BATTERY_CHARGER
 ├── POWER_RAILS
-├── NRF52840
+├── MCU (Pico 2 WH; file still named nrf52840.kicad_sch until renamed)
 ├── INPUTS
 ├── RGB
 ├── DISPLAY
@@ -838,19 +896,18 @@ Schematic captured and reviewed (ERC clean apart from the intentional Pico groun
 
 ### Pad
 
-1. IFR32700 connector/holder and NTC
-2. Pogo input
-3. BQ25185
-4. TPS63802 3V3 rail
+1. 21700 holder, NTC, DW01A + FS8205A protection
+2. Pogo input (TVS, ESD, series resistors)
+3. TP4056 charger with CE control and switchable PROG
+4. TPS2116 power path → `PAD_SYS`
 5. TPS61023 5V RGB rail
-6. nRF52840
+6. Pico 2 WH (socketed, VSYS, SWD header)
 7. TCA9555 + switches/selector
 8. Encoders
-9. SN74AHCT1G125 + RGB chain
+9. SN74AHCT1G125 + SK6812MINI-E chain
 10. TPS22919 + OLED
-11. Battery ADC network
-12. SWD/pogo UART/debug
-13. Power decoupling and final ERC review
+11. Battery ADC divider
+12. Power decoupling and final ERC review
 
 ---
 
@@ -867,22 +924,30 @@ Resolved for the dock during schematic capture:
 - TPS2553 R<sub>ILIM</sub> 26.1 kΩ (≈1 A); TPS2552 on pogo +5V with the same limit
 - SWD connector standard: 1×5 2.54 mm header (§16)
 
-Still open (mostly pad side):
+Resolved for the pad before schematic capture:
 
-- PCB outline, stack-up and routing (dock)
-- BQ25185 VSET/ILIM/ISET/TS values
-- TPS63802 inductor/passives
-- TPS61023 inductor/passives
+- MCU: Raspberry Pi Pico 2 WH, socketed; no 3.3 V regulator (on-board buck-boost)
+- Cell: 2 × Samsung SDI INR21700-50E in parallel, operating window §12.1
+- Encoders: Bourns PEC11R-4220F-S0024 (24/24, 20 mm flatted shaft, push switch)
+- Charger: TP4056, R_PROG 8.2 kΩ / 8.2 kΩ ∥ 3.3 kΩ (≈ 146 / 510 mA), CE default-on with Pico override, NTC R1 5.6 kΩ, R2 75 kΩ
+- Power path: TPS2116, pogo priority, ST = docked sense
+- Cell protection: DW01A + FS8205A
+- RGB boost: TPS61023, 750 kΩ / 100 kΩ (≈ 5.05 V), 1 µH ≥ 4.5 A inductor
+- LEDs: 36 × SK6812MINI-E (LCSC)
+- Switches: Razer Yellow Linear, 3-pin MX, Kailh hot-swap, FR4 plate
+- Display: 1.3" SPI OLED, SH1106/SSD1306 chosen in firmware
+- Battery measurement: permanent 100 kΩ / 100 kΩ divider + Pico VSYS/3
+
+Still open:
+
+- Dock: pre-order silkscreen pass, Gerber check
+- Pad: PCB outline, placement, routing
 - TCA9555 pull-up requirements
-- Exact WS2812C-2020 variant
-- RGB data series resistor
-- Battery ADC resistor values/switch
-- Display controller and footprint
-- Encoder SKU/footprint
+- RGB data series resistor value
+- OLED module outline and hole spacing (measure)
 - Toggle switch SKU/panel hole
-- Key-switch footprints
-- Pogo connector dimensions
-- Final PCB stack-up
+- Pogo connector dimensions (awaiting the supplier's reply)
+- FR4 plate outline and spacer positions
 - Final mechanical dimensions
 
 A change to one of these implementation details does not necessarily constitute an architecture change.
