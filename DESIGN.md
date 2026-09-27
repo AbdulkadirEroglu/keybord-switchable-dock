@@ -411,6 +411,28 @@ The selector is the authoritative target state.
 - Exact pull-up implementation must be verified against the selected TCA9555 variant/datasheet during schematic capture.
 - Encoder A/B signals do not use the expander.
 
+### 9.1 Pad Pico GPIO Allocation
+
+Initial map from the schematic (grouped by function; may be re-pinned by PCB position, as on the dock):
+
+| GPIO | Pin | Signal | GPIO | Pin | Signal |
+|---|---|---|---|---|---|
+| GP0 | 1 | PAD_UART_TX (UART0, pogo) | GP16 | 21 | RGB_EN (TPS61023 EN) |
+| GP1 | 2 | PAD_UART_RX (UART0, pogo) | GP17 | 22 | CHG_FAST (PROG MOSFET) |
+| GP2 | 4 | ENC1_A (PIO) | GP18 | 24 | CHG_INHIBIT (CE MOSFET) |
+| GP3 | 5 | ENC1_B (PIO) | GP19 | 25 | CHG_CHRG_N |
+| GP4 | 6 | I2C_SDA (I2C0) | GP20 | 26 | CHG_STDBY_N |
+| GP5 | 7 | I2C_SCL (I2C0) | GP21 | 27 | DOCKED (TPS2116 ST) |
+| GP6 | 9 | ENC2_A (PIO) | GP22 | 29 | OLED_EN (TPS22919 ON) |
+| GP7 | 10 | ENC2_B (PIO) | GP26 | 31 | VBAT_SENSE (ADC0, VBAT/2) |
+| GP8 | 11 | TCA_INT_N (wake source) | GP27 | 32 | spare (ADC1) |
+| GP9 | 12 | RGB_DATA_3V3 (PIO) | GP28 | 34 | spare (ADC2) |
+| GP10 | 14 | OLED_SCK (SPI1) | GP15 | 20 | free (1×19 socket possible) |
+| GP11 | 15 | OLED_MOSI (SPI1 TX) | | | |
+| GP12 | 16 | OLED_DC | | | |
+| GP13 | 17 | OLED_CS (SPI1 CSn) | | | |
+| GP14 | 19 | OLED_RES | | | |
+
 ---
 
 ## 10. RGB System

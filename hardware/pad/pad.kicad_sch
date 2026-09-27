@@ -1,174 +1,328 @@
 (kicad_sch
-	(version 20231120)
+	(version 20260306)
 	(generator "eeschema")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(uuid "e7f715eb-7c18-4c70-befb-dbed60a95ef2")
 	(paper "A4")
 	(lib_symbols)
 	(sheet
-		(at 20.00 20.00)
+		(at 20 70)
 		(size 50.8 25.4)
 		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
-		(stroke (width 0.1524) (type solid))
-		(fill (color 0 0 0 0.0000))
-		(uuid "74c381cb-0daa-436f-a851-98673af19deb")
-		(property "Sheetname" "BATTERY_CHARGER"
-			(at 20.00 19.10 0)
-			(effects (font (size 1.27 1.27)) (justify left bottom))
+		(stroke
+			(width 0.1524)
+			(type solid)
 		)
-		(property "Sheetfile" "battery_charger.kicad_sch"
-			(at 20.00 46.30 0)
-			(effects (font (size 1.27 1.27)) (justify left top))
+		(fill
+			(color 0 0 0 0)
 		)
-		(instances
-			(project "pad"
-				(path "/"
-					(page "2")
+		(uuid "1ad558bd-a7bf-4f0d-a00d-a460e3150a0f")
+		(property "Sheetname" "INPUTS"
+			(at 20 69.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
+				(justify left bottom)
 			)
 		)
-	)
-	(sheet
-		(at 80.00 20.00)
-		(size 50.8 25.4)
-		(exclude_from_sim no)
-		(fields_autoplaced yes)
-		(stroke (width 0.1524) (type solid))
-		(fill (color 0 0 0 0.0000))
-		(uuid "b1a810d1-f739-479c-af93-bdf7422a894d")
-		(property "Sheetname" "POWER_RAILS"
-			(at 80.00 19.10 0)
-			(effects (font (size 1.27 1.27)) (justify left bottom))
-		)
-		(property "Sheetfile" "power_rails.kicad_sch"
-			(at 80.00 46.30 0)
-			(effects (font (size 1.27 1.27)) (justify left top))
+		(property "Sheetfile" "inputs.kicad_sch"
+			(at 20 96.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
 		)
 		(instances
 			(project "pad"
-				(path "/"
+				(path "/e7f715eb-7c18-4c70-befb-dbed60a95ef2"
 					(page "3")
 				)
 			)
 		)
 	)
 	(sheet
-		(at 140.00 20.00)
+		(at 20 120)
 		(size 50.8 25.4)
 		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
-		(stroke (width 0.1524) (type solid))
-		(fill (color 0 0 0 0.0000))
-		(uuid "f913b2b7-06cc-4745-bf8c-45e5b76c74d5")
-		(property "Sheetname" "NRF52840"
-			(at 140.00 19.10 0)
-			(effects (font (size 1.27 1.27)) (justify left bottom))
+		(stroke
+			(width 0.1524)
+			(type solid)
 		)
-		(property "Sheetfile" "nrf52840.kicad_sch"
-			(at 140.00 46.30 0)
-			(effects (font (size 1.27 1.27)) (justify left top))
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "30e58080-c3f2-4749-81da-0a887226aa47")
+		(property "Sheetname" "DOCK_INTERFACE"
+			(at 20 119.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "dock_interface.kicad_sch"
+			(at 20 146.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
 		)
 		(instances
 			(project "pad"
-				(path "/"
+				(path "/e7f715eb-7c18-4c70-befb-dbed60a95ef2"
 					(page "4")
 				)
 			)
 		)
 	)
 	(sheet
-		(at 20.00 70.00)
+		(at 20 20)
 		(size 50.8 25.4)
 		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
-		(stroke (width 0.1524) (type solid))
-		(fill (color 0 0 0 0.0000))
-		(uuid "1ad558bd-a7bf-4f0d-a00d-a460e3150a0f")
-		(property "Sheetname" "INPUTS"
-			(at 20.00 69.10 0)
-			(effects (font (size 1.27 1.27)) (justify left bottom))
+		(stroke
+			(width 0.1524)
+			(type solid)
 		)
-		(property "Sheetfile" "inputs.kicad_sch"
-			(at 20.00 96.30 0)
-			(effects (font (size 1.27 1.27)) (justify left top))
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "74c381cb-0daa-436f-a851-98673af19deb")
+		(property "Sheetname" "BATTERY_CHARGER"
+			(at 20 19.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "battery_charger.kicad_sch"
+			(at 20 46.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
 		)
 		(instances
 			(project "pad"
-				(path "/"
-					(page "5")
+				(path "/e7f715eb-7c18-4c70-befb-dbed60a95ef2"
+					(page "2")
 				)
 			)
 		)
 	)
 	(sheet
-		(at 80.00 70.00)
+		(at 140 70)
 		(size 50.8 25.4)
 		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
-		(stroke (width 0.1524) (type solid))
-		(fill (color 0 0 0 0.0000))
-		(uuid "8d3cba08-2a7f-425b-9040-887fd06dda8d")
-		(property "Sheetname" "RGB"
-			(at 80.00 69.10 0)
-			(effects (font (size 1.27 1.27)) (justify left bottom))
+		(stroke
+			(width 0.1524)
+			(type solid)
 		)
-		(property "Sheetfile" "rgb.kicad_sch"
-			(at 80.00 96.30 0)
-			(effects (font (size 1.27 1.27)) (justify left top))
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "8b44d6bf-e745-4972-adb2-725bc882c1ab")
+		(property "Sheetname" "DISPLAY"
+			(at 140 69.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "display.kicad_sch"
+			(at 140 96.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
 		)
 		(instances
 			(project "pad"
-				(path "/"
+				(path "/e7f715eb-7c18-4c70-befb-dbed60a95ef2"
+					(page "8")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 80 70)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "8d3cba08-2a7f-425b-9040-887fd06dda8d")
+		(property "Sheetname" "RGB"
+			(at 80 69.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "rgb.kicad_sch"
+			(at 80 96.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "pad"
+				(path "/e7f715eb-7c18-4c70-befb-dbed60a95ef2"
 					(page "6")
 				)
 			)
 		)
 	)
 	(sheet
-		(at 140.00 70.00)
+		(at 80 20)
 		(size 50.8 25.4)
 		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
-		(stroke (width 0.1524) (type solid))
-		(fill (color 0 0 0 0.0000))
-		(uuid "8b44d6bf-e745-4972-adb2-725bc882c1ab")
-		(property "Sheetname" "DISPLAY"
-			(at 140.00 69.10 0)
-			(effects (font (size 1.27 1.27)) (justify left bottom))
+		(stroke
+			(width 0.1524)
+			(type solid)
 		)
-		(property "Sheetfile" "display.kicad_sch"
-			(at 140.00 96.30 0)
-			(effects (font (size 1.27 1.27)) (justify left top))
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "b1a810d1-f739-479c-af93-bdf7422a894d")
+		(property "Sheetname" "POWER_RAILS"
+			(at 80 19.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power_rails.kicad_sch"
+			(at 80 46.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
 		)
 		(instances
 			(project "pad"
-				(path "/"
-					(page "7")
+				(path "/e7f715eb-7c18-4c70-befb-dbed60a95ef2"
+					(page "5")
 				)
 			)
 		)
 	)
 	(sheet
-		(at 20.00 120.00)
+		(at 140 20)
 		(size 50.8 25.4)
 		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
-		(stroke (width 0.1524) (type solid))
-		(fill (color 0 0 0 0.0000))
-		(uuid "30e58080-c3f2-4749-81da-0a887226aa47")
-		(property "Sheetname" "DOCK_INTERFACE"
-			(at 20.00 119.10 0)
-			(effects (font (size 1.27 1.27)) (justify left bottom))
+		(stroke
+			(width 0.1524)
+			(type solid)
 		)
-		(property "Sheetfile" "dock_interface.kicad_sch"
-			(at 20.00 146.30 0)
-			(effects (font (size 1.27 1.27)) (justify left top))
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "f913b2b7-06cc-4745-bf8c-45e5b76c74d5")
+		(property "Sheetname" "MCU"
+			(at 140 19.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "mcu.kicad_sch"
+			(at 140 46.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
 		)
 		(instances
 			(project "pad"
-				(path "/"
-					(page "8")
+				(path "/e7f715eb-7c18-4c70-befb-dbed60a95ef2"
+					(page "7")
 				)
 			)
 		)
@@ -178,4 +332,5 @@
 			(page "1")
 		)
 	)
+	(embedded_fonts no)
 )
