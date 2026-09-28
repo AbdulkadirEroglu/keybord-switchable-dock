@@ -1702,36 +1702,6 @@
 		(at 96.52 127)
 		(uuid "f0e5c2cf-7ff5-48a7-b442-5940e60effcf")
 	)
-	(wire
-		(pts
-			(xy 81.28 76.2) (xy 96.52 76.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6d001ad5-8805-4972-8c45-757bc5d52dfa")
-	)
-	(wire
-		(pts
-			(xy 81.28 68.58) (xy 96.52 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "74223775-d0e5-4506-80f4-6ae5b310396a")
-	)
-	(wire
-		(pts
-			(xy 81.28 71.12) (xy 96.52 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "adde76a6-1827-4016-b00b-4cb2739a1cd3")
-	)
 	(global_label "OLED_CS"
 		(shape bidirectional)
 		(at 96.52 116.84 180)
@@ -2331,29 +2301,6 @@
 			)
 		)
 	)
-	(global_label "+3V3"
-		(shape bidirectional)
-		(at 81.28 78.74 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "f25df34a-2e4d-411d-9ef1-c53417e10427")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 81.28 78.74 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
 	(symbol
 		(lib_id "MCU_Module:RaspberryPi_Pico_Extensive")
 		(at 119.38 99.06 0)
@@ -2385,7 +2332,7 @@
 				)
 			)
 		)
-		(property "Footprint" "dock:RaspberryPi_Pico2W_Socket"
+		(property "Footprint" "dock:RaspberryPi_Pico2W_Socket_NoSWD"
 			(at 119.38 99.06 0)
 			(hide yes)
 			(show_name no)
@@ -2654,173 +2601,6 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 81.28 73.66 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "54f1473c-64f4-4279-a04f-1a882467ab82")
-		(property "Reference" "#PWR019"
-			(at 87.63 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 85.09 73.6599 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 81.28 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 81.28 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 81.28 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "87c51fa1-8b2c-4fb1-b216-43e79202e11a")
-		)
-		(instances
-			(project "pad"
-				(path "/e7f715eb-7c18-4c70-befb-dbed60a95ef2/f913b2b7-06cc-4745-bf8c-45e5b76c74d5"
-					(reference "#PWR019")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:Conn_01x05_Pin")
-		(at 76.2 73.66 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "8ba35b41-39a2-4f3e-8185-f06680cbf55d")
-		(property "Reference" "J4"
-			(at 76.2 64.77 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SWD"
-			(at 76.2 82.55 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical"
-			(at 76.2 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 76.2 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x05, script generated"
-			(at 76.2 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "57022381-906f-4e64-ad54-24d25ee464cb")
-		)
-		(pin "2"
-			(uuid "204a4327-d7e5-4362-b092-788de1a8e32b")
-		)
-		(pin "3"
-			(uuid "d884e8fb-2827-438a-b727-61c81409e00d")
-		)
-		(pin "4"
-			(uuid "4b78f2a8-95eb-4397-946d-5673ed9b3670")
-		)
-		(pin "5"
-			(uuid "d45e9588-bc30-4c4f-af36-7b712da50029")
-		)
-		(instances
-			(project "pad"
-				(path "/e7f715eb-7c18-4c70-befb-dbed60a95ef2/f913b2b7-06cc-4745-bf8c-45e5b76c74d5"
-					(reference "J4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
 		(at 119.38 134.62 0)
 		(unit 1)
 		(body_style 1)
@@ -2896,5 +2676,17 @@
 				)
 			)
 		)
+	)
+	(no_connect
+		(at 96.52 68.58)
+		(uuid "4932550b-5e16-46ac-acba-358d45af6873")
+	)
+	(no_connect
+		(at 96.52 71.12)
+		(uuid "56a52e7d-64fb-4281-9def-82f49196baff")
+	)
+	(no_connect
+		(at 96.52 76.2)
+		(uuid "eb2d72e3-4ba0-4ae0-a75d-00add1204e3e")
 	)
 )

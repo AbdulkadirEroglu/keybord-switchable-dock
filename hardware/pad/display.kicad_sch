@@ -2428,7 +2428,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_PH_B9B-PH-K_1x09_P2.00mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_PH_S9B-PH-K_1x09_P2.00mm_Horizontal"
 			(at 144.272 94.234 0)
 			(show_name no)
 			(do_not_autoplace no)

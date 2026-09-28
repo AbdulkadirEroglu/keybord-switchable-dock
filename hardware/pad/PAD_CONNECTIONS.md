@@ -116,7 +116,7 @@ Pin order on the pad is the mirror of the dock's: `GND | TX | RX | DET | +5V | G
 
 | Ref | Part | Value | Footprint | Job |
 |---|---|---|---|---|
-| J1 | JST-XH 4 pin | Pogo cable | JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical | From the pogo board |
+| J1 | JST-XH 4 pin, side entry (S4B-XH-A) | Pogo cable | JST_XH_S4B-XH-A_1x04_P2.50mm_Horizontal | From the pogo board |
 | C56 | Capacitor | 10 µF | 0805 | POGO_5V bulk |
 | R32 | Resistor | 1 kΩ | 0805 | Series, dock TX → pad RX |
 | R33 | Resistor | 1 kΩ | 0805 | Series, pad TX → dock RX |
@@ -163,9 +163,9 @@ Pin order on the pad is the mirror of the dock's: `GND | TX | RX | DET | +5V | G
 
 | Ref | Part | Value | Footprint | Job |
 |---|---|---|---|---|
-| J3 | JST-XH 2 pin | Battery | JST_XH_B2B | Battery holder leads (1 = +, 2 = −) |
-| J2 | JST-XH 2 pin | NTC | JST_XH_B2B | 10 k B3950 thermistor taped between the cells |
-| U2 | Li-ion charger | TP4056 | SOIC-8 with exposed pad | Charges the battery from POGO_5V |
+| J3 | JST-XH 2 pin, side entry (S2B-XH-A) | Battery | JST_XH_S2B-XH-A_1x02_P2.50mm_Horizontal | Battery holder leads (1 = +, 2 = −) |
+| J2 | JST-XH 2 pin, side entry (S2B-XH-A) | NTC | JST_XH_S2B-XH-A_1x02_P2.50mm_Horizontal | 10 k B3950 thermistor taped between the cells |
+| U2 | Li-ion charger | TP4056 | `dock:SOIC-8-1EP_3.9x4.9mm_HandSolder` (1 mm hole in the pad, solder it from the top) | Charges the battery from POGO_5V |
 | C2 | Capacitor | 10 µF | 0805 | Charger input |
 | C3 | Capacitor | 10 µF | 0805 | Charger output / battery |
 | R3 | Resistor | 5.6 kΩ | 0805 | NTC divider top |
@@ -352,15 +352,16 @@ R19.2, R21.2, C9.2, C10.2, C11.2 → GND.
 
 | Ref | Part | Value | Footprint | Job |
 |---|---|---|---|---|
-| A1 | Raspberry Pi Pico 2 WH | — | `dock:RaspberryPi_Pico2W_Socket` | MCU + BLE, socketed |
-| J4 | Pin header 1×5 | SWD | PinHeader_1x05 | Debug (same pinout as the dock) |
+| A1 | Raspberry Pi Pico 2 WH | — | `dock:RaspberryPi_Pico2W_Socket_NoSWD` | MCU + BLE, socketed |
+
+No SWD header on the pad: the footprint's SWD holes would land under key 5's centre post. Debug with a probe on the Pico 2 WH's own 3-pin JST-SH connector (bottom cover off).
 
 **Wiring — A1**
 
 | Pico pin | GPIO / name | Net | Goes to |
 |---|---|---|---|
-| 1 | GP0 | **PAD_UART_TX** | R2 (pogo) |
-| 2 | GP1 | **PAD_UART_RX** | R1 (pogo) |
+| 1 | GP0 | **PAD_UART_TX** | R33 (pogo) |
+| 2 | GP1 | **PAD_UART_RX** | R32 (pogo) |
 | 4 | GP2 | **ENC1_A** | encoder 1 A, R25, C13 |
 | 5 | GP3 | **ENC1_B** | encoder 1 B, R26, C14 |
 | 6 | GP4 | **I2C_SDA** | TCA9555 SDA, R22 |
@@ -382,9 +383,9 @@ R19.2, R21.2, C9.2, C10.2, C11.2 → GND.
 | 26 | GP20 | **CHG_STDBY_N** | charger STDBY, R11 |
 | 27 | GP21 | **DOCKED** | mux ST, R18 |
 | 29 | GP22 | **OLED_EN** | load switch ON, R30 |
-| 30 | RUN | SWD_RUN | J4.4 |
+| 30 | RUN | not connected | |
 | 31 | GP26 / ADC0 | **VBAT_SENSE** | battery divider |
-| 32 | GP27 | **OLED_BLK** | backlight MOSFET gate (Q4), R32 |
+| 32 | GP27 | **OLED_BLK** | backlight MOSFET gate (Q4), R34 |
 | 34 | GP28 | not connected | spare ADC pin |
 | 33 | AGND | GND | |
 | 35 | ADC_VREF | not connected | |
@@ -393,18 +394,12 @@ R19.2, R21.2, C9.2, C10.2, C11.2 → GND.
 | 39 | VSYS | **PAD_SYS** | mux output |
 | 40 | VBUS | not connected | |
 | 3, 8, 13, 18, 23, 28, 38 | GND | GND | |
-| D1 | SWCLK | SWCLK | J4.1 |
-| D2 | GND | GND | J4.3 |
-| D3 | SWDIO | SWDIO | J4.2 |
-| TP1–TP6 | test pads | not connected | (copper-only placeholders in the footprint) |
-
-**J4**: 1 SWCLK, 2 SWDIO, 3 GND, 4 SWD_RUN, 5 +3V3 (reference only).
+| D1–D3, TP1–TP6 | SWD / test pads | not connected | (copper-only placeholders in the footprint) |
 
 **Placement**
 
 - The Pico's **antenna end** (away from USB) at a board edge with no copper, battery, metal screws or encoder bodies in or near the keep-out; the enclosure wall there must be plastic.
 - USB end reachable if possible (flashing with the case open).
-- J4 near the Pico's debug end, reachable with the case open.
 - Keep the Pico central to the key area and encoders; its GPIO rows face the TCA9555 and the OLED connector.
 
 ---
@@ -438,7 +433,7 @@ R19.2, R21.2, C9.2, C10.2, C11.2 → GND.
 | R22, R23 | Resistor | 4.7 kΩ | 0805 | I2C pull-ups (SDA, SCL) |
 | R24 | Resistor | 10 kΩ | 0805 | INT pull-up |
 | SW1–SW12 | Key switch | Razer Yellow (MX) | `dock:SW_MX_Hotswap_Kailh` | Keys 1–12 |
-| SW13, SW14 | Rotary encoder + push | PEC11R-4220F-S0024 | EC11 footprint | Encoder 1 (volume), 2 (mic) |
+| SW13, SW14 | Rotary encoder + push | PEC11R-4220F-S0024 | `dock:RotaryEncoder_Bourns_PEC11R-4xxxF-S_Vertical` | Encoder 1 (volume), 2 (mic) |
 | R25–R28 | Resistor | 10 kΩ | 0805 | Encoder A/B pull-ups |
 | C13–C16 | Capacitor | 10 nF | 0805 | Encoder A/B debounce |
 | J5 | JST-XH 3 pin | Selector | JST_XH_B3B | PERSONAL/OFF/WORK toggle wires |
@@ -563,7 +558,7 @@ It's one chain: R29 → LED 1 → LED 2 → … → LED 36. Only the order matte
 | R31 | Resistor | 100 Ω | 0805 | Quick-discharge resistor |
 | Q4 | P-MOSFET | AO3401A | SOT-23 | Switches/dims the backlight (≈ 41 mA) |
 | R34 | Resistor | 10–100 kΩ | 0805 | Q4 gate pull-up (gate to OLED_VCC): backlight off by default |
-| J7 | JST-PH 9 pin (B9B-PH-K-S) | Display cable | JST_PH_B9B-PH-K_1x09_P2.00mm_Vertical | 9-wire cable to the display in the case window |
+| J7 | JST-PH 9 pin, side entry (S9B-PH-K-S) | Display cable | JST_PH_S9B-PH-K_1x09_P2.00mm_Horizontal | 9-wire cable to the display in the case window |
 
 **Wiring**
 
@@ -604,7 +599,7 @@ GP27 low = backlight on; PWM on GP27 dims it (inverted: higher duty cycle = dimm
 | POGO_5V | Pogo J1.5 | charger VCC, CE pull-up, NTC divider, mux VIN1/MODE/PR1 divider |
 | VBAT | Battery J3.1 / charger BAT | mux VIN2, DW01A supply, battery sense |
 | PAD_SYS | Mux VOUT | Pico VSYS, boost VIN + inductor |
-| +3V3 | Pico 3V3 | TCA9555, all pull-ups, OLED switch, SWD header pin 5 |
+| +3V3 | Pico 3V3 | TCA9555, all pull-ups, OLED switch |
 | 5V_RGB | Boost VOUT | level shifter, 36 LEDs |
 | PAD_UART_TX / RX | Pico GP0 / GP1 | pogo series resistors |
 | GND, POGO_DRX, POGO_DTX, POGO_5V (cable pins 1–4) | Pogo board J2 | main board J1 (4-wire cable) |
@@ -641,7 +636,7 @@ Generated from the verified schematic (commit `b6046e3`). Blocks 1 (pogo board s
 | Net | Pins (ref.pin function) |
 |---|---|
 | GND | 149 pins (every GND pin on the board) |
-| +3V3 | A1.36 (3V3), C12.1, C54.1, J4.5, R10.1, R11.1, R18.1, R22.1, R23.1, R24.1, R25.1, R26.1, R27.1, R28.1, U6.24 (VCC), U8.1 (IN) |
+| +3V3 | A1.36 (3V3), C12.1, C54.1, R10.1, R11.1, R18.1, R22.1, R23.1, R24.1, R25.1, R26.1, R27.1, R28.1, U6.24 (VCC), U8.1 (IN) |
 | 5V_RGB | C10.1, C11.1, C17.1, R20.1, U5.6 (VOUT), U7.5 (VCC), plus VDD of all 36 LEDs (D2–D37) and their 100 nF (C18–C53) |
 | BOOST_FB | R20.2, R21.1, U5.1 (FB) |
 | BOOST_SW | L1.2 (2), U5.5 (SW) |
@@ -736,9 +731,6 @@ Generated from the verified schematic (commit `b6046e3`). Blocks 1 (pogo board s
 | RGB_EN | A1.21 (GPIO16), R19.1, U5.2 (EN) |
 | SEL_A | J5.1, U6.19 (P16) |
 | SEL_B | J5.3, U6.20 (P17) |
-| SWCLK | A1.D1 (SWCLK_D1), J4.1 |
-| SWDIO | A1.D3 (SWDIO_D3), J4.2 |
-| SWD_RUN | A1.30 (RUN), J4.4 |
 | TCA_INT_N | A1.11 (GPIO8), R24.2, U6.1 (INT) |
 | VBAT | C3.1, C6.1, J3.1, R12.1, R14.1, U2.5 (BAT), U4.6 (VIN2) |
 | VBAT_SENSE | A1.31 (GPIO26), C5.1, R14.2, R15.1 |

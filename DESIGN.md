@@ -736,7 +736,7 @@ HID-A/HID-B SWD pads are reached with spring probes; the host's SWD comes throug
 
 ### Pad
 
-- Pico 2 WH SWD: the H version's debug connector is replaced by a 1×3 male header pointing down into the pad PCB, the same way as the dock host (§18.1)
+- Pico 2 WH SWD: no SWD header on the pad PCB (the Pico's SWD holes would sit under key 5's centre post); a probe goes on the Pico 2 WH's own 3-pin JST-SH debug connector with the bottom cover off
 - USB on the Pico itself (BOOTSEL/UF2) when the enclosure is open
 - Pogo UART (§15) when docked
 
@@ -783,7 +783,7 @@ Decided (2026-09-28):
 - **Battery at the back**, under the top row (display/encoders), in the thick rear section. Never under the key field: the hot-swap sockets fill the underside there and the front is too thin.
 - **Pogo board at the back**, in the back wall, on top of or beside the battery. Its height and position are aligned with the dock's J7 in the 3D enclosure design.
 - **Selector toggle** (PERSONAL/OFF/WORK) on the right side of the key field, panel-mounted, wired to J5.
-- **Pico** under the rear section too, beside the battery (holder ≈ 42 × 77 × 21 mm, socketed Pico ≈ 51 × 21 × 13 mm; side by side they span ≈ 100 mm).
+- **Pico** on the back side of the main PCB **under the key field**, long axis left-right, pin rows in the gaps between key rows (y = 50.0 and 67.78 mm), antenna end at the left board edge (plastic case wall there). The display strip can't take it: both of its ends are occupied by the encoder rings, and the antenna needs an edge. Exact positions: `hardware/pad/PCB_PLACEMENT.md`, drawings `docs/pad-pcb-1-top.png` … `docs/pad-pcb-4-front-cut.png`.
 
 Main PCB sizing (20 mm knob; ring LEDs on a 12 mm radius, just outside the knob, so each ring is ≈ 27 mm across; 2 mm gaps to the display). Concept drawing: `docs/pad-concept.png`.
 
@@ -798,7 +798,7 @@ Main PCB sizing (20 mm knob; ring LEDs on a 12 mm radius, just outside the knob,
  │          [05]   [06]   [07]   [08]                    │ ← keys 76 × 57 mm
  │          [09]   [10]   [11]   [12]                    │
  └───────────────────────────────────────────────────────┘
-                 FRONT (low side)             main PCB ≈ 100 × 100 mm
+                 FRONT (low side)             main PCB 100 × 92 mm
 ```
 
 Top row width ≈ 27 + 2 + 38 + 2 + 27 mm plus 1.5 mm edges ≈ 99–100 mm: the main PCB just fits the cheapest 100 × 100 mm JLCPCB size. Tight; if it ends a few mm over, the price step is small.

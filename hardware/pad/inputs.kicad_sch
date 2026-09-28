@@ -4454,7 +4454,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Rotary_Encoder:RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm"
+		(property "Footprint" "dock:RotaryEncoder_Bourns_PEC11R-4xxxF-S_Vertical"
 			(at 73.66 157.48 0)
 			(hide yes)
 			(show_name no)
@@ -4542,7 +4542,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Rotary_Encoder:RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm"
+		(property "Footprint" "dock:RotaryEncoder_Bourns_PEC11R-4xxxF-S_Vertical"
 			(at 127 157.48 0)
 			(hide yes)
 			(show_name no)
