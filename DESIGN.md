@@ -704,7 +704,8 @@ Pogo board (≈ 35 × 14 mm, ordered panelized with the FR4 switch plate):
 
 - J1 6-pin pogo (`dock:Pogo-6`), D1 SMAJ5.0A, U1 TPD4E1U06 (ESD first, right at the contacts)
 - DET tied to GND on the pogo board
-- 4-pin JST-XH to the main board: `POGO_5V`, `GND`, `POGO_DTX`, `POGO_DRX`
+- 4-pin JST-XH to the main board, straight-through cable: 1 `GND`, 2 `POGO_DRX`, 3 `POGO_DTX`, 4 `POGO_5V`
+- M2 mounting holes; pin 1 marked on silkscreen and case (pad pin 1 must meet dock pin 6, otherwise the dock's +5 V lands on a UART line)
 
 Main board: matching 4-pin JST-XH, 10 µF on `POGO_5V`, and the two 1 kΩ series resistors.
 
