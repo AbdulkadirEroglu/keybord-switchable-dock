@@ -1,0 +1,18 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "2326ae04-e015-4738-beb0-cdb1e98060a9")
+	(paper "A5")
+	(title_block
+		(title "Pad pogo board")
+		(comment 1 "Drawn from hardware/pad/PAD_CONNECTIONS.md section 1a")
+	)
+	(lib_symbols)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

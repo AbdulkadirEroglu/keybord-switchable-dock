@@ -20,7 +20,7 @@ The project consists of two custom PCBs:
    - 12 mechanical keys.
    - Two rotary encoders with push switches.
    - 36 addressable RGB LEDs.
-   - SPI OLED display.
+   - 1.69" colour IPS display (SPI).
    - Physical `PERSONAL | OFF | WORK` metal toggle switch.
    - Li-ion 21700 battery and dock charging.
    - BLE is the normal data link; pogo UART is reserved for diagnostics/recovery.
@@ -34,7 +34,7 @@ The project consists of two custom PCBs:
 │ ├─ 12 × mechanical key                     │
 │ ├─ 2 × rotary encoder + push               │
 │ ├─ 36 × addressable RGB                    │
-│ ├─ SPI OLED                                │
+│ ├─ 1.69" colour TFT                         │
 │ ├─ PERSONAL / OFF / WORK selector          │
 │ └─ battery / charging / power management   │
 └───────────────────┬─────────────────────────┘
@@ -72,7 +72,7 @@ The project consists of two custom PCBs:
 | Cell protection | DW01A + FS8205A |
 | Battery | 2 × Samsung SDI INR21700-50E in parallel (3.6 V, ≈ 9.8 Ah Li-ion), dual 21700 holder |
 | RGB 5 V boost | TPS61023 |
-| OLED load switch | TPS22919 |
+| Display load switch | TPS22919 |
 | RGB logic buffer | SN74AHCT1G125 |
 | RGB LEDs | 36 × SK6812MINI-E (reverse mount) |
 | Dock dual-input power mux | TPS2116 |
@@ -83,7 +83,7 @@ The project consists of two custom PCBs:
 | Keys | 12 × Razer Yellow Linear (3-pin MX) in Kailh hot-swap sockets, FR4 plate |
 | Encoders | 2 × Bourns PEC11R-4220F-S0024 (24 detents, push switch) |
 | Target selector | Metal SPDT ON-OFF-ON toggle |
-| Display | 1.3" 128×64 SPI OLED (SH1106/SSD1306) |
+| Display | 1.69" 240×280 IPS TFT, ST7789, SPI, PWM backlight |
 
 Exact passive values, packages, footprints, connector SKUs, inductors and configuration resistors must be verified against the current manufacturer datasheets during schematic capture.
 
@@ -185,7 +185,8 @@ Still to finalize:
 
 - Dock silkscreen pass and order (enclosure clearance: spring-probe tails need 3–4 mm below the dock PCB)
 - Pad schematic, PCB and FR4 switch plate
-- OLED outline measurement, encoder knobs
+- Display module measurement (outline, window, holes, pin order), encoder knobs
+- Pogo board (separate small PCB in the pad's back wall) and FR4 switch plate
 - Pad Pico 2 WH antenna keep-out in the pad layout and enclosure
 - Enclosure CAD and exact dimensions
 

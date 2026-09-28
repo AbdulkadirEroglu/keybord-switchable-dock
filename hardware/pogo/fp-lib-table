@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "dock")(type "KiCad")(uri "${KIPRJMOD}/../libraries/dock.pretty")(options "")(descr "Shared dock-pad footprints"))
+)

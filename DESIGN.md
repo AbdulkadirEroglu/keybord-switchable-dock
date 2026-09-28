@@ -73,6 +73,8 @@ Primary devices:
 - SN74AHCT1G125 — RGB data level shifter
 - 2 × Samsung SDI INR21700-50E Li-ion cells (4900 mAh each, 9.8 Ah total) in parallel, in a dual 21700 holder, with a 10 k NTC between them
 - 36 × SK6812MINI-E reverse-mount RGB LEDs
+- 1.69" 240 × 280 ST7789 colour IPS display
+- Separate small pogo board in the back wall (pogo connector, TVS, ESD), cable to the main board
 - 12 × Razer Yellow Linear (MX-compatible, 3-pin) switches in Kailh hot-swap sockets, FR4 switch plate
 - 2 × Bourns PEC11R-4220F-S0024 encoders with push switch
 
@@ -425,7 +427,7 @@ Initial map from the schematic (grouped by function; may be re-pinned by PCB pos
 | GP5 | 7 | I2C_SCL (I2C0) | GP21 | 27 | DOCKED (TPS2116 ST) |
 | GP6 | 9 | ENC2_A (PIO) | GP22 | 29 | OLED_EN (TPS22919 ON) |
 | GP7 | 10 | ENC2_B (PIO) | GP26 | 31 | VBAT_SENSE (ADC0, VBAT/2) |
-| GP8 | 11 | TCA_INT_N (wake source) | GP27 | 32 | spare (ADC1) |
+| GP8 | 11 | TCA_INT_N (wake source) | GP27 | 32 | OLED_BLK (display backlight PWM) |
 | GP9 | 12 | RGB_DATA_3V3 (PIO) | GP28 | 34 | spare (ADC2) |
 | GP10 | 14 | OLED_SCK (SPI1) | GP15 | 20 | free (1×19 socket possible) |
 | GP11 | 15 | OLED_MOSI (SPI1 TX) | | | |
@@ -501,38 +503,45 @@ Buffer supply comes from `5V_RGB` so the RGB subsystem loses both power and data
 
 Display is required in V1.
 
-Module: 1.3" 128 × 64 OLED, 7-pin four-wire SPI ("1.30' OLED VER1.2 4-SPI", direnc.net). Pinout:
+Module: 1.69" 240 × 280 colour IPS TFT, ST7789 (V3) controller, SPI, rounded corners (Meon Otomasyon, "TFT LCD 1.69 İnç 240x280 ST7789 V3 SPI Display Modülü"). Chosen over the 1.3" monochrome OLED for colour and resolution at about the same module size, over the 1.9" 170 × 320 bar (not sold as a bare module in Turkey) and over the 2.0" GMT020-02 (its 62 × 37 mm module would push the board to ≈ 120 mm wide, and its backlight cannot be dimmed).
+
+Typical pinout of these 8-pin modules (verify against the actual board before the PCB):
 
 ```text
 GND
-VCC
-SCK
+VCC   (3.3–5 V)
+SCL   (SPI clock)
 SDA   (SPI MOSI, not I2C)
 RES
 DC
 CS
+BLK   (backlight)
 ```
 
-Controller: almost certainly SH1106 (the shop listing says SSD1306). Firmware tries one and falls back to the other; a 2-column shift means SH1106. No hardware impact.
+Backlight: ≈ 41 mA measured on this module type. BLK is driven through a P-MOSFET (AO3401A) from `OLED_VCC`, gate from Pico GP27 with a 10 kΩ pull-up to `OLED_VCC` (backlight off until firmware pulls GP27 low; PWM for dimming). The MOSFET works whether BLK is a direct LED anode or the input of an on-module transistor.
 
-VCC accepts 3–5 V (on-module regulator).
+Firmware: ST7789 at 240 × 280 needs a 20-row offset (the controller RAM is 240 × 320).
+
+Connection: the module is mounted to the case behind its window and wired to the main PCB with a short (≈ 10 cm) 9-wire JST-PH 2.0 mm cable (9-pin chosen because the ready-made cable is in stock at Robotistan). Main PCB: JST B9B-PH-K-S (9-pin PH, through-hole, shrouded, keyed; TME). Pins 1–8 carry the module's 8 signals; pin 9 is a second GND for a better SPI return path. The cable's bare end is soldered to the module's pads, both GND wires to the module's GND pad. The display's pads come unpopulated, so no header is needed on the module.
 
 Mechanical allowance:
 
-- approximately 40 × 35 mm maximum module envelope
-- Board outline and hole spacing to be measured on the real module before placement
+- module about 31 × 38 mm (typical); measure the real board outline, window and holes before placement
 
 Power:
 
 ```text
-Pico 3V3 → TPS22919 → OLED_VCC
+Pico 3V3 → TPS22919 → OLED_VCC → module VCC and backlight MOSFET
 ```
+
+The net names keep the `OLED_` prefix from the first design; they now refer to this TFT.
 
 Shutdown sequence:
 
-1. Put display into sleep/off state.
-2. Put SPI/control pins into safe low/high-impedance state.
-3. Disable TPS22919.
+1. Turn the backlight off (GP27 high).
+2. Put the display into sleep.
+3. Put SPI/control pins into a safe low/high-impedance state.
+4. Disable TPS22919.
 
 ---
 
@@ -689,14 +698,24 @@ Pogo UART should not automatically replace BLE during normal docking.
 
 Magnets on both sides of the pogo area provide mechanical alignment/retention.
 
-Pad side (face-to-face mating mirrors the order):
+Pad side (face-to-face mating mirrors the order). The pad docks from the back: its pogo connector sits on a small separate **pogo board** mounted vertically inside the back wall of the enclosure, at the height of the dock's J7, and linked to the sloped main PCB by a short cable. A connector on the sloped main board would face out at the slope angle and at the wrong height, and docking forces would load the main board's solder joints.
+
+Pogo board (≈ 35 × 14 mm, ordered panelized with the FR4 switch plate):
+
+- J1 6-pin pogo (`dock:Pogo-6`), D1 SMAJ5.0A, U1 TPD4E1U06 (ESD first, right at the contacts)
+- DET tied to GND on the pogo board
+- 4-pin JST-XH to the main board: `POGO_5V`, `GND`, `POGO_DTX`, `POGO_DRX`
+
+Main board: matching 4-pin JST-XH, 10 µF on `POGO_5V`, and the two 1 kΩ series resistors.
+
+Contact order:
 
 ```text
 GND | TX-side | RX-side | DET | +5V | GND
 ```
 
 - `DET` tied to pad GND.
-- `+5V` → SMAJ5.0A TVS → `POGO_5V` (charger and TPS2116 VIN1).
+- `+5V` → SMAJ5.0A TVS (pogo board) → cable → `POGO_5V` (charger and TPS2116 VIN1).
 - The pad receives on the dock's TX contact and transmits on its RX contact, into a Pico UART, with 1 kΩ series resistors on the pad side as well. Docked, the link sees 2 kΩ in series; with ~20 pF of pin and trace capacitance that is a ~40 ns time constant, negligible even at 1 Mbaud. The pad-side resistors protect the pad Pico when undocked: the contacts are exposed, and a coin or tool bridging `+5V` to RX/TX then injects at most ~1.4 mA.
 - TPD4E1U06 ESD (same part as the dock) on the pad's pogo TX/RX lines. The dock's ESD only protects the dock; the pad's contacts are exposed whenever it is carried around.
 
@@ -752,40 +771,40 @@ SWD  → low-level recovery
 
 ## 17. Mechanical Baseline
 
-Target pad dimensions before detailed CAD:
+Wedge-shaped enclosure: keys, encoders and display all sit on one sloped top surface, so the main PCB is mounted at the same slope.
 
-- Width: ~160 mm
-- Depth: ~110–120 mm
-- Front height: ~18–22 mm
-- Rear height: ~35–40 mm
+Decided (2026-09-28):
 
-Wedge-shaped enclosure.
+- **Slope 9–10°** (can change if the layout or ergonomics need it).
+- **Heights: front ≈ 25 mm, back ≈ 44 mm** over ≈ 115 mm depth (≈ 9.4°). The first estimate (front 18–22, back 35–40 mm) is too low: the 21 mm battery holder at the back would hit the sloped PCB. The PCB underside must clear ≈ 28 mm (3 mm floor + 21 mm holder + 2 mm gap + 2 mm bottom-side parts) over the holder's front edge, which needs ≈ 25 mm at the front.
+- **One main PCB** carries the keys, key LEDs, both encoders with their 12-LED rings (SK6812MINI-E on the board), the Pico and all power parts. Only the pogo board (forced by the slope) and the display (for a flush fit in the case window) are on cables. Rejected: off-board WS2812 rings (the locally sold 12-LED rings are 50 mm across, which widens the board instead of shrinking it; 37 mm rings have no reliable local source) and cabled encoder modules (no price gain, generic encoders, two more cables).
+- **Display sideways** (landscape): 1.69" module ≈ 38 mm wide × 31 mm tall, between the two encoders, mounted to the case behind its window and connected by a 9-wire JST-PH cable (8 signals + a second GND).
+- **Battery at the back**, under the top row (display/encoders), in the thick rear section. Never under the key field: the hot-swap sockets fill the underside there and the front is too thin.
+- **Pogo board at the back**, in the back wall, on top of or beside the battery. Its height and position are aligned with the dock's J7 in the 3D enclosure design.
+- **Selector toggle** (PERSONAL/OFF/WORK) on the right side of the key field, panel-mounted, wired to J5.
+- **Pico** under the rear section too, beside the battery (holder ≈ 42 × 77 × 21 mm, socketed Pico ≈ 51 × 21 × 13 mm; side by side they span ≈ 100 mm).
 
-Top-level layout:
-
-```text
-┌────────────────────────────────────┐
-│                                    │
-│   ( VOL )    [ DISPLAY ]   ( MIC ) │
-│                                    │
-│ [01] [02] [03] [04]        ╱       │
-│ [05] [06] [07] [08]       ●        │
-│ [09] [10] [11] [12]        ╲       │
-│                         P/O/W       │
-└────────────────────────────────────┘
-```
-
-The 32700 battery belongs in the rear thick section under the display/encoder region.
-
-It must **not** be placed under the key field.
-
-Approximate reserved battery volume:
+Main PCB sizing (20 mm knob; ring LEDs on a 12 mm radius, just outside the knob, so each ring is ≈ 27 mm across; 2 mm gaps to the display). Concept drawing: `docs/pad-concept.png`.
 
 ```text
-~75 × 36 × 36 mm
+                 BACK (high side, docks here; battery, Pico and pogo board below/behind)
+ ┌───────────────────────────────────────────────────────┐
+ │   ◯ ENC 1       ┌──────────────┐       ◯ ENC 2       │ ← top row ≈ 31–35 mm
+ │  (12-LED ring)  │ 1.69" TFT    │    (12-LED ring)     │
+ │                 │  sideways    │                      │
+ │                 └──────────────┘                      │
+ │          [01]   [02]   [03]   [04]                    │
+ │          [05]   [06]   [07]   [08]                    │ ← keys 76 × 57 mm
+ │          [09]   [10]   [11]   [12]                    │
+ └───────────────────────────────────────────────────────┘
+                 FRONT (low side)             main PCB ≈ 100 × 100 mm
 ```
 
-including reasonable mechanical clearance/contact allowance.
+Top row width ≈ 27 + 2 + 38 + 2 + 27 mm plus 1.5 mm edges ≈ 99–100 mm: the main PCB just fits the cheapest 100 × 100 mm JLCPCB size. Tight; if it ends a few mm over, the price step is small.
+
+Enclosure envelope (from the first baseline, to be refined in CAD): width ~160 mm, depth ~110–120 mm. The PERSONAL/OFF/WORK toggle is panel-mounted in the enclosure to the right of the keys and wired to J5, so it widens the enclosure, not the PCB.
+
+Still to measure before the PCB: display module outline, window and holes; knob diameter.
 
 ---
 
@@ -957,7 +976,8 @@ Resolved for the pad before schematic capture:
 - RGB boost: TPS61023, 750 kΩ / 100 kΩ (≈ 5.05 V), 1 µH ≥ 4.5 A inductor
 - LEDs: 36 × SK6812MINI-E (LCSC)
 - Switches: Razer Yellow Linear, 3-pin MX, Kailh hot-swap, FR4 plate
-- Display: 1.3" SPI OLED, SH1106/SSD1306 chosen in firmware
+- Display: 1.69" 240 × 280 ST7789 IPS TFT (Meon Otomasyon), backlight via P-MOSFET on GP27
+- Pogo: separate pogo board in the back wall, 4-wire JST-XH cable to the main board
 - Battery measurement: permanent 100 kΩ / 100 kΩ divider + Pico VSYS/3
 
 Still open:

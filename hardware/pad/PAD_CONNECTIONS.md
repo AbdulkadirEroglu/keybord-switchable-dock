@@ -54,55 +54,77 @@ Each sketch below is only a reading aid: `●` is a junction, `─` a wire, `→
 
 ## 1. Dock interface (pogo)
 
+The pogo connector lives on a **separate small pogo board** mounted vertically in the pad's back wall (DESIGN.md §15), because the main board is sloped. A 4-wire cable links it to the main board.
+
+### 1a. Pogo board (its own small PCB and schematic)
+
 ```text
  J1 pin 1 ─────────── GND
- J1 pin 2 (dock TX) ──●── R1 1k ──► PAD_UART_RX ──► Pico GP1
+ J1 pin 2 (dock TX) ──●── POGO_DTX ──► J2 pin 3 (cable)
                       └── U1 pin 1 (ESD clamp to GND)
- J1 pin 3 (dock RX) ──●── R2 1k ◄── PAD_UART_TX ◄── Pico GP0
+ J1 pin 3 (dock RX) ──●── POGO_DRX ──► J2 pin 4 (cable)
                       └── U1 pin 3 (ESD clamp to GND)
  J1 pin 4 (DET) ───── GND           (this tells the dock to switch its 5 V on)
- J1 pin 5 (+5V) ──●── POGO_5V ──► charger, power mux
-                  ├── D1 SMAJ5.0A (K) ── GND
-                  └── C1 10 µF ── GND
- J1 pin 6 ─────────── GND
+ J1 pin 5 (+5V) ──●── POGO_5V ──► J2 pin 1 (cable)
+                  └── D1 SMAJ5.0A (K) ── GND
+ J1 pin 6 ─────────── GND ──► J2 pin 2 (cable)
 ```
-
-**Parts**
 
 | Ref | Part | Value | Footprint | Job |
 |---|---|---|---|---|
 | J1 | Pogo connector, 6 pin | — | `dock:Pogo-6` | Contacts to the dock |
 | D1 | TVS diode (unidirectional) | SMAJ5.0A | D_SMA | Clamps spikes on POGO_5V |
-| C1 | Capacitor | 10 µF | 0805 | POGO_5V bulk |
 | U1 | ESD array | TPD4E1U06DBVR | SOT-23-6 | ESD on the two data contacts |
-| R1 | Resistor | 1 kΩ | 0805 | Series, dock TX → pad RX |
-| R2 | Resistor | 1 kΩ | 0805 | Series, pad TX → dock RX |
-
-**Wiring**
+| J2 | JST-XH 4 pin | Cable | JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical | To the main board |
 
 | Part.pin | Net | Also on this net |
 |---|---|---|
-| J1.1 | GND | — |
-| J1.2 (dock's TX contact) | POGO_DTX | U1.1, R1.1 |
-| J1.3 (dock's RX contact) | POGO_DRX | U1.3, R2.2 |
-| J1.4 (DET) | GND | tying DET to GND is what turns the dock's pogo 5 V on |
-| J1.5 | **POGO_5V** | D1 cathode (K), C1.1, charger, mux |
-| J1.6 | GND | — |
-| D1 anode (A) | GND | — |
-| U1.2 | GND | — |
+| J1.1, J1.4 (DET), J1.6 | GND | D1 anode, U1.2, J2.2 |
+| J1.2 (dock's TX contact) | POGO_DTX | U1.1, J2.3 |
+| J1.3 (dock's RX contact) | POGO_DRX | U1.3, J2.4 |
+| J1.5 | POGO_5V | D1 cathode (K), J2.1 |
 | U1.4, U1.5, U1.6 | not connected | unused ESD channels |
-| R1.2 | **PAD_UART_RX** | Pico GP1 |
-| R2.1 | **PAD_UART_TX** | Pico GP0 |
 
 Pin order on the pad is the mirror of the dock's: `GND | TX | RX | DET | +5V | GND`.
 
-**Placement**
+**Placement (pogo board)**
 
-- J1 on the board edge that meets the dock; magnets on both sides of it (mechanical).
-- D1 and C1 right at J1 pin 5, before POGO_5V goes anywhere else.
-- U1 right next to J1 pins 2–3, **before** R1/R2 (ESD first, then the resistors).
-- R1/R2 can sit anywhere between U1 and the Pico.
-- POGO_5V trace ≥ 0.6 mm (up to ≈ 1 A).
+- J1 on the board edge, its face flush with the back wall at the height of the dock's J7; magnets beside it (mechanical).
+- D1 right at J1 pin 5, U1 right at J1 pins 2–3.
+- J2 on the inner side, where the cable leaves.
+- Two screw holes to fix the board to the wall; the wall takes the docking forces.
+- POGO_5V and GND traces ≥ 0.6 mm.
+
+### 1b. Main board side
+
+```text
+ J7 pin 1 ──●── POGO_5V ──► charger, power mux
+            └── C1 10 µF ── GND
+ J7 pin 2 ─── GND
+ J7 pin 3 ─── POGO_DTX ── R1 1k ──► PAD_UART_RX ──► Pico GP1
+ J7 pin 4 ─── POGO_DRX ── R2 1k ◄── PAD_UART_TX ◄── Pico GP0
+```
+
+| Ref | Part | Value | Footprint | Job |
+|---|---|---|---|---|
+| J7 | JST-XH 4 pin | Pogo cable | JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical | From the pogo board (replaces J1, D1, U1 on the main board) |
+| C1 | Capacitor | 10 µF | 0805 | POGO_5V bulk |
+| R1 | Resistor | 1 kΩ | 0805 | Series, dock TX → pad RX |
+| R2 | Resistor | 1 kΩ | 0805 | Series, pad TX → dock RX |
+
+| Part.pin | Net | Also on this net |
+|---|---|---|
+| J7.1 | **POGO_5V** | C1.1, charger, mux |
+| J7.2 | GND | — |
+| J7.3 | POGO_DTX | R1 (other end **PAD_UART_RX** → Pico GP1) |
+| J7.4 | POGO_DRX | R2 (other end **PAD_UART_TX** ← Pico GP0) |
+
+The cable is straight-through: pin n on one board to pin n on the other.
+
+**Placement (main board)**
+
+- J7 at the main board's back edge, nearest the pogo board. C1 right at J7 pin 1.
+- R1/R2 anywhere between J7 and the Pico.
 
 ---
 
@@ -362,7 +384,8 @@ R19.2, R21.2, C9.2, C10.2, C11.2 → GND.
 | 29 | GP22 | **OLED_EN** | load switch ON, R30 |
 | 30 | RUN | SWD_RUN | J4.4 |
 | 31 | GP26 / ADC0 | **VBAT_SENSE** | battery divider |
-| 32, 34 | GP27, GP28 | not connected | spare ADC pins |
+| 32 | GP27 | **OLED_BLK** | backlight MOSFET gate (Q4), R32 |
+| 34 | GP28 | not connected | spare ADC pin |
 | 33 | AGND | GND | |
 | 35 | ADC_VREF | not connected | |
 | 36 | 3V3 | **+3V3** | everything on 3.3 V |
@@ -509,7 +532,7 @@ It's one chain: R29 → LED 1 → LED 2 → … → LED 36. Only the order matte
 
 - Each LED's 100 nF within ≈ 2 mm of its VDD pin.
 - Key LEDs: reverse-mounted in a cutout under each switch's LED lens (MX LED window side).
-- Ring LEDs: 12 on a circle around each encoder shaft, radius set by the knob (≈ 15–16 mm for a 25 mm knob).
+- Ring LEDs: 12 on a circle around each encoder shaft, **12 mm radius** (just outside a 20 mm knob), so each ring is ≈ 27 mm across. Keep 2 mm to the display area.
 - U7 + R29 near the first LED; R29 right at U7 pin 4. The 3.3 V data trace from the Pico can be long.
 - Route the chain in one continuous path; keep 5V_RGB ≥ 0.6 mm to the rings and keys, branches can be thinner.
 
@@ -517,25 +540,30 @@ It's one chain: R29 → LED 1 → LED 2 → … → LED 36. Only the order matte
 
 ## 7. Display
 
+1.69" 240 × 280 colour IPS TFT, ST7789 (Meon Otomasyon), on a 9-wire JST-PH cable (pin 9 = second GND). The pin order below is the usual one for these modules, **check it on your module** and wire the cable to match.
+
 ```text
- +3V3 ──●── U8 pin 1 IN               U8 pin 6 OUT ──●── OLED_VCC ── J6 pin 2
+ +3V3 ──●── U8 pin 1 IN               U8 pin 6 OUT ──●── OLED_VCC ──● J6 pin 2 (VCC)
         └── C54 1 µF ── GND                          ├── C55 1 µF ── GND
- Pico GP22 ── OLED_EN ──●── U8 pin 3 ON              └── R31 100 Ω ── U8 pin 5 QOD
-                        └── R30 100k ── GND
- U8 pin 2 ── GND
- J6: 1 GND, 3 SCK ← GP10, 4 MOSI ← GP11, 5 RES ← GP14, 6 DC ← GP12, 7 CS ← GP13
+ Pico GP22 ── OLED_EN ──●── U8 pin 3 ON              ├── R31 100 Ω ── U8 pin 5 QOD
+                        └── R30 100k ── GND          ├── Q4 source (AO3401A, P-MOSFET)
+ U8 pin 2 ── GND                                     └── R32 10k ──●── Q4 gate ◄── OLED_BLK ◄── Pico GP27
+                                                     Q4 drain ── J6 pin 8 (BLK)
+ J6: 1 GND, 3 SCL ← GP10, 4 SDA ← GP11, 5 RES ← GP14, 6 DC ← GP12, 7 CS ← GP13, 9 GND (second ground)
 ```
 
 **Parts**
 
 | Ref | Part | Value | Footprint | Job |
 |---|---|---|---|---|
-| U8 | Load switch | TPS22919DCK | SC-70-6 | Switches the OLED's power |
+| U8 | Load switch | TPS22919DCK | SC-70-6 | Switches the display's power |
 | C54 | Capacitor | 1 µF | 0805 | U8 input |
 | C55 | Capacitor | 1 µF | 0805 | U8 output |
-| R30 | Resistor | 100 kΩ | 0805 | ON pull-down (OLED off at boot) |
+| R30 | Resistor | 100 kΩ | 0805 | ON pull-down (display off at boot) |
 | R31 | Resistor | 100 Ω | 0805 | Quick-discharge resistor |
-| J6 | Pin socket 1×7 | OLED | PinSocket_1x07 | The 1.3" OLED module plugs in here |
+| Q4 | P-MOSFET | AO3401A | SOT-23 | Switches/dims the backlight (≈ 41 mA) |
+| R32 | Resistor | 10 kΩ | 0805 | Q4 gate pull-up: backlight off by default |
+| J6 | JST-PH 9 pin (B9B-PH-K-S) | Display cable | JST_PH_B9B-PH-K_1x09_P2.00mm_Vertical | 9-wire cable to the display in the case window |
 
 **Wiring**
 
@@ -546,19 +574,26 @@ It's one chain: R29 → LED 1 → LED 2 → … → LED 36. Only the order matte
 | U8.3 ON | **OLED_EN** | Pico GP22, R30 |
 | U8.4 NC | not connected | |
 | U8.5 QOD | OLED_QOD | R31.2 |
-| U8.6 OUT | OLED_VCC | C55, R31.1, J6.2 |
+| U8.6 OUT | OLED_VCC | C55, R31.1, J6.2, Q4 source, R32.1 |
+| Q4 gate | **OLED_BLK** | Pico GP27, R32.2 |
+| Q4 drain | OLED_BLK_OUT | J6.8 |
 | J6.1 | GND | module GND |
 | J6.2 | OLED_VCC | module VCC |
-| J6.3 | **OLED_SCK** | Pico GP10 |
+| J6.3 | **OLED_SCK** | Pico GP10 (module pin "SCL") |
 | J6.4 | **OLED_MOSI** | Pico GP11 (module pin "SDA") |
 | J6.5 | **OLED_RES** | Pico GP14 |
 | J6.6 | **OLED_DC** | Pico GP12 |
 | J6.7 | **OLED_CS** | Pico GP13 |
+| J6.8 | OLED_BLK_OUT | module BLK |
+| J6.9 | GND | second ground wire, soldered to the module's GND pad too |
+
+GP27 low = backlight on; PWM on GP27 dims it (inverted: higher duty cycle = dimmer).
 
 **Placement**
 
-- J6 where the display window is (between the encoders); check the module's hole spacing against it.
-- U8 + C54/C55/R31 near J6.
+- The display itself is mounted to the case behind its window (between the encoders) and reaches J6 through a ≈ 10 cm 9-wire JST-PH cable; its bare end is soldered to the module pads. Measure the module's outline, window and holes for the case.
+- J6 anywhere near the display area of the board, oriented so the cable runs straight up to the module.
+- U8, C54/C55, R31, Q4 and R32 near J6.
 
 ---
 
@@ -572,6 +607,7 @@ It's one chain: R29 → LED 1 → LED 2 → … → LED 36. Only the order matte
 | +3V3 | Pico 3V3 | TCA9555, all pull-ups, OLED switch, SWD header pin 5 |
 | 5V_RGB | Boost VOUT | level shifter, 36 LEDs |
 | PAD_UART_TX / RX | Pico GP0 / GP1 | pogo series resistors |
+| POGO_5V, GND, POGO_DTX, POGO_DRX | Pogo board J2 | main board J7 (4-wire cable) |
 | I2C_SDA / I2C_SCL | Pico GP4 / GP5 | TCA9555 |
 | TCA_INT_N | TCA9555 INT | Pico GP8 |
 | ENC1_A/B, ENC2_A/B | Encoders | Pico GP2/GP3, GP6/GP7 |
@@ -581,6 +617,7 @@ It's one chain: R29 → LED 1 → LED 2 → … → LED 36. Only the order matte
 | CHG_CHRG_N / CHG_STDBY_N | Charger | Pico GP19 / GP20 |
 | DOCKED | Mux ST | Pico GP21 |
 | OLED_EN | Pico GP22 | load switch ON |
+| OLED_BLK | Pico GP27 | backlight MOSFET gate |
 | OLED_SCK/MOSI/DC/CS/RES | Pico GP10/11/12/13/14 | OLED socket |
 | VBAT_SENSE | Battery divider | Pico GP26 |
 
@@ -595,6 +632,8 @@ It's one chain: R29 → LED 1 → LED 2 → … → LED 36. Only the order matte
 ---
 
 ## Appendix — full net index (generated)
+
+Generated from the verified schematic (commit `b6046e3`). Blocks 1 (pogo board split) and 7 (1.69" display, backlight MOSFET, GP27) changed after that; the tables in those sections are the current design.
 
 <details>
 <summary>Show the full net index</summary>
