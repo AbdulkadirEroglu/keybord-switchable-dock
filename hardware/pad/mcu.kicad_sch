@@ -1649,7 +1649,7 @@
 	)
 	(text "SWD header, same pinout as the dock (1 SWCLK, 2 SWDIO, 3 GND, 4 RUN, 5 3V3 reference only)."
 		(exclude_from_sim no)
-		(at 20 170 0)
+		(at 55.372 146.304 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1706,65 +1706,35 @@
 		(at 96.52 127)
 		(uuid "f0e5c2cf-7ff5-48a7-b442-5940e60effcf")
 	)
-	(label "SWD_RUN"
-		(at 96.52 76.2 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
+	(wire
+		(pts
+			(xy 81.28 76.2) (xy 96.52 76.2)
 		)
-		(uuid "323bf4d3-c5ef-40fc-8a26-1ba5623de551")
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6d001ad5-8805-4972-8c45-757bc5d52dfa")
 	)
-	(label "SWCLK"
-		(at 45.72 144.78 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
+	(wire
+		(pts
+			(xy 81.28 68.58) (xy 96.52 68.58)
 		)
-		(uuid "4004781a-c2c7-4c41-8cee-7daf49ca19be")
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74223775-d0e5-4506-80f4-6ae5b310396a")
 	)
-	(label "SWDIO"
-		(at 96.52 71.12 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
+	(wire
+		(pts
+			(xy 81.28 71.12) (xy 96.52 71.12)
 		)
-		(uuid "51693c72-2a85-4836-9382-e00c01522763")
-	)
-	(label "SWDIO"
-		(at 45.72 147.32 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
+		(stroke
+			(width 0)
+			(type default)
 		)
-		(uuid "7c9f776e-35e1-4c1a-9e3c-80f236724f62")
-	)
-	(label "SWCLK"
-		(at 96.52 68.58 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "d998e617-095a-4929-abeb-296af51d151d")
-	)
-	(label "SWD_RUN"
-		(at 45.72 152.4 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "e061bf52-48d5-4d0a-8f9c-ac526bd239d5")
+		(uuid "adde76a6-1827-4016-b00b-4cb2739a1cd3")
 	)
 	(global_label "OLED_CS"
 		(shape bidirectional)
@@ -2343,7 +2313,7 @@
 	)
 	(global_label "+3V3"
 		(shape bidirectional)
-		(at 45.72 154.94 0)
+		(at 81.28 78.74 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2353,7 +2323,7 @@
 		)
 		(uuid "f25df34a-2e4d-411d-9ef1-c53417e10427")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 45.72 154.94 0)
+			(at 81.28 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2376,7 +2346,7 @@
 		(dnp no)
 		(uuid "037124ec-6fe1-44d8-8b7f-93b5ae41f44d")
 		(property "Reference" "A1"
-			(at 119.38 57.15 0)
+			(at 119.126 93.218 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2386,7 +2356,7 @@
 			)
 		)
 		(property "Value" "Pico 2 WH"
-			(at 119.38 138.43 0)
+			(at 119.38 99.314 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2594,8 +2564,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "1a6ac862-c56c-4be7-bdbb-26a843b7efc6")
-		(property "Reference" "#PWR034"
+		(fields_autoplaced yes)
+		(uuid "4f4acf91-01e6-4940-aad6-4431950c4384")
+		(property "Reference" "#PWR020"
 			(at 142.24 128.27 0)
 			(hide yes)
 			(show_name no)
@@ -2607,8 +2578,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 142.24 125.73 0)
-			(hide yes)
+			(at 142.24 127 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2619,6 +2589,7 @@
 		)
 		(property "Footprint" ""
 			(at 142.24 121.92 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2629,6 +2600,7 @@
 		)
 		(property "Datasheet" ""
 			(at 142.24 121.92 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2637,8 +2609,9 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 142.24 121.92 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2648,12 +2621,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "af3df53a-a711-4af2-9892-7aff0c20d6cc")
+			(uuid "ab5c2e5c-fbd1-4ab8-be22-3caf623e9451")
 		)
 		(instances
 			(project "pad"
 				(path "/e7f715eb-7c18-4c70-befb-dbed60a95ef2/f913b2b7-06cc-4745-bf8c-45e5b76c74d5"
-					(reference "#PWR034")
+					(reference "#PWR020")
 					(unit 1)
 				)
 			)
@@ -2661,7 +2634,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 45.72 149.86 0)
+		(at 81.28 73.66 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2669,9 +2642,10 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "271686cb-e636-4740-bf06-0f644b9d3208")
-		(property "Reference" "#PWR035"
-			(at 45.72 156.21 0)
+		(fields_autoplaced yes)
+		(uuid "54f1473c-64f4-4279-a04f-1a882467ab82")
+		(property "Reference" "#PWR019"
+			(at 87.63 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2682,7 +2656,18 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 45.72 153.67 0)
+			(at 85.09 73.6599 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 81.28 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2692,18 +2677,9 @@
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at 45.72 149.86 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Datasheet" ""
-			(at 45.72 149.86 0)
+			(at 81.28 73.66 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2712,8 +2688,9 @@
 				)
 			)
 		)
-		(property "Description" ""
-			(at 45.72 149.86 0)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 81.28 73.66 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2723,12 +2700,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "bc004d03-96cb-4cb8-bee4-ebf99355b52a")
+			(uuid "87c51fa1-8b2c-4fb1-b216-43e79202e11a")
 		)
 		(instances
 			(project "pad"
 				(path "/e7f715eb-7c18-4c70-befb-dbed60a95ef2/f913b2b7-06cc-4745-bf8c-45e5b76c74d5"
-					(reference "#PWR035")
+					(reference "#PWR019")
 					(unit 1)
 				)
 			)
@@ -2736,7 +2713,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Conn_01x05_Pin")
-		(at 40.64 149.86 0)
+		(at 76.2 73.66 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2746,7 +2723,7 @@
 		(dnp no)
 		(uuid "8ba35b41-39a2-4f3e-8185-f06680cbf55d")
 		(property "Reference" "J4"
-			(at 40.64 140.97 0)
+			(at 76.2 64.77 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2756,7 +2733,7 @@
 			)
 		)
 		(property "Value" "SWD"
-			(at 40.64 158.75 0)
+			(at 76.2 82.55 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2766,7 +2743,7 @@
 			)
 		)
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical"
-			(at 40.64 149.86 0)
+			(at 76.2 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2777,7 +2754,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 40.64 149.86 0)
+			(at 76.2 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2788,7 +2765,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x05, script generated"
-			(at 40.64 149.86 0)
+			(at 76.2 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2832,8 +2809,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "abb0d7f6-b7fc-41d4-ab65-b019d2afb58d")
-		(property "Reference" "#PWR033"
+		(fields_autoplaced yes)
+		(uuid "94d5613e-bd36-43f0-b45c-7c7cd7568fd3")
+		(property "Reference" "#PWR021"
 			(at 119.38 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -2845,8 +2823,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 119.38 138.43 0)
-			(hide yes)
+			(at 119.38 139.7 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2857,6 +2834,7 @@
 		)
 		(property "Footprint" ""
 			(at 119.38 134.62 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2867,6 +2845,7 @@
 		)
 		(property "Datasheet" ""
 			(at 119.38 134.62 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2875,8 +2854,9 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 119.38 134.62 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2886,12 +2866,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "27bffdb5-77de-4dab-a444-8d67b92ee3a0")
+			(uuid "b1bcd0d6-8edc-4de0-9e95-b5cb396d2c52")
 		)
 		(instances
 			(project "pad"
 				(path "/e7f715eb-7c18-4c70-befb-dbed60a95ef2/f913b2b7-06cc-4745-bf8c-45e5b76c74d5"
-					(reference "#PWR033")
+					(reference "#PWR021")
 					(unit 1)
 				)
 			)
