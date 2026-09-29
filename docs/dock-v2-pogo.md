@@ -26,7 +26,7 @@ v1 used a TPS2552 whose active-low EN was driven straight by DET. v2 uses the **
                └── gate  Q1 2N7002 (Basic C8545)
                          drain ─┬── SY6280 EN ── 100 kΩ ── 3V3
                          source ┴ GND        │
-                                             └──── RP2354A A GPIO  POGO_OFF (open-drain, pulls EN low)
+                                             └── drain Q602 2N7002, gate ◄── RP2354A A GPIO  POGO_OFF (100 k to GND)
 
 +5V ──► SY6280AAC ──► POGO_5V ── 10 µF + 1 µF ── pogo +5V
           ISET ── 6.8 kΩ  (1.0 A typ, 0.75–1.25 A; same value as the keyboard port)
@@ -35,7 +35,7 @@ POGO_5V ── 10 k / 15 k ──► RP2354A A ADC (4th ADC pin; 5.1 V → 3.06 
 
 - **Undocked:** DET is pulled up → Q1 on → EN low → contacts dead.
 - **Docked:** pad grounds DET → Q1 off → EN pulled high → 5 V on, **with no firmware involved.** The pad charges even when the dock's firmware is blank, crashed or being flashed (matches the pad's rule that its TP4056 charges by default).
-- **Firmware can still veto:** POGO_OFF (a GPIO in open-drain mode, left floating at reset) pulls EN low, for example after an overload.
+- **Firmware can still veto:** POGO_OFF drives a second 2N7002 (Q602) that pulls EN low, for example after an overload. Q602's gate has a 100 k pull-down, so MCU A's reset-state pull-down means "no veto". (Connecting the GPIO straight to EN would drag it to ≈ 1.1 V against the 100 k pull-up and stop pad charging whenever MCU A has no firmware; found while making the pin map, DOCK_CONNECTIONS.md §8.)
 - **No FAULT pin on the SY6280:** POGO_5V goes to the last free ADC pin instead. Firmware sees the pad's load (voltage sag in current limit) and a short (collapse). This uses **all 4 ADC pins** of RP2354A A: KBD CC1, KBD CC2, KBD_VBUS, POGO_5V.
 - Output discharge (150 Ω) pulls the contact voltage down quickly when the pad leaves.
 - Hot-plug: the pad's input capacitors charge through the SY6280's current limit; the pad's SMAJ5.0A catches ringing.

@@ -1,5 +1,7 @@
 # Dock v2: chips on the board, JLCPCB assembly (study)
 
+> **Superseded (2026-09-29).** This was the first study. The design review changed several parts: USB-A → USB-C keyboard port, USBLC6 → TPD4E1U06, X322512MSB4SI → ABM8-272-T3, SMDRH105R → SLO0630H6R8MTT, plus the CH224A I2C link and the pull-ups found in the pin map. Current decisions: `docs/dock-v2-mcu-selection.md`, `dock-v2-power-input.md`, `dock-v2-usb-ports.md`, `dock-v2-pogo.md`, `dock-v2-mcu-support.md`, and `hardware/dock-v2/` (DOCK_CONNECTIONS.md, PCB_PLACEMENT.md). The prices and order totals below are from the study and have not been updated.
+
 Status: **study only**, nothing in the v1 dock design changes. Prices and stock checked on 2026-09-28 through JLCPCB's parts search (the same data as jlcpcb.com/parts), at the 10+ price tier. Quantity for the order: **5 boards, all 5 assembled**, Economic PCBA.
 
 ## 1. What changes from v1

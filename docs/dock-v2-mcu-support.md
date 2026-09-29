@@ -51,8 +51,8 @@ RPi's guide: the 1 kΩ damping resistor and 15 pF caps are tuned for *that* crys
 | Signal | A side | B side | Why |
 |---|---|---|---|
 | UART0 TX/RX | hardware UART0 | hardware UART0 | HID reports, 1 Mbaud or faster (v1 framing: SOF/TYPE/SEQ/LEN/PAYLOAD/CRC) |
-| B_RUN | GPIO, open-drain | RUN | A can reset B (RUN has an internal pull-up) |
-| B_BOOTSEL | GPIO, open-drain, via 1 kΩ | QSPI_SS | A holds it low while pulsing B_RUN → B restarts in **BOOTSEL** mode and shows up as a UF2 drive on the Work PC |
+| B_RUN | GPIO, open-drain | RUN + **10 k pull-up** | A can reset B. The external pull-up beats A's reset-state pull-down; without it B could stay in reset whenever A restarts |
+| B_BOOTSEL | GPIO, open-drain, via 1 kΩ, **10 k pull-up** | QSPI_SS | A holds it low while pulsing B_RUN → B restarts in **BOOTSEL** mode and shows up as a UF2 drive on the Work PC |
 | B_SWCLK / B_SWDIO | 2 GPIOs (PIO) | SWD pins | **A can reflash B over SWD** (Raspberry Pi's debugprobe firmware does this on an RP2040/RP2350). Updating everything from the Personal PC then becomes possible, and it's the recovery path if B's firmware is broken |
 
 Flashing summary:
@@ -66,7 +66,7 @@ Flashing summary:
 |---|---|---|
 | 3V3 | 3.3 V + 10 µF + 100 nF | BLE TX peaks: 170 mA at 0 dBm, 340 mA at +20 dBm |
 | EN | 10 kΩ to 3.3 V + 1 µF to GND, **and** chip A GPIO (open-drain) | Espressif's recommended RC delay; A can reset the C3. "Do not leave EN floating" |
-| GPIO9 (BOOT) | chip A GPIO (open-drain), internal pull-up | low at reset = download mode. A can put the C3 into download mode |
+| GPIO9 (BOOT) | chip A GPIO (open-drain) + **10 k pull-up** | low at reset = download mode. A can put the C3 into download mode; the pull-up stops A's reset-state pull-down doing it by accident |
 | GPIO8 | 10 kΩ pull-up | must be 1 for UART download mode |
 | GPIO2 | 10 kΩ pull-up | Espressif recommends it high (glitches) |
 | TXD0/RXD0 (GPIO21/20) | chip A UART1 | normal data link **and** the download port |

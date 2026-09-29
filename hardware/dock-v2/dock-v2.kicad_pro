@@ -602,6 +602,10 @@
       {
         "netclass": "USB",
         "pattern": "*USB*_D_N"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "*BUCK_SW"
       }
     ]
   },
