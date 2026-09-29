@@ -24,6 +24,7 @@ There is no schematic yet, so references below are **suggestions** using one hun
 6. [Placement rules](#6-placement-rules)
 7. [Checklist before routing](#7-checklist-before-routing)
 8. [Project files and libraries](#8-project-files-and-libraries)
+9. [Copying Raspberry Pi's core layout](#9-copying-raspberry-pis-core-layout)
 
 ## 1. Edges and board outline
 
@@ -141,7 +142,8 @@ Nothing else on the board depends on this choice. Keep the pogo group at the fro
 
 - **All SMD parts on the top side** (one-sided JLCPCB assembly is cheaper). Only the two hand-soldered THT parts (C201, J601) have pins through the board.
 - **4 layers recommended:** L1 parts + signals, **L2 solid GND**, L3 3.3 V / 5 V pours + a few signals, L4 signals. Two QFN-60s, four USB pairs and the buck route much more easily over an unbroken ground. The empty board file is set up with 4 copper layers; change it in *Board Setup → Physical Stackup* if you prefer 2.
-- Net classes (copied from v1): **Default** 0.2 mm; **Power** 0.6 mm (VBUS_IN, +9V/VIN, +5V, KBD_VBUS, POGO_5V, +3V3, GND); **USB** differential pairs, 90 Ω (use JLCPCB's impedance calculator for the 4-layer stack and set width/gap).
+- Net classes (from v1): **Default** 0.2 mm tracks; **Power** 0.6 mm (VBUS_IN, +9V/VIN, +5V, KBD_VBUS, POGO_5V, +3V3, GND); **USB** differential pairs, 90 Ω (use JLCPCB's impedance calculator for the 4-layer stack and set width/gap).
+- **Clearance 0.15 mm** in all three classes, **minimum track 0.15 mm**, **minimum drill 0.25 mm**: the values Raspberry Pi's core layout uses around the 0.4 mm-pitch QFN (its vias are 0.6 / 0.25 mm). All well inside JLCPCB's standard 4-layer limits (0.09 mm track/space, 0.15 mm drill). Default route widths stay as in v1.
 
 ## 6. Placement rules
 
@@ -173,24 +175,49 @@ Nothing else on the board depends on this choice. Keep the pogo group at the fro
 - `dock-v2.kicad_sch` (top level) with six empty sheets: `power`, `usb_ports`, `mcu_a`, `mcu_b`, `ble`, `pogo`. Annotation is set to *sheet number × 100* (refs in this doc match).
 - `dock-v2.kicad_pcb`: empty, **4 copper layers**, v1's design rules. No outline yet (§1 gives the starting 90 × 70 mm), so DRC reports "no edges on Edge.Cuts" until you draw it.
 - Net classes Default / Power / USB from v1, with patterns for the v2 net names (`VBUS_IN`, `+5V`, `+3V3`, `KBD_VBUS`, `POGO_5V`, `GND`; `*USB*_D_P` / `*USB*_D_N`). Rename the patterns if you name nets differently.
-- Libraries: `dock_v2_custom.kicad_sym` (project symbols, starts with v1's `TPD4E1U06DBV`) and the shared `../libraries/dock.pretty` (has `Pogo-6`).
+- Libraries (project):
+  - symbols `dock_v2_custom.kicad_sym`: **RP2354A_RPiFP**, **ESP32-C3-MINI-1**, **CH224A**, **TPS54331DR**, **SY6280AAC**, **TPD4E1U06DBV**;
+  - footprints `../libraries/dock_v2.pretty` (library nickname `dock_v2`): **RP2350A_QFN-60_RPi_Vias**, **L_Abracon_AOTA-B201610S3R3_0806**, **C_0402_RPi_Wide**, **ESP32-C3-MINI-1** (with the antenna keep-out zone), 3D model in `../libraries/dock_v2.3dshapes`;
+  - `../libraries/dock.pretty` (nickname `dock`, shared with v1): `Pogo-6`.
+  - Third-party sources and licences: `../libraries/THIRD_PARTY.md`.
 
-What exists in KiCad's stock libraries and what needs a custom symbol or footprint:
+Which symbol and footprint to use for each part (every custom symbol already has its footprint filled in; pins and pads were checked to match one to one):
 
 | Part | Symbol | Footprint |
 |---|---|---|
-| RP2354A | `MCU_RaspberryPi:RP2354A` ✔ | `Package_DFN_QFN:QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm` ✔ (or RPi's own footprint from the Minimal design) |
-| ESP32-C3-MINI-1 | **custom** (not in stock libs) | **custom** (Espressif KiCad library or LCSC/EasyEDA export) |
-| CH224A | `Interface_USB:CH224K` is pin-compatible; copy and rename the pins (CFG2/SCL, CFG3/SDA) | `Package_SO:SSOP-10-1EP_3.9x4.9mm_P1mm_EP2.1x3.3mm` (check against the ESSOP-10 drawing) |
-| TPS54331DR | **custom** (stock has TPS5430/TPS54336, different pinout) | `Package_SO:SOIC-8_3.9x4.9mm_P1.27mm` ✔ |
-| SY6280AAC | **custom** (5 pins: OUT, GND, ISET, EN, IN) | `Package_TO_SOT_SMD:SOT-23-5` ✔ |
-| TPD4E1U06 | project lib ✔ (from v1) | `Package_TO_SOT_SMD:SOT-23-6` ✔ |
-| AMS1117-3.3 | `Regulator_Linear:AMS1117-3.3` ✔ | `Package_TO_SOT_SMD:SOT-223-3_TabPin2` ✔ |
-| USB-C (TYPE-C-31-M-12) | `Connector:USB_C_Receptacle_USB2.0_16P` ✔ | `Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12` ✔ |
-| ABM8-272-T3 | `Device:Crystal_GND24` ✔ | `Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm` ✔ |
-| 2N7002 | `Transistor_FET:2N7002` ✔ | SOT-23 ✔ |
-| SMBJ15A, SS54 | `Device:D_TVS`, `Device:D_Schottky` ✔ | `Diode_SMD:D_SMB`, `D_SMC` ✔ |
-| 6.8 µH 10 × 10 inductor | `Device:L` ✔ | pick after the part is chosen (SMDRH105R or a Basic alternative) |
-| 3.3 µH AOTA-B201610S3R3 | `Device:L` ✔ | 0806 (2016 metric): RPi's footprint from the Minimal design |
-| Pogo 6-pin | generic `Connector_Generic:Conn_01x06` ✔ | `dock:Pogo-6` ✔ |
-| 220 µF THT | `Device:C_Polarized` ✔ | `Capacitor_THT:CP_Radial_D6.3mm_P5.00mm` (check leads) |
+| RP2354A | `dock_v2_custom:RP2354A_RPiFP` (KiCad's RP2350A/RP2354A symbol, same pinout) | `dock_v2:RP2350A_QFN-60_RPi_Vias` (Raspberry Pi's own, thermal vias in the pad) |
+| RP2354A core inductor 3.3 µH | `Device:L` | `dock_v2:L_Abracon_AOTA-B201610S3R3_0806` (pad 1 = polarity dot) |
+| RP2354A C6/C7 4.7 µF (VREG_VIN, 1.1 V out) | `Device:C` | `dock_v2:C_0402_RPi_Wide` |
+| other 4.7 µF / 100 nF / 15 pF / resistors | `Device:C`, `Device:R` | `Capacitor_SMD:C_0402_1005Metric`, `Resistor_SMD:R_0402_1005Metric` |
+| ESP32-C3-MINI-1 | `dock_v2_custom:ESP32-C3-MINI-1` (Espressif) | `dock_v2:ESP32-C3-MINI-1` (Espressif) |
+| CH224A | `dock_v2_custom:CH224A` (KiCad's CH224K with CH224A pin names; tie pin 8 VBUS to pin 1 VHV) | `Package_SO:SSOP-10-1EP_3.9x4.9mm_P1mm_EP2.1x3.3mm` (the one KiCad uses for CH224K) |
+| TPS54331DR | `dock_v2_custom:TPS54331DR` | `Package_SO:SOIC-8_3.9x4.9mm_P1.27mm` |
+| SY6280AAC | `dock_v2_custom:SY6280AAC` | `Package_TO_SOT_SMD:SOT-23-5` |
+| TPD4E1U06 | `dock_v2_custom:TPD4E1U06DBV` | `Package_TO_SOT_SMD:SOT-23-6` |
+| AMS1117-3.3 | `Regulator_Linear:AMS1117-3.3` | `Package_TO_SOT_SMD:SOT-223-3_TabPin2` |
+| USB-C (TYPE-C-31-M-12) | `Connector:USB_C_Receptacle_USB2.0_16P` | `Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12` |
+| ABM8-272-T3 | `Device:Crystal_GND24` | `Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm` |
+| 2N7002 | `Transistor_FET:2N7002` | `Package_TO_SOT_SMD:SOT-23` |
+| SMBJ15A, SS54 | `Device:D_TVS`, `Device:D_Schottky` | `Diode_SMD:D_SMB`, `Diode_SMD:D_SMC` |
+| 6.8 µH 10 × 10 inductor | `Device:L` | pick after the part is chosen (SMDRH105R or a Basic alternative) |
+| Pogo 6-pin | `Connector_Generic:Conn_01x06` | `dock:Pogo-6` |
+| 220 µF THT | `Device:C_Polarized` | `Capacitor_THT:CP_Radial_D6.3mm_P5.00mm` (check leads) |
+
+## 9. Copying Raspberry Pi's core layout
+
+`../reference/rpi-rp2350a-minimal/` is Raspberry Pi's RP2350A Minimal design (MIT licence), unchanged: open it in KiCad to look at the regulator, crystal and decoupling layout.
+
+`../tools/copy_rpi_core_layout.py` copies that layout onto your board, one MCU at a time:
+
+1. Draw the MCU sheet with the core parts (values as in RPi's design: 3.3 µH, 4.7 µF ×3, 33 Ω, 100 nF on 1.1 V ×3 and on 3.3 V, 12 MHz crystal, 15 pF ×2, 1 kΩ on XOUT), then **Update PCB from Schematic** (F8).
+2. Place **U301** where you want it (any rotation, top side). Save and **close KiCad**.
+3. Run, from the repository root:
+
+   ```sh
+   /usr/bin/python3 hardware/tools/copy_rpi_core_layout.py hardware/dock-v2/dock-v2.kicad_pcb U301 --dry-run
+   /usr/bin/python3 hardware/tools/copy_rpi_core_layout.py hardware/dock-v2/dock-v2.kicad_pcb U301
+   ```
+
+   Repeat for **U401**. It needs KiCad's Python (`/usr/bin/python3`, which has the `pcbnew` module).
+4. What it does: maps RPi's nets to yours through the MCU pads; finds your support parts **on the same sheet** by value and nets; places them at RPi's positions, rotated with your MCU; copies the tracks, vias and the 7 small copper pours (1.1 V and 3.3 V rings inside the pad ring, VREG_LX and 1.1 V pads at the inductor, 3.3 V/GND at the regulator, GND under the crystal) with your net names. A backup `dock-v2.before-U301.kicad_pcb` is written first.
+5. Afterwards: GND vias drop to the In1 ground plane; connect the 3.3 V ring to your 3.3 V supply and route the GPIOs as usual. Tested on RPi's own board: the copy reproduces all 88 tracks, 30 vias and 7 pours exactly, and after a 90° rotation DRC shows no clearance errors.
