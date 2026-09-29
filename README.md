@@ -177,9 +177,38 @@ dock-pad/
 └── DESIGN.md
 ```
 
+## V2 Direction: Chips on the Board, JLCPCB Assembly
+
+Research on 2026-09-28 (details, part numbers and the full price table: [docs/dock-v2-plan.md](docs/dock-v2-plan.md)) showed that a dock with the chips soldered directly on the PCB and machine-assembled by JLCPCB costs less than the v1 dock built from Pico modules. **The project starts over on this basis.**
+
+| | v1 dock (modules) | v2 dock (chips on the board) |
+|---|---|---|
+| Keyboard host + PC1 endpoint | Pico 2 W + Pico 2 | RP2354A **A** (PIO-USB host + native USB device) |
+| PC2 endpoint | Pico 2 | RP2354A **B** (native USB device) |
+| BLE | Pico 2 W radio | ESP32-C3-MINI-1-H4X module (pre-certified, PCB antenna), UART to RP2354A A |
+| Power | from the PCs' VBUS | own USB-C PD input: CH224A asks for 9 V (or 12 V), TPS54331 buck to 5 V, AMS1117 to 3.3 V; the PC ports only sense VBUS |
+| Build | hand-soldered, socketed modules | JLCPCB Economic PCBA |
+
+Key findings:
+
+- **No cheap chip has three USB controllers**, so two chips is the minimum. Two RP2354A (RP2350 with 2 MB flash inside) keep the v1 firmware (TinyUSB + Pico-PIO-USB, keyboards with built-in hubs work) and flash as UF2 drives from each PC, no programmer needed. CH32V203 + CH32X035 would save only about $7 per order and has no USB-hub support yet; CH9350L + CH9329 (KVM chips) has no NKRO and raw reports.
+- **CH224K is discontinued**; CH224A replaces it pin for pin. Ask for **9 V**, not 12 V: 12 V is optional in USB PD and many chargers skip it. On a plain 5 V charger the buck passes about 4.75 V through, and the CH224A's PG pin tells the firmware to limit the pad's charging.
+- **The dock needs a USB-C charger** in v2 (v1 needed none).
+- **JLCPCB Economic PCBA fees:** setup $8.18, stencil $1.53, $0.0016 per SMD joint, $3.07 per unique Extended part (Preferred Extended parts are free), through-hole $3.58 + $0.0164 per joint. Assembly starts at **2 boards**; you can fabricate 5 and assemble 2.
+- **Turkey import tax:** since about February 2026 parcels from China pay a flat 60 % (the €30 exemption is gone). Plan on 1.6 × (goods + shipping).
+- **Parts that need JLCPCB's placement** (no iron can do them without hot air): RP2354A (QFN-60), ESP32-C3-MINI-1 (pads underneath), CH224A (exposed pad), the 0806 core inductor and the USB-C receptacles (fine pitch). SOT-23 parts, the TVS, the 10 mm inductor and the USB-A port are easy to hand-solder.
+
+Cost (estimates marked; PCB price and shipping must be checked in the real quote):
+
+| Build | Before tax | Landed in Turkey |
+|---|---|---|
+| v1 dock, one unit (BOM.xlsx) | — | 3500 TL ≈ $72 |
+| v2, 5 PCBs, **2 assembled**, JLCPCB places only the 5 hard parts, the rest hand-soldered | ≈ $65–70 | ≈ $105–115, **≈ $55 per working dock** |
+| v2, 5 PCBs, all 5 fully assembled | ≈ $114–123 | ≈ $180–195, ≈ $37 per dock |
+
 ## Current Project State
 
-The V1 architecture is frozen. The **dock schematic and PCB are complete** (routed, DRC clean, Gerbers generated locally); a silkscreen pass remains before ordering. The **pad parts are selected** (DESIGN.md §2.2, §8–§15); next is the pad schematic.
+**Starting over with the v2 dock** (see above). For v1: the architecture is frozen, the **dock schematic and PCB are complete** (routed, DRC clean, Gerbers generated locally); a silkscreen pass remains before ordering. The **pad parts are selected** (DESIGN.md §2.2, §8–§15); next is the pad schematic.
 
 Still to finalize:
 
