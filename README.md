@@ -166,7 +166,7 @@ dock-pad/
 
 ## Current Project State
 
-- **Dock v2 (branch `dock-v2`):** every part decided and placed on the six schematic sheets (154 parts, values, footprints, LCSC numbers). Next: wiring the schematic by hand from DOCK_CONNECTIONS.md (checked with `hardware/tools/dock_v2_connections/check_wiring.py`), then placement and routing on a 4-layer board. The order cost will be calculated when the PCB is ready.
+- **Dock v2 (branch `dock-v2`):** every part decided and placed on the six schematic sheets (154 parts, values, footprints, LCSC numbers). Next: wiring the schematic by hand from [DOCK_WIRING.md](hardware/dock-v2/DOCK_WIRING.md) (component by component; the circuit is explained in DOCK_CONNECTIONS.md) (checked with `hardware/tools/dock_v2_connections/check_wiring.py`), then placement and routing on a 4-layer board. The order cost will be calculated when the PCB is ready.
 - **Pad:** to be redesigned (enclosure, pogo position, possibly docking on top of the dock). The 7-pin pogo board is already updated; the rest of `hardware/pad/` is the v1 plan.
 - **v1 dock:** complete (routed, DRC clean) on `master`; superseded by v2.
 

@@ -1,0 +1,288 @@
+{
+ "power.kicad_sch": [
+  [
+   "USB-C power input (right edge)",
+   [
+    "J101",
+    "U101",
+    "D101"
+   ]
+  ],
+  [
+   "PD sink CH224A (9 V, I2C to MCU A)",
+   [
+    "U102",
+    "C101",
+    "R101",
+    "R102",
+    "R103",
+    "R104"
+   ]
+  ],
+  [
+   "5 V buck TPS54331 (TI Table 7-1, 5 V)",
+   [
+    "U103",
+    "C102",
+    "C103",
+    "C104",
+    "C105",
+    "R105",
+    "C106",
+    "C107",
+    "R106",
+    "R107",
+    "D102",
+    "L101",
+    "C108",
+    "C109",
+    "C110"
+   ]
+  ],
+  [
+   "3.3 V LDO",
+   [
+    "U104",
+    "C111",
+    "C112"
+   ]
+  ],
+  [
+   "Mounting holes (M3)",
+   [
+    "H101",
+    "H102",
+    "H103",
+    "H104"
+   ]
+  ]
+ ],
+ "usb_ports.kicad_sch": [
+  [
+   "Keyboard port J201 (USB-C source, left edge)",
+   [
+    "J201",
+    "U201",
+    "R201",
+    "R202",
+    "R203",
+    "R204",
+    "R205",
+    "R206"
+   ]
+  ],
+  [
+   "Keyboard VBUS switch",
+   [
+    "U202",
+    "R207",
+    "R208",
+    "C201",
+    "C202",
+    "C203",
+    "C204",
+    "R209",
+    "R210"
+   ]
+  ],
+  [
+   "Personal PC port J202 (back, left)",
+   [
+    "J202",
+    "U203",
+    "R211",
+    "R212",
+    "R213",
+    "R214",
+    "R215",
+    "R216"
+   ]
+  ],
+  [
+   "Work PC port J203 (back, right)",
+   [
+    "J203",
+    "U204",
+    "R217",
+    "R218",
+    "R219",
+    "R220",
+    "R221",
+    "R222"
+   ]
+  ]
+ ],
+ "mcu_a.kicad_sch": [
+  [
+   "RP2354A A",
+   [
+    "U301"
+   ]
+  ],
+  [
+   "Core regulator (copy_rpi_core_layout.py)",
+   [
+    "L301",
+    "C301",
+    "C302",
+    "C303",
+    "R301"
+   ]
+  ],
+  [
+   "Decoupling",
+   [
+    "C304",
+    "C305",
+    "C306",
+    "C307",
+    "C308",
+    "C309",
+    "C310",
+    "C311",
+    "C312",
+    "C313",
+    "C314"
+   ]
+  ],
+  [
+   "Crystal",
+   [
+    "Y301",
+    "C315",
+    "C316",
+    "R302"
+   ]
+  ],
+  [
+   "Buttons, SWD pads, LED",
+   [
+    "SW301",
+    "R303",
+    "SW302",
+    "TP301",
+    "TP302",
+    "TP303",
+    "D301",
+    "R305"
+   ]
+  ]
+ ],
+ "mcu_b.kicad_sch": [
+  [
+   "RP2354A B",
+   [
+    "U401"
+   ]
+  ],
+  [
+   "Core regulator (copy_rpi_core_layout.py)",
+   [
+    "L401",
+    "C401",
+    "C402",
+    "C403",
+    "R401"
+   ]
+  ],
+  [
+   "Decoupling",
+   [
+    "C404",
+    "C405",
+    "C406",
+    "C407",
+    "C408",
+    "C409",
+    "C410",
+    "C411",
+    "C412",
+    "C413",
+    "C414"
+   ]
+  ],
+  [
+   "Crystal",
+   [
+    "Y401",
+    "C415",
+    "C416",
+    "R402"
+   ]
+  ],
+  [
+   "Buttons, SWD pads, LED",
+   [
+    "SW401",
+    "R403",
+    "R404",
+    "R406",
+    "R407",
+    "TP401",
+    "TP402",
+    "TP403",
+    "D401",
+    "R405"
+   ]
+  ]
+ ],
+ "ble.kicad_sch": [
+  [
+   "ESP32-C3-MINI-1 (antenna at the left edge)",
+   [
+    "U501",
+    "C502",
+    "C503"
+   ]
+  ],
+  [
+   "Reset / boot straps",
+   [
+    "R501",
+    "C501",
+    "R502",
+    "R503",
+    "R504"
+   ]
+  ],
+  [
+   "Test pads (fallback flashing)",
+   [
+    "TP501",
+    "TP502",
+    "TP503",
+    "TP504",
+    "TP505"
+   ]
+  ]
+ ],
+ "pogo.kicad_sch": [
+  [
+   "Pogo connector (front edge)",
+   [
+    "J601",
+    "U601",
+    "R601",
+    "R602",
+    "R603"
+   ]
+  ],
+  [
+   "Pogo 5 V switch (hardware DET enable)",
+   [
+    "U602",
+    "Q601",
+    "R604",
+    "R605",
+    "Q602",
+    "R609",
+    "R606",
+    "C601",
+    "C602",
+    "C603",
+    "R607",
+    "R608"
+   ]
+  ]
+ ]
+}

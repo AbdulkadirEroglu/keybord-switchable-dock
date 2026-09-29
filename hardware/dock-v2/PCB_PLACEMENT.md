@@ -1,6 +1,6 @@
 # Dock v2 — PCB placement groups
 
-Where the parts of the v2 dock go. **What connects to what: [DOCK_CONNECTIONS.md](DOCK_CONNECTIONS.md)** (pin by pin, with the MCU pin maps). What each part does and why it was chosen is in the design docs:
+Where the parts of the v2 dock go. **What connects to what: [DOCK_WIRING.md](DOCK_WIRING.md)** (component by component, for wiring) and [DOCK_CONNECTIONS.md](DOCK_CONNECTIONS.md) (the circuit explained, MCU pin maps). What each part does and why it was chosen is in the design docs:
 [power input](../../docs/dock-v2-power-input.md), [USB ports](../../docs/dock-v2-usb-ports.md), [pogo](../../docs/dock-v2-pogo.md), [MCU support](../../docs/dock-v2-mcu-support.md), [MCU selection](../../docs/dock-v2-mcu-selection.md).
 
 References below match the placed schematic and DOCK_CONNECTIONS.md, using one hundred-block per schematic sheet (KiCad: *Annotate → Use first free number after sheet number × 100*). Renumber freely.

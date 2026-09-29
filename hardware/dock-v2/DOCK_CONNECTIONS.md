@@ -1,6 +1,6 @@
 # Dock v2 — Connection & Placement Guide
 
-Use this to wire the v2 dock schematic by hand, one sheet at a time, and later to place the PCB.
+Use this to understand the v2 dock circuit, sheet by sheet (sketches, reasons, placement). **To wire the schematic, use the component-by-component list [DOCK_WIRING.md](DOCK_WIRING.md)**: every part, every pin, what it connects to and which label to draw.
 All parts are already on their sheets (`hardware/dock-v2/`, placed, not wired) with the references used here.
 Why each part was chosen is in `docs/dock-v2-*.md`; where it goes on the board is in [PCB_PLACEMENT.md](PCB_PLACEMENT.md).
 

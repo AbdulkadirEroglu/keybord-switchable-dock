@@ -696,7 +696,7 @@ ROOT
 
 ### Dock (v2)
 
-All parts are placed on their sheets (values, footprints, LCSC numbers). Wire them following DOCK_CONNECTIONS.md:
+All parts are placed on their sheets (values, footprints, LCSC numbers). Wire them following [DOCK_WIRING.md](hardware/dock-v2/DOCK_WIRING.md) (component by component; DOCK_CONNECTIONS.md explains the circuit):
 
 1. POWER: J101, CH224A, TPS54331, AMS1117 (+ PWR_FLAGs)
 2. USB_PORTS: keyboard source port and switch, both PC ports
