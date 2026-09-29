@@ -1,0 +1,14 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "211f96f8-19fe-45b9-be96-b177c1b5d6c4")
+	(paper "A4")
+	(title_block
+		(title "Dock v2 - Power: USB-C PD input (CH224A), 5 V buck (TPS54331), 3.3 V LDO")
+		(date "2026-09-29")
+		(rev "v2.0")
+	)
+	(lib_symbols)
+	(embedded_fonts no)
+)

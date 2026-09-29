@@ -1,0 +1,14 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "5e723931-1b1f-4c1f-9dbd-4e86e488dec2")
+	(paper "A4")
+	(title_block
+		(title "Dock v2 - BLE: ESP32-C3-MINI-1")
+		(date "2026-09-29")
+		(rev "v2.0")
+	)
+	(lib_symbols)
+	(embedded_fonts no)
+)

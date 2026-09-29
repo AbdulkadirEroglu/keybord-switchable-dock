@@ -1,0 +1,14 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "a6551cad-76cb-43b5-b19c-441e3fa27a27")
+	(paper "A4")
+	(title_block
+		(title "Dock v2 - Pogo interface to the pad")
+		(date "2026-09-29")
+		(rev "v2.0")
+	)
+	(lib_symbols)
+	(embedded_fonts no)
+)

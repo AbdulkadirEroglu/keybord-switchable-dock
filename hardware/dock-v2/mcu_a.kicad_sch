@@ -1,0 +1,14 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "bcfba91e-3181-4d07-9970-4b16b455c32a")
+	(paper "A4")
+	(title_block
+		(title "Dock v2 - MCU A: RP2354A, keyboard host (PIO-USB) + Personal PC device")
+		(date "2026-09-29")
+		(rev "v2.0")
+	)
+	(lib_symbols)
+	(embedded_fonts no)
+)

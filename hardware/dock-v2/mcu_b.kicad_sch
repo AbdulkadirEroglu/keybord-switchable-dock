@@ -1,0 +1,14 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "da035690-56be-4ab0-b555-b768c130331c")
+	(paper "A4")
+	(title_block
+		(title "Dock v2 - MCU B: RP2354A, Work PC device")
+		(date "2026-09-29")
+		(rev "v2.0")
+	)
+	(lib_symbols)
+	(embedded_fonts no)
+)

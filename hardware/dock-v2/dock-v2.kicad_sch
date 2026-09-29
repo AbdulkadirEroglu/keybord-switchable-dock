@@ -1,0 +1,297 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "928a9dc6-b0ce-4f47-a17d-f26fd77e396a")
+	(paper "A4")
+	(title_block
+		(title "Dock v2 - top level")
+		(date "2026-09-29")
+		(rev "v2.0")
+		(comment 1 "2x RP2354A + ESP32-C3-MINI-1, USB-C PD input, JLCPCB assembly")
+		(comment 2 "Design docs: docs/dock-v2-*.md; placement: hardware/dock-v2/PCB_PLACEMENT.md")
+	)
+	(lib_symbols)
+	(sheet
+		(at 20 50)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "211f96f8-19fe-45b9-be96-b177c1b5d6c4")
+		(property "Sheetname" "POWER"
+			(at 20 49.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power.kicad_sch"
+			(at 20 76.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "dock-v2"
+				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 100 50)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "337fd23b-54e0-49b3-a4e7-e02473a7692d")
+		(property "Sheetname" "USB_PORTS"
+			(at 100 49.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "usb_ports.kicad_sch"
+			(at 100 76.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "dock-v2"
+				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 180 50)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "bcfba91e-3181-4d07-9970-4b16b455c32a")
+		(property "Sheetname" "MCU_A"
+			(at 180 49.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "mcu_a.kicad_sch"
+			(at 180 76.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "dock-v2"
+				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 20 100)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "da035690-56be-4ab0-b555-b768c130331c")
+		(property "Sheetname" "MCU_B"
+			(at 20 99.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "mcu_b.kicad_sch"
+			(at 20 126.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "dock-v2"
+				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 100 100)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "5e723931-1b1f-4c1f-9dbd-4e86e488dec2")
+		(property "Sheetname" "BLE"
+			(at 100 99.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "ble.kicad_sch"
+			(at 100 126.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "dock-v2"
+				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 180 100)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "a6551cad-76cb-43b5-b19c-441e3fa27a27")
+		(property "Sheetname" "POGO"
+			(at 180 99.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "pogo.kicad_sch"
+			(at 180 126.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "dock-v2"
+				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

@@ -23,6 +23,7 @@ There is no schematic yet, so references below are **suggestions** using one hun
 5. [Layers, sides and net classes](#5-layers-sides-and-net-classes)
 6. [Placement rules](#6-placement-rules)
 7. [Checklist before routing](#7-checklist-before-routing)
+8. [Project files and libraries](#8-project-files-and-libraries)
 
 ## 1. Edges and board outline
 
@@ -164,3 +165,32 @@ Nothing else on the board depends on this choice. Keep the pogo group at the fro
 - [ ] Buck loop compact; U103 has copper for heat.
 - [ ] C201 (220 µF THT) at J201; its lead spacing checked against the delivered parts.
 - [ ] Pogo footprint chosen (front right-angle vs top vertical, §4).
+
+## 8. Project files and libraries
+
+`hardware/dock-v2/` is an empty KiCad 10 project:
+
+- `dock-v2.kicad_sch` (top level) with six empty sheets: `power`, `usb_ports`, `mcu_a`, `mcu_b`, `ble`, `pogo`. Annotation is set to *sheet number × 100* (refs in this doc match).
+- `dock-v2.kicad_pcb`: empty, **4 copper layers**, v1's design rules. No outline yet (§1 gives the starting 90 × 70 mm), so DRC reports "no edges on Edge.Cuts" until you draw it.
+- Net classes Default / Power / USB from v1, with patterns for the v2 net names (`VBUS_IN`, `+5V`, `+3V3`, `KBD_VBUS`, `POGO_5V`, `GND`; `*USB*_D_P` / `*USB*_D_N`). Rename the patterns if you name nets differently.
+- Libraries: `dock_v2_custom.kicad_sym` (project symbols, starts with v1's `TPD4E1U06DBV`) and the shared `../libraries/dock.pretty` (has `Pogo-6`).
+
+What exists in KiCad's stock libraries and what needs a custom symbol or footprint:
+
+| Part | Symbol | Footprint |
+|---|---|---|
+| RP2354A | `MCU_RaspberryPi:RP2354A` ✔ | `Package_DFN_QFN:QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm` ✔ (or RPi's own footprint from the Minimal design) |
+| ESP32-C3-MINI-1 | **custom** (not in stock libs) | **custom** (Espressif KiCad library or LCSC/EasyEDA export) |
+| CH224A | `Interface_USB:CH224K` is pin-compatible; copy and rename the pins (CFG2/SCL, CFG3/SDA) | `Package_SO:SSOP-10-1EP_3.9x4.9mm_P1mm_EP2.1x3.3mm` (check against the ESSOP-10 drawing) |
+| TPS54331DR | **custom** (stock has TPS5430/TPS54336, different pinout) | `Package_SO:SOIC-8_3.9x4.9mm_P1.27mm` ✔ |
+| SY6280AAC | **custom** (5 pins: OUT, GND, ISET, EN, IN) | `Package_TO_SOT_SMD:SOT-23-5` ✔ |
+| TPD4E1U06 | project lib ✔ (from v1) | `Package_TO_SOT_SMD:SOT-23-6` ✔ |
+| AMS1117-3.3 | `Regulator_Linear:AMS1117-3.3` ✔ | `Package_TO_SOT_SMD:SOT-223-3_TabPin2` ✔ |
+| USB-C (TYPE-C-31-M-12) | `Connector:USB_C_Receptacle_USB2.0_16P` ✔ | `Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12` ✔ |
+| ABM8-272-T3 | `Device:Crystal_GND24` ✔ | `Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm` ✔ |
+| 2N7002 | `Transistor_FET:2N7002` ✔ | SOT-23 ✔ |
+| SMBJ15A, SS54 | `Device:D_TVS`, `Device:D_Schottky` ✔ | `Diode_SMD:D_SMB`, `D_SMC` ✔ |
+| 6.8 µH 10 × 10 inductor | `Device:L` ✔ | pick after the part is chosen (SMDRH105R or a Basic alternative) |
+| 3.3 µH AOTA-B201610S3R3 | `Device:L` ✔ | 0806 (2016 metric): RPi's footprint from the Minimal design |
+| Pogo 6-pin | generic `Connector_Generic:Conn_01x06` ✔ | `dock:Pogo-6` ✔ |
+| 220 µF THT | `Device:C_Polarized` ✔ | `Capacitor_THT:CP_Radial_D6.3mm_P5.00mm` (check leads) |
