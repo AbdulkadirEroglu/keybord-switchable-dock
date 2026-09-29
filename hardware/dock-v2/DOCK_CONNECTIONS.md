@@ -87,7 +87,7 @@ Sheet `power.kicad_sch`.
 | J101 | TYPE-C-31-M-12 | `USB_C_Receptacle_HRO_TYPE-C-31-M-12` | C165948 | Power input: charger, 9 V PD |
 | U101 | TPD4E1U06DBVR | `SOT-23-6` | C124691 | ESD on CC1, CC2, D+, D-, <=5 mm from J101 |
 | D101 | SMBJ15A | `D_SMB` | C113988 | VBUS_IN TVS, at J101 VBUS |
-| U102 | CH224A | `SSOP-10-1EP_3.9x4.9mm_P1mm_EP2.1x3.3mm` | C42459160 | VBUS (8 |
+| U102 | CH224A | `SSOP-10-1EP_3.9x4.9mm_P1mm_EP2.1x3.3mm` | C42459160 | VBUS (8) tied to VHV (1) |
 | C101 | 1uF 50V | `C_0603_1608Metric` | C15849 | VHV to GND |
 | R101 | 6.8k | `R_0402_1005Metric` | C25917 | CFG1 to GND: requests 9 V |
 | R102 | 10k | `R_0402_1005Metric` | C25744 | PG pull-up to 3V3 |
@@ -185,7 +185,7 @@ Sheet `power.kicad_sch`. Values from TI's TPS54331 Table 7-1 (5 V design), on JL
 
 | Ref | Value | Footprint | LCSC | Job |
 |---|---|---|---|---|
-| U103 | TPS54331DR | `SOIC-8_3.9x4.9mm_P1.27mm` | C9865 | EN left open (5 V pass-through |
+| U103 | TPS54331DR | `SOIC-8_3.9x4.9mm_P1.27mm` | C9865 | EN left open (5 V pass-through) |
 | C102 | 10uF 25V | `C_0805_2012Metric` | C15850 | VIN, at pins 2/7 |
 | C103 | 10uF 25V | `C_0805_2012Metric` | C15850 | VIN |
 | C104 | 100nF | `C_0402_1005Metric` | C1525 | BOOT to PH |
@@ -193,10 +193,10 @@ Sheet `power.kicad_sch`. Values from TI's TPS54331 Table 7-1 (5 V design), on JL
 | R105 | 51k | `R_0402_1005Metric` | C25794 | COMP series R |
 | C106 | 4.7nF | `C_0402_1005Metric` | C1538 | COMP series C |
 | C107 | 47pF | `C_0402_1005Metric` | C1567 | COMP to GND |
-| R106 | 12k | `R_0402_1005Metric` | C25752 | FB top: 0.8*(1+12/2.2 |
+| R106 | 12k | `R_0402_1005Metric` | C25752 | FB top: 0.8*(1+12/2.2)=5.16 V |
 | R107 | 2.2k | `R_0402_1005Metric` | C25879 | FB bottom |
 | D102 | SS54 | `D_SMC` | C22452 | catch diode PH to GND |
-| L101 | 6.8uH | `— (choose)` | C10167 | SMDRH105R-6R8NT (Ext |
+| L101 | 6.8uH | `L_TechFuse_SL0630` | C207841 | SLO0630H6R8MTT: Isat 8 A (> 5.8 A max current limit), 45 mOhm, 7.1x6.6x3.0 |
 | C108 | 22uF 25V | `C_1206_3216Metric` | C12891 | +5V output |
 | C109 | 22uF 25V | `C_1206_3216Metric` | C12891 | +5V output |
 | C110 | 22uF 25V | `C_1206_3216Metric` | C12891 | +5V output |
@@ -255,7 +255,7 @@ H101–H104 (M3 holes) have no pins.
 - R106/R107 at U103 pin 5, fed from the +5V side of C108–C110; keep BUCK_FB away from BUCK_SW, L101 and D102.
 - C104 right at pins 1 and 8. C105, R105/C106/C107 right at pins 4 and 6.
 - U104 in the centre of the board (it feeds A, B and the ESP32); tab on a copper area. C111/C112 at its pins.
-- L101 footprint: open until the 6.8 µH part is chosen (SMDRH105R-6R8NT or a Basic alternative, ≥ 3 A).
+- L101 = Sunltech **SLO0630H6R8MTT** (C207841): 6.8 µH, saturation 8 A (above the TPS54331's 5.8 A maximum current limit, so it can't saturate in an overload), 45 mΩ, 7.1 × 6.6 × 3.0 mm, footprint `Inductor_SMD:L_TechFuse_SL0630` (same body and pad gap as Sunltech's land pattern). Extended part: JLCPCB has no Basic power inductor.
 
 ---
 
@@ -284,7 +284,7 @@ Sheet `usb_ports.kicad_sch`. The dock is the **source** here: Rp pull-ups on CC,
 |---|---|---|---|---|
 | J201 | TYPE-C-31-M-12 | `USB_C_Receptacle_HRO_TYPE-C-31-M-12` | C165948 | Keyboard |
 | U201 | TPD4E1U06DBVR | `SOT-23-6` | C124691 | ESD D+, D-, CC1, CC2 |
-| R201 | 33k | `R_0402_1005Metric` | C25779 | CC1 Rp to 3V3 (Default USB |
+| R201 | 33k | `R_0402_1005Metric` | C25779 | CC1 Rp to 3V3 (Default USB) |
 | R202 | 33k | `R_0402_1005Metric` | C25779 | CC2 Rp to 3V3 |
 | R203 | 15k | `R_0402_1005Metric` | C25756 | D+ host pull-down |
 | R204 | 15k | `R_0402_1005Metric` | C25756 | D- host pull-down |
@@ -292,8 +292,8 @@ Sheet `usb_ports.kicad_sch`. The dock is the **source** here: Rp pull-ups on CC,
 | R206 | 22 | `R_0402_1005Metric` | C25092 | D- series, near MCU A |
 | U202 | SY6280AAC | `SOT-23-5` | C55136 | KBD_VBUS switch, EN from MCU A |
 | R207 | 6.8k | `R_0402_1005Metric` | C25917 | ISET: 1.0 A |
-| R208 | 100k | `R_0402_1005Metric` | C25741 | EN pull-down (off at reset |
-| C201 | 220uF 16V | `CP_Radial_D6.3mm_P5.00mm` | — | HAND-SOLDER: Koshin PKRJ-016V221ME070-T/A5.0 (Ozdisan |
+| R208 | 100k | `R_0402_1005Metric` | C25741 | EN pull-down (off at reset) |
+| C201 | 220uF 16V | `CP_Radial_D6.3mm_P5.00mm` | — | HAND-SOLDER: Koshin PKRJ-016V221ME070-T/A5.0 (Ozdisan) |
 | C202 | 10uF | `C_0805_2012Metric` | C15850 | KBD_VBUS at J201 |
 | C203 | 1uF | `C_0402_1005Metric` | C52923 | KBD_VBUS at J201 |
 | C204 | 1uF | `C_0402_1005Metric` | C52923 | U202 input |
@@ -517,30 +517,30 @@ Sheet `mcu_a.kicad_sch`. Core circuit = Raspberry Pi's Minimal design (`hardware
 
 | Ref | Value | Footprint | LCSC | Job |
 |---|---|---|---|---|
-| U301 | RP2354A | `RP2350A_QFN-60_RPi_Vias` | C41378174 | A: keyboard host (PIO-USB |
-| L301 | 3.3uH | `L_Abracon_AOTA-B201610S3R3_0806` | C42411119 | pin 1 (dot |
-| C301 | 4.7uF | `C_0402_RPi_Wide` | C23733 | VREG_VIN (RPi C6 |
-| C302 | 4.7uF | `C_0402_RPi_Wide` | C23733 | +1V1 output (RPi C7 |
-| C303 | 4.7uF | `C_0402_1005Metric` | C23733 | VREG_AVDD (RPi C9 |
-| R301 | 33 | `R_0402_1005Metric` | C25105 | 3V3 -> VREG_AVDD (RPi R3 |
-| C304 | 100nF | `C_0402_1005Metric` | C1525 | DVDD 1 (+1V1 |
-| C305 | 100nF | `C_0402_1005Metric` | C1525 | DVDD 2 (+1V1 |
-| C306 | 100nF | `C_0402_1005Metric` | C1525 | DVDD 3 (+1V1 |
-| C307 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3 |
-| C308 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3 |
-| C309 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3 |
-| C310 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3 |
-| C311 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3 |
-| C312 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3 |
-| C313 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3 |
+| U301 | RP2354A | `RP2350A_QFN-60_RPi_Vias` | C41378174 | A: keyboard host (PIO-USB) + Personal PC |
+| L301 | 3.3uH | `L_Abracon_AOTA-B201610S3R3_0806` | C42411119 | pin 1 (dot) = +1V1, pin 2 = VREG_LX |
+| C301 | 4.7uF | `C_0402_RPi_Wide` | C23733 | VREG_VIN (RPi C6) |
+| C302 | 4.7uF | `C_0402_RPi_Wide` | C23733 | +1V1 output (RPi C7) |
+| C303 | 4.7uF | `C_0402_1005Metric` | C23733 | VREG_AVDD (RPi C9) |
+| R301 | 33 | `R_0402_1005Metric` | C25105 | 3V3 -> VREG_AVDD (RPi R3) |
+| C304 | 100nF | `C_0402_1005Metric` | C1525 | DVDD 1 (+1V1) |
+| C305 | 100nF | `C_0402_1005Metric` | C1525 | DVDD 2 (+1V1) |
+| C306 | 100nF | `C_0402_1005Metric` | C1525 | DVDD 3 (+1V1) |
+| C307 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3) |
+| C308 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3) |
+| C309 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3) |
+| C310 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3) |
+| C311 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3) |
+| C312 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3) |
+| C313 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3) |
 | C314 | 10uF | `C_0805_2012Metric` | C15850 | +3V3 bulk |
-| Y301 | 12MHz | `Crystal_SMD_3225-4Pin_3.2x2.5mm` | C20625731 | ABM8-272-T3 (10 pF, 50 ohm |
+| Y301 | 12MHz | `Crystal_SMD_3225-4Pin_3.2x2.5mm` | C20625731 | ABM8-272-T3 (10 pF, 50 ohm) |
 | C315 | 15pF | `C_0402_1005Metric` | C1548 | XIN load |
 | C316 | 15pF | `C_0402_1005Metric` | C1548 | XOUT load |
-| R302 | 1k | `R_0402_1005Metric` | C11702 | XOUT series (RPi R2 |
+| R302 | 1k | `R_0402_1005Metric` | C11702 | XOUT series (RPi R2) |
 | SW301 | SW_Push | `SW_Push_1P1T_XKB_TS-1187A` | C318884 | BOOTSEL A |
 | R303 | 1k | `R_0402_1005Metric` | C11702 | QSPI_SS -> BOOTSEL button |
-| SW302 | SW_Push | `SW_Push_1P1T_XKB_TS-1187A` | C318884 | RESET A (RUN to GND |
+| SW302 | SW_Push | `SW_Push_1P1T_XKB_TS-1187A` | C318884 | RESET A (RUN to GND) |
 | TP301 | TestPoint | `TestPoint_Pad_D1.0mm` | — | SWCLK |
 | TP302 | TestPoint | `TestPoint_Pad_D1.0mm` | — | SWDIO |
 | TP303 | TestPoint | `TestPoint_Pad_D1.0mm` | — | GND |
@@ -711,31 +711,31 @@ R406/R407 matter: at reset and in BOOTSEL mode, MCU A's pins are inputs with wea
 | Ref | Value | Footprint | LCSC | Job |
 |---|---|---|---|---|
 | U401 | RP2354A | `RP2350A_QFN-60_RPi_Vias` | C41378174 | B: Work PC device |
-| L401 | 3.3uH | `L_Abracon_AOTA-B201610S3R3_0806` | C42411119 | pin 1 (dot |
-| C401 | 4.7uF | `C_0402_RPi_Wide` | C23733 | VREG_VIN (RPi C6 |
-| C402 | 4.7uF | `C_0402_RPi_Wide` | C23733 | +1V1 output (RPi C7 |
-| C403 | 4.7uF | `C_0402_1005Metric` | C23733 | VREG_AVDD (RPi C9 |
-| R401 | 33 | `R_0402_1005Metric` | C25105 | 3V3 -> VREG_AVDD (RPi R3 |
-| C404 | 100nF | `C_0402_1005Metric` | C1525 | DVDD 1 (+1V1 |
-| C405 | 100nF | `C_0402_1005Metric` | C1525 | DVDD 2 (+1V1 |
-| C406 | 100nF | `C_0402_1005Metric` | C1525 | DVDD 3 (+1V1 |
-| C407 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3 |
-| C408 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3 |
-| C409 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3 |
-| C410 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3 |
-| C411 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3 |
-| C412 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3 |
-| C413 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3 |
+| L401 | 3.3uH | `L_Abracon_AOTA-B201610S3R3_0806` | C42411119 | pin 1 (dot) = +1V1, pin 2 = VREG_LX |
+| C401 | 4.7uF | `C_0402_RPi_Wide` | C23733 | VREG_VIN (RPi C6) |
+| C402 | 4.7uF | `C_0402_RPi_Wide` | C23733 | +1V1 output (RPi C7) |
+| C403 | 4.7uF | `C_0402_1005Metric` | C23733 | VREG_AVDD (RPi C9) |
+| R401 | 33 | `R_0402_1005Metric` | C25105 | 3V3 -> VREG_AVDD (RPi R3) |
+| C404 | 100nF | `C_0402_1005Metric` | C1525 | DVDD 1 (+1V1) |
+| C405 | 100nF | `C_0402_1005Metric` | C1525 | DVDD 2 (+1V1) |
+| C406 | 100nF | `C_0402_1005Metric` | C1525 | DVDD 3 (+1V1) |
+| C407 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3) |
+| C408 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3) |
+| C409 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3) |
+| C410 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3) |
+| C411 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3) |
+| C412 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3) |
+| C413 | 100nF | `C_0402_1005Metric` | C1525 | IOVDD / ADC / USB_OTP / QSPI (+3V3) |
 | C414 | 10uF | `C_0805_2012Metric` | C15850 | +3V3 bulk |
-| Y401 | 12MHz | `Crystal_SMD_3225-4Pin_3.2x2.5mm` | C20625731 | ABM8-272-T3 (10 pF, 50 ohm |
+| Y401 | 12MHz | `Crystal_SMD_3225-4Pin_3.2x2.5mm` | C20625731 | ABM8-272-T3 (10 pF, 50 ohm) |
 | C415 | 15pF | `C_0402_1005Metric` | C1548 | XIN load |
 | C416 | 15pF | `C_0402_1005Metric` | C1548 | XOUT load |
-| R402 | 1k | `R_0402_1005Metric` | C11702 | XOUT series (RPi R2 |
+| R402 | 1k | `R_0402_1005Metric` | C11702 | XOUT series (RPi R2) |
 | SW401 | SW_Push | `SW_Push_1P1T_XKB_TS-1187A` | C318884 | BOOTSEL B |
 | R403 | 1k | `R_0402_1005Metric` | C11702 | QSPI_SS -> BOOTSEL button |
 | R404 | 1k | `R_0402_1005Metric` | C11702 | QSPI_SS <- B_BOOTSEL from MCU A |
-| R406 | 10k | `R_0402_1005Metric` | C25744 | B_RUN pull-up (beats A pull-down at reset |
-| R407 | 10k | `R_0402_1005Metric` | C25744 | B_BOOTSEL pull-up (beats A pull-down |
+| R406 | 10k | `R_0402_1005Metric` | C25744 | B_RUN pull-up (beats A pull-down at reset) |
+| R407 | 10k | `R_0402_1005Metric` | C25744 | B_BOOTSEL pull-up (beats A pull-down) |
 | TP401 | TestPoint | `TestPoint_Pad_D1.0mm` | — | SWCLK |
 | TP402 | TestPoint | `TestPoint_Pad_D1.0mm` | — | SWDIO |
 | TP403 | TestPoint | `TestPoint_Pad_D1.0mm` | — | GND |
@@ -882,11 +882,11 @@ R504 is needed for the same reason as R406/R407: the ESP32's GPIO9 pull-up is we
 | U501 | ESP32-C3-MINI-1-H4X | `ESP32-C3-MINI-1` | C41349510 | BLE; UART0 to MCU A UART1 |
 | C502 | 10uF | `C_0805_2012Metric` | C15850 | 3V3 bulk |
 | C503 | 100nF | `C_0402_1005Metric` | C1525 | 3V3 at pin 3 |
-| R501 | 10k | `R_0402_1005Metric` | C25744 | EN pull-up (also MCU A, open-drain |
+| R501 | 10k | `R_0402_1005Metric` | C25744 | EN pull-up (also MCU A, open-drain) |
 | C501 | 1uF | `C_0402_1005Metric` | C52923 | EN RC delay |
 | R502 | 10k | `R_0402_1005Metric` | C25744 | GPIO8 pull-up |
 | R503 | 10k | `R_0402_1005Metric` | C25744 | GPIO2 pull-up |
-| R504 | 10k | `R_0402_1005Metric` | C25744 | GPIO9 (BOOT |
+| R504 | 10k | `R_0402_1005Metric` | C25744 | GPIO9 (BOOT) pull-up, beats A pull-down |
 | TP501 | TestPoint | `TestPoint_Pad_D1.0mm` | — | GPIO18 USB_D- |
 | TP502 | TestPoint | `TestPoint_Pad_D1.0mm` | — | GPIO19 USB_D+ |
 | TP503 | TestPoint | `TestPoint_Pad_D1.0mm` | — | TXD0 |
@@ -999,8 +999,8 @@ How the enable works: undocked, DET is pulled up → Q601 on → EN low → cont
 
 | Ref | Value | Footprint | LCSC | Job |
 |---|---|---|---|---|
-| J601 | Pogo 6-pin | `Pogo-6` | — | HAND-SOLDER: Motorobit magnetic 2.54 mm; GND|+5V|DET|RX|TX|GND |
-| U601 | TPD4E1U06DBVR | `SOT-23-6` | C124691 | ESD on DET, TX, RX (1 spare |
+| J601 | Pogo 6-pin | `Pogo-6` | — | HAND-SOLDER: Motorobit magnetic 2.54 mm; GND\|+5V\|DET\|RX\|TX\|GND |
+| U601 | TPD4E1U06DBVR | `SOT-23-6` | C124691 | ESD on DET, TX, RX (1 spare) |
 | R601 | 1k | `R_0402_1005Metric` | C11702 | TX series |
 | R602 | 1k | `R_0402_1005Metric` | C11702 | RX series |
 | R603 | 1k | `R_0402_1005Metric` | C11702 | DET series |
@@ -1010,7 +1010,7 @@ How the enable works: undocked, DET is pulled up → Q601 on → EN low → cont
 | R604 | 10k | `R_0402_1005Metric` | C25744 | DET pull-up to 3V3 |
 | R605 | 100k | `R_0402_1005Metric` | C25741 | EN pull-up to 3V3 |
 | R606 | 6.8k | `R_0402_1005Metric` | C25917 | ISET: 1.0 A |
-| R609 | 100k | `R_0402_1005Metric` | C25741 | Q602 gate pull-down (no veto at reset |
+| R609 | 100k | `R_0402_1005Metric` | C25741 | Q602 gate pull-down (no veto at reset) |
 | C601 | 1uF | `C_0402_1005Metric` | C52923 | U602 input |
 | C602 | 10uF | `C_0805_2012Metric` | C15850 | POGO_5V output |
 | C603 | 1uF | `C_0402_1005Metric` | C52923 | POGO_5V output |

@@ -11,7 +11,7 @@ COMP = {}
 for m in re.finditer(r'\(comp\s*\(ref "([^"]+)"\)(.*?)\n\t\t\)', s, re.S):
     b = m.group(2)
     f = dict(re.findall(r'\(field\s*\(name "([^"]+)"\)\s*(?:\(value "([^"]*)"\)|"([^"]*)")', b)) if False else {}
-    for fm in re.finditer(r'\(field\s*\(name "([^"]+)"\)\s*"?([^")]*)"?\)', b):
+    for fm in re.finditer(r'\(field\s*\(name "([^"]+)"\)\s*"((?:[^"\\]|\\.)*)"', b):
         f[fm.group(1)] = fm.group(2)
     COMP[m.group(1)] = dict(value=re.search(r'\(value "([^"]*)"\)', b).group(1),
                             fp=(re.search(r'\(footprint "([^"]*)"\)', b) or [None, ''])[1],
@@ -41,7 +41,7 @@ def parts_table(refs):
     out = ['| Ref | Value | Footprint | LCSC | Job |', '|---|---|---|---|---|']
     for r in refs:
         c = COMP[r]
-        out.append(f"| {r} | {c['value']} | `{fp_short(c['fp'])}` | {c['lcsc'] or '—'} | {c['note']} |")
+        out.append(f"| {r} | {c['value']} | `{fp_short(c['fp'])}` | {c['lcsc'] or '—'} | {c['note'].replace('|', chr(92) + '|')} |")
     return '\n'.join(out)
 
 def others(net, me, limit=8):

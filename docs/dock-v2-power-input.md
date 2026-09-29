@@ -58,12 +58,12 @@ The USB PD spec's power rules make **9 V mandatory on every PD source above 15 W
 | Rail | Part | JLCPCB | Why |
 |---|---|---|---|
 | VBUS_IN protection | SMBJ15A TVS (C113988) | $0.06, Ext | 15 V stand-off > 9 V (and > 12 V if ever re-configured); TPS54331 is rated to 28 V |
-| 5 V, 3 A | **TPS54331DR** (C9865), SS54 diode, 6.8 µH | $0.27, **Pref** (no fee) | 100 % duty pass-through on 5 V chargers (above); SOIC-8 without a thermal pad; free to place |
+| 5 V, 3 A | **TPS54331DR** (C9865), SS54 diode, 6.8 µH **SLO0630H6R8MTT** (C207841) | $0.27, **Pref** (no fee); inductor $0.11, Ext | 100 % duty pass-through on 5 V chargers (above); SOIC-8 without a thermal pad; free to place |
 | 3.3 V | AMS1117-3.3 (C6186) | $0.16, **Basic** | 5 → 3.3 V at ≤ 0.4 A = ≤ 0.7 W peak in SOT-223 with a copper pad; still regulates from the ≈ 4.7 V pass-through |
 | Keyboard VBUS | SY6280AAC (C55136) | $0.07, Ext | current-limited switch, limit set by resistor |
 | Pogo 5 V | SY6280AAC (same part) | — | one feeder fee covers both |
 
-The 6.8 µH inductor (SMDRH105R-6R8NT) is Ext; picking a Basic inductor instead saves $3.07. Decide at schematic time.
+**Inductor (decided 2026-09-29): Sunltech SLO0630H6R8MTT, C207841.** JLCPCB has no Basic power inductor at all (only mA-rated chip inductors), so any choice costs one feeder fee. The TPS54331's current limit is 3.5–5.8 A, so the inductor must not saturate below 5.8 A: this one saturates at 8 A (typ), is rated 4.5 A, 45 mΩ typ (≈ 0.26 W at the 2.4 A worst case), 7.1 × 6.6 × 3.0 mm, $0.11, 7.9 k in stock. The earlier SMDRH105R-6R8NT (7 A, 10 × 10 mm) is bigger, pricier and has 881 in stock; the 6 × 6 mm parts (SWPA6045 etc.) saturate at 3.9–4.3 A, below the current limit.
 
 ## 4b. 5 V buck component values
 

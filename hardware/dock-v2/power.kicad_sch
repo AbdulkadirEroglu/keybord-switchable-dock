@@ -4832,7 +4832,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_TechFuse_SL0630"
 			(at 259.08 87.63 0)
 			(hide yes)
 			(show_name no)
@@ -4865,7 +4865,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C10167"
+		(property "LCSC" "C207841"
 			(at 259.08 87.63 0)
 			(hide yes)
 			(show_name no)
@@ -4876,7 +4876,7 @@
 				)
 			)
 		)
-		(property "Note" "SMDRH105R-6R8NT (Ext) or a Basic 6.8 uH, 3 A+: pick footprint"
+		(property "Note" "SLO0630H6R8MTT: Isat 8 A (> 5.8 A max current limit), 45 mOhm, 7.1x6.6x3.0"
 			(at 262.25 91.44 0)
 			(show_name no)
 			(do_not_autoplace no)

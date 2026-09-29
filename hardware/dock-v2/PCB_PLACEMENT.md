@@ -85,7 +85,7 @@ Place each group as a cluster at its zone, then route between groups.
 | | | R1xx, C1xx | 6.8 k CFG1, 1 µF VHV, 10 k PG pull-up, 4.7 k ×2 I2C pull-ups | 0402 | CFG1 resistor right at the pin; I2C pull-ups can sit at either end |
 | **2** | **5 V buck** (front-right corner, x ≈ 60–88, y ≈ 54–68) | U103 | TPS54331DR | SOIC-8 | copper pour under/around it for heat |
 | | | D102 | SS54 | SMC | catch diode, **shortest loop**: VIN cap → U103 → PH → D102 → GND |
-| | | L101 | 6.8 µH (SMDRH105R-6R8NT or a Basic 10 × 10 part) | 10 × 10 mm | next to the PH pin |
+| | | L101 | 6.8 µH SLO0630H6R8MTT (C207841) | 7.1 × 6.6 mm, `Inductor_SMD:L_TechFuse_SL0630` | next to the PH pin |
 | | | C1xx | 2 × 10 µF 25 V (in), 3 × 22 µF 25 V 1206 (out), boot 100 nF, SS, comp, feedback | 0805/1206/0402 | input caps **at VIN/GND pins**; feedback divider near VSENSE, away from L101/D102 |
 | **3** | **3.3 V LDO** (centre, ≈ (45, 38)) | U104 | AMS1117-3.3 | SOT-223 | central: 3.3 V goes to A, B and the ESP32; tab on a copper pad |
 | | | C1xx | 10 µF in, 10 µF out | 0805 | |
@@ -199,7 +199,7 @@ Which symbol and footprint to use for each part (every custom symbol already has
 | ABM8-272-T3 | `Device:Crystal_GND24` | `Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm` |
 | 2N7002 | `Transistor_FET:2N7002` | `Package_TO_SOT_SMD:SOT-23` |
 | SMBJ15A, SS54 | `Device:D_TVS`, `Device:D_Schottky` | `Diode_SMD:D_SMB`, `Diode_SMD:D_SMC` |
-| 6.8 µH 10 × 10 inductor | `Device:L` | pick after the part is chosen (SMDRH105R or a Basic alternative) |
+| 6.8 µH SLO0630H6R8MTT | `Device:L` | `Inductor_SMD:L_TechFuse_SL0630` (same 7.1 × 6.6 mm body and 3.6 mm pad gap as Sunltech's land pattern) |
 | Pogo 6-pin | `Connector_Generic:Conn_01x06` | `dock:Pogo-6` |
 | 220 µF THT | `Device:C_Polarized` | `dock_v2:CP_Radial_D6.3mm_P5.00mm` (KiCad has only P2.50 for D6.3; check the delivered leads, P2.50 is the stock fallback) |
 

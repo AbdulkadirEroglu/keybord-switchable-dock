@@ -148,7 +148,7 @@ H101–H104 (M3 holes) have no pins.
 - R106/R107 at U103 pin 5, fed from the +5V side of C108–C110; keep BUCK_FB away from BUCK_SW, L101 and D102.
 - C104 right at pins 1 and 8. C105, R105/C106/C107 right at pins 4 and 6.
 - U104 in the centre of the board (it feeds A, B and the ESP32); tab on a copper area. C111/C112 at its pins.
-- L101 footprint: open until the 6.8 µH part is chosen (SMDRH105R-6R8NT or a Basic alternative, ≥ 3 A).
+- L101 = Sunltech **SLO0630H6R8MTT** (C207841): 6.8 µH, saturation 8 A (above the TPS54331's 5.8 A maximum current limit, so it can't saturate in an overload), 45 mΩ, 7.1 × 6.6 × 3.0 mm, footprint `Inductor_SMD:L_TechFuse_SL0630` (same body and pad gap as Sunltech's land pattern). Extended part: JLCPCB has no Basic power inductor.
 
 ---
 
