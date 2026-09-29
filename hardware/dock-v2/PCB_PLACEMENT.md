@@ -170,9 +170,9 @@ Nothing else on the board depends on this choice. Keep the pogo group at the fro
 
 ## 8. Project files and libraries
 
-`hardware/dock-v2/` is an empty KiCad 10 project:
+`hardware/dock-v2/` is a KiCad 10 project:
 
-- `dock-v2.kicad_sch` (top level) with six empty sheets: `power`, `usb_ports`, `mcu_a`, `mcu_b`, `ble`, `pogo`. Annotation is set to *sheet number × 100* (refs in this doc match).
+- `dock-v2.kicad_sch` (top level) with six sheets: `power`, `usb_ports`, `mcu_a`, `mcu_b`, `ble`, `pogo` (A3). **All 149 parts are placed, not wired**, in labelled groups, with reference, value, footprint, LCSC number (hidden field `LCSC`) and a short `Note` saying what the part does. Annotation is set to *sheet number × 100* (refs in this doc match).
 - `dock-v2.kicad_pcb`: empty, **4 copper layers**, v1's design rules. No outline yet (§1 gives the starting 90 × 70 mm), so DRC reports "no edges on Edge.Cuts" until you draw it.
 - Net classes Default / Power / USB from v1, with patterns for the v2 net names (`VBUS_IN`, `+5V`, `+3V3`, `KBD_VBUS`, `POGO_5V`, `GND`; `*USB*_D_P` / `*USB*_D_N`). Rename the patterns if you name nets differently.
 - Libraries (project):
@@ -201,7 +201,7 @@ Which symbol and footprint to use for each part (every custom symbol already has
 | SMBJ15A, SS54 | `Device:D_TVS`, `Device:D_Schottky` | `Diode_SMD:D_SMB`, `Diode_SMD:D_SMC` |
 | 6.8 µH 10 × 10 inductor | `Device:L` | pick after the part is chosen (SMDRH105R or a Basic alternative) |
 | Pogo 6-pin | `Connector_Generic:Conn_01x06` | `dock:Pogo-6` |
-| 220 µF THT | `Device:C_Polarized` | `Capacitor_THT:CP_Radial_D6.3mm_P5.00mm` (check leads) |
+| 220 µF THT | `Device:C_Polarized` | `dock_v2:CP_Radial_D6.3mm_P5.00mm` (KiCad has only P2.50 for D6.3; check the delivered leads, P2.50 is the stock fallback) |
 
 ## 9. Copying Raspberry Pi's core layout
 

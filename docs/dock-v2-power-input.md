@@ -65,6 +65,23 @@ The USB PD spec's power rules make **9 V mandatory on every PD source above 15 W
 
 The 6.8 µH inductor (SMDRH105R-6R8NT) is Ext; picking a Basic inductor instead saves $3.07. Decide at schematic time.
 
+## 4b. 5 V buck component values
+
+From TI's datasheet Table 7-1 (typical design 12 V → 5 V, 570 kHz, 6.8 µH, ceramic output), adjusted to JLCPCB Basic parts (no feeder fees):
+
+| Part | TI Table 7-1 | Dock v2 | Why |
+|---|---|---|---|
+| Feedback (RO1 / RO2) | 10 k / 1.91 k → 4.99 V | **12 k / 2.2 k → 5.16 V** | Basic values; 5.16 V leaves room for the switch and cable drops to the keyboard and pad |
+| Compensation R3 | 49.9 k | **51 k** | Basic |
+| Compensation C1 (series) | 4.7 nF | **4.7 nF** | |
+| Compensation C2 (to GND) | 39 pF | **47 pF** | Basic; pole moves from ≈ 80 to ≈ 66 kHz, still far above the ≈ 25 kHz crossover |
+| Output | 2 × 33 µF ceramic | **3 × 22 µF 25 V 1206** | ≈ same effective capacitance after DC bias at 5 V |
+| Soft start | — | **10 nF** | T_SS = 10 nF × 0.8 V / 2 µA = 4 ms (datasheet: 1–10 ms) |
+| Boot | 0.1 µF | **100 nF** | |
+| EN | UVLO divider suggested | **left open** (internal pull-up) | a UVLO divider would stop the 5 V pass-through on a 5 V-only charger |
+
+Check the loop on the first board (load step on +5V). TI WEBENCH can confirm the values for 9 V in.
+
 ## 5. Recommendation
 
 - **Option C: CH224A (9 V, I2C to RP2354A A) → TPS54331 → 5 V → AMS1117 → 3.3 V**, as in the v2 plan, with one upgrade: wire the CH224A's I2C, not just PG.

@@ -9,3 +9,4 @@
 | `ESP32-C3-MINI-1` symbol | `../dock-v2/dock_v2_custom.kicad_sym` | same repository (footprint link changed to `dock_v2:`) | same |
 | `CH224A` symbol | `../dock-v2/dock_v2_custom.kicad_sym` | KiCad `Interface_USB:CH224K`, renamed, pin names per the CH224A datasheet | CC-BY-SA 4.0 with the KiCad library exception |
 | `RP2354A_RPiFP` symbol | `../dock-v2/dock_v2_custom.kicad_sym` | KiCad `MCU_RaspberryPi:RP2350A` (base of KiCad's RP2354A), renamed, footprint set to `dock_v2:RP2350A_QFN-60_RPi_Vias` | CC-BY-SA 4.0 with the KiCad library exception |
+| `CP_Radial_D6.3mm_P5.00mm` | `dock_v2.pretty/` | KiCad `Capacitor_THT:CP_Radial_D6.3mm_P2.50mm`, pad 2 moved to 5.00 mm and the body re-centred; 3D model = the P2.50 model offset 1.25 mm | CC-BY-SA 4.0 with the KiCad library exception |
