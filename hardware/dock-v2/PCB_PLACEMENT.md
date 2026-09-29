@@ -116,7 +116,7 @@ Place each group as a cluster at its zone, then route between groups.
 | **8** | **BLE** (left edge, front half, ≈ x 0–17, y 40–53) | U501 | ESP32-C3-MINI-1-H4X | module 13.2 × 16.6 mm | **antenna end on the left edge**, keep-out: no copper on any layer, no parts (§6) |
 | | | R5xx, C5xx | 10 k + 1 µF EN, 10 k GPIO8, 10 k GPIO2, 10 µF + 100 nF | 0402 / 0805 | decoupling at the 3V3 pin |
 | | | TP501–504 | GPIO18/19 (USB), TXD0/RXD0 | test pads | fallback flashing |
-| **9** | **Pogo** (front edge, centre) | J601 | 6-pin 2.54 mm magnetic pogo, right-angle (Motorobit) | `dock:Pogo-6` (25.2 × 4.6 mm) | **hand-soldered**; centre ≈ (45, 67.7); see §4 |
+| **9** | **Pogo** (front edge, centre) | J601 | 7-pin 2.54 mm magnetic pogo, right-angle with ears (Motorobit) | `dock:Pogo-7` (27.7 × 4.6 mm, scaled from Pogo-6) | **hand-soldered**; centre ≈ (45, 67.7); see §4 |
 | | | U601 | TPD4E1U06 | SOT-23-6 | ESD on DET, TX, RX, **right at J601** |
 | | | R6xx | 1 k ×3 (TX, RX, DET), 10 k DET pull-up, 100 k EN pull-up, 6.8 k ISET, 10 k / 15 k POGO_5V divider | 0402 | series resistors between U601 and the MCU A traces |
 | | | Q601 | 2N7002 | SOT-23 | DET inverter → SY6280 EN |
@@ -178,7 +178,7 @@ Nothing else on the board depends on this choice. Keep the pogo group at the fro
 - Libraries (project):
   - symbols `dock_v2_custom.kicad_sym`: **RP2354A_RPiFP**, **ESP32-C3-MINI-1**, **CH224A**, **TPS54331DR**, **SY6280AAC**, **TPD4E1U06DBV**;
   - footprints `../libraries/dock_v2.pretty` (library nickname `dock_v2`): **RP2350A_QFN-60_RPi_Vias**, **L_Abracon_AOTA-B201610S3R3_0806**, **C_0402_RPi_Wide**, **ESP32-C3-MINI-1** (with the antenna keep-out zone), 3D model in `../libraries/dock_v2.3dshapes`;
-  - `../libraries/dock.pretty` (nickname `dock`, shared with v1): `Pogo-6`.
+  - `../libraries/dock.pretty` (nickname `dock`, shared with v1): `Pogo-7` (v2), `Pogo-6` (v1).
   - Third-party sources and licences: `../libraries/THIRD_PARTY.md`.
 
 Which symbol and footprint to use for each part (every custom symbol already has its footprint filled in; pins and pads were checked to match one to one):
@@ -200,7 +200,7 @@ Which symbol and footprint to use for each part (every custom symbol already has
 | 2N7002 | `Transistor_FET:2N7002` | `Package_TO_SOT_SMD:SOT-23` |
 | SMBJ15A, SS54 | `Device:D_TVS`, `Device:D_Schottky` | `Diode_SMD:D_SMB`, `Diode_SMD:D_SMC` |
 | 6.8 µH SLO0630H6R8MTT | `Device:L` | `Inductor_SMD:L_TechFuse_SL0630` (same 7.1 × 6.6 mm body and 3.6 mm pad gap as Sunltech's land pattern) |
-| Pogo 6-pin | `Connector_Generic:Conn_01x06` | `dock:Pogo-6` |
+| Pogo 7-pin | `Connector_Generic:Conn_01x07` | `dock:Pogo-7` |
 | 220 µF THT | `Device:C_Polarized` | `dock_v2:CP_Radial_D6.3mm_P5.00mm` (KiCad has only P2.50 for D6.3; check the delivered leads, P2.50 is the stock fallback) |
 
 ## 9. Copying Raspberry Pi's core layout

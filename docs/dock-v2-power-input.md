@@ -9,11 +9,11 @@ Date: 2026-09-29. Prices: JLCPCB parts search, 10+ tier. "Ext" = Extended part (
 | Load | Typical | Worst case | Notes |
 |---|---|---|---|
 | Keyboard (USB-C, via current-limited switch) | 0.1–0.15 A | 1.0 A | current keyboard is rated 200 mA; the 1 A limit leaves room for a brighter keyboard later |
-| Pogo → pad (TP4056 charging + pad system while docked) | 0.6 A | 1.0 A | pad fast charge 510 mA + Pico/BLE/display + RGB; dock switch limits at ≈ 1 A |
+| Pogo → pad (TP4056 charging + pad system while docked) | 0.7–0.8 A | 1.45 A | pad fast charge 510 mA + Pico/BLE/display + RGB (≈ 1.2 A all LEDs white); 7-pin pogo, two +5V contacts, switch limit 1.45 A |
 | 3.3 V rail via LDO (2 × RP2354A + ESP32-C3) | 0.15 A | 0.4 A | ESP32-C3 radio peaks ≈ 350 mA |
-| **Total** | **≈ 0.9 A (4.5 W)** | **≈ 2.4 A (12 W)** | |
+| **Total** | **≈ 1 A (5 W)** | **≈ 2.85 A (15 W)** | limits add up to just under the TPS54331's 3 A; the realistic peak is ≈ 1.8 A |
 
-So the dock needs **≈ 12 W worst case**. From a 9 V input through a ≈ 90 % buck that is ≈ 1.5 A at 9 V, which any 18 W or larger PD charger gives.
+So the dock needs **≈ 15 W worst case** (all limits at once). From a 9 V input through a ≈ 90 % buck that is ≈ 1.8 A at 9 V: fine for the 30 W charger (9 V × 3 A); an 18 W charger (9 V × 2 A) also covers it.
 
 ## 2. Ways to power the dock
 

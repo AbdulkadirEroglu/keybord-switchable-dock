@@ -2,7 +2,7 @@
 
 **Decisions (2026-09-29):**
 - **Hardware DET enable kept:** pad 5 V turns on from DET alone; firmware can only veto.
-- **Contacts are rated 1 A** (Motorobit listing). Limit stays at R_SET 6.8 kΩ (1.0 A typ). The pad firmware **must** keep its docked draw ≤ ≈ 0.85 A (cap LED brightness while docked), so the contacts run below their rating in normal use; the limiter only acts on faults.
+- **7-pin connector (2026-09-29, replaces the 6-pin): `GND | +5V | +5V | DET | RX | TX | GND`.** Contacts are rated 1 A each, so +5V and GND on two contacts give 2 A. Limit raised to **R_SET 4.7 kΩ → 1.45 A** (1.09–1.81 A, below the 2 A of the two contacts). The earlier requirement to dim the pad's LEDs while docked (≤ 0.85 A) is **dropped**.
 
 Date: 2026-09-29. Prices: JLCPCB parts search. "Ext" = Extended ($3.07 feeder fee per unique part), "Basic" = no fee.
 
@@ -10,8 +10,8 @@ The pad side does not change (pogo board with SMAJ5.0A + TPD4E1U06, DET tied to 
 
 ## 1. What carries over from v1
 
-- **Connector:** the same 6-pin 2.54 mm magnetic pogo set (Motorobit, "6-Pin 2.54mm 90° Pogo Pin Magnetic Connector Set – With Ear"), footprint `dock:Pogo-6`. Through-hole: **hand-soldered**.
-- **Contact order:** `GND | +5V | DET | RX | TX | GND` (dock side; pad pin 1 meets dock pin 6).
+- **Connector:** Motorobit "7-Pin 2.54mm 90C Pogo Pin Magnetic Connector Set – With Ear" (330 TL + VAT; a straight 7-pin set, 200 TL, exists for docking the pad on top), footprint `dock:Pogo-7` (scaled from Pogo-6: check against the part). Through-hole: **hand-soldered**. (v1 and the first v2 plan used the 6-pin set.)
+- **Contact order:** `GND | +5V | +5V | DET | RX | TX | GND` (dock side; pad pin 1 meets dock pin 7).
 - **+5 V is off while undocked:** the contacts are exposed, so they are dead until a pad pulls DET low.
 - **BLE is the normal data link;** the pogo UART is for diagnostics/recovery only.
 - **1 kΩ series resistors** on TX, RX and DET, **TPD4E1U06** ESD right at the contacts (same part as the USB ports: no new feeder fee).
@@ -29,7 +29,7 @@ v1 used a TPS2552 whose active-low EN was driven straight by DET. v2 uses the **
                                              └── drain Q602 2N7002, gate ◄── RP2354A A GPIO  POGO_OFF (100 k to GND)
 
 +5V ──► SY6280AAC ──► POGO_5V ── 10 µF + 1 µF ── pogo +5V
-          ISET ── 6.8 kΩ  (1.0 A typ, 0.75–1.25 A; same value as the keyboard port)
+          ISET ── 4.7 kΩ  (1.45 A typ, 1.09–1.81 A; the same 4.7 k as the CH224A I2C pull-ups)
 POGO_5V ── 10 k / 15 k ──► RP2354A A ADC (4th ADC pin; 5.1 V → 3.06 V)
 ```
 
@@ -40,7 +40,7 @@ POGO_5V ── 10 k / 15 k ──► RP2354A A ADC (4th ADC pin; 5.1 V → 3.06 
 - Output discharge (150 Ω) pulls the contact voltage down quickly when the pad leaves.
 - Hot-plug: the pad's input capacitors charge through the SY6280's current limit; the pad's SMAJ5.0A catches ringing.
 
-## 3. Current limit: 1 A
+## 3. Current limit: 1.45 A (7-pin connector)
 
 The pad draws from the pogo 5 V while docked:
 
@@ -52,9 +52,10 @@ The pad draws from the pogo 5 V while docked:
 | **Total, worst case** | **≈ 1.2 A** |
 | Total, normal (charging, LEDs at moderate brightness) | ≈ 0.7–0.8 A |
 
-- **Limit at 1.0 A (R_SET 6.8 kΩ, same as the keyboard)**, as in v1. The one case that exceeds it is fast charging with every LED full white. For that, the pad caps its LED brightness while docked (required, see §6). If it isn't capped, the SY6280 holds the current, POGO_5V sags, and the pad's TPS2116 moves to battery below ≈ 4.0 V. It degrades gracefully, with nothing damaged.
-- Why not raise it: the contact rating of the Motorobit set isn't published (similar 2.54 mm magnetic pogo sets are listed at 1–2 A per pin). With one +5 V pin, 1 A is the safe choice until the rating is known.
-- 5 V budget: keyboard 1 A + pogo 1 A + 3.3 V rail 0.4 A = 2.4 A worst case, inside the TPS54331's 3 A (see power doc).
+- **Limit 1.45 A (R_SET 4.7 kΩ):** covers the pad's worst case (≈ 1.2 A: fast charging with every LED full white), so **no LED dimming is needed**. On a switch at the low end of its tolerance (1.09 A) that one corner is capped: POGO_5V sags and the pad's TPS2116 moves to battery. Nothing is damaged.
+- The highest possible limit (1.81 A) stays below the 2 A of the two +5V contacts.
+- 5 V budget: keyboard 1.0 A + pogo 1.45 A + 3.3 V 0.4 A ≈ 2.85 A at the nominal limits, inside the TPS54331's 3 A; realistic use is ≈ 1 A (power doc §1).
+- History: with the 6-pin connector (one +5V contact) the limit was 1.0 A and the pad had to dim its LEDs while docked (≤ 0.85 A). Replaced by the 7-pin connector on 2026-09-29.
 
 ## 4. Pogo UART
 
@@ -67,23 +68,24 @@ The pad draws from the pogo 5 V while docked:
 
 | Part | Qty | Feeder |
 |---|---|---|
-| 6-pin magnetic pogo (Motorobit), THT | 1 | hand-soldered |
+| 7-pin magnetic pogo (Motorobit, 90° with ears), THT | 1 | hand-soldered |
 | SY6280AAC (C55136) | 1 | shared with the keyboard switch |
 | TPD4E1U06 (C124691) | 1 (DET, TX, RX; 1 spare) | shared with the USB ports |
 | 2N7002 (C8545) | 1 | Basic |
-| 1 kΩ ×3, 10 kΩ ×2, 15 kΩ, 100 kΩ, 6.8 kΩ | 8 | Basic |
+| 1 kΩ ×3, 10 kΩ ×2, 15 kΩ, 100 kΩ ×2, 4.7 kΩ | 9 | Basic |
+| 2N7002 (Q602, POGO_OFF veto) | 1 | Basic |
 | 10 µF 0805 (C15850), 1 µF ×2 | 3 | Basic |
 
 **No new Extended part** for this block.
 
 ## 6. Answered
 
-1. Contact rating: **1 A** per pin (Motorobit). Normal pad load (0.7–0.8 A) is under it. The SY6280's 0.75–1.25 A limit spread means a faulty pad could push ≈ 1.25 A through the +5 V contact until the SY6280's thermal cut-out or the firmware veto (POGO_5V sag on the ADC) acts; acceptable for a fault. For a strict ≤ 1 A ceiling instead: R_SET 8.2 kΩ (0.62–1.04 A), at the cost of hitting the limit during normal fast charging on a low-tolerance part.
-2. Hardware DET enable: **kept**.
+1. Contact rating: **1 A** per pin (Motorobit). Solved by the 7-pin connector: two contacts each for +5V and GND.
+2. Hardware DET enable: **kept**. The firmware veto is a second 2N7002 (Q602), see DOCK_CONNECTIONS.md §8.
 
 ## 7. Not verified
 
 - The pogo set's current and cycle rating (not on the Motorobit listing).
-- **Pad firmware requirement:** cap LED brightness while docked so the total docked draw stays ≤ ≈ 0.85 A (charging 0.51 A + electronics 0.15 A leaves ≈ 0.2 A for LEDs, ≈ 13 LEDs full white or all 36 at ≈ 35 %).
+- The 7-pin footprint (`dock:Pogo-7`) is scaled from the 6-pin one: check the body and ears against the delivered part.
 
-Sources: [SY6280 datasheet (Silergy)](https://www.olimex.com/Products/Components/IC/SY6280/resources/SY6280AAC.PDF), [Motorobit 6-pin magnetic pogo set](https://www.motorobit.com/6-pin-254mm-90c-pogo-pin-magnetic-connector-set-with-ear), DESIGN.md §10, §12, §15 (pad loads and pad-side pogo board), JLCPCB parts search.
+Sources: [SY6280 datasheet (Silergy)](https://www.olimex.com/Products/Components/IC/SY6280/resources/SY6280AAC.PDF), [Motorobit 7-pin 90° magnetic pogo set](https://www.motorobit.com/7-pin-254mm-90c-pogo-pin-magnetic-connector-set-with-ear), DESIGN.md §10, §12, §15 (pad loads and pad-side pogo board), JLCPCB parts search.

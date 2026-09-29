@@ -22,7 +22,7 @@ Net names used everywhere:
 | **+5V** | Buck output, 5.16 V (≈ 4.7 V pass-through on a 5 V-only charger) |
 | **+3V3** | AMS1117 output: both RP2354A, the ESP32-C3, all pull-ups |
 | **KBD_VBUS** | Keyboard 5 V after the SY6280 switch (off until a keyboard is detected) |
-| **POGO_5V** | Pad 5 V after the pogo SY6280 switch (on while the pad is docked) |
+| **POGO_5V** | Pad 5 V after the pogo SY6280 switch (on while the pad is docked); two contacts, limit ≈ 1.45 A |
 | A_1V1, B_1V1 | Each RP2354A's own 1.1 V core rail. **Local labels, never a `+1V1` power symbol**: a power symbol is global and would join A's and B's regulators |
 | PC1_VBUS, PC2_VBUS | The PCs' VBUS: **sense only**, never joined to a dock rail |
 
@@ -369,23 +369,23 @@ Test pads: {{ONE:TP501, TP502, TP503, TP504, TP505}}.
 
 ## 8. Pogo interface
 
-Sheet `pogo.kicad_sch`. Contact order (dock side): `GND | +5V | DET | RX | TX | GND`; pad pin 1 meets dock pin 6.
+Sheet `pogo.kicad_sch`. **7 contacts**, dock side: `GND | +5V | +5V | DET | RX | TX | GND`; pad pin 1 meets dock pin 7 (the pad's pogo board is the mirror: `GND | TX | RX | DET | +5V | +5V | GND`). Two contacts each for +5V and GND: the contacts are rated 1 A, so the pad can draw up to ≈ 1.45 A (the switch limit) with no LED dimming.
 
 ```text
- J601 pin 1, pin 6 ── GND
- J601 pin 2 (+5V) ──●── POGO_5V ◄── U602 pin 1 OUT (SY6280)
+ J601 pin 1, pin 7 ── GND
+ J601 pins 2 and 3 (+5V, +5V) ──●── POGO_5V ◄── U602 pin 1 OUT (SY6280)
                     ├── C602 10 µF, C603 1 µF ── GND
                     └── R607 10 k ──●── POGO_5V_SENSE ──► MCU A GPIO29 (ADC3)
                                     └── R608 15 k ── GND
- +5V ──●── U602 pin 5 IN;  C601 1 µF ── GND        U602 pin 3 ISET ── R606 6.8 k ── GND (1.0 A)
+ +5V ──●── U602 pin 5 IN;  C601 1 µF ── GND        U602 pin 3 ISET ── R606 4.7 k ── GND (1.45 A)
  U602 pin 4 EN ──●── POGO_EN ── R605 100 k ── +3V3
                  ├── Q601 drain   (Q601 gate = POGO_DET, source = GND)
                  └── Q602 drain   (Q602 gate = POGO_OFF ◄── MCU A GPIO15, R609 100 k to GND; source = GND)
- J601 pin 3 (DET) ──●── POGO_DET_J ── R603 1 k ──●── POGO_DET ──► MCU A GPIO14, Q601 gate
+ J601 pin 4 (DET) ──●── POGO_DET_J ── R603 1 k ──●── POGO_DET ──► MCU A GPIO14, Q601 gate
                     └── U601 pin 3 (ESD)         └── R604 10 k ── +3V3
- J601 pin 4 (RX)  ──●── POGO_RX_J ── R602 1 k ── POGO_RX ──► MCU A GPIO13 (PIO UART RX)
+ J601 pin 5 (RX)  ──●── POGO_RX_J ── R602 1 k ── POGO_RX ──► MCU A GPIO13 (PIO UART RX)
                     └── U601 pin 6
- J601 pin 5 (TX)  ──●── POGO_TX_J ── R601 1 k ── POGO_TX ◄── MCU A GPIO12 (PIO UART TX)
+ J601 pin 6 (TX)  ──●── POGO_TX_J ── R601 1 k ── POGO_TX ◄── MCU A GPIO12 (PIO UART TX)
                     └── U601 pin 1
  U601 pin 2 ── GND;  pins 4, 5: no-connect
 ```
@@ -410,9 +410,9 @@ How the enable works: undocked, DET is pulled up → Q601 on → EN low → cont
 
 **Placement**
 
-- J601 at the front edge, centre (right-angle pogo), hand-soldered; see PCB_PLACEMENT.md §4 for the pad-on-top alternative.
+- J601 at the front edge, centre: Motorobit **7-pin 2.54 mm 90° magnetic set with ears** (a straight 7-pin version exists for the pad-on-top alternative, PCB_PLACEMENT.md §4). Hand-soldered. Footprint `dock:Pogo-7` is scaled from Pogo-6: check the body and ears against the delivered part.
 - U601 right at J601; R601–R603 between U601 and the MCU A traces.
-- U602, Q601, Q602 and their resistors behind J601; C602/C603 at J601 pin 2.
+- U602, Q601, Q602 and their resistors behind J601; C602/C603 at J601 pins 2–3. Join pins 2 and 3 with a wide trace (Power class) right at the connector so both contacts share the current.
 - POGO_5V is Power class. Mark pin 1 on the silkscreen.
 
 ---

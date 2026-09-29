@@ -1,52 +1,67 @@
-# DESIGN.md — V1 Engineering Baseline
+# DESIGN.md — Engineering Baseline
+
+**Status (2026-09-29, branch `dock-v2`):**
+
+- **Dock: v2**, chips on the board, JLCPCB assembly. Decided part by part in the design review; the reasoning is in `docs/dock-v2-mcu-selection.md`, `dock-v2-power-input.md`, `dock-v2-usb-ports.md`, `dock-v2-pogo.md`, `dock-v2-mcu-support.md`. The wiring is in [`hardware/dock-v2/DOCK_CONNECTIONS.md`](hardware/dock-v2/DOCK_CONNECTIONS.md), placement in [`hardware/dock-v2/PCB_PLACEMENT.md`](hardware/dock-v2/PCB_PLACEMENT.md). Sections 1–7 and 16–22 below describe the v2 dock.
+- **Pad: to be redesigned.** Sections 8–14 are the v1 pad plan, kept unchanged as the starting point. Section 15 (docking) already has the v2 7-pin interface.
+- **v1 dock** (three Pico modules, powered from the PCs): complete on `master` (`hardware/dock/`, the v1 version of this file).
 
 ## 1. Design Goals
-
-This document freezes the V1 architecture before schematic capture.
-
-Primary requirements:
 
 - One physical USB keyboard shared between two computers.
 - PC-side connections remain wired USB.
 - No software running on either PC is required for basic keyboard routing.
-- Physical `PERSONAL | OFF | WORK` selection.
+- Physical `PERSONAL | OFF | WORK` selection (on the pad).
 - Detachable wireless control pad.
-- Robust recovery and debug access.
-- No external power adapter for the dock.
+- Robust recovery and debug access: every MCU can be reflashed without special tools.
+- **The dock is powered by its own USB-C PD charger** (≥ 18 W; a 30 W charger is used). It does not draw power from the PCs, and it never back-feeds a PC that is switched off. (v1 ran from the PCs; dropped in v2, see `docs/dock-v2-power-input.md`.)
 - Pad charges automatically while docked.
-- BLE is used only between the pad and dock.
+- BLE is used only between the pad and the dock.
 - Failure states must avoid stuck keyboard/modifier/media reports.
+- **Built by JLCPCB** (machine assembly of the fine-pitch parts); only a few through-hole parts are hand-soldered.
 
 ---
 
 ## 2. System Partitioning
 
-### 2.1 Main Dock
+### 2.1 Main Dock (v2)
 
 Responsibilities:
 
-- USB-host the physical keyboard.
-- Parse incoming HID reports.
-- Maintain target routing state.
-- Forward HID state to one of two independent USB-device endpoints.
-- Receive pad events/status over BLE (the host's own radio).
-- Provide USB power to the keyboard.
-- Select power automatically from Personal or Work PC.
-- Charge/power the pad through the pogo interface.
+- USB-host the physical keyboard (USB-C port, the dock is the source).
+- Present a USB keyboard to each PC.
+- Route keyboard/HID reports to the selected target.
+- Receive pad events and the selector state over BLE.
+- Power the keyboard (switched, current-limited) and the docked pad (switched by DET, current-limited).
+- Negotiate 9 V from a USB-C PD charger and make 5 V and 3.3 V.
 
-Primary devices:
+```text
+ charger ═ J101 ─ CH224A (9 V) ─ TPS54331 ─ +5V ─┬─ AMS1117 ─ +3V3
+                                                 ├─ SY6280 ─ KBD_VBUS ─► keyboard
+                                                 └─ SY6280 ─ POGO_5V ──► pad
+ keyboard ═ J201 ═ PIO-USB ─┐
+                            ▼
+ Personal PC ═ J202 ═══ RP2354A A ◄── UART0, RUN, BOOTSEL, SWD ──► RP2354A B ═══ J203 ═ Work PC
+                            │  └── UART1 ──► ESP32-C3-MINI-1 ~~ BLE ~~ pad
+                            └── PIO UART, DET ──► pogo J601 ═ pad (docked)
+```
 
-- Host/router + BLE — Raspberry Pi Pico 2 W (RP2350 + CYW43439 radio), `A1`
-- HID-A / Personal endpoint — Raspberry Pi Pico 2 (RP2350), `A2`
-- HID-B / Work endpoint — Raspberry Pi Pico 2 (RP2350), `A3`
-- TPS2116 — PC VBUS priority power mux, `U1`
-- TPS2553 — keyboard VBUS current-limited switch, `U3`
-- TPS2552 — pogo +5V current-limited switch, enabled by `DET`, `U8`
-- 4 × TPD4E1U06 — ESD protection: each USB-C port's D+, D−, CC1, CC2 (`U4`–`U6`) and the pogo contacts (`U9`). SOT-23-6, each channel clamps to GND only (no VBUS rail pin, so no back-feed path into an unpowered PC's VBUS)
+| Device | Ref | Job |
+|---|---|---|
+| RP2354A **A** (RP2350 + 2 MB flash, QFN-60) | U301 | Keyboard host (Pico-PIO-USB), Personal PC device (native USB), router, controls B, the ESP32 and the pogo |
+| RP2354A **B** | U401 | Work PC device (native USB) |
+| ESP32-C3-MINI-1-H4X | U501 | BLE central to the pad (pre-certified module, PCB antenna), UART to A |
+| CH224A | U102 | USB-PD sink: asks for 9 V; I2C status to A |
+| TPS54331 + SS54 + 6.8 µH | U103, D102, L101 | 5 V buck (5.16 V), 3 A; 100 % duty pass-through on a 5 V-only charger |
+| AMS1117-3.3 | U104 | 3.3 V for A, B, the ESP32 |
+| SY6280AAC × 2 | U202, U602 | Keyboard VBUS switch (1.0 A), pogo 5 V switch (1.45 A) |
+| TPD4E1U06 × 5 | U101, U201, U203, U204, U601 | ESD on every USB-C port and the pogo contacts (clamps to GND only: no back-feed path into an unpowered PC) |
+| TYPE-C-31-M-12 × 4 | J101, J201, J202, J203 | Power, keyboard, Personal PC, Work PC |
+| Magnetic pogo, 7 pins | J601 | Pad docking (hand-soldered) |
 
-All three Pico boards are socketed modules (see §18.1). Each module generates its own 3.3 V from `SYS_5V`; the dock has no separate 3.3 V regulator.
+Why two chips: no affordable MCU has three USB 2.0 controllers (researched in `docs/dock-v2-mcu-selection.md`); A does the host and one device, B the other device. Why RP2354A: same firmware base as v1 (TinyUSB + Pico-PIO-USB, hub support), UF2 flashing, no programmer needed.
 
-### 2.2 Wireless Control Pad
+### 2.2 Wireless Control Pad (v1 plan, to be redesigned)
 
 Responsibilities:
 
@@ -84,259 +99,110 @@ The Pico 2 WH has its own buck-boost 3.3 V regulator that runs from 1.8–5.5 V 
 
 ---
 
-## 3. Main Dock Detailed Design
+## 3. Dock USB Ports (v2)
 
-### 3.1 USB Ports
+All four are the same 16-pin USB 2.0 USB-C receptacle (TYPE-C-31-M-12, rated 20 V / 5 A), each with a TPD4E1U06 within 5 mm (D+, D−, CC1, CC2).
 
-Three USB-C connectors are required.
+| Port | Role | CC | Data | VBUS |
+|---|---|---|---|---|
+| J101 power (right edge) | sink | CH224A (built-in Rd) | CH224A D+/D− (QC/BC1.2) | VBUS_IN, SMBJ15A TVS |
+| J201 keyboard (left edge) | **source** | 33 k Rp to 3.3 V (Default USB), read by A's ADC | A GPIO6/7 (PIO-USB) via 22 Ω, 15 k host pull-downs | KBD_VBUS from SY6280, 220 µF THT + 10 µF + 1 µF |
+| J202 Personal PC (back) | sink | 5.1 k Rd | A USB_DP/DM via 22 Ω | **sense only**: 22 k / 33 k divider to A GPIO0 |
+| J203 Work PC (back) | sink | 5.1 k Rd | B USB_DP/DM via 22 Ω | **sense only**: divider to B GPIO2 |
 
-#### Keyboard Port
-
-Role:
-
-- USB 2.0 Host / Source
-
-Requirements:
-
-- RP2350 USB host data
-- Correct USB-C source-side CC configuration
-- VBUS supplied from `SYS_5V` through TPS2553 (≈0.92–1.07 A limit, R<sub>ILIM</sub> 26.1 kΩ)
-- 2 × 100 µF + 1 µF on `KEYBOARD_VBUS` (≥120 µF USB host requirement, met even at −20% tolerance)
-- 100 kΩ pull-down on `KEYBOARD_VBUS_EN` so the keyboard stays off until firmware enables it
-- CC1/CC2 → 56 kΩ Rp to `KEYBOARD_VBUS` (default USB power advertisement)
-- TPD4E1U06 close to connector, protecting D+, D−, CC1 and CC2
-- Shield termination: 330 Ω ∥ 100 nF to GND
-
-#### Personal PC Port
-
-Role:
-
-- USB 2.0 Device / Sink
-
-Requirements:
-
-- HID-A (Pico 2) D+/D− via the Pico's USB test pads (§18.1)
-- CC1 → 5.1 kΩ → GND
-- CC2 → 5.1 kΩ → GND
-- CC1/CC2 also sensed by the HID endpoint's ADC (§4.3)
-- VBUS routed to the TPS2116 input and to the endpoint's VBUS sense divider (§5)
-- TPD4E1U06 close to connector, protecting D+, D−, CC1 and CC2
-
-#### Work PC Port
-
-Same electrical architecture as Personal PC, using HID-B and the second TPS2116 input.
-
-No USB Power Delivery is required.
+- **Keyboard port (cold socket):** KBD_VBUS stays off until A sees a sink's Rd on CC (≈ 0.44 V) for > 100 ms; off again on unplug. A charger or PC plugged in by mistake shows Rp, so the dock never turns VBUS on against it. EN has a 100 k pull-down: off at reset and with blank firmware.
+- **PC ports:** the dock takes no power from the PCs. Each MCU enables its D+ pull-up (connects) only while its PC's VBUS is present.
+- Ground is shared by both PCs, the charger and the dock (as in v1 and every KVM switch); the charger is isolated.
 
 ---
 
-## 4. Dock Power
+## 4. Dock Power (v2)
 
-### 4.1 Dual-PC Input
-
-```text
-PERSONAL_VBUS ──► TPS2116 VIN1 (priority)
-WORK_VBUS     ──► TPS2116 VIN2
-
-TPS2116 VOUT  ──► SYS_5V  (1 µF + 2 × 100 µF)
-```
-
-Implementation (TPS2116 priority mode):
-
-- `MODE` tied to VIN1; PR1 divider 300 kΩ / 100 kΩ from `PERSONAL_VBUS` → switches to Work when Personal VBUS falls below ≈4.0 V (3.7–4.3 V over V<sub>REF</sub> tolerance).
-- Reverse current blocking: neither PC is back-fed.
-- Switchover is break-before-make (t<sub>SW</sub> ≈ 8 µs); the 2 × 100 µF bulk holds `SYS_5V` droop to ≈0.08 V at 2 A.
-- Plug-in inrush is limited by the TPS2116 soft start: ≈0.6 A for ≈1.7 ms with ≈211 µF total. Do not substantially increase `SYS_5V` bulk capacitance without re-checking this.
-- `ST` (open drain, high when VIN1 is in use) → `MUX_STATUS` → RP2350 GP28, pulled up to `HOST_3V3`.
-- The TPS2116 has no current limit; downstream loads are limited individually (TPS2553 keyboard, TPS2552 pogo).
-
-### 4.2 Keyboard VBUS
+### 4.1 Input
 
 ```text
-SYS_5V → TPS2553 → KEYBOARD_VBUS
+J101 VBUS ─ VBUS_IN ─┬─ SMBJ15A ─ GND
+                     ├─ CH224A VHV/VBUS (CFG1 = 6.8 k → asks 9 V; SCL/SDA/PG → MCU A)
+                     └─ TPS54331 VIN
 ```
 
-Connections:
+- **9 V** is mandatory on every PD source above 15 W (12 V is optional and often missing).
+- CH224A over I2C (0x22): which protocol won, requested voltage, maximum current of the current profile; can re-request 5 V. PG is a backup. The pad's charge speed follows from this (§12.2).
+- On a charger without PD the dock still runs: the TPS54331 runs at 100 % duty and passes ≈ 4.7 V through; firmware then keeps pad charging slow.
 
-- `EN` (active high) → RP2350 GP26 (`KEYBOARD_VBUS_EN`), 100 kΩ pull-down
-- `FAULT` (open drain) → RP2350 GP27 (`KEYBOARD_VBUS_FAULT`), 10 kΩ pull-up to `HOST_3V3`
-- Current limit: R<sub>ILIM</sub> = 26.1 kΩ → 0.92–1.07 A (TPS2553 datasheet I<sub>OS</sub> equations). Non-latching version: current is held at the limit during an overload and `FAULT` stays asserted.
+### 4.2 Rails
 
-This allows deliberate keyboard power cycling for recovery/re-enumeration.
+| Rail | Source | Notes |
+|---|---|---|
+| +5V | TPS54331, 12 k / 2.2 k → 5.16 V | TI Table 7-1 values on Basic parts: 51 k + 4.7 nF + 47 pF compensation, 10 nF soft start, 3 × 22 µF out; L101 SLO0630H6R8MTT (Isat 8 A > 5.8 A max current limit). EN left open (a UVLO divider would stop the 5 V pass-through). |
+| +3V3 | AMS1117-3.3 from +5V | ≤ 0.4 A peak (A, B, ESP32 BLE TX ≈ 170 mA at 0 dBm) |
+| KBD_VBUS | SY6280, R_SET 6.8 k → 1.0 A (0.75–1.25 A) | EN from A (100 k pull-down); KBD_VBUS measured by A's ADC (replaces a fault pin) |
+| POGO_5V | SY6280, R_SET 4.7 k → 1.45 A (1.09–1.81 A) | EN pulled high only when the pad grounds DET (hardware); A can veto (§15); POGO_5V measured by A's ADC |
 
-### 4.3 Power Budget and Port Current Sensing
+### 4.3 Budget
 
-The whole dock (three MCUs, keyboard up to ~1 A, pad charging up to ~1 A) runs from one PC port at a time, which can exceed a USB 2.0 port's 500 mA. The dock therefore measures what the active port allows instead of assuming it.
+| Load | Typical | Limit |
+|---|---|---|
+| Keyboard | 0.1–0.2 A (current keyboard: 200 mA rated) | 1.0 A |
+| Pad (charging 0.51 A + electronics + LEDs) | 0.7–0.8 A | 1.45 A |
+| 3.3 V rail | 0.15 A | 0.4 A |
+| **+5V total** | **≈ 1 A** | ≈ 2.85 A at the nominal limits (TPS54331: 3 A) |
 
-Each HID endpoint reads its own port's USB-C CC pins through 10 kΩ series resistors:
-
-```text
-CC1 → 10k → GP26 (ADC0)
-CC2 → 10k → GP27 (ADC1)
-```
-
-With the 5.1 kΩ Rd pull-downs, the active CC pin (the other stays near 0 V, depending on plug orientation) reads:
-
-| CC voltage | Port advertises |
-|---|---|
-| 0.25–0.61 V | Default USB (500 mA / 900 mA) |
-| 0.70–1.16 V | 1.5 A |
-| 1.31–2.04 V | 3.0 A |
-
-A USB-A-to-C cable always reads as Default, which is the safe result. Each endpoint reports its reading to the RP2350 over its UART link; `MUX_STATUS` tells the RP2350 which port is currently powering the dock.
-
-Firmware policy: full pad charging when the active port advertises 1.5 A or 3 A; reduced or paused pad charging on a Default port, particularly while the keyboard draws high current. Enable keyboard VBUS only after the dock has booted, so the keyboard inrush does not coincide with the plug-in inrush.
+From 9 V at ≈ 90 % efficiency, even the worst case is ≈ 17 W: fine for the 30 W charger.
 
 ---
 
-## 5. USB HID Endpoint Architecture
+## 5. USB Endpoint Architecture (v2)
 
-Two independent HID endpoint MCUs (Pico 2 modules) are used rather than switching a single USB device electrically between computers.
-
-Each endpoint exposes at minimum:
-
-- Keyboard HID
-- Consumer Control HID
-
-Optional future interface:
-
-- Vendor HID
-
-Both endpoints use the same firmware image. A hardware role strap on GP2 identifies them:
-
-- HID-A / Personal: GP2 pulled low (10 kΩ to GND)
-- HID-B / Work: GP2 pulled high (10 kΩ to the endpoint's 3.3 V)
-
-Each endpoint remains enumerated with its PC even when it is not the selected target.
-
-VBUS sense: each endpoint reads its own PC's VBUS on GP4 through a 22 kΩ / 33 kΩ divider (5.25 V → 3.15 V). The endpoints are powered from `SYS_5V` even when their own PC is off, so firmware must only enable the USB D+ pull-up (connect) while GP4 is high, and disconnect when it goes low. Otherwise the endpoint would back-feed a powered-down PC's USB port.
+- **MCU A** is the keyboard host *and* the Personal PC's keyboard (native USB device). **MCU B** is the Work PC's keyboard. Each enumerates with its PC and stays enumerated when not selected.
+- Each endpoint exposes at least Keyboard HID and Consumer Control HID; a vendor HID interface is optional.
+- A and B run different firmware images (A: TinyUSB host + device + router + BLE link; B: device + link only).
+- Each MCU watches its own PC's VBUS and connects its D+ pull-up only while VBUS is present (no back-feed into a PC that is off).
+- A controls B: **RUN** (reset), **BOOTSEL** (via 1 k to B's QSPI_SS) and **SWD** (A can reflash and recover B, Raspberry Pi debugprobe style). B_RUN and B_BOOTSEL have 10 k pull-ups so A's reset-state pull-downs can't hold B in reset or BOOTSEL.
 
 ---
 
-## 6. Internal UART Architecture
+## 6. Internal Links (v2)
 
-### 6.1 Dock BLE (host Pico 2 W)
-
-The host is a Pico 2 W; its on-board CYW43439 radio provides BLE to the pad directly, so the dock has no separate BLE module and no BLE UART link.
-
-- Firmware: USB host, HID routing and the HID UART links on core 0; the BLE stack on core 1, so radio activity cannot delay keystrokes.
-- Keystrokes never pass through BLE. BLE carries only pad events and the selector state.
-- The CYW43439 is driven by the RP2350 over an internal interface using GP23/GP24/GP25/GP29 and one PIO state machine; those GPIOs are not available on the header.
-
-### 6.2 RP2350 ↔ HID-A/B
-
-Two independent full-duplex UART links:
-
-```text
-RP2350 TX-A → HID-A RX
-RP2350 RX-A ← HID-A TX
-
-RP2350 TX-B → HID-B RX
-RP2350 RX-B ← HID-B TX
-```
-
-Each endpoint uses hardware UART0 on the pins facing the host: HID-A on GP16 (TX) / GP17 (RX), HID-B on GP12 (TX) / GP13 (RX). Firmware selects the pin pair from the role strap (GP2). Net names are from the RP2350's point of view: `HID_PERSONAL_TX` is driven by the RP2350.
-
-Target baud: 1 Mbaud.
-
-No level shifting required on-board.
-
-### 6.3 RP2350 UART Allocation
-
-The two HID links carry every keystroke and use the two hardware UARTs. The pogo diagnostic UART to the pad uses a PIO-implemented UART.
-
-| Link | RP2350 TX | RP2350 RX | Implementation |
+| Link | MCU A pins | Other end | Implementation |
 |---|---|---|---|
-| HID-A / Personal | GP12 | GP13 | Hardware UART0 |
-| HID-B / Work | GP20 | GP21 | Hardware UART1 |
-| Pogo diagnostic UART (to pad) | GP16 (`POGO_TX`) | GP17 (`POGO_RX`) | PIO UART (TX + RX state machines) |
+| A ↔ B (HID reports, Work PC) | GPIO16 TX / GPIO17 RX | B GPIO1 RX / GPIO0 TX | hardware UART0, 1 Mbaud or faster |
+| A ↔ ESP32-C3 (BLE data, ESP32 flashing) | GPIO8 TX / GPIO9 RX | ESP32 RXD0 / TXD0 | hardware UART1 |
+| ESP32 control | GPIO10 → EN, GPIO11 → GPIO9 (BOOT) | 10 k pull-ups, EN RC 10 k / 1 µF | open-drain |
+| Pogo UART (diagnostics/recovery) | GPIO12 TX / GPIO13 RX | pad, through 1 k on each side | PIO UART |
+| CH224A | GPIO20 SDA / GPIO21 SCL, GPIO22 PG | CH224A | I2C0 |
+| B control | GPIO18 RUN, GPIO19 BOOTSEL, GPIO23/24 SWCLK/SWDIO | B | open-drain / PIO SWD |
 
-A PIO UART is electrically identical on the wire to a hardware UART; the pad side needs no special handling. PIO does not provide hardware framing-error flags, so link integrity relies on the packet CRC (§6.4).
+The full pin maps (every GPIO, with the reason for each choice) are in DOCK_CONNECTIONS.md §5–6. Keystrokes never pass through BLE: BLE carries only pad events and the selector state. With the radio on its own module, BLE stack faults can't disturb USB timing on A.
 
-UART0 and UART1 are both in use by the HID links, so the pogo UART stays on PIO.
+### 6.1 Packet Framing
 
-Pins were chosen by PCB position so each link leaves the host on the side facing its destination: HID-A (left) on the host's left column, HID-B (right) and the pogo interface on its right column.
-
-Other host control pins:
-
-| RP2350 GPIO | Signal |
-|---|---|
-| GP26 | `KEYBOARD_VBUS_EN` |
-| GP27 | `KEYBOARD_VBUS_FAULT` |
-| GP28 | `MUX_STATUS` |
-| GP18 | `POGO_5V_FAULT` |
-| GP2 | `HID_PERSONAL_RUN_CTRL` |
-| GP19 | `HID_WORK_RUN_CTRL` |
-| GP22 | `POGO_DET` (pad docked = low) |
-
-### 6.4 Packet Framing
-
-Baseline:
+Baseline (unchanged from v1):
 
 ```text
 SOF | TYPE | SEQ | LEN | PAYLOAD | CRC
 ```
 
-Likely message classes:
+Likely message classes: `KEYBOARD_REPORT`, `CONSUMER_REPORT`, `RELEASE_ALL`, `PING`, `PONG`, `GET_STATUS`, `STATUS`, `RESET_USB`, `SET_MODE`.
 
-- `KEYBOARD_REPORT`
-- `CONSUMER_REPORT`
-- `RELEASE_ALL`
-- `PING`
-- `PONG`
-- `GET_STATUS`
-- `STATUS`
-- `RESET_USB`
-- `SET_MODE`
-
-Prefer complete HID state/report messages over relying exclusively on key-down/key-up event streams.
-
-Normal HID traffic need not wait for an ACK.
-
-Critical control operations may use ACK/sequence verification.
+Prefer complete HID state/report messages over key-down/key-up event streams. Normal HID traffic need not wait for an ACK; critical control operations may use ACK/sequence verification.
 
 ---
 
 ## 7. Routing Safety
 
-### PERSONAL → WORK
+Target changes (the Personal side is A's own USB device; the Work side is B over UART0):
 
-1. Receive new physical selector state.
-2. Send `RELEASE_ALL` to Personal endpoint.
-3. Confirm/reach safe state.
-4. Change active route.
-5. Ensure Work endpoint begins from released state.
-6. Forward current/new HID state to Work.
-
-### WORK → PERSONAL
-
-Equivalent reversed sequence.
-
-### Any Target → OFF
-
-- Release Personal.
-- Release Work.
-- Set active route to NONE.
-
-### BLE Loss
-
-If the dock stops receiving valid pad state for the defined timeout:
-
-- Release all keyboard/consumer states.
-- Route OFF.
-
-### RP2350 ↔ HID Endpoint Loss
-
-Each HID endpoint independently watches its command link.
-
-On timeout:
-
-- Send released keyboard report.
-- Send released consumer-control report.
-- Remain enumerated.
-- Enter safe idle.
+- **PERSONAL → WORK:** receive the new selector state → release all on A's Personal device → change the route → B starts from a released state → forward the current state to B.
+- **WORK → PERSONAL:** the same, reversed (`RELEASE_ALL` to B first).
+- **Any target → OFF:** release Personal, send `RELEASE_ALL` to B, route NONE.
+- **BLE loss** (no valid pad state for the timeout): release all, route OFF.
+- **A ↔ B link loss:** B watches the link independently; on timeout it sends released keyboard and consumer reports, stays enumerated and idles safely. A resets B (RUN) if the link doesn't recover.
+- **Keyboard faults:** A can power-cycle KBD_VBUS (SY6280 EN) to force re-enumeration.
 
 ---
+
+> **Sections 8–14: the v1 pad plan, kept unchanged.** The pad will be redesigned; treat these as the starting point, not as decisions.
 
 ## 8. Pad User Interface
 
@@ -604,7 +470,7 @@ POGO_5V → SMAJ5.0A → TP4056 VCC
 
 - Float voltage 4.2 V (4.137–4.263 V), C/10 termination, trickle below 2.9 V, automatic recharge, thermal regulation at 145 °C junction.
 - CE defaults to charging. The pad charges even with blank, crashed or mid-flash firmware; the Pico only ever stops charging (docked hold window 3.90–4.00 V, §12.1).
-- The charge speed is chosen by the dock over BLE from the active PC port's advertised current (§4.3). Fast ≈ 510 mA is ≈ 0.05C for the 9.8 Ah pack; dissipation ≈ (5 − 3.7) V × 0.51 A ≈ 0.65 W.
+- The charge speed is chosen by the dock over BLE from what its charger offers (CH224A over I2C, §4.1; v1 used the PC port's CC advertisement). Fast ≈ 510 mA is ≈ 0.05C for the 9.8 Ah pack; dissipation ≈ (5 − 3.7) V × 0.51 A ≈ 0.65 W.
 - Both status pins high means no input, sleep, or temperature fault.
 - SMAJ5.0A TVS on the pad's `POGO_5V` (pogo contacts hot-plug; ceramic input capacitors can ring).
 
@@ -612,7 +478,7 @@ No single leaded IC combines Li-ion charging, power path and protection (BQ2407x
 
 ### 12.3 Power Path
 
-A TPS2116 (same part and hand-solder footprint as the dock's `U1`) selects the pad's system rail:
+A TPS2116 (same part and hand-solder footprint as the v1 dock's `U1`) selects the pad's system rail:
 
 ```text
 POGO_5V ──► VIN1 (priority) ─┐
@@ -620,7 +486,7 @@ POGO_5V ──► VIN1 (priority) ─┐
 BAT (protected) ──► VIN2 ────┘
 ```
 
-- PR1 divider 300 kΩ / 100 kΩ from `POGO_5V` (≈ 4.0 V switchover), MODE tied to VIN1, as on the dock.
+- PR1 divider 300 kΩ / 100 kΩ from `POGO_5V` (≈ 4.0 V switchover), MODE tied to VIN1, as on the v1 dock.
 - Docked, the loads run from the pogo, so the charger sees only the cell and terminates correctly.
 - `ST` (open-drain, high when VIN1 is in use) is pulled up to 3V3 and read by the Pico as the docked signal.
 - Reverse-current blocking: with USB plugged into the Pico for flashing, VBUS reaches `PAD_SYS` but cannot flow back into the cell or the charger. No extra diode is needed.
@@ -672,93 +538,43 @@ Firmware thresholds: see the operating-window table in §12.1 (warning ≈ 3.50 
 
 ## 15. Docking Interface
 
-Six pogo contacts:
+Seven magnetic pogo contacts (Motorobit 7-pin 2.54 mm set, rated 1 A per contact; right-angle with ears for docking at the dock's front edge, a straight version exists if the pad sits on top of the dock):
 
 ```text
-GND | +5V | DET | RX | TX | GND
+ dock (J601):  GND | +5V | +5V | DET | RX | TX | GND
+ pad:          GND | TX  | RX  | DET | +5V | +5V | GND      (mirror: pad pin 1 meets dock pin 7)
 ```
 
-Normal behavior:
+- **+5V on two contacts, GND on two:** 2 A capacity, so the dock's pogo switch can be set to 1.45 A (1.09–1.81 A) and the pad needs **no LED dimming while docked** (worst case: charging 0.51 A + electronics 0.15 A + all 36 LEDs white 0.54 A ≈ 1.2 A). On a low-tolerance switch the limit can cap that corner; the pad's power path then falls back to the battery, nothing is damaged.
+- **DET:** the pad ties it to GND. On the dock, DET is pulled up to 3.3 V and drives a 2N7002 that holds the pogo switch's EN low while undocked. Docked, EN goes high and the pad gets 5 V **without firmware**. MCU A can veto through a second 2N7002 (POGO_OFF); its gate pull-down means "no veto" while A is in reset or has no firmware. A reads DET and measures POGO_5V.
+- **RX/TX:** PIO UART on MCU A (GPIO12/13) through 1 kΩ on the dock and 1 kΩ on the pad; names from the dock's side. Reserved for diagnostics, recovery and fallback; it does not replace BLE during normal docking.
+- ESD (TPD4E1U06) at the contacts on both sides; SMAJ5.0A on the pad's +5V.
+- Magnets on both sides of the pogo area provide alignment and retention.
+- **Orientation:** the GND pins at both ends make the connector look symmetrical, but reversed it would put +5V on the UART lines. Mark pin 1 on both silkscreens and on the case.
 
-- `+5V`: powers charger/pad
-- `DET`: dock presence (read by the host on GP22, and drives the TPS2552 enable)
-- BLE remains the normal data link
-
-The pad must tie DET to GND. Without that the pogo stays off.
-
-The dock's pogo `+5V` is switched by a TPS2552 whose active-low `EN` is driven directly by `DET` (pulled up to `HOST_3V3` on the dock by R18). With no pad docked the contacts are unpowered; when docked the output is current-limited to approximately 1 A and `FAULT` is reported to the RP2350.
-
-`RX/TX` connect through 1 kΩ series resistors to the host's PIO UART (GP16 TX / GP17 RX; names from the dock's side, so the pad must receive on the TX contact). They are reserved for:
-
-- diagnostics
-- recovery
-- fallback communication
-
-Pogo UART should not automatically replace BLE during normal docking.
-
-Magnets on both sides of the pogo area provide mechanical alignment/retention.
-
-Pad side (face-to-face mating mirrors the order). The pad docks from the back: its pogo connector sits on a small separate **pogo board** mounted vertically inside the back wall of the enclosure, at the height of the dock's J7, and linked to the sloped main PCB by a short cable. A connector on the sloped main board would face out at the slope angle and at the wrong height, and docking forces would load the main board's solder joints.
-
-Pogo board (≈ 35 × 14 mm, ordered panelized with the FR4 switch plate):
-
-- J1 6-pin pogo (`dock:Pogo-6`), D1 SMAJ5.0A, U1 TPD4E1U06 (ESD first, right at the contacts)
-- DET tied to GND on the pogo board
-- 4-pin JST-XH to the main board, straight-through cable: 1 `GND`, 2 `POGO_DRX`, 3 `POGO_DTX`, 4 `POGO_5V`
-- M2 mounting holes; pin 1 marked on silkscreen and case (pad pin 1 must meet dock pin 6, otherwise the dock's +5 V lands on a UART line)
-
-Main board: matching 4-pin JST-XH, 10 µF on `POGO_5V`, and the two 1 kΩ series resistors.
-
-Contact order:
-
-```text
-GND | TX-side | RX-side | DET | +5V | GND
-```
-
-- `DET` tied to pad GND.
-- `+5V` → SMAJ5.0A TVS (pogo board) → cable → `POGO_5V` (charger and TPS2116 VIN1).
-- The pad receives on the dock's TX contact and transmits on its RX contact, into a Pico UART, with 1 kΩ series resistors on the pad side as well. Docked, the link sees 2 kΩ in series; with ~20 pF of pin and trace capacitance that is a ~40 ns time constant, negligible even at 1 Mbaud. The pad-side resistors protect the pad Pico when undocked: the contacts are exposed, and a coin or tool bridging `+5V` to RX/TX then injects at most ~1.4 mA.
-- TPD4E1U06 ESD (same part as the dock) on the pad's pogo TX/RX lines. The dock's ESD only protects the dock; the pad's contacts are exposed whenever it is carried around.
+Pad side: small pogo board (`hardware/pogo/`, already updated to 7 pins: +5V on pins 5 and 6), cable to the main board. Its position (back wall, or underside if the pad sits on top of the dock) is part of the pad redesign.
 
 ---
 
 ## 16. Debug and Recovery
 
-Every programmable MCU receives a physical debug/recovery path.
+Every programmable MCU has a physical debug/recovery path.
 
-### Dock
+### Dock (v2)
 
-- Host (Pico 2) SWD — J2
-- HID-A (Pico 2) SWD — J3
-- HID-B (Pico 2) SWD — J6
+| MCU | Normal update | Recovery |
+|---|---|---|
+| A (U301) | UF2: BOOTSEL A button (or firmware reboot-to-BOOTSEL) → drive on the **Personal PC** | SWD pads TP301–303; RESET A button |
+| B (U401) | UF2: BOOTSEL B button → drive on the **Work PC**; or A puts B into BOOTSEL (B_RUN + B_BOOTSEL) | **A reflashes B over SWD** (B_SWCLK/B_SWDIO); SWD pads TP401–403 |
+| ESP32-C3 (U501) | A holds GPIO9 low, pulses EN, and bridges esptool from the Personal PC to the ESP32's UART0 | test pads TP501–505: native USB (GPIO18/19), TXD0/RXD0, GND |
 
-HID-A/HID-B SWD pads are reached with spring probes; the host's SWD comes through a 1×3 socket under its debug holes (§18.1). The host can also reset HID-A and HID-B (§18.2).
+A single USB cable to the Personal PC can therefore update all three chips.
 
 ### Pad
 
 - Pico 2 WH SWD: no SWD header on the pad PCB (the Pico's SWD holes would sit under key 5's centre post); a probe goes on the Pico 2 WH's own 3-pin JST-SH debug connector with the bottom cover off
 - USB on the Pico itself (BOOTSEL/UF2) when the enclosure is open
 - Pogo UART (§15) when docked
-
-Dock SWD header pinout (1×5, 2.54 mm), identical on J2/J3/J6:
-
-```text
-1  SWCLK
-2  SWDIO
-3  GND
-4  RUN / RESET
-5  3V3 (target voltage reference only; do not power the target from the probe)
-```
-
-UART test access should also be available where practical.
-
-Recommended dock silkscreen identifiers:
-
-```text
-HOST
-HID-A
-HID-B
-```
 
 Pad recovery hierarchy:
 
@@ -772,6 +588,15 @@ SWD  → low-level recovery
 
 ## 17. Mechanical Baseline
 
+### Dock (v2)
+
+- PCB **90 × 70 mm** to start (shrink after placement), 4 layers, all SMD on top. Edges: **PC cables at the back** (Personal left, Work right), **keyboard left**, **charger right**, **pogo front** (see `hardware/dock-v2/PCB_PLACEMENT.md`).
+- ESP32-C3 antenna at the left edge, front half; no metal, magnets or screws within ≈ 15 mm.
+- **Pad in front of the dock or on top of it: open**, decided with the pad redesign. On top saves table space (the dock hides under the pad) but raises the keys by the dock's height and moves the pad's pogo board to its underside. On the dock this only changes J601 (right-angle at the front edge vs vertical on top).
+
+### Pad (v1 plan, to be redesigned)
+
+
 Wedge-shaped enclosure: keys, encoders and display all sit on one sloped top surface, so the main PCB is mounted at the same slope.
 
 Decided (2026-09-28):
@@ -781,7 +606,7 @@ Decided (2026-09-28):
 - **One main PCB** carries the keys, key LEDs, both encoders with their 12-LED rings (SK6812MINI-E on the board), the Pico and all power parts. Only the pogo board (forced by the slope) and the display (for a flush fit in the case window) are on cables. Rejected: off-board WS2812 rings (the locally sold 12-LED rings are 50 mm across, which widens the board instead of shrinking it; 37 mm rings have no reliable local source) and cabled encoder modules (no price gain, generic encoders, two more cables).
 - **Display sideways** (landscape): 1.69" module ≈ 38 mm wide × 31 mm tall, between the two encoders, mounted to the case behind its window and connected by a 9-wire JST-PH cable (8 signals + a second GND).
 - **Battery at the back**, under the top row (display/encoders), in the thick rear section. Never under the key field: the hot-swap sockets fill the underside there and the front is too thin.
-- **Pogo board at the back**, in the back wall, on top of or beside the battery. Its height and position are aligned with the dock's J7 in the 3D enclosure design.
+- **Pogo board at the back**, in the back wall, on top of or beside the battery. Its height and position are aligned with the dock's pogo connector (J601 on the v2 dock) in the 3D enclosure design.
 - **Selector toggle** (PERSONAL/OFF/WORK) on the right side of the key field, panel-mounted, wired to J5.
 - **Pico** on the back side of the main PCB **under the key field**, long axis left-right, pin rows in the gaps between key rows (y = 50.0 and 67.78 mm), antenna end at the left board edge (plastic case wall there). The display strip can't take it: both of its ends are occupied by the encoder rings, and the antenna needs an edge. Exact positions: `hardware/pad/PCB_PLACEMENT.md`, drawings `docs/pad-pcb-1-top.png` … `docs/pad-pcb-4-front-cut.png`.
 
@@ -811,100 +636,48 @@ Still to measure before the PCB: display module outline, window and holes; knob 
 
 ## 18. PCB Design Direction
 
-Initial expectation:
+### Dock (v2)
 
-- Prefer 2-layer if routing, RF grounding and USB integrity remain acceptable.
-- Do not force single-layer routing.
-- 4-layer is not automatically required, but can be reconsidered if the actual placement/routing benefits justify it.
-- Maintain continuous ground reference under USB differential routing wherever possible.
-- Keep the host Pico 2 W antenna keep-out (14 × 9 mm at its bottom end) free of copper and components, with the antenna end at the board edge.
-- Place USB ESD devices at the connectors.
-- Keep switching-regulator hot loops compact.
-- Keep RGB high-current paths away from sensitive RF/analog areas.
-- Separate functional blocks clearly in placement.
+- **4 layers:** L1 parts + signals, L2 solid GND, L3 3.3 V / 5 V pours, L4 signals. **All SMD on the top side** (one-sided JLCPCB assembly).
+- Rules (project file): clearance 0.15 mm, minimum track 0.15 mm, minimum drill 0.25 mm (what Raspberry Pi's RP2350 core layout uses; inside JLCPCB's standard 4-layer limits). Net classes: Default 0.2 mm, Power 0.6 mm (VBUS_IN, +5V, +3V3, KBD_VBUS, POGO_5V, GND, BUCK_SW), USB 90 Ω pairs.
+- **RP2354A core:** Raspberry Pi's RP2350A Minimal layout copied exactly (regulator inductor orientation, pours, crystal), by `hardware/tools/copy_rpi_core_layout.py` after F8.
+- ESD at each connector; USB pairs short, over solid ground; series resistors near the MCU.
+- Buck hot loop (input caps → TPS54331 → PH → SS54) compact on L1 over L2 ground; feedback away from the switch node.
+- ESP32-C3 antenna keep-out on all layers (in the footprint).
+- Hand-soldered: C201 (220 µF THT, Özdisan) and J601 (pogo). Everything else is placed by JLCPCB.
 
-### 18.1 Dock MCU Module Mounting (Pico 2 + Spring Probes)
+### Pad (v1 plan)
 
-All three dock MCUs (RP2350 host, HID-A, HID-B) are Raspberry Pi Pico 2 boards, socketed so they can be swapped without desoldering:
-
-- Pico 2: two 1×20 2.54 mm male headers soldered on, pointing down.
-- Dock PCB: two 1×20 2.54 mm female sockets, 8.5 mm tall. Pico underside sits ≈11 mm above the dock PCB.
-- Footprint: `dock:RaspberryPi_Pico2_Socket_Pogo` (KiCad Pico THT footprint plus probe holes).
-
-USB and SWD are only on pads on the Pico 2 underside, not on the header pins. They are reached with P50-B1 spring probes (0.68 mm barrel, 16.35 mm long, 2.65 mm stroke, 75 g, 45° spear tip) soldered into 0.8 mm holes in the dock PCB:
-
-| Pico 2 pad | Signal | Probe |
-|---|---|---|
-| TP2 / TP3 | USB D− / D+ | required |
-| D1 / D3 | SWCLK / SWDIO | required |
-| TP1 / D2 | GND | optional (GND is also on the header pins) |
-
-Positions come from the Pico 2 datasheet, Figures 3 and 5. Leave the factory tinning on the Pico pads; the spear tip cuts through the surface oxide.
-
-Probe soldering procedure (sets ≈1.5 mm compression, whatever the header height):
-
-1. Solder the female sockets to the dock PCB first.
-2. Drop the probes loose into their holes, spring end up. Each sinks until its Ø0.9 mm tip head rests on the board.
-3. Put a ≈1.5 mm shim (1.6 mm PCB offcut or two stacked ID cards) on the sockets and plug the Pico in on top of it.
-4. Turn the stack upside down. The probes slide until their tips rest on the Pico pads.
-5. Solder the probe barrels on the dock PCB underside. Keep the joints quick.
-6. Remove the shim and seat the Pico fully.
-
-Solder each Pico's probe set against that Pico. The barrels protrude ≈2.7 mm below the dock PCB; the enclosure needs 3–4 mm clearance there. Do not cut the barrels, because the spring is inside.
-
-Never connect a cable to a docked Pico's micro-USB port: its USB lines share the bus with the probes.
-
-The host is a **Pico 2 W** (footprint `dock:RaspberryPi_Pico2W_Socket_Pogo`), mounted the same way with these differences (Pico 2 W datasheet Figs 3 and 5):
-
-- USB test pads TP1–TP3 are in the same place as on the Pico 2, so the USB probes are identical.
-- SWD is on three through-holes (SWCLK, GND, SWDIO) 19.8 mm from the bottom edge. Solder a 1×3 male header there pointing down, into a 1×3 female socket on the dock; no SWD probes are needed.
-- The antenna is at the bottom end (opposite USB). The footprint carries a 14 × 9 mm copper keep-out there. Place the host with its antenna end at the board edge, with nothing in front of it, and use a non-metal enclosure.
-
-Before ordering the PCB, print the layout at 1:1 and check the Pico pads against the probe holes.
-
-### 18.2 Endpoint Reset Control
-
-The host can reset the two HID endpoints through 1 kΩ series resistors, so a debug probe on the SWD header can still override the line:
-
-| RP2350 GPIO | Target |
-|---|---|
-| GP2 (`HID_PERSONAL_RUN_CTRL`) | HID-A RUN |
-| GP19 (`HID_WORK_RUN_CTRL`) | HID-B RUN |
-
-Each HID Pico RUN line has an external 10 kΩ pull-up. This keeps the endpoints out of reset while the RP2350's default GPIO pull-downs are active during its own boot. Firmware keeps these GPIOs as inputs with no pull and drives them low only to reset a target.
+- 2 layers, bottom GND pour; see `hardware/pad/PCB_PLACEMENT.md`.
 
 ---
 
 ## 19. KiCad Project Structure
 
-Recommended:
-
 ```text
 hardware/
-├── dock/
-│   ├── dock.kicad_pro
-│   ├── dock.kicad_sch
-│   └── dock.kicad_pcb
-│
-└── pad/
-    ├── pad.kicad_pro
-    ├── pad.kicad_sch
-    └── pad.kicad_pcb
+├── dock-v2/                     v2 dock (this design)
+│   ├── dock-v2.kicad_pro / .kicad_sch / .kicad_pcb
+│   ├── power, usb_ports, mcu_a, mcu_b, ble, pogo .kicad_sch
+│   ├── dock_v2_custom.kicad_sym  (RP2354A, ESP32-C3-MINI-1, CH224A, TPS54331, SY6280, TPD4E1U06)
+│   ├── DOCK_CONNECTIONS.md       (wiring, pin maps; generated)
+│   └── PCB_PLACEMENT.md
+├── dock/                        v1 dock (reference; current on master)
+├── pad/                         pad (v1 plan; to be redesigned)
+├── pogo/                        pad pogo board (7-pin)
+├── libraries/
+│   ├── dock.pretty              Pogo-6, Pogo-7, v1 footprints
+│   ├── dock_v2.pretty           RPi RP2350A QFN-60, core inductor/cap, ESP32-C3-MINI-1, 220 µF P5.00
+│   └── THIRD_PARTY.md           sources and licences
+├── reference/rpi-rp2350a-minimal/   Raspberry Pi's design (MIT)
+└── tools/
+    ├── copy_rpi_core_layout.py
+    └── dock_v2_connections/     connection model, guide generator, wiring checker
 ```
 
-Recommended dock hierarchical sheets:
+Dock v2 sheets (annotation: sheet number × 100): POWER (1xx), USB_PORTS (2xx), MCU_A (3xx), MCU_B (4xx), BLE (5xx), POGO (6xx).
 
-```text
-ROOT
-├── POWER
-├── USB_KEYBOARD_HOST
-├── RP2350_HOST
-├── HID_PERSONAL
-├── HID_WORK
-└── BLE_BASE
-```
-
-Recommended pad hierarchical sheets:
+Pad hierarchical sheets (v1 plan):
 
 ```text
 ROOT
@@ -921,22 +694,20 @@ ROOT
 
 ## 20. Schematic Capture Order
 
-### Dock
+### Dock (v2)
 
-Schematic captured and reviewed (ERC clean apart from the intentional Pico ground-pin exclusions). Next: PCB outline, placement and routing. Order used:
+All parts are placed on their sheets (values, footprints, LCSC numbers). Wire them following DOCK_CONNECTIONS.md:
 
-1. USB-C Personal/Work power inputs
-2. TPS2116 and `SYS_5V` bulk capacitance
-3. Host Pico 2 (power, SWD, control GPIOs)
-4. Keyboard USB host connector + ESD + TPS2553
-5. HID-A Pico 2 + Personal USB (VBUS/CC sensing, role strap)
-6. HID-B Pico 2 + Work USB
-7. Pogo interface (TPS2552, ESD, series resistors) to the host
-8. Three internal UART links
-9. SWD headers and reset control
-10. Final ERC review
+1. POWER: J101, CH224A, TPS54331, AMS1117 (+ PWR_FLAGs)
+2. USB_PORTS: keyboard source port and switch, both PC ports
+3. MCU_A: core (as RPi), then the GPIO map
+4. MCU_B: core, links to A, pull-ups
+5. BLE: ESP32-C3 straps and UART
+6. POGO: connector, switch, DET/veto transistors
+7. `hardware/tools/dock_v2_connections/check_wiring.py` until it reports OK, then ERC
+8. F8, board outline, connectors at their edges, `copy_rpi_core_layout.py` for U301 and U401, then placement and routing
 
-### Pad
+### Pad (v1 plan)
 
 1. 21700 holder, NTC, DW01A + FS8205A protection
 2. Pogo input (TVS, ESD, series resistors)
@@ -953,18 +724,17 @@ Schematic captured and reviewed (ERC clean apart from the intentional Pico groun
 
 ---
 
-## 21. Items to Verify, Not Redesign
+## 21. Items to Verify
 
-The architecture is frozen, but the following are intentionally finalized during schematic work:
+### Dock (v2), on the first boards
 
-Resolved for the dock during schematic capture:
+- CH224A: idle voltage of SCL/SDA (internal pull-up level) before connecting them to MCU A; behaviour with a charger that has no 9 V.
+- TPS54331: loop with a load step on +5V; pass-through voltage on a 5 V-only charger at 2 A.
+- USB enumeration with 22 Ω series resistors (RPi uses 27 Ω; 27 Ω is an Extended part).
+- 220 µF lead spacing (footprint P5.00) and the 7-pin pogo body/ears (footprint scaled from Pogo-6) against the delivered parts.
+- ESP32-C3 BLE with A, B and PIO-USB running together; RP2354A current at 240 MHz.
 
-- MCU implementation: Raspberry Pi Pico 2 W (host + BLE) and Pico 2 (HID-A, HID-B), all socketed; no crystals or MCU decoupling needed on the dock
-- USB-C connector: KLS L-KLS1-5416-L1-01-R (footprint checked against the manufacturer drawing)
-- CC resistors: 5.1 kΩ Rd on PC ports, 56 kΩ Rp on the keyboard port
-- Power mux: TPS2116 (replaces TPS2121), priority mode, ≈4.0 V switchover
-- TPS2553 R<sub>ILIM</sub> 26.1 kΩ (≈1 A); TPS2552 on pogo +5V with the same limit
-- SWD connector standard: 1×5 2.54 mm header (§16)
+### Pad
 
 Resolved for the pad before schematic capture:
 
@@ -978,32 +748,18 @@ Resolved for the pad before schematic capture:
 - LEDs: 36 × SK6812MINI-E (LCSC)
 - Switches: Razer Yellow Linear, 3-pin MX, Kailh hot-swap, FR4 plate
 - Display: 1.69" 240 × 280 ST7789 IPS TFT (Meon Otomasyon), backlight via P-MOSFET on GP27
-- Pogo: separate pogo board in the back wall, 4-wire JST-XH cable to the main board
+- Pogo: separate pogo board (7 pins since the v2 dock review), 4-wire JST-XH cable to the main board; position part of the redesign
 - Battery measurement: permanent 100 kΩ / 100 kΩ divider + Pico VSYS/3
-
-Still open:
-
-- Dock: pre-order silkscreen pass, Gerber check
-- Pad: PCB outline, placement, routing
-- TCA9555 pull-up requirements
-- RGB data series resistor value
-- OLED module outline and hole spacing (measure)
-- Toggle switch SKU/panel hole
-- Pogo connector dimensions (awaiting the supplier's reply)
-- FR4 plate outline and spacer positions
-- Final mechanical dimensions
-
-A change to one of these implementation details does not necessarily constitute an architecture change.
 
 ---
 
-## 22. V1 Design Rule
+## 22. Design Rule
 
 When choosing between a slightly simpler implementation and one that materially improves diagnosis/recovery, prefer the recoverable implementation.
 
 The project intentionally retains:
 
-- independent USB endpoint MCUs
+- independent USB endpoint MCUs (v2: A for Personal, B for Work)
 - BLE normal link
 - pogo UART fallback
 - physical SWD access
@@ -1013,5 +769,4 @@ The project intentionally retains:
 - fail-safe HID release behavior
 
 These are deliberate design features rather than temporary development conveniences.
-
-Exception: BLE runs on the host's own radio (Pico 2 W) rather than a separate BLE MCU, to cut cost and board space. A BLE-stack fault is contained by running BLE on its own core, by the host watchdog, and by the HID endpoints' independent link-timeout release.
+Exception (v2): BLE runs on a separate pre-certified module (ESP32-C3) instead of a BLE-capable MCU, so no RF layout of our own is needed; A can reset and reflash it. Keystrokes never pass through BLE.

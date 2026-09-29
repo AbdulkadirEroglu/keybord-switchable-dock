@@ -4,7 +4,7 @@ Use this to wire the v2 dock schematic by hand, one sheet at a time, and later t
 All parts are already on their sheets (`hardware/dock-v2/`, placed, not wired) with the references used here.
 Why each part was chosen is in `docs/dock-v2-*.md`; where it goes on the board is in [PCB_PLACEMENT.md](PCB_PLACEMENT.md).
 
-The tables are generated from one connection model and checked against the placed schematic: 154 parts, 493 connected pins on 92 nets, 77 no-connect pins. Every pin of every part is listed once, either on a net or as a no-connect.
+The tables are generated from one connection model and checked against the placed schematic: 154 parts, 494 connected pins on 92 nets, 77 no-connect pins. Every pin of every part is listed once, either on a net or as a no-connect.
 
 How to read the tables:
 
@@ -22,7 +22,7 @@ Net names used everywhere:
 | **+5V** | Buck output, 5.16 V (≈ 4.7 V pass-through on a 5 V-only charger) |
 | **+3V3** | AMS1117 output: both RP2354A, the ESP32-C3, all pull-ups |
 | **KBD_VBUS** | Keyboard 5 V after the SY6280 switch (off until a keyboard is detected) |
-| **POGO_5V** | Pad 5 V after the pogo SY6280 switch (on while the pad is docked) |
+| **POGO_5V** | Pad 5 V after the pogo SY6280 switch (on while the pad is docked); two contacts, limit ≈ 1.45 A |
 | A_1V1, B_1V1 | Each RP2354A's own 1.1 V core rail. **Local labels, never a `+1V1` power symbol**: a power symbol is global and would join A's and B's regulators |
 | PC1_VBUS, PC2_VBUS | The PCs' VBUS: **sense only**, never joined to a dock rail |
 
@@ -972,23 +972,23 @@ Test pads: TP501 → **BLE_USB_D_N**, TP502 → **BLE_USB_D_P**, TP503 → **BLE
 
 ## 8. Pogo interface
 
-Sheet `pogo.kicad_sch`. Contact order (dock side): `GND | +5V | DET | RX | TX | GND`; pad pin 1 meets dock pin 6.
+Sheet `pogo.kicad_sch`. **7 contacts**, dock side: `GND | +5V | +5V | DET | RX | TX | GND`; pad pin 1 meets dock pin 7 (the pad's pogo board is the mirror: `GND | TX | RX | DET | +5V | +5V | GND`). Two contacts each for +5V and GND: the contacts are rated 1 A, so the pad can draw up to ≈ 1.45 A (the switch limit) with no LED dimming.
 
 ```text
- J601 pin 1, pin 6 ── GND
- J601 pin 2 (+5V) ──●── POGO_5V ◄── U602 pin 1 OUT (SY6280)
+ J601 pin 1, pin 7 ── GND
+ J601 pins 2 and 3 (+5V, +5V) ──●── POGO_5V ◄── U602 pin 1 OUT (SY6280)
                     ├── C602 10 µF, C603 1 µF ── GND
                     └── R607 10 k ──●── POGO_5V_SENSE ──► MCU A GPIO29 (ADC3)
                                     └── R608 15 k ── GND
- +5V ──●── U602 pin 5 IN;  C601 1 µF ── GND        U602 pin 3 ISET ── R606 6.8 k ── GND (1.0 A)
+ +5V ──●── U602 pin 5 IN;  C601 1 µF ── GND        U602 pin 3 ISET ── R606 4.7 k ── GND (1.45 A)
  U602 pin 4 EN ──●── POGO_EN ── R605 100 k ── +3V3
                  ├── Q601 drain   (Q601 gate = POGO_DET, source = GND)
                  └── Q602 drain   (Q602 gate = POGO_OFF ◄── MCU A GPIO15, R609 100 k to GND; source = GND)
- J601 pin 3 (DET) ──●── POGO_DET_J ── R603 1 k ──●── POGO_DET ──► MCU A GPIO14, Q601 gate
+ J601 pin 4 (DET) ──●── POGO_DET_J ── R603 1 k ──●── POGO_DET ──► MCU A GPIO14, Q601 gate
                     └── U601 pin 3 (ESD)         └── R604 10 k ── +3V3
- J601 pin 4 (RX)  ──●── POGO_RX_J ── R602 1 k ── POGO_RX ──► MCU A GPIO13 (PIO UART RX)
+ J601 pin 5 (RX)  ──●── POGO_RX_J ── R602 1 k ── POGO_RX ──► MCU A GPIO13 (PIO UART RX)
                     └── U601 pin 6
- J601 pin 5 (TX)  ──●── POGO_TX_J ── R601 1 k ── POGO_TX ◄── MCU A GPIO12 (PIO UART TX)
+ J601 pin 6 (TX)  ──●── POGO_TX_J ── R601 1 k ── POGO_TX ◄── MCU A GPIO12 (PIO UART TX)
                     └── U601 pin 1
  U601 pin 2 ── GND;  pins 4, 5: no-connect
 ```
@@ -999,7 +999,7 @@ How the enable works: undocked, DET is pulled up → Q601 on → EN low → cont
 
 | Ref | Value | Footprint | LCSC | Job |
 |---|---|---|---|---|
-| J601 | Pogo 6-pin | `Pogo-6` | — | HAND-SOLDER: Motorobit magnetic 2.54 mm; GND\|+5V\|DET\|RX\|TX\|GND |
+| J601 | Pogo 7-pin | `Pogo-7` | — | HAND-SOLDER: Motorobit 7-pin 90deg magnetic (order: guide §8) |
 | U601 | TPD4E1U06DBVR | `SOT-23-6` | C124691 | ESD on DET, TX, RX (1 spare) |
 | R601 | 1k | `R_0402_1005Metric` | C11702 | TX series |
 | R602 | 1k | `R_0402_1005Metric` | C11702 | RX series |
@@ -1009,7 +1009,7 @@ How the enable works: undocked, DET is pulled up → Q601 on → EN low → cont
 | Q602 | 2N7002 | `SOT-23` | C8545 | POGO_OFF veto: pulls EN low |
 | R604 | 10k | `R_0402_1005Metric` | C25744 | DET pull-up to 3V3 |
 | R605 | 100k | `R_0402_1005Metric` | C25741 | EN pull-up to 3V3 |
-| R606 | 6.8k | `R_0402_1005Metric` | C25917 | ISET: 1.0 A |
+| R606 | 4.7k | `R_0402_1005Metric` | C25900 | ISET: 6800/4700 = 1.45 A (1.09-1.81 A); 2 x 1 A +5V contacts |
 | R609 | 100k | `R_0402_1005Metric` | C25741 | Q602 gate pull-down (no veto at reset) |
 | C601 | 1uF | `C_0402_1005Metric` | C52923 | U602 input |
 | C602 | 10uF | `C_0805_2012Metric` | C15850 | POGO_5V output |
@@ -1023,23 +1023,24 @@ How the enable works: undocked, DET is pulled up → Q601 on → EN low → cont
 |---|---|---|---|
 | 1 | Pin_1 | **GND** | 141 other pins |
 | 2 | Pin_2 | **POGO_5V** | U602.1, C602.1, C603.1, R607.1 |
-| 3 | Pin_3 | POGO_DET_J | U601.3, R603.1 |
-| 4 | Pin_4 | POGO_RX_J | U601.6, R602.1 |
-| 5 | Pin_5 | POGO_TX_J | U601.1, R601.2 |
-| 6 | Pin_6 | **GND** | 141 other pins |
+| 3 | Pin_3 | **POGO_5V** | U602.1, C602.1, C603.1, R607.1 |
+| 4 | Pin_4 | POGO_DET_J | U601.3, R603.1 |
+| 5 | Pin_5 | POGO_RX_J | U601.6, R602.1 |
+| 6 | Pin_6 | POGO_TX_J | U601.1, R601.2 |
+| 7 | Pin_7 | **GND** | 141 other pins |
 
 | U601 pin | Name | Net | Also on this net |
 |---|---|---|---|
-| 1 | D1+ | POGO_TX_J | J601.5, R601.2 |
+| 1 | D1+ | POGO_TX_J | J601.6, R601.2 |
 | 2 | GND | **GND** | 142 other pins |
-| 3 | D2+ | POGO_DET_J | J601.3, R603.1 |
+| 3 | D2+ | POGO_DET_J | J601.4, R603.1 |
 | 4 | D2- | no-connect flag | |
 | 5 | NC | no-connect flag | |
-| 6 | D1- | POGO_RX_J | J601.4, R602.1 |
+| 6 | D1- | POGO_RX_J | J601.5, R602.1 |
 
 | U602 pin | Name | Net | Also on this net |
 |---|---|---|---|
-| 1 | OUT | **POGO_5V** | J601.2, C602.1, C603.1, R607.1 |
+| 1 | OUT | **POGO_5V** | J601.2, J601.3, C602.1, C603.1, R607.1 |
 | 2 | GND | **GND** | 142 other pins |
 | 3 | ISET | POGO_ISET | R606.1 |
 | 4 | EN | POGO_EN | Q601.3, Q602.3, R605.2 |
@@ -1067,9 +1068,9 @@ How the enable works: undocked, DET is pulled up → Q601 on → EN low → cont
 
 **Placement**
 
-- J601 at the front edge, centre (right-angle pogo), hand-soldered; see PCB_PLACEMENT.md §4 for the pad-on-top alternative.
+- J601 at the front edge, centre: Motorobit **7-pin 2.54 mm 90° magnetic set with ears** (a straight 7-pin version exists for the pad-on-top alternative, PCB_PLACEMENT.md §4). Hand-soldered. Footprint `dock:Pogo-7` is scaled from Pogo-6: check the body and ears against the delivered part.
 - U601 right at J601; R601–R603 between U601 and the MCU A traces.
-- U602, Q601, Q602 and their resistors behind J601; C602/C603 at J601 pin 2.
+- U602, Q601, Q602 and their resistors behind J601; C602/C603 at J601 pins 2–3. Join pins 2 and 3 with a wide trace (Power class) right at the connector so both contacts share the current.
 - POGO_5V is Power class. Mark pin 1 on the silkscreen.
 
 ---
@@ -1229,17 +1230,17 @@ Generated from the connection model that the tables above come from; checked aga
 | PD_PG | U102.10 (PG), R102.2, U301.34 (GPIO22) |
 | PD_SCL | U102.2 (CFG2/SCL), R103.2, U301.33 (GPIO21) |
 | PD_SDA | U102.3 (CFG3/SDA), R104.2, U301.32 (GPIO20) |
-| POGO_5V | J601.2 (Pin_2), U602.1 (OUT), C602.1, C603.1, R607.1 |
+| POGO_5V | J601.2 (Pin_2), J601.3 (Pin_3), U602.1 (OUT), C602.1, C603.1, R607.1 |
 | POGO_5V_SENSE | U301.43 (GPIO29/ADC3), R607.2, R608.1 |
 | POGO_DET | U301.18 (GPIO14), R603.2, Q601.1 (G), R604.2 |
-| POGO_DET_J | J601.3 (Pin_3), U601.3 (D2+), R603.1 |
+| POGO_DET_J | J601.4 (Pin_4), U601.3 (D2+), R603.1 |
 | POGO_EN | U602.4 (EN), Q601.3 (D), Q602.3 (D), R605.2 |
 | POGO_ISET | U602.3 (ISET), R606.1 |
 | POGO_OFF | U301.19 (GPIO15), Q602.1 (G), R609.1 |
 | POGO_RX | U301.17 (GPIO13), R602.2 |
-| POGO_RX_J | J601.4 (Pin_4), U601.6 (D1-), R602.1 |
+| POGO_RX_J | J601.5 (Pin_5), U601.6 (D1-), R602.1 |
 | POGO_TX | U301.16 (GPIO12), R601.1 |
-| POGO_TX_J | J601.5 (Pin_5), U601.1 (D1+), R601.2 |
+| POGO_TX_J | J601.6 (Pin_6), U601.1 (D1+), R601.2 |
 | VBUS_IN | J101.A4 (VBUS), J101.A9 (VBUS), J101.B4 (VBUS), J101.B9 (VBUS), D101.1 (A1), U102.1 (VHV), U102.8 (VBUS), C101.1, U103.2 (VIN), C102.1, C103.1 |
 
 </details>

@@ -139,8 +139,9 @@ two('R502', '+3V3', 'BLE_GPIO8'); two('R503', '+3V3', 'BLE_GPIO2'); two('R504', 
 add({'GND': ['TP505.1']})
 
 # ---------------------------------------------------------------- 6 POGO
-add({'GND': ['J601.1', 'J601.6'], 'POGO_5V': ['J601.2'], 'POGO_DET_J': ['J601.3'],
-     'POGO_RX_J': ['J601.4'], 'POGO_TX_J': ['J601.5']})
+# dock side: GND | +5V | +5V | DET | RX | TX | GND  (two 1 A contacts for +5V and for GND)
+add({'GND': ['J601.1', 'J601.7'], 'POGO_5V': ['J601.2', 'J601.3'], 'POGO_DET_J': ['J601.4'],
+     'POGO_RX_J': ['J601.5'], 'POGO_TX_J': ['J601.6']})
 add(tpd('U601', 'POGO_TX_J', 'POGO_RX_J', 'POGO_DET_J', None)); NC += ['U601.4', 'U601.5']
 two('R601', 'POGO_TX', 'POGO_TX_J'); two('R602', 'POGO_RX_J', 'POGO_RX'); two('R603', 'POGO_DET_J', 'POGO_DET')
 add({'POGO_5V': ['U602.1'], 'GND': ['U602.2'], 'POGO_ISET': ['U602.3'], 'POGO_EN': ['U602.4'], '+5V': ['U602.5']})
