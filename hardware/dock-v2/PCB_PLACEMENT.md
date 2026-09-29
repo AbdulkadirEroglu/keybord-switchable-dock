@@ -1,9 +1,9 @@
 # Dock v2 — PCB placement groups
 
-Where the parts of the v2 dock go. What each part does and why it was chosen is in the design docs:
+Where the parts of the v2 dock go. **What connects to what: [DOCK_CONNECTIONS.md](DOCK_CONNECTIONS.md)** (pin by pin, with the MCU pin maps). What each part does and why it was chosen is in the design docs:
 [power input](../../docs/dock-v2-power-input.md), [USB ports](../../docs/dock-v2-usb-ports.md), [pogo](../../docs/dock-v2-pogo.md), [MCU support](../../docs/dock-v2-mcu-support.md), [MCU selection](../../docs/dock-v2-mcu-selection.md).
 
-There is no schematic yet, so references below are **suggestions** using one hundred-block per schematic sheet (KiCad: *Annotate → Use first free number after sheet number × 100*). Renumber freely.
+References below match the placed schematic and DOCK_CONNECTIONS.md, using one hundred-block per schematic sheet (KiCad: *Annotate → Use first free number after sheet number × 100*). Renumber freely.
 
 | Sheet | File | Refs |
 |---|---|---|
@@ -172,7 +172,7 @@ Nothing else on the board depends on this choice. Keep the pogo group at the fro
 
 `hardware/dock-v2/` is a KiCad 10 project:
 
-- `dock-v2.kicad_sch` (top level) with six sheets: `power`, `usb_ports`, `mcu_a`, `mcu_b`, `ble`, `pogo` (A3). **All 149 parts are placed, not wired**, in labelled groups, with reference, value, footprint, LCSC number (hidden field `LCSC`) and a short `Note` saying what the part does. Annotation is set to *sheet number × 100* (refs in this doc match).
+- `dock-v2.kicad_sch` (top level) with six sheets: `power`, `usb_ports`, `mcu_a`, `mcu_b`, `ble`, `pogo` (A3). **All 154 parts are placed, not wired**, in labelled groups, with reference, value, footprint, LCSC number (hidden field `LCSC`) and a short `Note` saying what the part does. Annotation is set to *sheet number × 100* (refs in this doc match).
 - `dock-v2.kicad_pcb`: empty, **4 copper layers**, v1's design rules. No outline yet (§1 gives the starting 90 × 70 mm), so DRC reports "no edges on Edge.Cuts" until you draw it.
 - Net classes Default / Power / USB from v1, with patterns for the v2 net names (`VBUS_IN`, `+5V`, `+3V3`, `KBD_VBUS`, `POGO_5V`, `GND`; `*USB*_D_P` / `*USB*_D_N`). Rename the patterns if you name nets differently.
 - Libraries (project):

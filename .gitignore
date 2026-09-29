@@ -19,3 +19,6 @@ _restore_backup_*/
 
 # Fabrication outputs (regenerated from the PCB)
 hardware/dock/fab/
+
+# Python caches
+__pycache__/

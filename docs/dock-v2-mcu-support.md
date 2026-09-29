@@ -78,6 +78,8 @@ Flashing summary:
 
 ## 5. Chip A pin budget (RP2354A: GPIO0–29, ADC on 26–29 only)
 
+**Final pin maps (GPIO numbers, pins, nets) for A and B: [hardware/dock-v2/DOCK_CONNECTIONS.md](../hardware/dock-v2/DOCK_CONNECTIONS.md) §5–6.** Added there: 10 k pull-ups on B_RUN, B_BOOTSEL and the ESP32's GPIO9, and a second 2N7002 for POGO_OFF, because A's pins default to weak pull-downs at reset.
+
 | Function | GPIOs |
 |---|---|
 | PIO-USB host (keyboard D+/D−, adjacent) | 2 |

@@ -1270,7 +1270,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "c35b04ca-af49-4366-92fa-3b2a85bc3653")
+		(uuid "97dfa6b1-6166-45af-8ed2-0495b438bcb7")
 	)
 	(text "Pogo connector (front edge)"
 		(exclude_from_sim no)
@@ -1282,11 +1282,11 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "35980d70-306b-464d-90bf-c2432b3d8de8")
+		(uuid "fb8d97ae-33e1-463b-a35c-6f2eb0b0eda0")
 	)
 	(rectangle
 		(start 85.09 17.78)
-		(end 214.63 137.16)
+		(end 214.63 139.70)
 		(stroke
 			(width 0)
 			(type dash)
@@ -1294,7 +1294,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "daaf726b-046e-4490-8d22-a05ca869dd51")
+		(uuid "acf8d9cf-4a34-41c9-aecc-72308bc46dc8")
 	)
 	(text "Pogo 5 V switch (hardware DET enable)"
 		(exclude_from_sim no)
@@ -1306,7 +1306,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "0844c530-5b05-4f2c-8cbe-b106cf34fcb7")
+		(uuid "43fb933a-d65f-4a68-8869-39ea2094a4d1")
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x06")
@@ -1319,7 +1319,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "d1dd6955-ce6f-4431-937b-f0f6b9c86945")
+		(uuid "1ae39bd4-ff9e-41ba-8355-df1fafaaddfe")
 		(property "Reference" "J601"
 			(at 26.67 33.02 0)
 			(show_name no)
@@ -1398,22 +1398,22 @@
 			)
 		)
 		(pin "1"
-			(uuid "cfdb4783-a38b-4649-b1c4-f9b2e3a564a5")
+			(uuid "79333cba-773e-4137-98e4-7047ccd5fdd9")
 		)
 		(pin "2"
-			(uuid "32b7b2dc-b912-41f4-ab07-3e95a53e1e53")
+			(uuid "8aa55cbd-de06-4ad7-9124-6aae5ce33e27")
 		)
 		(pin "3"
-			(uuid "7e156116-bf23-4cac-a0e2-f62509c6d27f")
+			(uuid "10eb5f9b-6368-4571-b24e-91b4b39e7a8d")
 		)
 		(pin "4"
-			(uuid "b0ac901c-df93-4bf3-8a54-9f33b676e8c9")
+			(uuid "100bea8a-a3e8-4a00-aad8-0d9168814cd4")
 		)
 		(pin "5"
-			(uuid "5060764c-51b5-43b8-8b12-aad98e9d27a8")
+			(uuid "0b7ac875-9f10-4a6e-ad7a-bb4ab532d1d0")
 		)
 		(pin "6"
-			(uuid "465baf5d-100c-49b9-917e-282da1a10d3e")
+			(uuid "7e64ef1c-063c-4522-bd81-9c830065654f")
 		)
 		(instances
 			(project "dock-v2"
@@ -1435,7 +1435,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "b6f782c7-2a47-42a0-8c42-8cf00e0a159c")
+		(uuid "0d52ed2a-7622-4075-9474-092768569c17")
 		(property "Reference" "U601"
 			(at 35.56 55.88 0)
 			(show_name no)
@@ -1514,22 +1514,22 @@
 			)
 		)
 		(pin "1"
-			(uuid "b6e62e95-53e2-4b06-99cc-9efa73b56167")
+			(uuid "184c22a0-80f8-418a-90a8-23d6b9b5f271")
 		)
 		(pin "6"
-			(uuid "984546ae-ab2b-4b84-aa20-34d9d76fad57")
+			(uuid "726a7e7d-ae4b-4b5a-9f70-76d530f4b115")
 		)
 		(pin "3"
-			(uuid "9edf5ce5-bbd6-4ec5-9134-8814f97f0630")
+			(uuid "c24d3a76-aeba-4f0e-a256-1ec8a61f3263")
 		)
 		(pin "4"
-			(uuid "98410eba-6a29-4c36-926e-dd0ed05b494b")
+			(uuid "53d14786-b81f-4e2f-8770-5b6871c7d24e")
 		)
 		(pin "2"
-			(uuid "a5cfc1eb-5e68-4ba4-8a07-6142f4460a2a")
+			(uuid "b5aab540-d2db-4481-9d30-02221e0ab30f")
 		)
 		(pin "5"
-			(uuid "ac14e43a-5c87-490c-b662-c9947c864d0f")
+			(uuid "de318c59-fd25-4798-829f-29f97d4731c5")
 		)
 		(instances
 			(project "dock-v2"
@@ -1551,7 +1551,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "d57c315a-aeb6-49e3-9dfa-2c2b8e90a7e4")
+		(uuid "839f2f65-fe83-47bd-bfe4-cac6ace92168")
 		(property "Reference" "R601"
 			(at 22.61 78.74 0)
 			(show_name no)
@@ -1630,10 +1630,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "001bf75e-30b4-4a52-804a-8a1893da8b4e")
+			(uuid "89e5a083-a5dc-4213-9af0-ebdd832d1b86")
 		)
 		(pin "2"
-			(uuid "e4ebdae6-cc3e-4478-a202-488e8ab6b7a1")
+			(uuid "ef946d72-1cf4-44e2-b1d7-ca3eb820ab36")
 		)
 		(instances
 			(project "dock-v2"
@@ -1655,7 +1655,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "56649cbc-5445-4a4c-b984-8c22894c948a")
+		(uuid "964745bc-63fe-448f-9976-f8c57d7b4e50")
 		(property "Reference" "R602"
 			(at 22.61 93.98 0)
 			(show_name no)
@@ -1734,10 +1734,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "e481cc6b-40d4-4858-bf14-0154e369dd82")
+			(uuid "e4fa333a-e88b-4e4f-8c29-170e65536cba")
 		)
 		(pin "2"
-			(uuid "27659df8-c718-4e5d-b74b-77e55da25ce4")
+			(uuid "e2c97028-b4d6-4953-9d62-bc9b3dd6ef63")
 		)
 		(instances
 			(project "dock-v2"
@@ -1759,7 +1759,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "8371c465-2aa7-4bbd-a8c7-731839975f73")
+		(uuid "47f54bd6-9b10-4992-ab69-f7f50fc05378")
 		(property "Reference" "R603"
 			(at 22.61 109.22 0)
 			(show_name no)
@@ -1838,10 +1838,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "c3ade918-4de4-4fb2-8304-a91a2e13a4db")
+			(uuid "67b2128f-bfcb-45d2-8f9c-e979ef5dfc22")
 		)
 		(pin "2"
-			(uuid "d93be679-1161-485e-873f-82eff50ef325")
+			(uuid "e3e432bd-5f49-4863-9e9c-9507ec552bf6")
 		)
 		(instances
 			(project "dock-v2"
@@ -1863,7 +1863,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "e5e95256-f36b-41e9-b51c-d795355db41f")
+		(uuid "5554a441-ae96-4f1c-ab58-d8507f9a93e3")
 		(property "Reference" "U602"
 			(at 110.49 30.48 0)
 			(show_name no)
@@ -1942,19 +1942,19 @@
 			)
 		)
 		(pin "5"
-			(uuid "f620492b-99a3-4f21-9e9a-7d79b2e7144e")
+			(uuid "dc636dad-1220-47ed-95e8-945dc1792b4b")
 		)
 		(pin "4"
-			(uuid "0d8eae6a-ff73-400d-9404-e4fac4f3803d")
+			(uuid "dd6cbf3d-475f-404c-bb82-d962c54b60c2")
 		)
 		(pin "1"
-			(uuid "dcbcdaf1-85f2-44bc-a12f-b87b4924cebb")
+			(uuid "42176093-090b-42f8-a7aa-43b8d8e6bb15")
 		)
 		(pin "3"
-			(uuid "28fc475e-ff39-4971-8044-209f6c71e840")
+			(uuid "a4f57f61-37a0-4dcc-9b2a-80e4924d53fa")
 		)
 		(pin "2"
-			(uuid "a363357c-a756-4f4b-aca7-edcc7aca9770")
+			(uuid "b4a6bee6-8dd5-428d-a833-b69d7a50ad66")
 		)
 		(instances
 			(project "dock-v2"
@@ -1976,7 +1976,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "ba494199-7d18-414b-8556-cbb1282960c4")
+		(uuid "2d290ea4-05f5-434f-a5e2-37ef2d5128ae")
 		(property "Reference" "Q601"
 			(at 101.47 49.53 0)
 			(show_name no)
@@ -2055,13 +2055,13 @@
 			)
 		)
 		(pin "1"
-			(uuid "a3fe11b3-b101-4ac8-a550-c3aa601ea2ad")
+			(uuid "13e10572-92ec-46e9-9a9b-5e62210b9bc9")
 		)
 		(pin "2"
-			(uuid "8c1cf786-f5f3-4773-bbe5-14f4c4701cfc")
+			(uuid "8f6deedd-a7e9-4231-a3b4-6e134b4ee46b")
 		)
 		(pin "3"
-			(uuid "8571eb6f-4ea4-4608-8c02-da8021073208")
+			(uuid "0dfc764a-69e6-422a-a444-6d956cc71ed6")
 		)
 		(instances
 			(project "dock-v2"
@@ -2083,7 +2083,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "60843590-c23e-4522-ba76-d41d29669cb6")
+		(uuid "0126adf6-ed79-4960-8d96-c9b815a04b40")
 		(property "Reference" "R604"
 			(at 95.00 66.04 0)
 			(show_name no)
@@ -2162,10 +2162,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "0e113542-120a-45dc-92e1-a84ae9217a06")
+			(uuid "1cff2b4f-3f0d-4f48-9744-b8a49e2b3704")
 		)
 		(pin "2"
-			(uuid "d7ed372b-65e8-4472-a4ba-604f12aaf194")
+			(uuid "a05bb28f-2e0c-4928-9727-0072b856fd48")
 		)
 		(instances
 			(project "dock-v2"
@@ -2187,7 +2187,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "f6813ef4-e49b-48fc-9fc6-11203b2a93b4")
+		(uuid "4474c21f-319c-4cf1-b28e-5c1d57e3a7c8")
 		(property "Reference" "R605"
 			(at 95.00 81.28 0)
 			(show_name no)
@@ -2266,10 +2266,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "695f1a05-394f-4b3d-a347-fe629e4b6b11")
+			(uuid "22c47a9e-71df-4c46-ae02-caef85909904")
 		)
 		(pin "2"
-			(uuid "4011f54d-9fe4-49c1-828e-4486cd55d16c")
+			(uuid "f7485f80-b60a-428d-bf88-1857fa70f8bd")
 		)
 		(instances
 			(project "dock-v2"
@@ -2281,8 +2281,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 91.44 97.79 0)
+		(lib_id "Transistor_FET:2N7002")
+		(at 95.25 99.06 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2291,9 +2291,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "afc7ddeb-c098-41b6-bf3b-71f0148daa8f")
-		(property "Reference" "R606"
-			(at 95.00 96.52 0)
+		(uuid "3ce1d1b9-6582-4490-ab83-b45a7b8984b5")
+		(property "Reference" "Q602"
+			(at 101.47 97.79 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2303,8 +2303,115 @@
 				(justify left)
 			)
 		)
-		(property "Value" "6.8k"
-			(at 95.00 99.06 0)
+		(property "Value" "2N7002"
+			(at 101.47 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 95.25 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/NDS7002A-D.PDF"
+			(at 95.25 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "0.115A Id, 60V Vds, N-Channel MOSFET, SOT-23"
+			(at 95.25 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C8545"
+			(at 95.25 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Note" "POGO_OFF veto: pulls EN low"
+			(at 101.47 102.87 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.0 1.0)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "6e5b51b5-58c7-4471-97e5-187d21c70837")
+		)
+		(pin "2"
+			(uuid "fde2c5d7-c0d6-4cb2-bb9e-7c6e2149204c")
+		)
+		(pin "3"
+			(uuid "cd0e9ce5-f72e-4aad-b926-863f60de1bad")
+		)
+		(instances
+			(project "dock-v2"
+				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/a6551cad-76cb-43b5-b19c-441e3fa27a27"
+					(reference "Q602")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 91.44 115.57 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "d941bf6a-629e-4cf0-ba21-397f8b6e4292")
+		(property "Reference" "R609"
+			(at 95.00 114.30 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100k"
+			(at 95.00 116.84 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2315,7 +2422,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 91.44 97.79 0)
+			(at 91.44 115.57 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2326,7 +2433,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 91.44 97.79 0)
+			(at 91.44 115.57 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2337,7 +2444,111 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 91.44 97.79 0)
+			(at 91.44 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C25741"
+			(at 91.44 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Note" "Q602 gate pull-down (no veto at reset)"
+			(at 95.00 119.38 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.0 1.0)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "0b7134e3-3476-4653-86fa-c0144d85c4db")
+		)
+		(pin "2"
+			(uuid "a343d521-a62d-4a80-adad-aaad73cfa2bd")
+		)
+		(instances
+			(project "dock-v2"
+				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/a6551cad-76cb-43b5-b19c-441e3fa27a27"
+					(reference "R609")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 91.44 130.81 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "a0416c41-341a-4de1-ad74-02988645a054")
+		(property "Reference" "R606"
+			(at 95.00 129.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "6.8k"
+			(at 95.00 132.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 91.44 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 91.44 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 91.44 130.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2348,7 +2559,7 @@
 			)
 		)
 		(property "LCSC" "C25917"
-			(at 91.44 97.79 0)
+			(at 91.44 130.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2359,7 +2570,7 @@
 			)
 		)
 		(property "Note" "ISET: 1.0 A"
-			(at 95.00 101.60 0)
+			(at 95.00 134.62 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2370,223 +2581,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "b20ff116-80fb-47e3-a645-f39e58c4ad65")
+			(uuid "ed39f2cf-aa1f-4514-8344-4b5131d17143")
 		)
 		(pin "2"
-			(uuid "ba26a9ec-7436-48dd-a51e-67a4a6b82245")
+			(uuid "119dcac2-c490-4dab-bfcd-7c6f1ffdfbd7")
 		)
 		(instances
 			(project "dock-v2"
 				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/a6551cad-76cb-43b5-b19c-441e3fa27a27"
 					(reference "R606")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 92.71 113.03 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced no)
-		(uuid "57d008c3-9dca-4501-b98c-077541eea9e7")
-		(property "Reference" "C601"
-			(at 97.28 111.76 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1uF"
-			(at 97.28 114.30 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 92.71 113.03 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 92.71 113.03 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 92.71 113.03 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C52923"
-			(at 92.71 113.03 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Note" "U602 input"
-			(at 97.28 116.84 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.0 1.0)
-				)
-				(justify left)
-			)
-		)
-		(pin "1"
-			(uuid "4a6db29a-10a6-4392-9b6a-9468592b0e67")
-		)
-		(pin "2"
-			(uuid "3d4d1a3e-b24b-4515-8c85-8a40da309482")
-		)
-		(instances
-			(project "dock-v2"
-				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/a6551cad-76cb-43b5-b19c-441e3fa27a27"
-					(reference "C601")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 92.71 128.27 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced no)
-		(uuid "b94b4423-fd97-4540-873a-e18d6ea5eba9")
-		(property "Reference" "C602"
-			(at 97.28 127.00 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10uF"
-			(at 97.28 129.54 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 92.71 128.27 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 92.71 128.27 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 92.71 128.27 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C15850"
-			(at 92.71 128.27 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Note" "POGO_5V output"
-			(at 97.28 132.08 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.0 1.0)
-				)
-				(justify left)
-			)
-		)
-		(pin "1"
-			(uuid "c67e1a19-18d5-4d11-b466-b55cb0f631c7")
-		)
-		(pin "2"
-			(uuid "d97937a3-a535-4334-bd71-2c494fb67dba")
-		)
-		(instances
-			(project "dock-v2"
-				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/a6551cad-76cb-43b5-b19c-441e3fa27a27"
-					(reference "C602")
 					(unit 1)
 				)
 			)
@@ -2603,8 +2606,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "96df3dbc-5b04-4ebd-a1a0-2b32f962eab3")
-		(property "Reference" "C603"
+		(uuid "a2f9d6f0-5585-4318-ab3b-0ecfa46166e6")
+		(property "Reference" "C601"
 			(at 169.67 30.48 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2670,7 +2673,7 @@
 				)
 			)
 		)
-		(property "Note" "POGO_5V output"
+		(property "Note" "U602 input"
 			(at 169.67 35.56 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2682,10 +2685,218 @@
 			)
 		)
 		(pin "1"
-			(uuid "0d7254c6-0d86-48a7-8e06-3b6dfb7ae5d7")
+			(uuid "c451eaf2-671e-4ac4-a029-1fed682ffc74")
 		)
 		(pin "2"
-			(uuid "e5f223d3-c68d-4d21-9746-7947cc49a12e")
+			(uuid "c7c86669-4268-4d99-b394-f0acd0e79c3a")
+		)
+		(instances
+			(project "dock-v2"
+				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/a6551cad-76cb-43b5-b19c-441e3fa27a27"
+					(reference "C601")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 165.10 46.99 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "9b2ce436-fb47-4452-a29f-e805e3e71d99")
+		(property "Reference" "C602"
+			(at 169.67 45.72 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10uF"
+			(at 169.67 48.26 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 165.10 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 165.10 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 165.10 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C15850"
+			(at 165.10 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Note" "POGO_5V output"
+			(at 169.67 50.80 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.0 1.0)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "e8e2e674-69a4-4885-bfe0-5ede4725cae3")
+		)
+		(pin "2"
+			(uuid "888efb2c-21f7-4e93-a8dd-dc8f0491dbc1")
+		)
+		(instances
+			(project "dock-v2"
+				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/a6551cad-76cb-43b5-b19c-441e3fa27a27"
+					(reference "C602")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 165.10 62.23 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "8588553c-0003-442a-92ca-c0b157f6bb46")
+		(property "Reference" "C603"
+			(at 169.67 60.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1uF"
+			(at 169.67 63.50 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 165.10 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 165.10 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 165.10 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C52923"
+			(at 165.10 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Note" "POGO_5V output"
+			(at 169.67 66.04 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.0 1.0)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "6ad0213d-bdeb-4ede-b6f4-8428c81100c1")
+		)
+		(pin "2"
+			(uuid "3d189c29-71c1-4e60-bff2-a1b0f427e8e1")
 		)
 		(instances
 			(project "dock-v2"
@@ -2698,7 +2909,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 165.10 46.99 0)
+		(at 165.10 77.47 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2707,9 +2918,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "867cbd23-6d3c-4cf3-9366-541a12bcb900")
+		(uuid "d4cd480e-ad2b-4f5e-9c91-0c227be42c26")
 		(property "Reference" "R607"
-			(at 168.66 45.72 0)
+			(at 168.66 76.20 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2720,7 +2931,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 168.66 48.26 0)
+			(at 168.66 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2731,7 +2942,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 165.10 46.99 0)
+			(at 165.10 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2742,7 +2953,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 165.10 46.99 0)
+			(at 165.10 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2753,7 +2964,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 165.10 46.99 0)
+			(at 165.10 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2764,7 +2975,7 @@
 			)
 		)
 		(property "LCSC" "C25744"
-			(at 165.10 46.99 0)
+			(at 165.10 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2775,7 +2986,7 @@
 			)
 		)
 		(property "Note" "POGO_5V divider top -> ADC"
-			(at 168.66 50.80 0)
+			(at 168.66 81.28 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2786,10 +2997,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "5f333dac-81db-493d-a2b5-ffb142fafcbd")
+			(uuid "9bcbc332-6452-4192-8011-68ee10819f27")
 		)
 		(pin "2"
-			(uuid "6a7dd26b-d444-4b50-a9a1-85aa7b350b1b")
+			(uuid "49a8a0e7-7f4c-4bac-b95c-c0279fe5e151")
 		)
 		(instances
 			(project "dock-v2"
@@ -2802,7 +3013,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 165.10 62.23 0)
+		(at 165.10 92.71 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2811,9 +3022,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "a800be23-a269-4c95-8f4b-ebcd0e82137e")
+		(uuid "406cf32c-1ac4-4279-8070-2a52784d8fad")
 		(property "Reference" "R608"
-			(at 168.66 60.96 0)
+			(at 168.66 91.44 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2824,7 +3035,7 @@
 			)
 		)
 		(property "Value" "15k"
-			(at 168.66 63.50 0)
+			(at 168.66 93.98 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2835,7 +3046,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 165.10 62.23 0)
+			(at 165.10 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2846,7 +3057,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 165.10 62.23 0)
+			(at 165.10 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2857,7 +3068,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 165.10 62.23 0)
+			(at 165.10 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2868,7 +3079,7 @@
 			)
 		)
 		(property "LCSC" "C25756"
-			(at 165.10 62.23 0)
+			(at 165.10 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2879,7 +3090,7 @@
 			)
 		)
 		(property "Note" "POGO_5V divider bottom"
-			(at 168.66 66.04 0)
+			(at 168.66 96.52 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2890,10 +3101,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "552bd59d-9d46-4af6-9658-0b50044dc902")
+			(uuid "f07ee044-b33d-4275-bfd3-102bc89d089c")
 		)
 		(pin "2"
-			(uuid "ad677f04-f357-4bc6-b82f-990b3eeb5505")
+			(uuid "48bb272c-b23d-49f3-aabc-87ccc8036077")
 		)
 		(instances
 			(project "dock-v2"
