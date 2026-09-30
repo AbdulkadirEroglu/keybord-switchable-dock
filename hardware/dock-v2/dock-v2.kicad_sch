@@ -105,98 +105,6 @@
 		)
 	)
 	(sheet
-		(at 180 50)
-		(size 50.8 25.4)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0)
-		)
-		(uuid "bcfba91e-3181-4d07-9970-4b16b455c32a")
-		(property "Sheetname" "MCU_A"
-			(at 180 49.1 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "mcu_a.kicad_sch"
-			(at 180 76.3 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(instances
-			(project "dock-v2"
-				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a"
-					(page "4")
-				)
-			)
-		)
-	)
-	(sheet
-		(at 20 100)
-		(size 50.8 25.4)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0)
-		)
-		(uuid "da035690-56be-4ab0-b555-b768c130331c")
-		(property "Sheetname" "MCU_B"
-			(at 20 99.1 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "mcu_b.kicad_sch"
-			(at 20 126.3 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(instances
-			(project "dock-v2"
-				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a"
-					(page "5")
-				)
-			)
-		)
-	)
-	(sheet
 		(at 100 100)
 		(size 50.8 25.4)
 		(exclude_from_sim no)
@@ -284,6 +192,98 @@
 			(project "dock-v2"
 				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a"
 					(page "7")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 180 50)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "bcfba91e-3181-4d07-9970-4b16b455c32a")
+		(property "Sheetname" "MCU_A"
+			(at 180 49.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "mcu_a.kicad_sch"
+			(at 180 76.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "dock-v2"
+				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 20 100)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "da035690-56be-4ab0-b555-b768c130331c")
+		(property "Sheetname" "MCU_B"
+			(at 20 99.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "mcu_b.kicad_sch"
+			(at 20 126.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "dock-v2"
+				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a"
+					(page "5")
 				)
 			)
 		)

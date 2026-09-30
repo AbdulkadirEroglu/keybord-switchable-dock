@@ -254,7 +254,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": ""
+      "sch_revision": "v2.0"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -602,10 +602,6 @@
       {
         "netclass": "USB",
         "pattern": "*USB*_D_N"
-      },
-      {
-        "netclass": "Power",
-        "pattern": "*BUCK_SW"
       }
     ]
   },
@@ -747,10 +743,10 @@
       {
         "filename": "dock-v2.kicad_sch",
         "name": "dock-v2",
-        "uuid": "00000000-0000-0000-0000-000000000000"
+        "uuid": "928a9dc6-b0ce-4f47-a17d-f26fd77e396a"
       }
     ],
-    "used_designators": "",
+    "used_designators": "R223,R304,R306,R504,R609,C205,C417,#FLG201-202,#PWR201-215,#PWR301-319,#PWR401-415,#PWR501-511,#PWR601-604",
     "variants": []
   },
   "sheets": [
