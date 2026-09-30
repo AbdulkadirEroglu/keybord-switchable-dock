@@ -3319,7 +3319,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "15e8d697-50d9-44cc-a737-c64370b7bd7d")
-		(property "Reference" "R304"
+		(property "Reference" "R202"
 			(at 62.23 44.45 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3406,7 +3406,7 @@
 		(instances
 			(project "dock-v2"
 				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/337fd23b-54e0-49b3-a4e7-e02473a7692d"
-					(reference "R304")
+					(reference "R202")
 					(unit 1)
 				)
 			)
@@ -6645,7 +6645,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "b18e18fc-cc19-4d2c-b14b-f5d88c6a62d7")
-		(property "Reference" "R306"
+		(property "Reference" "R201"
 			(at 57.912 33.274 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6732,7 +6732,7 @@
 		(instances
 			(project "dock-v2"
 				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/337fd23b-54e0-49b3-a4e7-e02473a7692d"
-					(reference "R306")
+					(reference "R201")
 					(unit 1)
 				)
 			)

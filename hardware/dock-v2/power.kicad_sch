@@ -3334,7 +3334,7 @@
 			)
 		)
 	)
-	(global_label "PD_SCA"
+	(global_label "PD_SDA"
 		(shape input)
 		(at 104.14 48.26 270)
 		(fields_autoplaced yes)
@@ -3585,7 +3585,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "02f352a9-862f-4f4b-91ea-a42e9e17bcbc")
-		(property "Reference" "R103"
+		(property "Reference" "R104"
 			(at 120.65 50.292 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3651,7 +3651,7 @@
 				)
 			)
 		)
-		(property "Note" "SCL pull-up to 3V3"
+		(property "Note" "SDA pull-up to 3V3"
 			(at 121.92 44.7 0)
 			(hide yes)
 			(show_name no)
@@ -3672,7 +3672,7 @@
 		(instances
 			(project "dock-v2"
 				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/211f96f8-19fe-45b9-be96-b177c1b5d6c4"
-					(reference "R103")
+					(reference "R104")
 					(unit 1)
 				)
 			)
@@ -3820,7 +3820,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "0b85d4de-b12f-4844-a558-adb217d3e3ef")
-		(property "Reference" "C205"
+		(property "Reference" "C107"
 			(at 186.182 46.228 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3907,7 +3907,7 @@
 		(instances
 			(project "dock-v2"
 				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/211f96f8-19fe-45b9-be96-b177c1b5d6c4"
-					(reference "C205")
+					(reference "C107")
 					(unit 1)
 				)
 			)
@@ -5393,7 +5393,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "6a35b981-5e5a-45ed-a944-afaec2206542")
-		(property "Reference" "R104"
+		(property "Reference" "R103"
 			(at 120.396 45.466 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5459,7 +5459,7 @@
 				)
 			)
 		)
-		(property "Note" "SDA pull-up to 3V3"
+		(property "Note" "SCL pull-up to 3V3"
 			(at 121.92 39.62 0)
 			(hide yes)
 			(show_name no)
@@ -5480,7 +5480,7 @@
 		(instances
 			(project "dock-v2"
 				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/211f96f8-19fe-45b9-be96-b177c1b5d6c4"
-					(reference "R104")
+					(reference "R103")
 					(unit 1)
 				)
 			)
@@ -7155,7 +7155,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "eb509f88-4a50-49c6-badd-c73e826d7cfb")
-		(property "Reference" "R223"
+		(property "Reference" "R106"
 			(at 211.836 44.196 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7242,7 +7242,7 @@
 		(instances
 			(project "dock-v2"
 				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/211f96f8-19fe-45b9-be96-b177c1b5d6c4"
-					(reference "R223")
+					(reference "R106")
 					(unit 1)
 				)
 			)
@@ -7359,7 +7359,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_TechFuse_SL0630"
 			(at 215.9 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -7392,7 +7392,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C10167"
+		(property "LCSC" "C207841"
 			(at 215.9 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -7403,7 +7403,7 @@
 				)
 			)
 		)
-		(property "Note" "SMDRH105R-6R8NT (Ext) or a Basic 6.8 uH, 3 A+: pick footprint"
+		(property "Note" "SLO0630H6R8MTT: Isat 8 A (> 5.8 A max current limit), 45 mOhm, 7.1x6.6x3.0"
 			(at 219.07 45.72 0)
 			(hide yes)
 			(show_name no)

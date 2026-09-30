@@ -602,6 +602,26 @@
       {
         "netclass": "USB",
         "pattern": "*USB*_D_N"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "3V3_PWR"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "5V_PWR"
+      },
+      {
+        "netclass": "USB",
+        "pattern": "*USB_DP"
+      },
+      {
+        "netclass": "USB",
+        "pattern": "*USB_DN"
+      },
+      {
+        "netclass": "USB",
+        "pattern": "*USB_DM"
       }
     ]
   },

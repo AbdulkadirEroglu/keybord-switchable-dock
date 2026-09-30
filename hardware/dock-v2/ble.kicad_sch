@@ -2080,7 +2080,7 @@
 				)
 			)
 		)
-		(property "Note" "GPIO2 pull-up"
+		(property "Note" "GPIO9 (BOOT) pull-up, beats A pull-down"
 			(at 166.37 125.48 0)
 			(hide yes)
 			(show_name no)

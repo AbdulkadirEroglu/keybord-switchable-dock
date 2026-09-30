@@ -3112,7 +3112,7 @@
 			)
 		)
 	)
-	(global_label "PD_SCA"
+	(global_label "PD_SDA"
 		(shape input)
 		(at 209.55 132.08 0)
 		(fields_autoplaced yes)
