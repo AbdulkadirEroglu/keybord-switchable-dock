@@ -766,7 +766,7 @@
         "uuid": "928a9dc6-b0ce-4f47-a17d-f26fd77e396a"
       }
     ],
-    "used_designators": "R223,R304,R306,R504,R609,C205,C417,#FLG201-202,#PWR201-215,#PWR301-319,#PWR401-415,#PWR501-511,#PWR601-604",
+    "used_designators": "R223,R304,R306,R504,R609,C205,C417,#FLG201-202,#PWR201-218,#PWR301-319,#PWR401-415,#PWR501-511,#PWR601-604,#PWR701-707",
     "variants": []
   },
   "sheets": [
