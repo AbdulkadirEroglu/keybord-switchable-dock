@@ -1123,12 +1123,6 @@
 		(uuid "d0f48bd6-0829-4300-8df6-a6164e70236a")
 	)
 	(junction
-		(at 55.88 58.42)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d1ecd656-a7a9-45a4-9731-88da3defbf41")
-	)
-	(junction
 		(at 45.72 53.34)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1160,16 +1154,6 @@
 	)
 	(wire
 		(pts
-			(xy 55.88 58.42) (xy 45.72 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "43945223-3259-4d9a-82f6-769f7bcc804c")
-	)
-	(wire
-		(pts
 			(xy 64.77 68.58) (xy 64.77 66.04)
 		)
 		(stroke
@@ -1180,7 +1164,7 @@
 	)
 	(wire
 		(pts
-			(xy 72.39 63.5) (xy 45.72 63.5)
+			(xy 59.69 63.5) (xy 72.39 63.5)
 		)
 		(stroke
 			(width 0)
@@ -1210,7 +1194,7 @@
 	)
 	(wire
 		(pts
-			(xy 64.77 66.04) (xy 45.72 66.04)
+			(xy 59.69 66.04) (xy 64.77 66.04)
 		)
 		(stroke
 			(width 0)
@@ -1227,22 +1211,6 @@
 			(type default)
 		)
 		(uuid "b6892629-f34b-439f-a4fb-f18d975a7cb4")
-	)
-	(wire
-		(pts
-			(xy 45.72 55.88) (xy 45.72 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d06a947f-e858-432c-993b-18acbd54185a")
-	)
-	(junction
-		(at 45.72 58.42)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "364505ee-3bd4-425d-9369-c91c89bd936e")
 	)
 	(wire
 		(pts
@@ -1273,6 +1241,66 @@
 			(justify right bottom)
 		)
 		(uuid "41af3ab1-2cec-4c5a-b5cb-9cfcc9f615cb")
+	)
+		(label "POGO_5V"
+		(at 45.72 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "768c4674-c9f9-4dc4-a0e4-ff5e1135be07")
+	)
+		(label "POGO_DTX"
+		(at 45.72 63.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a1080bfb-aeaa-473f-839b-b59584335863")
+	)
+		(label "POGO_DRX"
+		(at 45.72 60.96 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "83f8f5a3-e069-47a0-b61d-fc420ec2f9fb")
+	)
+		(label "POGO_5V"
+		(at 45.72 55.88 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6e3a78f7-5011-41e9-a6bf-322c422b8495")
+	)
+		(label "POGO_DTX"
+		(at 59.69 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ae23c11e-ef32-4fa4-a01c-36a71e469673")
+	)
+		(label "POGO_DRX"
+		(at 59.69 63.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5cdf9a07-5a20-4b46-885d-7028403a9cc5")
 	)
 	(label "POGO_5V"
 		(at 59.69 58.42 0)
@@ -1364,7 +1392,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 45.72 60.96 90)
+		(at 45.72 58.42 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -1375,7 +1403,7 @@
 		(fields_autoplaced yes)
 		(uuid "46bd815d-a939-44ba-b6ef-33d9c9285428")
 		(property "Reference" "#PWR05"
-			(at 52.07 60.96 0)
+			(at 52.07 58.42 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1386,7 +1414,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 49.53 60.9599 90)
+			(at 49.53 58.42 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1397,7 +1425,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 45.72 60.96 0)
+			(at 45.72 58.42 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1408,7 +1436,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 45.72 60.96 0)
+			(at 45.72 58.42 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1419,7 +1447,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 45.72 60.96 0)
+			(at 45.72 58.42 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1541,7 +1569,7 @@
 				)
 			)
 		)
-		(property "Value" "Pogo 6p 90deg (pad half)"
+		(property "Value" "Pogo 7p 90deg (pad half)"
 			(at 37.846 60.71 90)
 			(show_name no)
 			(do_not_autoplace no)

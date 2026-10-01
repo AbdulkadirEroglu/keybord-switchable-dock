@@ -96,7 +96,7 @@ On the PCB: right edge, next to J101
 | 10 PG | PD_PG | R102.2; MCU_A sheet: U301.34 (GPIO22) | **global label `PD_PG`** |
 | 11 GND | GND |  | power symbol `GND` |
 
-#### C101 · 1uF 50V · VHV to GND
+#### C101 · 1uF · VHV to GND
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
@@ -148,14 +148,14 @@ On the PCB: front-right corner (keep the hot loop tiny)
 | 7 GND | GND |  | power symbol `GND` |
 | 8 PH | BUCK_SW | C104.2, D102.1 (K), L101.1 | wire (or local label `BUCK_SW`) |
 
-#### C102 · 10uF 25V · VIN, at pins 2/7
+#### C102 · 10uF · VIN, at pins 2/7
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | VBUS_IN | J101.A4 (VBUS), J101.A9 (VBUS), J101.B4 (VBUS), J101.B9 (VBUS), D101.1 (A1), U102.1 (VHV), U102.8 (VBUS), C101.1, U103.2 (VIN), C103.1 | wire (or local label `VBUS_IN`) |
 | 2 | GND |  | power symbol `GND` |
 
-#### C103 · 10uF 25V · VIN
+#### C103 · 10uF · VIN
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
@@ -276,19 +276,19 @@ On the PCB: centre of the board, ≈ (45, 38)
 
 On the PCB: (4, 4), (86, 4), (86, 66), (20, 66)
 
-#### H101 · MountingHole
+#### H101 · (not in the schematic) · not in the schematic
 
 No pins (mechanical only).
 
-#### H102 · MountingHole
+#### H102 · (not in the schematic) · not in the schematic
 
 No pins (mechanical only).
 
-#### H103 · MountingHole
+#### H103 · (not in the schematic) · not in the schematic
 
 No pins (mechanical only).
 
-#### H104 · MountingHole
+#### H104 · (not in the schematic) · not in the schematic
 
 No pins (mechanical only).
 
@@ -1338,13 +1338,13 @@ On the PCB: at the module's EN (8), GPIO8/9 (22/23), GPIO2 (5) pins
 
 On the PCB: near the module, reachable with a probe
 
-#### TP501 · TestPoint · GPIO18 USB_D-
+#### TP501 · (not in the schematic) · not in the schematic
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | BLE_USB_D_N | U501.26 (GPIO18/USB_D-) | wire (or local label `BLE_USB_D_N`) |
 
-#### TP502 · TestPoint · GPIO19 USB_D+
+#### TP502 · (not in the schematic) · not in the schematic
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
@@ -1389,42 +1389,42 @@ On the PCB: front edge, centre (hand-soldered); ESD right at the pins
 |---|---|---|---|
 | 1 Pin_1 | GND |  | power symbol `GND` |
 | 2 Pin_2 | POGO_5V | U602.1 (OUT), C602.1, C603.1, R607.1 | wire (or local label `POGO_5V`) |
-| 3 Pin_3 | POGO_5V | U602.1 (OUT), C602.1, C603.1, R607.1 | wire (or local label `POGO_5V`) |
-| 4 Pin_4 | POGO_DET_J | U601.3 (D2+), R603.1 | wire (or local label `POGO_DET_J`) |
-| 5 Pin_5 | POGO_RX_J | U601.6 (D1-), R602.1 | wire (or local label `POGO_RX_J`) |
-| 6 Pin_6 | POGO_TX_J | U601.1 (D1+), R601.2 | wire (or local label `POGO_TX_J`) |
+| 3 Pin_3 | POGO_DET_J | U601.4 (D2-), R603.1 | wire (or local label `POGO_DET_J`) |
+| 4 Pin_4 | POGO_RX_J | U601.3 (D2+), R602.1 | wire (or local label `POGO_RX_J`) |
+| 5 Pin_5 | POGO_TX_J | U601.6 (D1-), R601.2 | wire (or local label `POGO_TX_J`) |
+| 6 Pin_6 | POGO_5V | U602.1 (OUT), C602.1, C603.1, R607.1 | wire (or local label `POGO_5V`) |
 | 7 Pin_7 | GND |  | power symbol `GND` |
 
 #### U601 · TPD4E1U06DBVR · ESD on DET, TX, RX (1 spare)
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 D1+ | POGO_TX_J | J601.6 (Pin_6), R601.2 | wire (or local label `POGO_TX_J`) |
+| 1 D1+ | — | nothing | no-connect flag (X) |
 | 2 GND | GND |  | power symbol `GND` |
-| 3 D2+ | POGO_DET_J | J601.4 (Pin_4), R603.1 | wire (or local label `POGO_DET_J`) |
-| 4 D2- | — | nothing | no-connect flag (X) |
+| 3 D2+ | POGO_RX_J | J601.4 (Pin_4), R602.1 | wire (or local label `POGO_RX_J`) |
+| 4 D2- | POGO_DET_J | J601.3 (Pin_3), R603.1 | wire (or local label `POGO_DET_J`) |
 | 5 NC | — | nothing | no-connect flag (X) |
-| 6 D1- | POGO_RX_J | J601.5 (Pin_5), R602.1 | wire (or local label `POGO_RX_J`) |
+| 6 D1- | POGO_TX_J | J601.5 (Pin_5), R601.2 | wire (or local label `POGO_TX_J`) |
 
 #### R601 · 1k · TX series
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | POGO_TX | MCU_A sheet: U301.16 (GPIO12) | **global label `POGO_TX`** |
-| 2 | POGO_TX_J | J601.6 (Pin_6), U601.1 (D1+) | wire (or local label `POGO_TX_J`) |
+| 2 | POGO_TX_J | J601.5 (Pin_5), U601.6 (D1-) | wire (or local label `POGO_TX_J`) |
 
 #### R602 · 1k · RX series
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | POGO_RX_J | J601.5 (Pin_5), U601.6 (D1-) | wire (or local label `POGO_RX_J`) |
+| 1 | POGO_RX_J | J601.4 (Pin_4), U601.3 (D2+) | wire (or local label `POGO_RX_J`) |
 | 2 | POGO_RX | MCU_A sheet: U301.17 (GPIO13) | **global label `POGO_RX`** |
 
 #### R603 · 1k · DET series
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | POGO_DET_J | J601.4 (Pin_4), U601.3 (D2+) | wire (or local label `POGO_DET_J`) |
+| 1 | POGO_DET_J | J601.3 (Pin_3), U601.4 (D2-) | wire (or local label `POGO_DET_J`) |
 | 2 | POGO_DET | Q601.1 (G), R604.2; MCU_A sheet: U301.18 (GPIO14) | **global label `POGO_DET`** |
 
 ### Pogo 5 V switch (hardware DET enable)
@@ -1435,7 +1435,7 @@ On the PCB: behind J601
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 OUT | POGO_5V | J601.2 (Pin_2), J601.3 (Pin_3), C602.1, C603.1, R607.1 | wire (or local label `POGO_5V`) |
+| 1 OUT | POGO_5V | J601.2 (Pin_2), J601.6 (Pin_6), C602.1, C603.1, R607.1 | wire (or local label `POGO_5V`) |
 | 2 GND | GND |  | power symbol `GND` |
 | 3 ISET | POGO_ISET | R606.1 | wire (or local label `POGO_ISET`) |
 | 4 EN | POGO_EN | Q601.3 (D), Q602.3 (D), R605.2 | wire (or local label `POGO_EN`) |
@@ -1496,21 +1496,21 @@ On the PCB: behind J601
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | POGO_5V | J601.2 (Pin_2), J601.3 (Pin_3), U602.1 (OUT), C603.1, R607.1 | wire (or local label `POGO_5V`) |
+| 1 | POGO_5V | J601.2 (Pin_2), J601.6 (Pin_6), U602.1 (OUT), C603.1, R607.1 | wire (or local label `POGO_5V`) |
 | 2 | GND |  | power symbol `GND` |
 
 #### C603 · 1uF · POGO_5V output
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | POGO_5V | J601.2 (Pin_2), J601.3 (Pin_3), U602.1 (OUT), C602.1, R607.1 | wire (or local label `POGO_5V`) |
+| 1 | POGO_5V | J601.2 (Pin_2), J601.6 (Pin_6), U602.1 (OUT), C602.1, R607.1 | wire (or local label `POGO_5V`) |
 | 2 | GND |  | power symbol `GND` |
 
 #### R607 · 10k · POGO_5V divider top -> ADC
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | POGO_5V | J601.2 (Pin_2), J601.3 (Pin_3), U602.1 (OUT), C602.1, C603.1 | wire (or local label `POGO_5V`) |
+| 1 | POGO_5V | J601.2 (Pin_2), J601.6 (Pin_6), U602.1 (OUT), C602.1, C603.1 | wire (or local label `POGO_5V`) |
 | 2 | POGO_5V_SENSE | R608.1; MCU_A sheet: U301.43 (GPIO29/ADC3) | **global label `POGO_5V_SENSE`** |
 
 #### R608 · 15k · POGO_5V divider bottom

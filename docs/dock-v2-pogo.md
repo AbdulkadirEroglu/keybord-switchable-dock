@@ -2,7 +2,7 @@
 
 **Decisions (2026-09-29):**
 - **Hardware DET enable kept:** pad 5 V turns on from DET alone; firmware can only veto.
-- **7-pin connector (2026-09-29, replaces the 6-pin): `GND | +5V | +5V | DET | RX | TX | GND`.** Contacts are rated 1 A each, so +5V and GND on two contacts give 2 A. Limit raised to **R_SET 4.7 kΩ → 1.45 A** (1.09–1.81 A, below the 2 A of the two contacts). The earlier requirement to dim the pad's LEDs while docked (≤ 0.85 A) is **dropped**.
+- **7-pin connector (2026-09-29, replaces the 6-pin): `GND | +5V | DET | RX | TX | +5V | GND`** (2026-10-01: +5V moved to both ends, see §1). Contacts are rated 1 A each, so +5V and GND on two contacts give 2 A. Limit raised to **R_SET 4.7 kΩ → 1.45 A** (1.09–1.81 A, below the 2 A of the two contacts). The earlier requirement to dim the pad's LEDs while docked (≤ 0.85 A) is **dropped**.
 
 Date: 2026-09-29. Prices: JLCPCB parts search. "Ext" = Extended ($3.07 feeder fee per unique part), "Basic" = no fee.
 
@@ -11,7 +11,7 @@ The pad side does not change (pogo board with SMAJ5.0A + TPD4E1U06, DET tied to 
 ## 1. What carries over from v1
 
 - **Connector:** Motorobit "7-Pin 2.54mm 90C Pogo Pin Magnetic Connector Set – With Ear" (330 TL + VAT; a straight 7-pin set, 200 TL, exists for docking the pad on top), footprint `dock:Pogo-7` (scaled from Pogo-6: check against the part). Through-hole: **hand-soldered**. (v1 and the first v2 plan used the 6-pin set.)
-- **Contact order:** `GND | +5V | +5V | DET | RX | TX | GND` (dock side; pad pin 1 meets dock pin 7).
+- **Contact order:** `GND | +5V | DET | RX | TX | +5V | GND` (dock side; pad pin 1 meets dock pin 7; pad side `GND | +5V | TX | RX | DET | +5V | GND`). Because +5V (pins 2, 6) and GND (pins 1, 7) are mirror-symmetric, a pad fitted the wrong way round still gets +5V on +5V and GND on GND: it is powered and charges normally. Only the UART lines cross (dock TX → pad DET, pad TX → dock DET, RX ↔ RX), all through 1 kΩ, so nothing is damaged; the pogo UART just doesn't work that way round.
 - **+5 V is off while undocked:** the contacts are exposed, so they are dead until a pad pulls DET low.
 - **BLE is the normal data link;** the pogo UART is for diagnostics/recovery only.
 - **1 kΩ series resistors** on TX, RX and DET, **TPD4E1U06** ESD right at the contacts (same part as the USB ports: no new feeder fee).

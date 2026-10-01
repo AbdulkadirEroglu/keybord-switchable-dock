@@ -18,6 +18,11 @@ for m in re.finditer(r'\(comp\s*\(ref "([^"]+)"\)(.*?)\n\t\t\)', s, re.S):
     f = {fm.group(1): fm.group(2) for fm in re.finditer(r'\(field\s*\(name "([^"]+)"\)\s*"((?:[^"\\]|\\.)*)"', b)}
     COMP[m.group(1)] = dict(value=re.search(r'\(value "([^"]*)"\)', b).group(1),
                             part=re.search(r'\(part "([^"]+)"\)', b).group(1), note=f.get('Note', ''))
+# parts in the connection model / groups but not (or no longer) in the schematic
+_model_refs = {p.split('.')[0] for p in [q for v in NETS.values() for q in v] + NC}
+_model_refs |= {r for g in json.load(open(os.path.join(HERE, 'groups.json'))).values() for _, rs in g for r in rs}
+for _r in _model_refs:
+    COMP.setdefault(_r, dict(value='(not in the schematic)', fp='', part='', lcsc='', note='not in the schematic'))
 PINNAME = {}
 for m in re.finditer(r'\(libpart\s*\(lib "[^"]*"\)\s*\(part "([^"]+)"\)(.*?)\n\t\t\)', s, re.S):
     PINNAME[m.group(1)] = dict(re.findall(r'\(pin\s*\(num "([^"]+)"\)\s*\(name "([^"]*)"', m.group(2)))

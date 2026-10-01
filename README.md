@@ -141,7 +141,7 @@ The design should fail toward **released keys and no routing**, not toward a stu
 Docking contacts (dock side), magnets on both sides:
 
 ```text
-GND | +5V | +5V | DET | RX | TX | GND
+GND | +5V | DET | RX | TX | +5V | GND
 ```
 
 ## Repository Layout

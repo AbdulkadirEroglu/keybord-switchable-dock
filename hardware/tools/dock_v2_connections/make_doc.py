@@ -1,5 +1,5 @@
 """Regenerate hardware/dock-v2/DOCK_CONNECTIONS.md from dock_nets.py + template.md (needs kicad-cli)."""
-import os, re, subprocess, sys, tempfile
+import json, os, re, subprocess, sys, tempfile
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 from dock_nets import NETS, NC, LOCAL_PREFIX, A_GPIO, B_GPIO, GPIO_PIN
 
@@ -17,6 +17,11 @@ for m in re.finditer(r'\(comp\s*\(ref "([^"]+)"\)(.*?)\n\t\t\)', s, re.S):
                             fp=(re.search(r'\(footprint "([^"]*)"\)', b) or [None, ''])[1],
                             part=re.search(r'\(part "([^"]+)"\)', b).group(1),
                             lcsc=f.get('LCSC', ''), note=f.get('Note', ''))
+# parts in the connection model / groups but not (or no longer) in the schematic
+_model_refs = {p.split('.')[0] for p in [q for v in NETS.values() for q in v] + NC}
+_model_refs |= {r for g in json.load(open(os.path.join(HERE, 'groups.json'))).values() for _, rs in g for r in rs}
+for _r in _model_refs:
+    COMP.setdefault(_r, dict(value='(not in the schematic)', fp='', part='', lcsc='', note='not in the schematic'))
 PINNAME = {}
 for m in re.finditer(r'\(libpart\s*\(lib "[^"]*"\)\s*\(part "([^"]+)"\)(.*?)\n\t\t\)', s, re.S):
     PINNAME[m.group(1)] = dict(re.findall(r'\(pin\s*\(num "([^"]+)"\)\s*\(name "([^"]*)"', m.group(2)))

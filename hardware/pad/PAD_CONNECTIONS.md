@@ -60,18 +60,18 @@ The pogo connector lives on a **separate small pogo board** mounted vertically i
 
 Cable order (same on both boards, straight-through): **1 GND, 2 POGO_DRX, 3 POGO_DTX, 4 POGO_5V**.
 
-**7 contacts since the v2 dock review (2026-09-29):** +5V and GND each on two contacts (rated 1 A per contact), so the dock can supply ≈ 1.45 A and the pad needs no LED dimming while docked.
+**7 contacts since the v2 dock review:** +5V and GND each on two contacts (rated 1 A per contact), so the dock can supply ≈ 1.45 A and the pad needs no LED dimming while docked. Since 2026-10-01 +5V sits at **both ends** (pins 2 and 6), like GND (pins 1 and 7): the order is mirror-symmetric for power, so a pad docked the wrong way round is still powered correctly; only the UART lines cross (through 1 kΩ, harmless).
 
 ```text
- J1 pin 1 ─────────── GND
- J1 pin 2 (dock TX) ──●── POGO_DTX ──► J2 pin 3 ──(cable)──► main board → 1k → PAD_UART_RX (Pico GP1)
-                      └── U1 pin 4 (ESD clamp to GND)
- J1 pin 3 (dock RX) ──●── POGO_DRX ◄── J2 pin 2 ◄─(cable)─── main board ← 1k ← PAD_UART_TX (Pico GP0)
-                      └── U1 pin 1 (ESD clamp to GND)
- J1 pin 4 (DET) ───── GND           (this tells the dock to switch its 5 V on)
- J1 pins 5, 6 (+5V) ──●── POGO_5V ──► J2 pin 4
+ J1 pin 1 ─────────── GND ──► J2 pin 1
+ J1 pins 2, 6 (+5V) ──●── POGO_5V (labels) ──► J2 pin 4
                       └── D1 SMAJ5.0A cathode (pin 1, K); anode (pin 2, A) ── GND
- J1 pin 7 ─────────── GND ──► J2 pin 1
+ J1 pin 3 (dock TX) ──●── POGO_DTX ──► J2 pin 3 ──(cable)──► main board → 1k → PAD_UART_RX (Pico GP1)
+                      └── U1 pin 4 (ESD clamp to GND)
+ J1 pin 4 (dock RX) ──●── POGO_DRX ◄── J2 pin 2 ◄─(cable)─── main board ← 1k ← PAD_UART_TX (Pico GP0)
+                      └── U1 pin 1 (ESD clamp to GND)
+ J1 pin 5 (DET) ───── GND           (this tells the dock to switch its 5 V on)
+ J1 pin 7 ─────────── GND
  U1 pin 2 ─── GND;  U1 pins 3, 6: no-connect flags (unused channels);  U1 pin 5: NC
  H1, H2: M2 mounting holes, no connection
 ```
@@ -86,22 +86,22 @@ Cable order (same on both boards, straight-through): **1 GND, 2 POGO_DRX, 3 POGO
 
 | Part.pin | Net | Also on this net |
 |---|---|---|
-| J1.1, J1.4 (DET), J1.7 | GND | D1.2 (A), U1.2, J2.1 |
-| J1.2 (dock's TX contact) | POGO_DTX | U1.4, J2.3 |
-| J1.3 (dock's RX contact) | POGO_DRX | U1.1, J2.2 |
-| J1.5, J1.6 | POGO_5V | D1.1 (K), J2.4 |
+| J1.1, J1.5 (DET), J1.7 | GND | D1.2 (A), U1.2, J2.1 |
+| J1.2, J1.6 | POGO_5V | D1.1 (K), J2.4 |
+| J1.3 (dock's TX contact) | POGO_DTX | U1.4, J2.3 |
+| J1.4 (dock's RX contact) | POGO_DRX | U1.1, J2.2 |
 | U1.3, U1.6 | not connected (no-connect flags) | unused ESD channels |
 | U1.5 | NC | |
 
 Add a PWR_FLAG on GND (and one on POGO_5V) so ERC knows the connectors supply them.
 
-Pin order on the pad is the mirror of the dock's (`GND | +5V | +5V | DET | RX | TX | GND`): `GND | TX | RX | DET | +5V | +5V | GND`.
-**Orientation check (3D design):** mated face to face, pad pin 1 must meet dock pin 7. The GND pins at both ends make it look symmetrical, but if the pogo board is fitted upside down, the dock's +5 V (its pins 2 and 3) lands on the pad's pins 2 and 3, which are UART lines. Mark pin 1 on the silkscreen and on the case.
+Pin order on the pad is the mirror of the dock's (`GND | +5V | DET | RX | TX | +5V | GND`): `GND | +5V | TX | RX | DET | +5V | GND`.
+**Orientation check (3D design):** mated face to face, pad pin 1 meets dock pin 7. Reversed, +5V still meets +5V and GND meets GND (both ends), so nothing is damaged and the pad is still powered; only the pogo UART won't work. Mark pin 1 on the silkscreen and on the case anyway.
 
 **Placement (pogo board)**
 
 - J1 on the board edge, its face flush with the back wall at the height of the dock's pogo connector (J601 on the v2 dock); magnets beside it (mechanical). Its position is part of the pad redesign.
-- Join J1 pins 5 and 6 with a wide trace right at the connector; D1 right there, U1 right at J1 pins 2–3.
+- POGO_5V to both J1 pins 2 and 6 with a wide trace (they're at opposite ends); D1 near the +5V pins, U1 right at J1 pins 3–4.
 - J2 on the inner side, where the cable leaves.
 - H1/H2 to fix the board to the wall; the wall takes the docking forces.
 - POGO_5V and GND traces ≥ 0.6 mm.

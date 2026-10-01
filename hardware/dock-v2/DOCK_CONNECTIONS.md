@@ -88,7 +88,7 @@ Sheet `power.kicad_sch`.
 | U101 | TPD4E1U06DBVR | `SOT-23-6` | C124691 | ESD on CC1, CC2, D+, D-, <=5 mm from J101 |
 | D101 | SMBJ15A | `D_SMB` | C113988 | VBUS_IN TVS, at J101 VBUS |
 | U102 | CH224A | `SSOP-10-1EP_3.9x4.9mm_P1mm_EP2.1x3.3mm` | C42459160 | VBUS (8) tied to VHV (1) |
-| C101 | 1uF 50V | `C_0603_1608Metric` | C15849 | VHV to GND |
+| C101 | 1uF | `C_0603_1608Metric` | C15849 | VHV to GND |
 | R101 | 6.8k | `R_0402_1005Metric` | C25917 | CFG1 to GND: requests 9 V |
 | R102 | 10k | `R_0402_1005Metric` | C25744 | PG pull-up to 3V3 |
 | R103 | 4.7k | `R_0402_1005Metric` | C25900 | SCL pull-up to 3V3 |
@@ -186,8 +186,8 @@ Sheet `power.kicad_sch`. Values from TI's TPS54331 Table 7-1 (5 V design), on JL
 | Ref | Value | Footprint | LCSC | Job |
 |---|---|---|---|---|
 | U103 | TPS54331DR | `SOIC-8_3.9x4.9mm_P1.27mm` | C9865 | EN left open (5 V pass-through) |
-| C102 | 10uF 25V | `C_0805_2012Metric` | C15850 | VIN, at pins 2/7 |
-| C103 | 10uF 25V | `C_0805_2012Metric` | C15850 | VIN |
+| C102 | 10uF | `C_0805_2012Metric` | C15850 | VIN, at pins 2/7 |
+| C103 | 10uF | `C_0805_2012Metric` | C15850 | VIN |
 | C104 | 100nF | `C_0402_1005Metric` | C1525 | BOOT to PH |
 | C105 | 10nF | `C_0402_1005Metric` | C15195 | SS: ~4 ms soft start |
 | R105 | 51k | `R_0402_1005Metric` | C25794 | COMP series R |
@@ -203,10 +203,10 @@ Sheet `power.kicad_sch`. Values from TI's TPS54331 Table 7-1 (5 V design), on JL
 | U104 | AMS1117-3.3 | `SOT-223-3_TabPin2` | C6186 | +5V to +3V3, tab on copper |
 | C111 | 10uF | `C_0805_2012Metric` | C15850 | LDO input |
 | C112 | 10uF | `C_0805_2012Metric` | C15850 | LDO output |
-| H101 | MountingHole | `MountingHole_3.2mm_M3` | — |  |
-| H102 | MountingHole | `MountingHole_3.2mm_M3` | — |  |
-| H103 | MountingHole | `MountingHole_3.2mm_M3` | — |  |
-| H104 | MountingHole | `MountingHole_3.2mm_M3` | — |  |
+| H101 | (not in the schematic) | `— (choose)` | — | not in the schematic |
+| H102 | (not in the schematic) | `— (choose)` | — | not in the schematic |
+| H103 | (not in the schematic) | `— (choose)` | — | not in the schematic |
+| H104 | (not in the schematic) | `— (choose)` | — | not in the schematic |
 
 **Wiring — U103 (TPS54331) and U104 (AMS1117)**
 
@@ -887,8 +887,8 @@ R504 is needed for the same reason as R406/R407: the ESP32's GPIO9 pull-up is we
 | R502 | 10k | `R_0402_1005Metric` | C25744 | GPIO8 pull-up |
 | R503 | 10k | `R_0402_1005Metric` | C25744 | GPIO2 pull-up |
 | R504 | 10k | `R_0402_1005Metric` | C25744 | GPIO9 (BOOT) pull-up, beats A pull-down |
-| TP501 | TestPoint | `TestPoint_Pad_D1.0mm` | — | GPIO18 USB_D- |
-| TP502 | TestPoint | `TestPoint_Pad_D1.0mm` | — | GPIO19 USB_D+ |
+| TP501 | (not in the schematic) | `— (choose)` | — | not in the schematic |
+| TP502 | (not in the schematic) | `— (choose)` | — | not in the schematic |
 | TP503 | TestPoint | `TestPoint_Pad_D1.0mm` | — | TXD0 |
 | TP504 | TestPoint | `TestPoint_Pad_D1.0mm` | — | RXD0 |
 | TP505 | TestPoint | `TestPoint_Pad_D1.0mm` | — | GND |
@@ -972,11 +972,11 @@ Test pads: TP501 → **BLE_USB_D_N**, TP502 → **BLE_USB_D_P**, TP503 → **BLE
 
 ## 8. Pogo interface
 
-Sheet `pogo.kicad_sch`. **7 contacts**, dock side: `GND | +5V | +5V | DET | RX | TX | GND`; pad pin 1 meets dock pin 7 (the pad's pogo board is the mirror: `GND | TX | RX | DET | +5V | +5V | GND`). Two contacts each for +5V and GND: the contacts are rated 1 A, so the pad can draw up to ≈ 1.45 A (the switch limit) with no LED dimming.
+Sheet `pogo.kicad_sch`. **7 contacts**, dock side: `GND | +5V | DET | RX | TX | +5V | GND`; pad pin 1 meets dock pin 7 (the pad's pogo board is the mirror: `GND | +5V | TX | RX | DET | +5V | GND`). +5V and GND sit at both ends, two contacts each: the contacts are rated 1 A, so the pad can draw up to ≈ 1.45 A (the switch limit) with no LED dimming. Because +5V (pins 2, 6) and GND (pins 1, 7) are mirror-symmetric, a pad fitted the wrong way round still gets +5V on +5V and GND on GND: it is powered and charges normally. Only the UART lines cross (dock TX → pad DET, pad TX → dock DET, RX ↔ RX), all through 1 kΩ, so nothing is damaged; the pogo UART just doesn't work that way round.
 
 ```text
  J601 pin 1, pin 7 ── GND
- J601 pins 2 and 3 (+5V, +5V) ──●── POGO_5V ◄── U602 pin 1 OUT (SY6280)
+ J601 pins 2 and 6 (+5V, both ends) ──●── POGO_5V ◄── U602 pin 1 OUT (SY6280)
                     ├── C602 10 µF, C603 1 µF ── GND
                     └── R607 10 k ──●── POGO_5V_SENSE ──► MCU A GPIO29 (ADC3)
                                     └── R608 15 k ── GND
@@ -984,13 +984,13 @@ Sheet `pogo.kicad_sch`. **7 contacts**, dock side: `GND | +5V | +5V | DET | RX |
  U602 pin 4 EN ──●── POGO_EN ── R605 100 k ── +3V3
                  ├── Q601 drain   (Q601 gate = POGO_DET, source = GND)
                  └── Q602 drain   (Q602 gate = POGO_OFF ◄── MCU A GPIO15, R609 100 k to GND; source = GND)
- J601 pin 4 (DET) ──●── POGO_DET_J ── R603 1 k ──●── POGO_DET ──► MCU A GPIO14, Q601 gate
-                    └── U601 pin 3 (ESD)         └── R604 10 k ── +3V3
- J601 pin 5 (RX)  ──●── POGO_RX_J ── R602 1 k ── POGO_RX ──► MCU A GPIO13 (PIO UART RX)
+ J601 pin 3 (DET) ──●── POGO_DET_J ── R603 1 k ──●── POGO_DET ──► MCU A GPIO14, Q601 gate
+                    └── U601 pin 4 (ESD)         └── R604 10 k ── +3V3
+ J601 pin 4 (RX)  ──●── POGO_RX_J ── R602 1 k ── POGO_RX ──► MCU A GPIO13 (PIO UART RX)
+                    └── U601 pin 3
+ J601 pin 5 (TX)  ──●── POGO_TX_J ── R601 1 k ── POGO_TX ◄── MCU A GPIO12 (PIO UART TX)
                     └── U601 pin 6
- J601 pin 6 (TX)  ──●── POGO_TX_J ── R601 1 k ── POGO_TX ◄── MCU A GPIO12 (PIO UART TX)
-                    └── U601 pin 1
- U601 pin 2 ── GND;  pins 4, 5: no-connect
+ U601 pin 2 ── GND;  pins 1, 5: no-connect
 ```
 
 How the enable works: undocked, DET is pulled up → Q601 on → EN low → contacts dead. Docked, the pad grounds DET → Q601 off → R605 pulls EN high → 5 V on, **with no firmware**. MCU A can veto by driving POGO_OFF high (Q602 on). Q602 exists so that A's reset-state pull-down on GPIO15 means "no veto": a direct connection to EN would drag it to ≈ 1.1 V and stop pad charging whenever A has no firmware.
@@ -1023,24 +1023,24 @@ How the enable works: undocked, DET is pulled up → Q601 on → EN low → cont
 |---|---|---|---|
 | 1 | Pin_1 | **GND** | 141 other pins |
 | 2 | Pin_2 | **POGO_5V** | U602.1, C602.1, C603.1, R607.1 |
-| 3 | Pin_3 | **POGO_5V** | U602.1, C602.1, C603.1, R607.1 |
-| 4 | Pin_4 | POGO_DET_J | U601.3, R603.1 |
-| 5 | Pin_5 | POGO_RX_J | U601.6, R602.1 |
-| 6 | Pin_6 | POGO_TX_J | U601.1, R601.2 |
+| 3 | Pin_3 | POGO_DET_J | U601.4, R603.1 |
+| 4 | Pin_4 | POGO_RX_J | U601.3, R602.1 |
+| 5 | Pin_5 | POGO_TX_J | U601.6, R601.2 |
+| 6 | Pin_6 | **POGO_5V** | U602.1, C602.1, C603.1, R607.1 |
 | 7 | Pin_7 | **GND** | 141 other pins |
 
 | U601 pin | Name | Net | Also on this net |
 |---|---|---|---|
-| 1 | D1+ | POGO_TX_J | J601.6, R601.2 |
+| 1 | D1+ | no-connect flag | |
 | 2 | GND | **GND** | 142 other pins |
-| 3 | D2+ | POGO_DET_J | J601.4, R603.1 |
-| 4 | D2- | no-connect flag | |
+| 3 | D2+ | POGO_RX_J | J601.4, R602.1 |
+| 4 | D2- | POGO_DET_J | J601.3, R603.1 |
 | 5 | NC | no-connect flag | |
-| 6 | D1- | POGO_RX_J | J601.5, R602.1 |
+| 6 | D1- | POGO_TX_J | J601.5, R601.2 |
 
 | U602 pin | Name | Net | Also on this net |
 |---|---|---|---|
-| 1 | OUT | **POGO_5V** | J601.2, J601.3, C602.1, C603.1, R607.1 |
+| 1 | OUT | **POGO_5V** | J601.2, J601.6, C602.1, C603.1, R607.1 |
 | 2 | GND | **GND** | 142 other pins |
 | 3 | ISET | POGO_ISET | R606.1 |
 | 4 | EN | POGO_EN | Q601.3, Q602.3, R605.2 |
@@ -1070,7 +1070,7 @@ How the enable works: undocked, DET is pulled up → Q601 on → EN low → cont
 
 - J601 at the front edge, centre: Motorobit **7-pin 2.54 mm 90° magnetic set with ears** (a straight 7-pin version exists for the pad-on-top alternative, PCB_PLACEMENT.md §4). Hand-soldered. Footprint `dock:Pogo-7` is scaled from Pogo-6: check the body and ears against the delivered part.
 - U601 right at J601; R601–R603 between U601 and the MCU A traces.
-- U602, Q601, Q602 and their resistors behind J601; C602/C603 at J601 pins 2–3. Join pins 2 and 3 with a wide trace (Power class) right at the connector so both contacts share the current.
+- U602, Q601, Q602 and their resistors behind J601; C602/C603 near J601. POGO_5V goes to **both ends** of the connector (pins 2 and 6): run it as a wide Power-class trace or pour to both pins so the two contacts share the current. Same for GND (pins 1 and 7).
 - POGO_5V is Power class. Mark pin 1 on the silkscreen.
 
 ---
@@ -1137,7 +1137,7 @@ Use a **global label** with exactly these names (the power nets GND, +3V3 and +5
 - **U301**: 55 (QSPI_SD3), 56 (QSPI_SCLK), 57 (QSPI_SD0), 58 (QSPI_SD2), 59 (QSPI_SD1), 3 (GPIO1), 5 (GPIO3), 7 (GPIO4), 37 (GPIO25)
 - **U401**: 55 (QSPI_SD3), 56 (QSPI_SCLK), 57 (QSPI_SD0), 58 (QSPI_SD2), 59 (QSPI_SD1), 7 (GPIO4), 8 (GPIO5), 9 (GPIO6), 10 (GPIO7), 12 (GPIO8), 13 (GPIO9), 14 (GPIO10), 15 (GPIO11), 16 (GPIO12), 17 (GPIO13), 18 (GPIO14), 19 (GPIO15), 27 (GPIO16), 28 (GPIO17), 29 (GPIO18), 31 (GPIO19), 32 (GPIO20), 33 (GPIO21), 34 (GPIO22), 35 (GPIO23), 36 (GPIO24), 37 (GPIO25), 40 (GPIO26/ADC0), 41 (GPIO27/ADC1), 42 (GPIO28/ADC2), 43 (GPIO29/ADC3)
 - **U501**: 4 (NC), 7 (NC), 9 (NC), 10 (NC), 15 (NC), 17 (NC), 24 (NC), 25 (NC), 28 (NC), 29 (NC), 32 (NC), 33 (NC), 34 (NC), 35 (NC), 6 (GPIO3/ADC1_CH3), 12 (GPIO0/ADC1_CH0/XTAL_32K_P), 13 (GPIO1/ADC1_CH1/XTAL_32K_N), 16 (GPIO10), 18 (GPIO4/ADC1_CH4), 19 (GPIO5/ADC2_CH0), 20 (GPIO6), 21 (GPIO7)
-- **U601**: 4 (D2-), 5 (NC)
+- **U601**: 1 (D1+), 5 (NC)
 
 ---
 
@@ -1230,17 +1230,17 @@ Generated from the connection model that the tables above come from; checked aga
 | PD_PG | U102.10 (PG), R102.2, U301.34 (GPIO22) |
 | PD_SCL | U102.2 (CFG2/SCL), R103.2, U301.33 (GPIO21) |
 | PD_SDA | U102.3 (CFG3/SDA), R104.2, U301.32 (GPIO20) |
-| POGO_5V | J601.2 (Pin_2), J601.3 (Pin_3), U602.1 (OUT), C602.1, C603.1, R607.1 |
+| POGO_5V | J601.2 (Pin_2), J601.6 (Pin_6), U602.1 (OUT), C602.1, C603.1, R607.1 |
 | POGO_5V_SENSE | U301.43 (GPIO29/ADC3), R607.2, R608.1 |
 | POGO_DET | U301.18 (GPIO14), R603.2, Q601.1 (G), R604.2 |
-| POGO_DET_J | J601.4 (Pin_4), U601.3 (D2+), R603.1 |
+| POGO_DET_J | J601.3 (Pin_3), U601.4 (D2-), R603.1 |
 | POGO_EN | U602.4 (EN), Q601.3 (D), Q602.3 (D), R605.2 |
 | POGO_ISET | U602.3 (ISET), R606.1 |
 | POGO_OFF | U301.19 (GPIO15), Q602.1 (G), R609.1 |
 | POGO_RX | U301.17 (GPIO13), R602.2 |
-| POGO_RX_J | J601.5 (Pin_5), U601.6 (D1-), R602.1 |
+| POGO_RX_J | J601.4 (Pin_4), U601.3 (D2+), R602.1 |
 | POGO_TX | U301.16 (GPIO12), R601.1 |
-| POGO_TX_J | J601.6 (Pin_6), U601.1 (D1+), R601.2 |
+| POGO_TX_J | J601.5 (Pin_5), U601.6 (D1-), R601.2 |
 | VBUS_IN | J101.A4 (VBUS), J101.A9 (VBUS), J101.B4 (VBUS), J101.B9 (VBUS), D101.1 (A1), U102.1 (VHV), U102.8 (VBUS), C101.1, U103.2 (VIN), C102.1, C103.1 |
 
 </details>

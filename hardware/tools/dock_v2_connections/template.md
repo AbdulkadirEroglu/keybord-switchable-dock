@@ -369,11 +369,11 @@ Test pads: {{ONE:TP501, TP502, TP503, TP504, TP505}}.
 
 ## 8. Pogo interface
 
-Sheet `pogo.kicad_sch`. **7 contacts**, dock side: `GND | +5V | +5V | DET | RX | TX | GND`; pad pin 1 meets dock pin 7 (the pad's pogo board is the mirror: `GND | TX | RX | DET | +5V | +5V | GND`). Two contacts each for +5V and GND: the contacts are rated 1 A, so the pad can draw up to ≈ 1.45 A (the switch limit) with no LED dimming.
+Sheet `pogo.kicad_sch`. **7 contacts**, dock side: `GND | +5V | DET | RX | TX | +5V | GND`; pad pin 1 meets dock pin 7 (the pad's pogo board is the mirror: `GND | +5V | TX | RX | DET | +5V | GND`). +5V and GND sit at both ends, two contacts each: the contacts are rated 1 A, so the pad can draw up to ≈ 1.45 A (the switch limit) with no LED dimming. Because +5V (pins 2, 6) and GND (pins 1, 7) are mirror-symmetric, a pad fitted the wrong way round still gets +5V on +5V and GND on GND: it is powered and charges normally. Only the UART lines cross (dock TX → pad DET, pad TX → dock DET, RX ↔ RX), all through 1 kΩ, so nothing is damaged; the pogo UART just doesn't work that way round.
 
 ```text
  J601 pin 1, pin 7 ── GND
- J601 pins 2 and 3 (+5V, +5V) ──●── POGO_5V ◄── U602 pin 1 OUT (SY6280)
+ J601 pins 2 and 6 (+5V, both ends) ──●── POGO_5V ◄── U602 pin 1 OUT (SY6280)
                     ├── C602 10 µF, C603 1 µF ── GND
                     └── R607 10 k ──●── POGO_5V_SENSE ──► MCU A GPIO29 (ADC3)
                                     └── R608 15 k ── GND
@@ -381,13 +381,13 @@ Sheet `pogo.kicad_sch`. **7 contacts**, dock side: `GND | +5V | +5V | DET | RX |
  U602 pin 4 EN ──●── POGO_EN ── R605 100 k ── +3V3
                  ├── Q601 drain   (Q601 gate = POGO_DET, source = GND)
                  └── Q602 drain   (Q602 gate = POGO_OFF ◄── MCU A GPIO15, R609 100 k to GND; source = GND)
- J601 pin 4 (DET) ──●── POGO_DET_J ── R603 1 k ──●── POGO_DET ──► MCU A GPIO14, Q601 gate
-                    └── U601 pin 3 (ESD)         └── R604 10 k ── +3V3
- J601 pin 5 (RX)  ──●── POGO_RX_J ── R602 1 k ── POGO_RX ──► MCU A GPIO13 (PIO UART RX)
+ J601 pin 3 (DET) ──●── POGO_DET_J ── R603 1 k ──●── POGO_DET ──► MCU A GPIO14, Q601 gate
+                    └── U601 pin 4 (ESD)         └── R604 10 k ── +3V3
+ J601 pin 4 (RX)  ──●── POGO_RX_J ── R602 1 k ── POGO_RX ──► MCU A GPIO13 (PIO UART RX)
+                    └── U601 pin 3
+ J601 pin 5 (TX)  ──●── POGO_TX_J ── R601 1 k ── POGO_TX ◄── MCU A GPIO12 (PIO UART TX)
                     └── U601 pin 6
- J601 pin 6 (TX)  ──●── POGO_TX_J ── R601 1 k ── POGO_TX ◄── MCU A GPIO12 (PIO UART TX)
-                    └── U601 pin 1
- U601 pin 2 ── GND;  pins 4, 5: no-connect
+ U601 pin 2 ── GND;  pins 1, 5: no-connect
 ```
 
 How the enable works: undocked, DET is pulled up → Q601 on → EN low → contacts dead. Docked, the pad grounds DET → Q601 off → R605 pulls EN high → 5 V on, **with no firmware**. MCU A can veto by driving POGO_OFF high (Q602 on). Q602 exists so that A's reset-state pull-down on GPIO15 means "no veto": a direct connection to EN would drag it to ≈ 1.1 V and stop pad charging whenever A has no firmware.
@@ -412,7 +412,7 @@ How the enable works: undocked, DET is pulled up → Q601 on → EN low → cont
 
 - J601 at the front edge, centre: Motorobit **7-pin 2.54 mm 90° magnetic set with ears** (a straight 7-pin version exists for the pad-on-top alternative, PCB_PLACEMENT.md §4). Hand-soldered. Footprint `dock:Pogo-7` is scaled from Pogo-6: check the body and ears against the delivered part.
 - U601 right at J601; R601–R603 between U601 and the MCU A traces.
-- U602, Q601, Q602 and their resistors behind J601; C602/C603 at J601 pins 2–3. Join pins 2 and 3 with a wide trace (Power class) right at the connector so both contacts share the current.
+- U602, Q601, Q602 and their resistors behind J601; C602/C603 near J601. POGO_5V goes to **both ends** of the connector (pins 2 and 6): run it as a wide Power-class trace or pour to both pins so the two contacts share the current. Same for GND (pins 1 and 7).
 - POGO_5V is Power class. Mark pin 1 on the silkscreen.
 
 ---

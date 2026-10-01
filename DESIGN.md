@@ -541,18 +541,19 @@ Firmware thresholds: see the operating-window table in §12.1 (warning ≈ 3.50 
 Seven magnetic pogo contacts (Motorobit 7-pin 2.54 mm set, rated 1 A per contact; right-angle with ears for docking at the dock's front edge, a straight version exists if the pad sits on top of the dock):
 
 ```text
- dock (J601):  GND | +5V | +5V | DET | RX | TX | GND
- pad:          GND | TX  | RX  | DET | +5V | +5V | GND      (mirror: pad pin 1 meets dock pin 7)
+ dock (J601):  GND | +5V | DET | RX | TX | +5V | GND
+ pad:          GND | +5V | TX  | RX | DET | +5V | GND      (mirror: pad pin 1 meets dock pin 7)
 ```
 
+- **+5V at both ends (pins 2 and 6), GND at both ends (pins 1 and 7):** Because +5V (pins 2, 6) and GND (pins 1, 7) are mirror-symmetric, a pad fitted the wrong way round still gets +5V on +5V and GND on GND: it is powered and charges normally. Only the UART lines cross (dock TX → pad DET, pad TX → dock DET, RX ↔ RX), all through 1 kΩ, so nothing is damaged; the pogo UART just doesn't work that way round.
 - **+5V on two contacts, GND on two:** 2 A capacity, so the dock's pogo switch can be set to 1.45 A (1.09–1.81 A) and the pad needs **no LED dimming while docked** (worst case: charging 0.51 A + electronics 0.15 A + all 36 LEDs white 0.54 A ≈ 1.2 A). On a low-tolerance switch the limit can cap that corner; the pad's power path then falls back to the battery, nothing is damaged.
 - **DET:** the pad ties it to GND. On the dock, DET is pulled up to 3.3 V and drives a 2N7002 that holds the pogo switch's EN low while undocked. Docked, EN goes high and the pad gets 5 V **without firmware**. MCU A can veto through a second 2N7002 (POGO_OFF); its gate pull-down means "no veto" while A is in reset or has no firmware. A reads DET and measures POGO_5V.
 - **RX/TX:** PIO UART on MCU A (GPIO12/13) through 1 kΩ on the dock and 1 kΩ on the pad; names from the dock's side. Reserved for diagnostics, recovery and fallback; it does not replace BLE during normal docking.
 - ESD (TPD4E1U06) at the contacts on both sides; SMAJ5.0A on the pad's +5V.
 - Magnets on both sides of the pogo area provide alignment and retention.
-- **Orientation:** the GND pins at both ends make the connector look symmetrical, but reversed it would put +5V on the UART lines. Mark pin 1 on both silkscreens and on the case.
+- **Orientation:** reversed docking is harmless (power pins are symmetric, see above), but the pogo UART only works the right way round. Mark pin 1 on both silkscreens and on the case.
 
-Pad side: small pogo board (`hardware/pogo/`, already updated to 7 pins: +5V on pins 5 and 6), cable to the main board. Its position (back wall, or underside if the pad sits on top of the dock) is part of the pad redesign.
+Pad side: small pogo board (`hardware/pogo/`, 7 pins: +5V on pins 2 and 6), cable to the main board. Its position (back wall, or underside if the pad sits on top of the dock) is part of the pad redesign.
 
 ---
 
