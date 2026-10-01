@@ -2769,10 +2769,6 @@
 		(uuid "7c7db45b-7c60-4df9-8883-8d04e1da2aa1")
 	)
 	(no_connect
-		(at 209.55 157.48)
-		(uuid "af9d7484-3a83-47d9-a270-0901857d974b")
-	)
-	(no_connect
 		(at 209.55 91.44)
 		(uuid "d353d3c5-3bc7-4f4c-8225-153265655289")
 	)
@@ -3565,6 +3561,30 @@
 		(uuid "a5f457ea-c921-4661-9576-952288ef77e1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 221.0018 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "POGO_5V_SENSE"
+		(shape input)
+		(at 209.55 157.48 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a67aeaff-7d44-459d-bd69-cbc401dea1fb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 228.017 157.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

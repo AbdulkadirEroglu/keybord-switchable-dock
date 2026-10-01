@@ -1405,10 +1405,16 @@
 		)
 	)
 	(junction
-		(at 127 21.59)
+		(at 120.65 21.59)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "00b55a5f-45d1-4ada-bfaa-a00068e1f469")
+	)
+	(junction
+		(at 92.71 29.21)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "076af8c0-e3f0-43a1-933b-352fc0baa7a3")
 	)
 	(junction
 		(at 60.96 36.83)
@@ -1417,25 +1423,19 @@
 		(uuid "2aa96060-7ecc-4d9e-9965-348577b354ef")
 	)
 	(junction
-		(at 120.65 21.59)
+		(at 114.3 21.59)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2ef55d7a-20aa-418f-a8fc-f6bbead2abec")
 	)
 	(junction
-		(at 120.65 29.21)
+		(at 114.3 29.21)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3f6d9478-2431-4e49-98d4-3d7d6bc3b0a6")
 	)
 	(junction
-		(at 115.57 29.21)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "527992cf-d692-4356-84a2-cb29676a3977")
-	)
-	(junction
-		(at 140.97 21.59)
+		(at 129.54 21.59)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "58a0a163-4b60-49e2-b198-5eb55413e6a1")
@@ -1453,19 +1453,13 @@
 		(uuid "7bfa688f-2544-428f-81b4-860ddce5994a")
 	)
 	(junction
-		(at 115.57 21.59)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7dfb8617-9a56-40ba-92e7-d34461b775ff")
-	)
-	(junction
 		(at 59.69 34.29)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9eb26572-6fc9-4a29-96b4-80dfda981334")
 	)
 	(junction
-		(at 127 29.21)
+		(at 120.65 29.21)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c462b67c-bed4-4d3d-a478-f4736a227ce0")
@@ -1520,7 +1514,17 @@
 	)
 	(wire
 		(pts
-			(xy 127 13.97) (xy 127 21.59)
+			(xy 92.71 29.21) (xy 96.52 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "32931d49-d92c-4a46-bb64-7a8b45c6f2dd")
+	)
+	(wire
+		(pts
+			(xy 120.65 13.97) (xy 120.65 21.59)
 		)
 		(stroke
 			(width 0)
@@ -1537,6 +1541,16 @@
 			(type default)
 		)
 		(uuid "3e172ad6-9779-4f2a-b369-fd02c160d483")
+	)
+	(wire
+		(pts
+			(xy 87.63 29.21) (xy 92.71 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "45043c5d-f683-43d2-9c98-e93ab930d491")
 	)
 	(wire
 		(pts
@@ -1600,7 +1614,7 @@
 	)
 	(wire
 		(pts
-			(xy 115.57 29.21) (xy 114.3 29.21)
+			(xy 114.3 29.21) (xy 129.54 29.21)
 		)
 		(stroke
 			(width 0)
@@ -1617,16 +1631,6 @@
 			(type default)
 		)
 		(uuid "9c1a257a-746c-4681-a7f9-3855bd4033fe")
-	)
-	(wire
-		(pts
-			(xy 115.57 29.21) (xy 140.97 29.21)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9c88b1ce-7386-4af0-8563-8d734c5ce490")
 	)
 	(wire
 		(pts
@@ -1650,7 +1654,7 @@
 	)
 	(wire
 		(pts
-			(xy 115.57 21.59) (xy 127 21.59)
+			(xy 114.3 21.59) (xy 120.65 21.59)
 		)
 		(stroke
 			(width 0)
@@ -1690,7 +1694,7 @@
 	)
 	(wire
 		(pts
-			(xy 144.78 21.59) (xy 140.97 21.59)
+			(xy 133.35 21.59) (xy 129.54 21.59)
 		)
 		(stroke
 			(width 0)
@@ -1730,7 +1734,7 @@
 	)
 	(wire
 		(pts
-			(xy 140.97 13.97) (xy 127 13.97)
+			(xy 129.54 13.97) (xy 120.65 13.97)
 		)
 		(stroke
 			(width 0)
@@ -1832,7 +1836,7 @@
 	)
 	(global_label "5V_PWR"
 		(shape input)
-		(at 96.52 29.21 180)
+		(at 87.63 29.21 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1842,7 +1846,7 @@
 		)
 		(uuid "20e1a4c6-62e3-4e2d-91ab-a91996b1cf59")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 86.2777 29.21 0)
+			(at 77.3877 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1856,7 +1860,7 @@
 	)
 	(global_label "POGO_5V"
 		(shape input)
-		(at 140.97 29.21 0)
+		(at 129.54 29.21 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1866,7 +1870,7 @@
 		)
 		(uuid "2e842868-7227-4a98-8eea-7dcd448decb2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 152.4219 29.21 0)
+			(at 140.9919 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1976,7 +1980,7 @@
 	)
 	(global_label "POGO_5V_SENSE"
 		(shape input)
-		(at 144.78 21.59 0)
+		(at 133.35 21.59 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1986,7 +1990,7 @@
 		)
 		(uuid "d25072e7-b589-43f5-ae55-8d99f1463486")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 163.247 21.59 0)
+			(at 151.817 21.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2340,6 +2344,110 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 92.71 25.4 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4c4a9cd6-e383-4e14-b002-5f55debd7166")
+		(property "Reference" "C601"
+			(at 92.964 22.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1uF"
+			(at 93.218 27.432 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 92.71 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 92.71 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 92.71 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C52923"
+			(at 92.71 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Note" "POGO_5V output"
+			(at 97.28 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "f9aa0bed-5d6d-4fab-bf07-77e90b05df34")
+		)
+		(pin "2"
+			(uuid "e9f4b88c-3173-4f8b-9b11-2ed740755b8e")
+		)
+		(instances
+			(project "dock-v2"
+				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/a6551cad-76cb-43b5-b19c-441e3fa27a27"
+					(reference "C601")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 59.69 30.48 0)
 		(unit 1)
@@ -2445,7 +2553,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 127 25.4 0)
+		(at 120.65 25.4 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2454,8 +2562,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "57d008c3-9dca-4501-b98c-077541eea9e7")
-		(property "Reference" "C601"
-			(at 127.254 22.86 0)
+		(property "Reference" "C603"
+			(at 120.904 22.86 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2466,7 +2574,7 @@
 			)
 		)
 		(property "Value" "1uF"
-			(at 127.508 27.432 0)
+			(at 121.158 27.432 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2477,7 +2585,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 127 25.4 0)
+			(at 120.65 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2488,7 +2596,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 127 25.4 0)
+			(at 120.65 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2499,7 +2607,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 127 25.4 0)
+			(at 120.65 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2510,7 +2618,7 @@
 			)
 		)
 		(property "LCSC" "C52923"
-			(at 127 25.4 0)
+			(at 120.65 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2521,7 +2629,7 @@
 			)
 		)
 		(property "Note" "U602 input"
-			(at 131.57 29.21 0)
+			(at 125.22 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2541,7 +2649,7 @@
 		(instances
 			(project "dock-v2"
 				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/a6551cad-76cb-43b5-b19c-441e3fa27a27"
-					(reference "C601")
+					(reference "C603")
 					(unit 1)
 				)
 			)
@@ -2836,7 +2944,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 140.97 25.4 180)
+		(at 129.54 25.4 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2846,7 +2954,7 @@
 		(dnp no)
 		(uuid "867cbd23-6d3c-4cf3-9366-541a12bcb900")
 		(property "Reference" "R607"
-			(at 138.938 22.606 90)
+			(at 127.508 22.606 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2857,7 +2965,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 140.97 24.13 90)
+			(at 129.54 24.13 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2868,7 +2976,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 140.97 25.4 0)
+			(at 129.54 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2879,7 +2987,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 140.97 25.4 0)
+			(at 129.54 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2890,7 +2998,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 140.97 25.4 0)
+			(at 129.54 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2901,7 +3009,7 @@
 			)
 		)
 		(property "LCSC" "C25744"
-			(at 140.97 25.4 0)
+			(at 129.54 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2912,7 +3020,7 @@
 			)
 		)
 		(property "Note" "POGO_5V divider top -> ADC"
-			(at 137.41 21.59 0)
+			(at 125.98 21.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3043,112 +3151,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 115.57 25.4 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "96df3dbc-5b04-4ebd-a1a0-2b32f962eab3")
-		(property "Reference" "C603"
-			(at 115.824 22.86 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1uF"
-			(at 116.078 27.432 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 115.57 25.4 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 115.57 25.4 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 115.57 25.4 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C52923"
-			(at 115.57 25.4 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Note" "POGO_5V output"
-			(at 120.14 29.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(pin "1"
-			(uuid "0d7254c6-0d86-48a7-8e06-3b6dfb7ae5d7")
-		)
-		(pin "2"
-			(uuid "e5f223d3-c68d-4d21-9746-7947cc49a12e")
-		)
-		(instances
-			(project "dock-v2"
-				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/a6551cad-76cb-43b5-b19c-441e3fa27a27"
-					(reference "C603")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
-		(at 115.57 21.59 180)
+		(at 114.3 21.59 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3159,7 +3163,7 @@
 		(fields_autoplaced yes)
 		(uuid "99d22105-2b92-4c95-b79b-5cd4a4667cb3")
 		(property "Reference" "#PWR0705"
-			(at 115.57 15.24 0)
+			(at 114.3 15.24 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3170,7 +3174,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 115.57 16.51 0)
+			(at 114.3 16.51 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3180,7 +3184,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 115.57 21.59 0)
+			(at 114.3 21.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3191,7 +3195,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 115.57 21.59 0)
+			(at 114.3 21.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3202,7 +3206,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 115.57 21.59 0)
+			(at 114.3 21.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3226,7 +3230,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 140.97 17.78 180)
+		(at 129.54 17.78 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3236,7 +3240,7 @@
 		(dnp no)
 		(uuid "a800be23-a269-4c95-8f4b-ebcd0e82137e")
 		(property "Reference" "R608"
-			(at 138.684 15.24 90)
+			(at 127.254 15.24 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3247,7 +3251,7 @@
 			)
 		)
 		(property "Value" "15k"
-			(at 140.97 16.256 90)
+			(at 129.54 16.256 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3258,7 +3262,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 140.97 17.78 0)
+			(at 129.54 17.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3269,7 +3273,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 140.97 17.78 0)
+			(at 129.54 17.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3280,7 +3284,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 140.97 17.78 0)
+			(at 129.54 17.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3291,7 +3295,7 @@
 			)
 		)
 		(property "LCSC" "C25756"
-			(at 140.97 17.78 0)
+			(at 129.54 17.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3302,7 +3306,7 @@
 			)
 		)
 		(property "Note" "POGO_5V divider bottom"
-			(at 137.41 13.97 0)
+			(at 125.98 13.97 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3628,7 +3632,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 120.65 25.4 0)
+		(at 114.3 25.4 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3638,7 +3642,7 @@
 		(dnp no)
 		(uuid "b94b4423-fd97-4540-873a-e18d6ea5eba9")
 		(property "Reference" "C602"
-			(at 121.158 23.114 0)
+			(at 114.808 23.114 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3649,7 +3653,7 @@
 			)
 		)
 		(property "Value" "10uF"
-			(at 121.412 27.94 0)
+			(at 115.062 27.94 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3660,7 +3664,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 120.65 25.4 0)
+			(at 114.3 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3671,7 +3675,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 120.65 25.4 0)
+			(at 114.3 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3682,7 +3686,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 120.65 25.4 0)
+			(at 114.3 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3693,7 +3697,7 @@
 			)
 		)
 		(property "LCSC" "C15850"
-			(at 120.65 25.4 0)
+			(at 114.3 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3704,7 +3708,7 @@
 			)
 		)
 		(property "Note" "POGO_5V output"
-			(at 125.22 29.21 0)
+			(at 118.87 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4349,6 +4353,84 @@
 			(project "dock-v2"
 				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/a6551cad-76cb-43b5-b19c-441e3fa27a27"
 					(reference "R605")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 92.71 21.59 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ffe1f9a1-38fa-420d-9abd-de776113ed84")
+		(property "Reference" "#PWR0708"
+			(at 92.71 15.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 92.71 16.51 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 92.71 21.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 92.71 21.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 92.71 21.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "76ee0256-6042-4386-97f8-3bce1a068cc9")
+		)
+		(instances
+			(project "dock-v2"
+				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/a6551cad-76cb-43b5-b19c-441e3fa27a27"
+					(reference "#PWR0708")
 					(unit 1)
 				)
 			)
