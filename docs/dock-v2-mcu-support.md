@@ -70,9 +70,9 @@ Flashing summary:
 | GPIO8 | 10 kΩ pull-up | must be 1 for UART download mode |
 | GPIO2 | 10 kΩ pull-up | Espressif recommends it high (glitches) |
 | TXD0/RXD0 (GPIO21/20) | chip A UART1 | normal data link **and** the download port |
-| GPIO18/19 (USB D−/D+) | test pads | direct USB flashing during development (C3 built-in USB-Serial/JTAG) |
+| GPIO18/19 (USB D−/D+) | no-connect | the USB test pads were dropped (2026-10-01); flashing goes through MCU A's UART bridge, with TXD0/RXD0 test pads as fallback |
 
-- **Flashing the C3 through A:** A drives EN and GPIO9 and passes esptool's serial traffic from the Personal PC (USB CDC) to UART0. That's the same thing a USB-serial adapter does, so no extra connector is needed. The GPIO18/19 pads are the fallback.
+- **Flashing the C3 through A:** A drives EN and GPIO9 and passes esptool's serial traffic from the Personal PC (USB CDC) to UART0. That's the same thing a USB-serial adapter does, so no extra connector is needed. The fallback is the TXD0/RXD0 test pads (TP503/TP504) with any USB-serial adapter.
 - **Antenna:** module at a **board edge**, antenna end outward (ideally the antenna part hangs just past the edge), **no copper on any layer** and no parts under or near the antenna area, per Espressif's *Hardware Design Guidelines, General Principles of PCB Layout for Modules*. Keep the pogo magnets and any metal enclosure parts away from that end.
 - The ESP32-C3-MINI-1 is MSL 3: JLCPCB handles it (it's one of the parts they must place anyway).
 

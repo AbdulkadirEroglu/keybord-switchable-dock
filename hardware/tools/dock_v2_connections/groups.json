@@ -246,10 +246,8 @@
    ]
   ],
   [
-   "Test pads (fallback flashing)",
+   "Test pads (UART, GND)",
    [
-    "TP501",
-    "TP502",
     "TP503",
     "TP504",
     "TP505"

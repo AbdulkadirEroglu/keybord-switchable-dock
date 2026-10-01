@@ -115,7 +115,7 @@ Place each group as a cluster at its zone, then route between groups.
 | | | TP401–403 | SWD B | test pads | A's SWD lines join here too |
 | **8** | **BLE** (left edge, front half, ≈ x 0–17, y 40–53) | U501 | ESP32-C3-MINI-1-H4X | module 13.2 × 16.6 mm | **antenna end on the left edge**, keep-out: no copper on any layer, no parts (§6) |
 | | | R5xx, C5xx | 10 k + 1 µF EN, 10 k GPIO8, 10 k GPIO2, 10 µF + 100 nF | 0402 / 0805 | decoupling at the 3V3 pin |
-| | | TP501–504 | GPIO18/19 (USB), TXD0/RXD0 | test pads | fallback flashing |
+| | | TP503–505 | TXD0, RXD0, GND | test pads | fallback flashing over UART (the GPIO18/19 USB pads were dropped) |
 | **9** | **Pogo** (front edge, centre) | J601 | 7-pin 2.54 mm magnetic pogo, right-angle with ears (Motorobit) | `dock:Pogo-7` (27.7 × 4.6 mm, scaled from Pogo-6) | **hand-soldered**; centre ≈ (45, 67.7); see §4 |
 | | | U601 | TPD4E1U06 | SOT-23-6 | ESD on DET, TX, RX, **right at J601** |
 | | | R6xx | 1 k ×3 (TX, RX, DET), 10 k DET pull-up, 100 k EN pull-up, 6.8 k ISET, 10 k / 15 k POGO_5V divider | 0402 | series resistors between U601 and the MCU A traces |

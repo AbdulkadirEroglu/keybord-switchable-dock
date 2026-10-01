@@ -1212,12 +1212,12 @@ On the PCB: near the MCU, buttons reachable from above
 
 ## Sheet BLE
 
-File `ble.kicad_sch` · 13 parts
+File `ble.kicad_sch` · 11 parts
 
 - Power symbols: `+3V3`, `GND`
 - Global labels on this sheet: `BLE_BOOT`, `BLE_EN`, `BLE_RX`, `BLE_TX`
 - PWR_FLAG on: none
-- No-connect flags: 22
+- No-connect flags: 24
 
 ### ESP32-C3-MINI-1 (antenna at the left edge)
 
@@ -1252,8 +1252,8 @@ On the PCB: left edge, front half, antenna end on the edge, keep-out clear
 | 23 GPIO9 | BLE_BOOT | R504.2; MCU_A sheet: U301.15 (GPIO11) | **global label `BLE_BOOT`** |
 | 24 NC | — | nothing | no-connect flag (X) |
 | 25 NC | — | nothing | no-connect flag (X) |
-| 26 GPIO18/USB_D- | BLE_USB_D_N | TP501.1 | wire (or local label `BLE_USB_D_N`) |
-| 27 GPIO19/USB_D+ | BLE_USB_D_P | TP502.1 | wire (or local label `BLE_USB_D_P`) |
+| 26 GPIO18/USB_D- | — | nothing | no-connect flag (X) |
+| 27 GPIO19/USB_D+ | — | nothing | no-connect flag (X) |
 | 28 NC | — | nothing | no-connect flag (X) |
 | 29 NC | — | nothing | no-connect flag (X) |
 | 30 GPIO20/U0RXD | BLE_TX | TP504.1; MCU_A sheet: U301.12 (GPIO8) | **global label `BLE_TX`** |
@@ -1334,21 +1334,9 @@ On the PCB: at the module's EN (8), GPIO8/9 (22/23), GPIO2 (5) pins
 | 1 | +3V3 |  | power symbol `+3V3` |
 | 2 | BLE_BOOT | U501.23 (GPIO9); MCU_A sheet: U301.15 (GPIO11) | **global label `BLE_BOOT`** |
 
-### Test pads (fallback flashing)
+### Test pads (UART, GND)
 
 On the PCB: near the module, reachable with a probe
-
-#### TP501 · (not in the schematic) · not in the schematic
-
-| Pin | Net | Connects to | Draw |
-|---|---|---|---|
-| 1 | BLE_USB_D_N | U501.26 (GPIO18/USB_D-) | wire (or local label `BLE_USB_D_N`) |
-
-#### TP502 · (not in the schematic) · not in the schematic
-
-| Pin | Net | Connects to | Draw |
-|---|---|---|---|
-| 1 | BLE_USB_D_P | U501.27 (GPIO19/USB_D+) | wire (or local label `BLE_USB_D_P`) |
 
 #### TP503 · TestPoint · TXD0
 
@@ -1485,7 +1473,7 @@ On the PCB: behind J601
 | 1 | POGO_ISET | U602.3 (ISET) | wire (or local label `POGO_ISET`) |
 | 2 | GND |  | power symbol `GND` |
 
-#### C601 · 1uF · U602 input
+#### C601 · 1uF · POGO_5V output
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
@@ -1499,7 +1487,7 @@ On the PCB: behind J601
 | 1 | POGO_5V | J601.2 (Pin_2), J601.6 (Pin_6), U602.1 (OUT), C603.1, R607.1 | wire (or local label `POGO_5V`) |
 | 2 | GND |  | power symbol `GND` |
 
-#### C603 · 1uF · POGO_5V output
+#### C603 · 1uF · U602 input
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|

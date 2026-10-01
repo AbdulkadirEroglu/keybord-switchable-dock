@@ -342,7 +342,7 @@ Sheet `ble.kicad_sch`.
         └── R503 10 k ──── BLE_GPIO2 ── U501 pin 5 GPIO2    (Espressif: keep high)
  U501 pin 30 RXD0 ◄── BLE_TX ◄── MCU A GPIO8 (UART1 TX);  TP504
  U501 pin 31 TXD0 ──► BLE_RX ──► MCU A GPIO9 (UART1 RX);  TP503
- U501 pin 26 GPIO18 (USB D−) ── TP501;  pin 27 GPIO19 (USB D+) ── TP502;  TP505 ── GND
+ U501 pins 26/27 GPIO18/19 (native USB): no-connect (USB test pads dropped);  TP505 ── GND
  GND pins 1, 2, 11, 14, 36–53 ── GND;  NC and unused GPIOs: no-connect flags
 ```
 
@@ -350,7 +350,7 @@ R504 is needed for the same reason as R406/R407: the ESP32's GPIO9 pull-up is we
 
 **Parts**
 
-{{PARTS:U501, C502, C503, R501, C501, R502, R503, R504, TP501, TP502, TP503, TP504, TP505}}
+{{PARTS:U501, C502, C503, R501, C501, R502, R503, R504, TP503, TP504, TP505}}
 
 **Wiring — U501**
 
@@ -358,7 +358,7 @@ R504 is needed for the same reason as R406/R407: the ESP32's GPIO9 pull-up is we
 
 {{TWO:C502, C503, R501, C501, R502, R503, R504}}
 
-Test pads: {{ONE:TP501, TP502, TP503, TP504, TP505}}.
+Test pads: {{ONE:TP503, TP504, TP505}}.
 
 **Placement**
 

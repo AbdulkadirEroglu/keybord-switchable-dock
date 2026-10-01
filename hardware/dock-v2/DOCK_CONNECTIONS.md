@@ -4,7 +4,7 @@ Use this to understand the v2 dock circuit, sheet by sheet (sketches, reasons, p
 All parts are already on their sheets (`hardware/dock-v2/`, placed, not wired) with the references used here.
 Why each part was chosen is in `docs/dock-v2-*.md`; where it goes on the board is in [PCB_PLACEMENT.md](PCB_PLACEMENT.md).
 
-The tables are generated from one connection model and checked against the placed schematic: 154 parts, 494 connected pins on 92 nets, 77 no-connect pins. Every pin of every part is listed once, either on a net or as a no-connect.
+The tables are generated from one connection model and checked against the placed schematic: 152 parts, 490 connected pins on 90 nets, 79 no-connect pins. Every pin of every part is listed once, either on a net or as a no-connect.
 
 How to read the tables:
 
@@ -869,7 +869,7 @@ Sheet `ble.kicad_sch`.
         └── R503 10 k ──── BLE_GPIO2 ── U501 pin 5 GPIO2    (Espressif: keep high)
  U501 pin 30 RXD0 ◄── BLE_TX ◄── MCU A GPIO8 (UART1 TX);  TP504
  U501 pin 31 TXD0 ──► BLE_RX ──► MCU A GPIO9 (UART1 RX);  TP503
- U501 pin 26 GPIO18 (USB D−) ── TP501;  pin 27 GPIO19 (USB D+) ── TP502;  TP505 ── GND
+ U501 pins 26/27 GPIO18/19 (native USB): no-connect (USB test pads dropped);  TP505 ── GND
  GND pins 1, 2, 11, 14, 36–53 ── GND;  NC and unused GPIOs: no-connect flags
 ```
 
@@ -887,8 +887,6 @@ R504 is needed for the same reason as R406/R407: the ESP32's GPIO9 pull-up is we
 | R502 | 10k | `R_0402_1005Metric` | C25744 | GPIO8 pull-up |
 | R503 | 10k | `R_0402_1005Metric` | C25744 | GPIO2 pull-up |
 | R504 | 10k | `R_0402_1005Metric` | C25744 | GPIO9 (BOOT) pull-up, beats A pull-down |
-| TP501 | (not in the schematic) | `— (choose)` | — | not in the schematic |
-| TP502 | (not in the schematic) | `— (choose)` | — | not in the schematic |
 | TP503 | TestPoint | `TestPoint_Pad_D1.0mm` | — | TXD0 |
 | TP504 | TestPoint | `TestPoint_Pad_D1.0mm` | — | RXD0 |
 | TP505 | TestPoint | `TestPoint_Pad_D1.0mm` | — | GND |
@@ -922,8 +920,8 @@ R504 is needed for the same reason as R406/R407: the ESP32's GPIO9 pull-up is we
 | 23 | GPIO9 | **BLE_BOOT** | U301.15, R504.2 |
 | 24 | NC | no-connect flag | |
 | 25 | NC | no-connect flag | |
-| 26 | GPIO18/USB_D- | **BLE_USB_D_N** | TP501.1 |
-| 27 | GPIO19/USB_D+ | **BLE_USB_D_P** | TP502.1 |
+| 26 | GPIO18/USB_D- | no-connect flag | |
+| 27 | GPIO19/USB_D+ | no-connect flag | |
 | 28 | NC | no-connect flag | |
 | 29 | NC | no-connect flag | |
 | 30 | GPIO20/U0RXD | **BLE_TX** | U301.12, TP504.1 |
@@ -961,7 +959,7 @@ R504 is needed for the same reason as R406/R407: the ESP32's GPIO9 pull-up is we
 | R503 | **+3V3** | BLE_GPIO2 |
 | R504 | **+3V3** | **BLE_BOOT** |
 
-Test pads: TP501 → **BLE_USB_D_N**, TP502 → **BLE_USB_D_P**, TP503 → **BLE_RX**, TP504 → **BLE_TX**, TP505 → **GND**.
+Test pads: TP503 → **BLE_RX**, TP504 → **BLE_TX**, TP505 → **GND**.
 
 **Placement**
 
@@ -1011,9 +1009,9 @@ How the enable works: undocked, DET is pulled up → Q601 on → EN low → cont
 | R605 | 100k | `R_0402_1005Metric` | C25741 | EN pull-up to 3V3 |
 | R606 | 4.7k | `R_0402_1005Metric` | C25900 | ISET: 6800/4700 = 1.45 A (1.09-1.81 A); 2 x 1 A +5V contacts |
 | R609 | 100k | `R_0402_1005Metric` | C25741 | Q602 gate pull-down (no veto at reset) |
-| C601 | 1uF | `C_0402_1005Metric` | C52923 | U602 input |
+| C601 | 1uF | `C_0402_1005Metric` | C52923 | POGO_5V output |
 | C602 | 10uF | `C_0805_2012Metric` | C15850 | POGO_5V output |
-| C603 | 1uF | `C_0402_1005Metric` | C52923 | POGO_5V output |
+| C603 | 1uF | `C_0402_1005Metric` | C52923 | U602 input |
 | R607 | 10k | `R_0402_1005Metric` | C25744 | POGO_5V divider top -> ADC |
 | R608 | 15k | `R_0402_1005Metric` | C25756 | POGO_5V divider bottom |
 
@@ -1136,7 +1134,7 @@ Use a **global label** with exactly these names (the power nets GND, +3V3 and +5
 - **U204**: 5 (NC)
 - **U301**: 55 (QSPI_SD3), 56 (QSPI_SCLK), 57 (QSPI_SD0), 58 (QSPI_SD2), 59 (QSPI_SD1), 3 (GPIO1), 5 (GPIO3), 7 (GPIO4), 37 (GPIO25)
 - **U401**: 55 (QSPI_SD3), 56 (QSPI_SCLK), 57 (QSPI_SD0), 58 (QSPI_SD2), 59 (QSPI_SD1), 7 (GPIO4), 8 (GPIO5), 9 (GPIO6), 10 (GPIO7), 12 (GPIO8), 13 (GPIO9), 14 (GPIO10), 15 (GPIO11), 16 (GPIO12), 17 (GPIO13), 18 (GPIO14), 19 (GPIO15), 27 (GPIO16), 28 (GPIO17), 29 (GPIO18), 31 (GPIO19), 32 (GPIO20), 33 (GPIO21), 34 (GPIO22), 35 (GPIO23), 36 (GPIO24), 37 (GPIO25), 40 (GPIO26/ADC0), 41 (GPIO27/ADC1), 42 (GPIO28/ADC2), 43 (GPIO29/ADC3)
-- **U501**: 4 (NC), 7 (NC), 9 (NC), 10 (NC), 15 (NC), 17 (NC), 24 (NC), 25 (NC), 28 (NC), 29 (NC), 32 (NC), 33 (NC), 34 (NC), 35 (NC), 6 (GPIO3/ADC1_CH3), 12 (GPIO0/ADC1_CH0/XTAL_32K_P), 13 (GPIO1/ADC1_CH1/XTAL_32K_N), 16 (GPIO10), 18 (GPIO4/ADC1_CH4), 19 (GPIO5/ADC2_CH0), 20 (GPIO6), 21 (GPIO7)
+- **U501**: 4 (NC), 7 (NC), 9 (NC), 10 (NC), 15 (NC), 17 (NC), 24 (NC), 25 (NC), 28 (NC), 29 (NC), 32 (NC), 33 (NC), 34 (NC), 35 (NC), 6 (GPIO3/ADC1_CH3), 12 (GPIO0/ADC1_CH0/XTAL_32K_P), 13 (GPIO1/ADC1_CH1/XTAL_32K_N), 16 (GPIO10), 18 (GPIO4/ADC1_CH4), 19 (GPIO5/ADC2_CH0), 20 (GPIO6), 21 (GPIO7), 26 (GPIO18/USB_D-), 27 (GPIO19/USB_D+)
 - **U601**: 1 (D1+), 5 (NC)
 
 ---
@@ -1172,8 +1170,6 @@ Generated from the connection model that the tables above come from; checked aga
 | BLE_GPIO8 | U501.22 (GPIO8), R502.2 |
 | BLE_RX | U301.13 (GPIO9), U501.31 (GPIO21/U0TXD), TP503.1 |
 | BLE_TX | U301.12 (GPIO8), U501.30 (GPIO20/U0RXD), TP504.1 |
-| BLE_USB_D_N | U501.26 (GPIO18/USB_D-), TP501.1 |
-| BLE_USB_D_P | U501.27 (GPIO19/USB_D+), TP502.1 |
 | BUCK_BOOT | U103.1 (BOOT), C104.1 |
 | BUCK_COMP | U103.6 (COMP), R105.1, C107.1 |
 | BUCK_COMP_RC | R105.2, C106.1 |

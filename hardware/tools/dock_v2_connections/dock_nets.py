@@ -129,10 +129,9 @@ ESP_NC = ['4', '7', '9', '10', '15', '17', '24', '25', '28', '29', '32', '33', '
 ESP_UNUSED = ['6', '12', '13', '16', '18', '19', '20', '21']       # GPIO3, 0, 1, 10, 4, 5, 6, 7
 add({'GND': [f'U501.{n}' for n in ESP_GND], '+3V3': ['U501.3'], 'BLE_EN': ['U501.8'],
      'BLE_GPIO2': ['U501.5'], 'BLE_GPIO8': ['U501.22'], 'BLE_BOOT': ['U501.23'],
-     'BLE_USB_D_N': ['U501.26', 'TP501.1'], 'BLE_USB_D_P': ['U501.27', 'TP502.1'],
      'BLE_TX': ['U501.30', 'TP504.1'], 'BLE_RX': ['U501.31', 'TP503.1'], 'GND ': []})
 NETS.pop('GND ')
-NC += [f'U501.{n}' for n in ESP_NC + ESP_UNUSED]
+NC += [f'U501.{n}' for n in ESP_NC + ESP_UNUSED + ['26', '27']]   # GPIO18/19 (USB): test pads dropped 2026-10-01
 two('C502', '+3V3', 'GND'); two('C503', '+3V3', 'GND')
 two('R501', '+3V3', 'BLE_EN'); two('C501', 'BLE_EN', 'GND')
 two('R502', '+3V3', 'BLE_GPIO8'); two('R503', '+3V3', 'BLE_GPIO2'); two('R504', '+3V3', 'BLE_BOOT')
