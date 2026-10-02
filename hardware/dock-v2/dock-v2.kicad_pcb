@@ -94,6 +94,17 @@
 			(outputdirectory "")
 		)
 	)
+	(gr_rect
+		(start 129 35)
+		(end 229 135)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "Edge.Cuts")
+		(uuid "0db73c6b-0122-4c34-910b-8a2a79fefc73")
+	)
 	(footprint "Capacitor_SMD:C_0805_2012Metric"
 		(layer "F.Cu")
 		(uuid "00cf19ed-0b03-478e-aba3-5f9b29359cc8")
