@@ -106,9 +106,9 @@ All four are the same 16-pin USB 2.0 USB-C receptacle (TYPE-C-31-M-12, rated 20 
 | Port | Role | CC | Data | VBUS |
 |---|---|---|---|---|
 | J101 power (right edge) | sink | CH224A (built-in Rd) | CH224A D+/D− (QC/BC1.2) | VBUS_IN, SMBJ15A TVS |
-| J201 keyboard (left edge) | **source** | 33 k Rp to 3.3 V (Default USB), read by A's ADC | A GPIO6/7 (PIO-USB) via 22 Ω, 15 k host pull-downs | KBD_VBUS from SY6280, 220 µF THT + 10 µF + 1 µF |
-| J202 Personal PC (back) | sink | 5.1 k Rd | A USB_DP/DM via 22 Ω | **sense only**: 22 k / 33 k divider to A GPIO0 |
-| J203 Work PC (back) | sink | 5.1 k Rd | B USB_DP/DM via 22 Ω | **sense only**: divider to B GPIO2 |
+| J201 keyboard (left edge) | **source** | 33 k Rp to 3.3 V (Default USB), read by A's ADC | A GPIO3 D+ / GPIO2 D− (PIO-USB, `PIO_USB_PINOUT_DMDP`) via 22 Ω, 15 k host pull-downs | KBD_VBUS from SY6280, 220 µF THT + 10 µF + 1 µF |
+| J202 Personal PC (back) | sink | 5.1 k Rd | A USB_DP/DM via 22 Ω | **sense only**: 22 k / 33 k divider to A GPIO1 |
+| J203 Work PC (back) | sink | 5.1 k Rd | B USB_DP/DM via 22 Ω | **sense only**: divider to B GPIO29 |
 
 - **Keyboard port (cold socket):** KBD_VBUS stays off until A sees a sink's Rd on CC (≈ 0.44 V) for > 100 ms; off again on unplug. A charger or PC plugged in by mistake shows Rp, so the dock never turns VBUS on against it. EN has a 100 k pull-down: off at reset and with blank firmware.
 - **PC ports:** the dock takes no power from the PCs. Each MCU enables its D+ pull-up (connects) only while its PC's VBUS is present.
@@ -166,12 +166,12 @@ From 9 V at ≈ 90 % efficiency, even the worst case is ≈ 17 W: fine for the 3
 
 | Link | MCU A pins | Other end | Implementation |
 |---|---|---|---|
-| A ↔ B (HID reports, Work PC) | GPIO16 TX / GPIO17 RX | B GPIO1 RX / GPIO0 TX | hardware UART0, 1 Mbaud or faster |
-| A ↔ ESP32-C3 (BLE data, ESP32 flashing) | GPIO8 TX / GPIO9 RX | ESP32 RXD0 / TXD0 | hardware UART1 |
-| ESP32 control | GPIO10 → EN, GPIO11 → GPIO9 (BOOT) | 10 k pull-ups, EN RC 10 k / 1 µF | open-drain |
-| Pogo UART (diagnostics/recovery) | GPIO12 TX / GPIO13 RX | pad, through 1 k on each side | PIO UART |
-| CH224A | GPIO20 SDA / GPIO21 SCL, GPIO22 PG | CH224A | I2C0 |
-| B control | GPIO18 RUN, GPIO19 BOOTSEL, GPIO23/24 SWCLK/SWDIO | B | open-drain / PIO SWD |
+| A ↔ B (HID reports, Work PC) | GPIO24 TX / GPIO23 RX | B GPIO5 RX / GPIO6 TX | hardware UART1 (RX on A and TX on B use the F11 aux function), 1 Mbaud or faster |
+| A ↔ ESP32-C3 (BLE data, ESP32 flashing) | GPIO12 TX / GPIO13 RX | ESP32 RXD0 / TXD0 | hardware UART0 |
+| ESP32 control | GPIO9 → EN, GPIO10 → GPIO9 (BOOT) | 10 k pull-ups, EN RC 10 k / 1 µF | open-drain |
+| Pogo UART (diagnostics/recovery) | GPIO16 TX / GPIO15 RX; GPIO14 DET, GPIO11 OFF | pad, through 1 k on each side | PIO UART |
+| CH224A | GPIO18 SDA / GPIO19 SCL, GPIO17 PG | CH224A | I2C1 |
+| B control | GPIO20 RUN, GPIO25 BOOTSEL, GPIO22/21 SWCLK/SWDIO | B | open-drain / PIO SWD |
 
 The full pin maps (every GPIO, with the reason for each choice) are in DOCK_CONNECTIONS.md §5–6. Keystrokes never pass through BLE: BLE carries only pad events and the selector state. With the radio on its own module, BLE stack faults can't disturb USB timing on A.
 
@@ -548,7 +548,7 @@ Seven magnetic pogo contacts (Motorobit 7-pin 2.54 mm set, rated 1 A per contact
 - **+5V at both ends (pins 2 and 6), GND at both ends (pins 1 and 7):** Because +5V (pins 2, 6) and GND (pins 1, 7) are mirror-symmetric, a pad fitted the wrong way round still gets +5V on +5V and GND on GND: it is powered and charges normally. Only the UART lines cross (dock TX → pad DET, pad TX → dock DET, RX ↔ RX), all through 1 kΩ, so nothing is damaged; the pogo UART just doesn't work that way round.
 - **+5V on two contacts, GND on two:** 2 A capacity, so the dock's pogo switch can be set to 1.45 A (1.09–1.81 A) and the pad needs **no LED dimming while docked** (worst case: charging 0.51 A + electronics 0.15 A + all 36 LEDs white 0.54 A ≈ 1.2 A). On a low-tolerance switch the limit can cap that corner; the pad's power path then falls back to the battery, nothing is damaged.
 - **DET:** the pad ties it to GND. On the dock, DET is pulled up to 3.3 V and drives a 2N7002 that holds the pogo switch's EN low while undocked. Docked, EN goes high and the pad gets 5 V **without firmware**. MCU A can veto through a second 2N7002 (POGO_OFF); its gate pull-down means "no veto" while A is in reset or has no firmware. A reads DET and measures POGO_5V.
-- **RX/TX:** PIO UART on MCU A (GPIO12/13) through 1 kΩ on the dock and 1 kΩ on the pad; names from the dock's side. Reserved for diagnostics, recovery and fallback; it does not replace BLE during normal docking.
+- **RX/TX:** PIO UART on MCU A (GPIO16 TX / GPIO15 RX) through 1 kΩ on the dock and 1 kΩ on the pad; names from the dock's side. Reserved for diagnostics, recovery and fallback; it does not replace BLE during normal docking.
 - ESD (TPD4E1U06) at the contacts on both sides; SMAJ5.0A on the pad's +5V.
 - Magnets on both sides of the pogo area provide alignment and retention.
 - **Orientation:** reversed docking is harmless (power pins are symmetric, see above), but the pogo UART only works the right way round. Mark pin 1 on both silkscreens and on the case.

@@ -8,9 +8,9 @@
 Date: 2026-09-29. Sources: Raspberry Pi *Hardware design with RP2350* (release 3, 2026-08) and its **RP2350A Minimal KiCad design** (netlist read directly), RP2350 datasheet, ESP32-C3-MINI-1 datasheet v2.2, JLCPCB parts search. "Ext" = Extended ($3.07 feeder fee per unique part), "Basic" = no fee.
 
 ```text
-                         ┌───────────── UART0 (1 Mbaud+) ─────────────┐
+                         ┌───────────── UART1 (1 Mbaud+) ─────────────┐
  PC1 USB ═══ RP2354A **A** ◄──── RUN, BOOTSEL, SWD (A can reset/flash B) ──► RP2354A **B** ═══ PC2 USB
- keyboard ═ (PIO-USB)  │  └── UART1 + EN + GPIO9 ──► ESP32-C3-MINI-1 (BLE to pad)
+ keyboard ═ (PIO-USB)  │  └── UART0 + EN + GPIO9 ──► ESP32-C3-MINI-1 (BLE to pad)
                        ├── I2C ── CH224A          ├── ADC ×4 (KBD CC1/CC2, KBD_VBUS, POGO_5V)
                        └── pogo: DET, POGO_OFF, PIO UART
 ```
@@ -50,7 +50,7 @@ RPi's guide: the 1 kΩ damping resistor and 15 pF caps are tuned for *that* crys
 
 | Signal | A side | B side | Why |
 |---|---|---|---|
-| UART0 TX/RX | hardware UART0 | hardware UART0 | HID reports, 1 Mbaud or faster (v1 framing: SOF/TYPE/SEQ/LEN/PAYLOAD/CRC) |
+| UART TX/RX | hardware UART1 | hardware UART1 | HID reports, 1 Mbaud or faster (v1 framing: SOF/TYPE/SEQ/LEN/PAYLOAD/CRC) |
 | B_RUN | GPIO, open-drain | RUN + **10 k pull-up** | A can reset B. The external pull-up beats A's reset-state pull-down; without it B could stay in reset whenever A restarts |
 | B_BOOTSEL | GPIO, open-drain, via 1 kΩ, **10 k pull-up** | QSPI_SS | A holds it low while pulsing B_RUN → B restarts in **BOOTSEL** mode and shows up as a UF2 drive on the Work PC |
 | B_SWCLK / B_SWDIO | 2 GPIOs (PIO) | SWD pins | **A can reflash B over SWD** (Raspberry Pi's debugprobe firmware does this on an RP2040/RP2350). Updating everything from the Personal PC then becomes possible, and it's the recovery path if B's firmware is broken |
@@ -69,7 +69,7 @@ Flashing summary:
 | GPIO9 (BOOT) | chip A GPIO (open-drain) + **10 k pull-up** | low at reset = download mode. A can put the C3 into download mode; the pull-up stops A's reset-state pull-down doing it by accident |
 | GPIO8 | 10 kΩ pull-up | must be 1 for UART download mode |
 | GPIO2 | 10 kΩ pull-up | Espressif recommends it high (glitches) |
-| TXD0/RXD0 (GPIO21/20) | chip A UART1 | normal data link **and** the download port |
+| TXD0/RXD0 (GPIO21/20) | chip A UART0 (GPIO12/13) | normal data link **and** the download port |
 | GPIO18/19 (USB D−/D+) | no-connect | the USB test pads were dropped (2026-10-01); flashing goes through MCU A's UART bridge, with TXD0/RXD0 test pads as fallback |
 
 - **Flashing the C3 through A:** A drives EN and GPIO9 and passes esptool's serial traffic from the Personal PC (USB CDC) to UART0. That's the same thing a USB-serial adapter does, so no extra connector is needed. The fallback is the TXD0/RXD0 test pads (TP503/TP504) with any USB-serial adapter.
@@ -83,8 +83,8 @@ Flashing summary:
 | Function | GPIOs |
 |---|---|
 | PIO-USB host (keyboard D+/D−, adjacent) | 2 |
-| UART0 ↔ B | 2 |
-| UART1 ↔ ESP32-C3 | 2 |
+| UART1 ↔ B | 2 |
+| UART0 ↔ ESP32-C3 | 2 |
 | C3 EN, C3 GPIO9 | 2 |
 | B RUN, B BOOTSEL, B SWCLK, B SWDIO | 4 |
 | CH224A I2C SDA/SCL, CH224A PG | 3 |
@@ -97,9 +97,9 @@ Flashing summary:
 
 - PIO use: PIO-USB (1 block), pogo UART (2 state machines), SWD to B (1 state machine). RP2354A has 3 blocks × 4 state machines: fits.
 - PIO-USB needs a system clock that is a multiple of 12 MHz (120, 144, 240 MHz).
-- The exact GPIO numbers come at schematic time: hardware UART TX/RX only exist on certain pins (e.g. UART0 TX on GPIO0/12/16/28…, UART1 TX on GPIO4/8/20/24…).
+- The GPIO numbers were chosen for routing (2026-10-03, 2-layer goal): the final map is in DOCK_CONNECTIONS.md §5–6. Hardware UART TX/RX only exist on certain pins (UART0 TX on GPIO0/2/12/14/16/18/28, UART1 TX on GPIO4/6/8/10/20/22/24/26, counting the F11 aux function).
 
-Chip B: native USB, UART0 ↔ A (2), PC2 VBUS sense (1), status LED (1). Everything else is free.
+Chip B: native USB, UART1 ↔ A (2), PC2 VBUS sense (1), status LED (1). Everything else is free.
 
 ## 6. 3.3 V budget (AMS1117, see power doc)
 

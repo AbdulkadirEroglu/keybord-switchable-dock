@@ -2864,11 +2864,11 @@
 		(uuid "0923411d-8ca5-4067-9b1f-47809f927f99")
 	)
 	(no_connect
-		(at 209.55 88.9)
+		(at 209.55 91.44)
 		(uuid "09391392-a59a-4f57-9faa-064fe2fc28ff")
 	)
 	(no_connect
-		(at 209.55 144.78)
+		(at 209.55 93.98)
 		(uuid "15eff6b7-3325-45ae-aa66-3088366fecc7")
 	)
 	(no_connect
@@ -2876,7 +2876,7 @@
 		(uuid "4672d092-50ad-407d-94ed-5404b3ec072b")
 	)
 	(no_connect
-		(at 209.55 83.82)
+		(at 209.55 96.52)
 		(uuid "4fd10c76-fded-4173-b34d-00a430d51529")
 	)
 	(no_connect
@@ -2884,7 +2884,7 @@
 		(uuid "7c7db45b-7c60-4df9-8883-8d04e1da2aa1")
 	)
 	(no_connect
-		(at 209.55 91.44)
+		(at 209.55 99.06)
 		(uuid "d353d3c5-3bc7-4f4c-8225-153265655289")
 	)
 	(no_connect
@@ -3297,7 +3297,7 @@
 	)
 	(global_label "POGO_TX"
 		(shape input)
-		(at 209.55 111.76 0)
+		(at 209.55 121.92 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3307,7 +3307,7 @@
 		)
 		(uuid "17f1ec2c-1fb8-48f7-90d2-39574c903d75")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 220.8809 111.76 0)
+			(at 220.8809 121.92 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3321,7 +3321,7 @@
 	)
 	(global_label "PD_PG"
 		(shape input)
-		(at 209.55 137.16 0)
+		(at 209.55 124.46 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3331,7 +3331,7 @@
 		)
 		(uuid "37495212-deb0-41b0-ae21-637d4bfcdba6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 218.5828 137.16 0)
+			(at 218.5828 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3345,7 +3345,7 @@
 	)
 	(global_label "B_RUN"
 		(shape input)
-		(at 209.55 127 0)
+		(at 209.55 132.08 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3355,7 +3355,7 @@
 		)
 		(uuid "381edb00-39fe-4c66-bf69-8a673b9b19b6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 218.7038 127 0)
+			(at 218.7038 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3369,7 +3369,7 @@
 	)
 	(global_label "PD_SDA"
 		(shape input)
-		(at 209.55 132.08 0)
+		(at 209.55 127 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3379,7 +3379,7 @@
 		)
 		(uuid "4aa30d5a-b83d-4956-841f-4c1d1220e8dd")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 219.6109 132.08 0)
+			(at 219.6109 127 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3393,7 +3393,7 @@
 	)
 	(global_label "KBD_CC2"
 		(shape input)
-		(at 209.55 152.4 0)
+		(at 209.55 154.94 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3403,7 +3403,7 @@
 		)
 		(uuid "4bc809ad-8453-4739-90b8-0a0d04b23294")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 221.0623 152.4 0)
+			(at 221.0623 154.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3441,7 +3441,7 @@
 	)
 	(global_label "POGO_RX"
 		(shape input)
-		(at 209.55 114.3 0)
+		(at 209.55 119.38 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3451,7 +3451,7 @@
 		)
 		(uuid "565a3281-6935-45e5-92d5-2567412311c8")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 221.1833 114.3 0)
+			(at 221.1833 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3465,7 +3465,7 @@
 	)
 	(global_label "PD_SCL"
 		(shape input)
-		(at 209.55 134.62 0)
+		(at 209.55 129.54 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3475,7 +3475,7 @@
 		)
 		(uuid "5b0285f8-0e09-4880-a4a7-5bd6dba5725b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 219.5504 134.62 0)
+			(at 219.5504 129.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3489,7 +3489,7 @@
 	)
 	(global_label "B_BOOTSEL"
 		(shape input)
-		(at 209.55 129.54 0)
+		(at 209.55 144.78 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3499,7 +3499,7 @@
 		)
 		(uuid "6a3c99fb-b05a-4911-b139-a3d82cf45fc8")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 223.058 129.54 0)
+			(at 223.058 144.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3513,7 +3513,7 @@
 	)
 	(global_label "BLE_RX"
 		(shape input)
-		(at 209.55 104.14 0)
+		(at 209.55 114.3 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3523,7 +3523,7 @@
 		)
 		(uuid "8070175f-c24c-4e46-9911-120f503decd9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 219.4294 104.14 0)
+			(at 219.4294 114.3 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3537,7 +3537,7 @@
 	)
 	(global_label "KBD_USB_DN"
 		(shape input)
-		(at 209.55 99.06 0)
+		(at 209.55 86.36 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3547,7 +3547,7 @@
 		)
 		(uuid "8a6fe188-b8a9-428e-a465-bec773727643")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 224.6909 99.06 0)
+			(at 224.6909 86.36 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3561,7 +3561,7 @@
 	)
 	(global_label "KBD_USB_DP"
 		(shape input)
-		(at 209.55 96.52 0)
+		(at 209.55 88.9 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3571,7 +3571,7 @@
 		)
 		(uuid "90b45575-3944-4f1f-8687-3584de9c1f8f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 224.6304 96.52 0)
+			(at 224.6304 88.9 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3585,7 +3585,7 @@
 	)
 	(global_label "BLE_BOOT"
 		(shape input)
-		(at 209.55 109.22 0)
+		(at 209.55 106.68 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3595,7 +3595,7 @@
 		)
 		(uuid "922104f1-6387-4005-8c07-bb0b82967ad1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 221.8485 109.22 0)
+			(at 221.8485 106.68 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3609,7 +3609,7 @@
 	)
 	(global_label "BLE_TX"
 		(shape input)
-		(at 209.55 101.6 0)
+		(at 209.55 111.76 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3619,7 +3619,7 @@
 		)
 		(uuid "99de20e0-8386-4ec0-97d0-03ba0499df1e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 219.127 101.6 0)
+			(at 219.127 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3657,7 +3657,7 @@
 	)
 	(global_label "KBD_VBUS_SENSE"
 		(shape input)
-		(at 209.55 154.94 0)
+		(at 209.55 152.4 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3667,7 +3667,7 @@
 		)
 		(uuid "9a6cb1e3-ff30-4585-8425-efca64d1d369")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 229.2265 154.94 0)
+			(at 229.2265 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3681,7 +3681,7 @@
 	)
 	(global_label "PRS_VBUS_DET"
 		(shape input)
-		(at 209.55 81.28 0)
+		(at 209.55 83.82 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3691,7 +3691,7 @@
 		)
 		(uuid "9d4d0acd-17f9-4dbc-9dfa-b3e1373f8874")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 226.5051 81.28 0)
+			(at 226.5051 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3705,7 +3705,7 @@
 	)
 	(global_label "B_SWCLK"
 		(shape input)
-		(at 209.55 139.7 0)
+		(at 209.55 137.16 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3715,7 +3715,7 @@
 		)
 		(uuid "a5f457ea-c921-4661-9576-952288ef77e1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 221.0018 139.7 0)
+			(at 221.0018 137.16 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3729,7 +3729,7 @@
 	)
 	(global_label "POGO_5V_SENSE"
 		(shape input)
-		(at 209.55 157.48 0)
+		(at 209.55 149.86 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3739,7 +3739,7 @@
 		)
 		(uuid "a67aeaff-7d44-459d-bd69-cbc401dea1fb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 228.017 157.48 0)
+			(at 228.017 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3753,7 +3753,7 @@
 	)
 	(global_label "B_LINK_TX"
 		(shape input)
-		(at 209.55 121.92 0)
+		(at 209.55 142.24 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3763,7 +3763,7 @@
 		)
 		(uuid "aa019ea2-2e2a-441e-932d-2fab6c138382")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 222.1509 121.92 0)
+			(at 222.1509 142.24 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3801,7 +3801,7 @@
 	)
 	(global_label "KBD_CC1"
 		(shape input)
-		(at 209.55 149.86 0)
+		(at 209.55 157.48 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3811,7 +3811,7 @@
 		)
 		(uuid "c0f976aa-4755-458d-b733-c6cdcca21e6b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 221.0623 149.86 0)
+			(at 221.0623 157.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3849,7 +3849,7 @@
 	)
 	(global_label "KBD_VBUS_EN"
 		(shape input)
-		(at 209.55 93.98 0)
+		(at 209.55 101.6 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3859,7 +3859,7 @@
 		)
 		(uuid "cc5a9fd2-66b0-4ed4-8d3f-13e3c1c26d4d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 225.6585 93.98 0)
+			(at 225.6585 101.6 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3873,7 +3873,7 @@
 	)
 	(global_label "POGO_OFF"
 		(shape input)
-		(at 209.55 119.38 0)
+		(at 209.55 109.22 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3883,7 +3883,7 @@
 		)
 		(uuid "cdebf741-56c6-4139-b910-c30694d0d519")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 222.2115 119.38 0)
+			(at 222.2115 109.22 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3897,7 +3897,7 @@
 	)
 	(global_label "BLE_EN"
 		(shape input)
-		(at 209.55 106.68 0)
+		(at 209.55 104.14 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3907,7 +3907,7 @@
 		)
 		(uuid "d2053185-26d3-4ddf-8c42-8e574331634d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 219.4294 106.68 0)
+			(at 219.4294 104.14 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3921,7 +3921,7 @@
 	)
 	(global_label "B_LINK_RX"
 		(shape input)
-		(at 209.55 124.46 0)
+		(at 209.55 139.7 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3931,7 +3931,7 @@
 		)
 		(uuid "ddc23b38-6639-474d-933a-f25689bd3867")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 222.4533 124.46 0)
+			(at 222.4533 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3945,7 +3945,7 @@
 	)
 	(global_label "B_SWDIO"
 		(shape input)
-		(at 209.55 142.24 0)
+		(at 209.55 134.62 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3955,7 +3955,7 @@
 		)
 		(uuid "f3376608-9223-49d9-9272-9efecfb1725b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 220.639 142.24 0)
+			(at 220.639 134.62 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3993,7 +3993,7 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 220.98 86.36 180)
+		(at 220.98 81.28 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4003,7 +4003,7 @@
 		(dnp no)
 		(uuid "03ba7151-58f9-40ff-b1d5-cacd71705548")
 		(property "Reference" "D301"
-			(at 223.266 83.82 0)
+			(at 223.266 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4014,7 +4014,7 @@
 			)
 		)
 		(property "Value" "LED red"
-			(at 224.536 88.646 0)
+			(at 224.536 83.566 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4025,7 +4025,7 @@
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
-			(at 220.98 86.36 0)
+			(at 220.98 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4036,7 +4036,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 220.98 86.36 0)
+			(at 220.98 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4047,7 +4047,7 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
-			(at 220.98 86.36 0)
+			(at 220.98 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4058,7 +4058,7 @@
 			)
 		)
 		(property "LCSC" "C2286"
-			(at 220.98 86.36 0)
+			(at 220.98 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4069,7 +4069,7 @@
 			)
 		)
 		(property "Note" "status LED"
-			(at 214.63 82.55 0)
+			(at 214.63 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7296,7 +7296,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 213.36 86.36 90)
+		(at 213.36 81.28 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7306,7 +7306,7 @@
 		(dnp no)
 		(uuid "a708bc98-d7c0-40ba-8033-9676e5278f49")
 		(property "Reference" "R305"
-			(at 215.9 88.392 90)
+			(at 215.9 83.312 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7317,7 +7317,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 214.376 86.36 90)
+			(at 214.376 81.28 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7328,7 +7328,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 213.36 86.36 0)
+			(at 213.36 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7339,7 +7339,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 213.36 86.36 0)
+			(at 213.36 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7350,7 +7350,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 213.36 86.36 0)
+			(at 213.36 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7361,7 +7361,7 @@
 			)
 		)
 		(property "LCSC" "C11702"
-			(at 213.36 86.36 0)
+			(at 213.36 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7372,7 +7372,7 @@
 			)
 		)
 		(property "Note" "LED series"
-			(at 217.17 82.8 0)
+			(at 217.17 77.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8157,7 +8157,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 224.79 86.36 90)
+		(at 224.79 81.28 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8168,7 +8168,7 @@
 		(fields_autoplaced yes)
 		(uuid "d97c5fcf-8c69-4771-a20c-b0621e58fe4b")
 		(property "Reference" "#PWR0415"
-			(at 231.14 86.36 0)
+			(at 231.14 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8179,7 +8179,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 228.6 86.3599 90)
+			(at 228.6 81.2799 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8190,7 +8190,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 224.79 86.36 0)
+			(at 224.79 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8201,7 +8201,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 224.79 86.36 0)
+			(at 224.79 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8212,7 +8212,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 224.79 86.36 0)
+			(at 224.79 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

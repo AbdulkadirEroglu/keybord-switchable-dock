@@ -48,11 +48,11 @@ Net names used everywhere:
                                                ├─ SY6280 ── KBD_VBUS ──► J201 keyboard │
                                                └─ SY6280 ── POGO_5V ───► J601 pogo     │
                                                                                        ▼
- keyboard ═ J201 ── PIO-USB (GPIO6/7) ──►┌────────────┐── UART0 ──►┌────────────┐
+ keyboard ═ J201 ── PIO-USB (GPIO{{A:KBD_USB_D_N}}/{{A:KBD_USB_D_P}}) ──►┌────────────┐── UART1 ──►┌────────────┐
                     CC1/CC2 → ADC        │ RP2354A  A │◄─ RUN, BOOTSEL, SWD ─│ RP2354A  B │══ J203 ═ Work PC
  Personal PC ═ J202 ══ native USB ═══════│  (U301)    │            │  (U401)    │
                                          └─────┬──────┘            └────────────┘
-                              UART1, EN, BOOT  │  PIO UART, DET, OFF, ADC
+                              UART0, EN, BOOT  │  PIO UART, DET, OFF, ADC
                                   ESP32-C3 ◄───┴───► pogo J601 ═ pad
 ```
 
@@ -74,9 +74,9 @@ Sheet `power.kicad_sch`.
  J101 CC2 (B5) ──●── PD_CC2 ── U102 pin 6        J101 D− (A7, B7) ──●── PD_DM ── U102 pin 5
                  └── U101 pin 4                                     └── U101 pin 6
  U102 pin 9 CFG1 ── PD_CFG1 ── R101 6.8 k ── GND            (requests 9 V on its own)
- U102 pin 2 CFG2/SCL ──●── PD_SCL ──► MCU A GPIO21      (R103 4.7 k to +3V3)
- U102 pin 3 CFG3/SDA ──●── PD_SDA ◄─► MCU A GPIO20      (R104 4.7 k to +3V3)
- U102 pin 10 PG ───────●── PD_PG ───► MCU A GPIO22      (R102 10 k to +3V3)
+ U102 pin 2 CFG2/SCL ──●── PD_SCL ──► MCU A GPIO{{A:PD_SCL}}      (R103 4.7 k to +3V3)
+ U102 pin 3 CFG3/SDA ──●── PD_SDA ◄─► MCU A GPIO{{A:PD_SDA}}      (R104 4.7 k to +3V3)
+ U102 pin 10 PG ───────●── PD_PG ───► MCU A GPIO{{A:PD_PG}}      (R102 10 k to +3V3)
  U102 pin 11 (exposed pad) ── GND;  J101 A1, A12, B1, B12, SH ── GND;  SBU A8/B8: no-connect
 ```
 
@@ -159,14 +159,14 @@ Sheet `usb_ports.kicad_sch`. The dock is the **source** here: Rp pull-ups on CC,
 ```text
  +5V ──●── U202 pin 5 IN (SY6280)        U202 pin 1 OUT ──●── KBD_VBUS ──► J201 VBUS (A4, A9, B4, B9)
        └── C204 1 µF ── GND                               ├── C201 220 µF THT (+ = pin 1), hand-soldered
- U202 pin 4 EN ──●── KBD_VBUS_EN ◄── MCU A GPIO5          ├── C202 10 µF, C203 1 µF ── GND
-                 └── R208 100 k ── GND  (off at reset)    └── R209 10 k ──●── KBD_VBUS_SENSE ──► MCU A GPIO28 (ADC2)
+ U202 pin 4 EN ──●── KBD_VBUS_EN ◄── MCU A GPIO{{A:KBD_VBUS_EN}}          ├── C202 10 µF, C203 1 µF ── GND
+                 └── R208 100 k ── GND  (off at reset)    └── R209 10 k ──●── KBD_VBUS_SENSE ──► MCU A GPIO{{A:KBD_VBUS_SENSE}} (ADC{{ADC:KBD_VBUS_SENSE}})
  U202 pin 3 ISET ── R207 6.8 k ── GND  (1.0 A)                             └── R210 15 k ── GND
- +3V3 ── R201 33 k ──●── KBD_CC1 ── J201 CC1 (A5) ──► MCU A GPIO26 (ADC0);  U201 pin 3
- +3V3 ── R202 33 k ──●── KBD_CC2 ── J201 CC2 (B5) ──► MCU A GPIO27 (ADC1);  U201 pin 4
- J201 D+ (A6, B6) ──●── KBD_USBJ_D_P ── R205 22 Ω ── KBD_USB_D_P ──► MCU A GPIO6 (PIO-USB D+)
+ +3V3 ── R201 33 k ──●── KBD_CC1 ── J201 CC1 (A5) ──► MCU A GPIO{{A:KBD_CC1}} (ADC{{ADC:KBD_CC1}});  U201 pin 3
+ +3V3 ── R202 33 k ──●── KBD_CC2 ── J201 CC2 (B5) ──► MCU A GPIO{{A:KBD_CC2}} (ADC{{ADC:KBD_CC2}});  U201 pin 4
+ J201 D+ (A6, B6) ──●── KBD_USBJ_D_P ── R205 22 Ω ── KBD_USB_D_P ──► MCU A GPIO{{A:KBD_USB_D_P}} (PIO-USB D+)
                     ├── U201 pin 1;  R203 15 k ── GND
- J201 D− (A7, B7) ──●── KBD_USBJ_D_N ── R206 22 Ω ── KBD_USB_D_N ──► MCU A GPIO7 (PIO-USB D−)
+ J201 D− (A7, B7) ──●── KBD_USBJ_D_N ── R206 22 Ω ── KBD_USB_D_N ──► MCU A GPIO{{A:KBD_USB_D_N}} (PIO-USB D−)
                     ├── U201 pin 6;  R204 15 k ── GND
  J201 A1, A12, B1, B12, SH ── GND;  SBU A8/B8: no-connect
 ```
@@ -190,7 +190,7 @@ Sheet `usb_ports.kicad_sch`. The dock is the **source** here: Rp pull-ups on CC,
 - J201 on the left edge. U201 within 5 mm. R201/R202 near J201.
 - U202 between the +5V trunk and J201; R207 short to U202 pin 3. C201 (Ø 6.3 mm, THT) and C202/C203 at J201's VBUS pads.
 - R205/R206 **near MCU A** (series termination at the driver); R203/R204 anywhere on the pair, near J201 is fine.
-- KBD_USB pair as a 90 Ω differential pair; GPIO6/GPIO7 are on MCU A's left side, facing J201.
+- KBD_USB pair as a 90 Ω differential pair; GPIO{{A:KBD_USB_D_N}}/GPIO{{A:KBD_USB_D_P}} are on MCU A's left side, facing J201.
 - KBD_VBUS is Power class.
 
 ---
@@ -201,7 +201,7 @@ Sheet `usb_ports.kicad_sch`. The dock is a **sink** (Rd) but draws no power: VBU
 
 ```text
  J202 (Personal PC, back edge)                               J203 (Work PC) is the same with R217–R222, U204,
- J202 VBUS ── PC1_VBUS ── R213 22 k ──●── PC1_VBUS_DET ──► MCU A GPIO0     PC2_* nets, MCU B GPIO2 and B's USB pins
+ J202 VBUS ── PC1_VBUS ── R213 22 k ──●── PC1_VBUS_DET ──► MCU A GPIO{{A:PC1_VBUS_DET}}     PC2_* nets, MCU B GPIO{{B:PC2_VBUS_DET}} and B's USB pins
                                       └── R214 33 k ── GND
  J202 CC1 (A5) ──●── PC1_CC1 ── R211 5.1 k ── GND;  U203 pin 3
  J202 CC2 (B5) ──●── PC1_CC2 ── R212 5.1 k ── GND;  U203 pin 4
@@ -257,7 +257,7 @@ Sheet `mcu_a.kicad_sch`. Core circuit = Raspberry Pi's Minimal design (`hardware
  U301 pin 60 QSPI_SS ── A_QSPI_SS ── R303 1 k ── A_BOOTSEL_BTN ── SW301 ── GND      (BOOTSEL A)
  U301 pin 26 RUN ── A_RUN ── SW302 ── GND                                            (RESET A)
  U301 pins 24/25 SWCLK/SWDIO ── TP301/TP302;  TP303 ── GND
- U301 GPIO2 ── A_LED ── R305 1 k ── A_LED_R ── D301 anode (2); cathode (1) ── GND
+ U301 GPIO{{A:A_LED}} ── A_LED ── R305 1 k ── A_LED_R ── D301 anode (2); cathode (1) ── GND
  QSPI_SD0–3, QSPI_SCLK (55–59): no-connect (the 2 MB flash inside uses them)
 ```
 
@@ -269,7 +269,7 @@ Sheet `mcu_a.kicad_sch`. Core circuit = Raspberry Pi's Minimal design (`hardware
 
 {{APINMAP}}
 
-Why these pins: hardware UART0 TX/RX only exist on GPIO 0/1, 12/13, 16/17, 28/29 (UART1 on 4/5, 8/9, 20/21, 24/25); I2C0 on 20/21; the ADC only on 26–29; PIO-USB needs two adjacent GPIOs (D− = D+ + 1). Sides of the QFN-60 (top view, pin 1 top-left, counter-clockwise): left = GPIO0–11 (faces J201 and the ESP32), bottom = GPIO12–18 (faces the pogo), right = GPIO19–29 (faces MCU B and the CH224A), top = regulator and USB (faces J202).
+Why these pins (chosen to keep the routing on 2 layers with as few crossings as possible): hardware UART0 TX/RX exist on GPIO 0/1, 2/3, 12/13, 14/15, 16/17, 18/19, 28/29 (TX even, RX odd); UART1 on 4/5, 6/7, 8/9, 10/11, 20/21, 22/23, 24/25, 26/27 (any TX with any RX of the same UART); I2C1 SDA/SCL on 18/19 (and 2/3, 6/7, 10/11, 14/15, 22/23); the ADC only on 26–29; PIO-USB needs two adjacent GPIOs — here D− = D+ − 1, so the firmware uses `PIO_USB_PINOUT_DMDP` with `pin_dp = {{A:KBD_USB_D_P}}`. The ESP32 is on UART0 and the B link on UART1; the CH224A is on I2C1. Sides of the QFN-60 (top view, pin 1 top-left, counter-clockwise): left = GPIO0–11 (faces J201), bottom = GPIO12–18 (faces the ESP32 and the pogo), right = GPIO19–29 (faces MCU B; the CH224A lines run under B), top = regulator and USB (faces J202).
 
 **Wiring — U301**
 
@@ -293,14 +293,14 @@ Sheet `mcu_b.kicad_sch`. Same core as MCU A (B_ nets, U401 …). What differs: B
 
 ```text
  (core: as MCU A, with U401, L401, C401–C416, R401, R402, Y401, B_* local nets)
- U401 pin 26 RUN ── B_RUN ◄── MCU A GPIO18 (open-drain);  R406 10 k to +3V3
+ U401 pin 26 RUN ── B_RUN ◄── MCU A GPIO{{A:B_RUN}} (open-drain);  R406 10 k to +3V3
  U401 pin 60 QSPI_SS ──●── B_QSPI_SS ── R403 1 k ── B_BOOTSEL_BTN ── SW401 ── GND     (BOOTSEL B)
-                       └── R404 1 k ── B_BOOTSEL ◄── MCU A GPIO19 (open-drain);  R407 10 k to +3V3
- U401 pins 24/25 SWCLK/SWDIO ──●── B_SWCLK / B_SWDIO ◄── MCU A GPIO23 / GPIO24
+                       └── R404 1 k ── B_BOOTSEL ◄── MCU A GPIO{{A:B_BOOTSEL}} (open-drain);  R407 10 k to +3V3
+ U401 pins 24/25 SWCLK/SWDIO ──●── B_SWCLK / B_SWDIO ◄── MCU A GPIO{{A:B_SWCLK}} / GPIO{{A:B_SWDIO}}
                                └── TP401 / TP402;  TP403 ── GND
- U401 GPIO0 (UART0 TX) ── B_LINK_RX ──► MCU A GPIO17 (UART0 RX)
- U401 GPIO1 (UART0 RX) ◄── B_LINK_TX ◄── MCU A GPIO16 (UART0 TX)
- U401 GPIO2 ◄── PC2_VBUS_DET;   U401 GPIO3 ── B_LED ── R405 1 k ── D401 ── GND
+ U401 GPIO{{B:B_LINK_RX}} (UART1 TX) ── B_LINK_RX ──► MCU A GPIO{{A:B_LINK_RX}} (UART1 RX)
+ U401 GPIO{{B:B_LINK_TX}} (UART1 RX) ◄── B_LINK_TX ◄── MCU A GPIO{{A:B_LINK_TX}} (UART1 TX)
+ U401 GPIO{{B:PC2_VBUS_DET}} ◄── PC2_VBUS_DET;   U401 GPIO{{B:B_LED}} ── B_LED ── R405 1 k ── D401 ── GND
  U401 pins 52/51 USB_DP/DM ── PC2_USB_D_P / PC2_USB_D_N (from R221/R222)
 ```
 
@@ -324,7 +324,7 @@ Crystal: {{ONE:Y401}} (1 = B_XIN, 3 = B_XOUT_R, 2 and 4 = GND). Test pads: {{ONE
 
 **Placement**
 
-- U401 back-right; top side towards J203. Its left side (GPIO0–3) faces MCU A.
+- U401 back-right; top side towards J203. Its left side (link, LED) faces MCU A; PC2_VBUS_DET is on the top-right pin towards J203.
 - `copy_rpi_core_layout.py … U401` for the core.
 - R406/R407 near U401 (RUN pin 26, QSPI_SS pin 60); R404 at QSPI_SS.
 
@@ -336,12 +336,12 @@ Sheet `ble.kicad_sch`.
 
 ```text
  +3V3 ──●── U501 pin 3 3V3;  C502 10 µF, C503 100 nF ── GND (at pin 3)
-        ├── R501 10 k ──●── BLE_EN ── U501 pin 8 EN;  C501 1 µF ── GND;  ◄── MCU A GPIO10 (open-drain)
-        ├── R504 10 k ──●── BLE_BOOT ── U501 pin 23 GPIO9 ◄── MCU A GPIO11 (open-drain; low at reset = download mode)
+        ├── R501 10 k ──●── BLE_EN ── U501 pin 8 EN;  C501 1 µF ── GND;  ◄── MCU A GPIO{{A:BLE_EN}} (open-drain)
+        ├── R504 10 k ──●── BLE_BOOT ── U501 pin 23 GPIO9 ◄── MCU A GPIO{{A:BLE_BOOT}} (open-drain; low at reset = download mode)
         ├── R502 10 k ──── BLE_GPIO8 ── U501 pin 22 GPIO8   (must be high for UART download)
         └── R503 10 k ──── BLE_GPIO2 ── U501 pin 5 GPIO2    (Espressif: keep high)
- U501 pin 30 RXD0 ◄── BLE_TX ◄── MCU A GPIO8 (UART1 TX);  TP504
- U501 pin 31 TXD0 ──► BLE_RX ──► MCU A GPIO9 (UART1 RX);  TP503
+ U501 pin 30 RXD0 ◄── BLE_TX ◄── MCU A GPIO{{A:BLE_TX}} (UART0 TX);  TP504
+ U501 pin 31 TXD0 ──► BLE_RX ──► MCU A GPIO{{A:BLE_RX}} (UART0 RX);  TP503
  U501 pins 26/27 GPIO18/19 (native USB): no-connect (USB test pads dropped);  TP505 ── GND
  GND pins 1, 2, 11, 14, 36–53 ── GND;  NC and unused GPIOs: no-connect flags
 ```
@@ -375,22 +375,22 @@ Sheet `pogo.kicad_sch`. **7 contacts**, dock side: `GND | +5V | DET | RX | TX | 
  J601 pin 1, pin 7 ── GND
  J601 pins 2 and 6 (+5V, both ends) ──●── POGO_5V ◄── U602 pin 1 OUT (SY6280)
                     ├── C602 10 µF, C603 1 µF ── GND
-                    └── R607 10 k ──●── POGO_5V_SENSE ──► MCU A GPIO29 (ADC3)
+                    └── R607 10 k ──●── POGO_5V_SENSE ──► MCU A GPIO{{A:POGO_5V_SENSE}} (ADC{{ADC:POGO_5V_SENSE}})
                                     └── R608 15 k ── GND
  +5V ──●── U602 pin 5 IN;  C601 1 µF ── GND        U602 pin 3 ISET ── R606 4.7 k ── GND (1.45 A)
  U602 pin 4 EN ──●── POGO_EN ── R605 100 k ── +3V3
                  ├── Q601 drain   (Q601 gate = POGO_DET, source = GND)
-                 └── Q602 drain   (Q602 gate = POGO_OFF ◄── MCU A GPIO15, R609 100 k to GND; source = GND)
- J601 pin 3 (DET) ──●── POGO_DET_J ── R603 1 k ──●── POGO_DET ──► MCU A GPIO14, Q601 gate
+                 └── Q602 drain   (Q602 gate = POGO_OFF ◄── MCU A GPIO{{A:POGO_OFF}}, R609 100 k to GND; source = GND)
+ J601 pin 3 (DET) ──●── POGO_DET_J ── R603 1 k ──●── POGO_DET ──► MCU A GPIO{{A:POGO_DET}}, Q601 gate
                     └── U601 pin 4 (ESD)         └── R604 10 k ── +3V3
- J601 pin 4 (RX)  ──●── POGO_RX_J ── R602 1 k ── POGO_RX ──► MCU A GPIO13 (PIO UART RX)
+ J601 pin 4 (RX)  ──●── POGO_RX_J ── R602 1 k ── POGO_RX ──► MCU A GPIO{{A:POGO_RX}} (PIO UART RX)
                     └── U601 pin 3
- J601 pin 5 (TX)  ──●── POGO_TX_J ── R601 1 k ── POGO_TX ◄── MCU A GPIO12 (PIO UART TX)
+ J601 pin 5 (TX)  ──●── POGO_TX_J ── R601 1 k ── POGO_TX ◄── MCU A GPIO{{A:POGO_TX}} (PIO UART TX)
                     └── U601 pin 6
  U601 pin 2 ── GND;  pins 1, 5: no-connect
 ```
 
-How the enable works: undocked, DET is pulled up → Q601 on → EN low → contacts dead. Docked, the pad grounds DET → Q601 off → R605 pulls EN high → 5 V on, **with no firmware**. MCU A can veto by driving POGO_OFF high (Q602 on). Q602 exists so that A's reset-state pull-down on GPIO15 means "no veto": a direct connection to EN would drag it to ≈ 1.1 V and stop pad charging whenever A has no firmware.
+How the enable works: undocked, DET is pulled up → Q601 on → EN low → contacts dead. Docked, the pad grounds DET → Q601 off → R605 pulls EN high → 5 V on, **with no firmware**. MCU A can veto by driving POGO_OFF high (Q602 on). Q602 exists so that A's reset-state pull-down on GPIO{{A:POGO_OFF}} means "no veto": a direct connection to EN would drag it to ≈ 1.1 V and stop pad charging whenever A has no firmware.
 
 **Parts**
 

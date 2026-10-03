@@ -48,11 +48,11 @@ Net names used everywhere:
                                                ├─ SY6280 ── KBD_VBUS ──► J201 keyboard │
                                                └─ SY6280 ── POGO_5V ───► J601 pogo     │
                                                                                        ▼
- keyboard ═ J201 ── PIO-USB (GPIO6/7) ──►┌────────────┐── UART0 ──►┌────────────┐
+ keyboard ═ J201 ── PIO-USB (GPIO2/3) ──►┌────────────┐── UART1 ──►┌────────────┐
                     CC1/CC2 → ADC        │ RP2354A  A │◄─ RUN, BOOTSEL, SWD ─│ RP2354A  B │══ J203 ═ Work PC
  Personal PC ═ J202 ══ native USB ═══════│  (U301)    │            │  (U401)    │
                                          └─────┬──────┘            └────────────┘
-                              UART1, EN, BOOT  │  PIO UART, DET, OFF, ADC
+                              UART0, EN, BOOT  │  PIO UART, DET, OFF, ADC
                                   ESP32-C3 ◄───┴───► pogo J601 ═ pad
 ```
 
@@ -74,9 +74,9 @@ Sheet `power.kicad_sch`.
  J101 CC2 (B5) ──●── PD_CC2 ── U102 pin 6        J101 D− (A7, B7) ──●── PD_DM ── U102 pin 5
                  └── U101 pin 4                                     └── U101 pin 6
  U102 pin 9 CFG1 ── PD_CFG1 ── R101 6.8 k ── GND            (requests 9 V on its own)
- U102 pin 2 CFG2/SCL ──●── PD_SCL ──► MCU A GPIO21      (R103 4.7 k to +3V3)
- U102 pin 3 CFG3/SDA ──●── PD_SDA ◄─► MCU A GPIO20      (R104 4.7 k to +3V3)
- U102 pin 10 PG ───────●── PD_PG ───► MCU A GPIO22      (R102 10 k to +3V3)
+ U102 pin 2 CFG2/SCL ──●── PD_SCL ──► MCU A GPIO19      (R103 4.7 k to +3V3)
+ U102 pin 3 CFG3/SDA ──●── PD_SDA ◄─► MCU A GPIO18      (R104 4.7 k to +3V3)
+ U102 pin 10 PG ───────●── PD_PG ───► MCU A GPIO17      (R102 10 k to +3V3)
  U102 pin 11 (exposed pad) ── GND;  J101 A1, A12, B1, B12, SH ── GND;  SBU A8/B8: no-connect
 ```
 
@@ -130,15 +130,15 @@ Sheet `power.kicad_sch`.
 | U102 pin | Name | Net | Also on this net |
 |---|---|---|---|
 | 1 | VHV | **VBUS_IN** | J101.A4, J101.A9, J101.B4, J101.B9, D101.1, C101.1, U103.2, C102.1 … |
-| 2 | CFG2/SCL | **PD_SCL** | R103.2, U301.33 |
-| 3 | CFG3/SDA | **PD_SDA** | R104.2, U301.32 |
+| 2 | CFG2/SCL | **PD_SCL** | R103.2, U301.31 |
+| 3 | CFG3/SDA | **PD_SDA** | R104.2, U301.29 |
 | 4 | DP | **PD_DP** | J101.A6, J101.B6, U101.1 |
 | 5 | DM | **PD_DM** | J101.A7, J101.B7, U101.6 |
 | 6 | CC2 | **PD_CC2** | J101.B5, U101.4 |
 | 7 | CC1 | **PD_CC1** | J101.A5, U101.3 |
 | 8 | VBUS | **VBUS_IN** | J101.A4, J101.A9, J101.B4, J101.B9, D101.1, C101.1, U103.2, C102.1 … |
 | 9 | CFG1 | PD_CFG1 | R101.1 |
-| 10 | PG | **PD_PG** | R102.2, U301.34 |
+| 10 | PG | **PD_PG** | R102.2, U301.28 |
 | 11 | GND | **GND** | 142 other pins |
 
 | Part | Pin 1 | Pin 2 |
@@ -266,14 +266,14 @@ Sheet `usb_ports.kicad_sch`. The dock is the **source** here: Rp pull-ups on CC,
 ```text
  +5V ──●── U202 pin 5 IN (SY6280)        U202 pin 1 OUT ──●── KBD_VBUS ──► J201 VBUS (A4, A9, B4, B9)
        └── C204 1 µF ── GND                               ├── C201 220 µF THT (+ = pin 1), hand-soldered
- U202 pin 4 EN ──●── KBD_VBUS_EN ◄── MCU A GPIO5          ├── C202 10 µF, C203 1 µF ── GND
-                 └── R208 100 k ── GND  (off at reset)    └── R209 10 k ──●── KBD_VBUS_SENSE ──► MCU A GPIO28 (ADC2)
+ U202 pin 4 EN ──●── KBD_VBUS_EN ◄── MCU A GPIO8          ├── C202 10 µF, C203 1 µF ── GND
+                 └── R208 100 k ── GND  (off at reset)    └── R209 10 k ──●── KBD_VBUS_SENSE ──► MCU A GPIO27 (ADC1)
  U202 pin 3 ISET ── R207 6.8 k ── GND  (1.0 A)                             └── R210 15 k ── GND
- +3V3 ── R201 33 k ──●── KBD_CC1 ── J201 CC1 (A5) ──► MCU A GPIO26 (ADC0);  U201 pin 3
- +3V3 ── R202 33 k ──●── KBD_CC2 ── J201 CC2 (B5) ──► MCU A GPIO27 (ADC1);  U201 pin 4
- J201 D+ (A6, B6) ──●── KBD_USBJ_D_P ── R205 22 Ω ── KBD_USB_D_P ──► MCU A GPIO6 (PIO-USB D+)
+ +3V3 ── R201 33 k ──●── KBD_CC1 ── J201 CC1 (A5) ──► MCU A GPIO29 (ADC3);  U201 pin 3
+ +3V3 ── R202 33 k ──●── KBD_CC2 ── J201 CC2 (B5) ──► MCU A GPIO28 (ADC2);  U201 pin 4
+ J201 D+ (A6, B6) ──●── KBD_USBJ_D_P ── R205 22 Ω ── KBD_USB_D_P ──► MCU A GPIO3 (PIO-USB D+)
                     ├── U201 pin 1;  R203 15 k ── GND
- J201 D− (A7, B7) ──●── KBD_USBJ_D_N ── R206 22 Ω ── KBD_USB_D_N ──► MCU A GPIO7 (PIO-USB D−)
+ J201 D− (A7, B7) ──●── KBD_USBJ_D_N ── R206 22 Ω ── KBD_USB_D_N ──► MCU A GPIO2 (PIO-USB D−)
                     ├── U201 pin 6;  R204 15 k ── GND
  J201 A1, A12, B1, B12, SH ── GND;  SBU A8/B8: no-connect
 ```
@@ -306,7 +306,7 @@ Sheet `usb_ports.kicad_sch`. The dock is the **source** here: Rp pull-ups on CC,
 |---|---|---|---|
 | A1 | GND | **GND** | 138 other pins |
 | A4 | VBUS | **KBD_VBUS** | U202.1, C201.1, C202.1, C203.1, R209.1 |
-| A5 | CC1 | **KBD_CC1** | U201.3, R201.2, U301.40 |
+| A5 | CC1 | **KBD_CC1** | U201.3, R201.2, U301.43 |
 | A6 | D+ | KBD_USBJ_D_P | U201.1, R203.1, R205.1 |
 | A7 | D- | KBD_USBJ_D_N | U201.6, R204.1, R206.1 |
 | A8 | SBU1 | no-connect flag | |
@@ -314,7 +314,7 @@ Sheet `usb_ports.kicad_sch`. The dock is the **source** here: Rp pull-ups on CC,
 | A12 | GND | **GND** | 138 other pins |
 | B1 | GND | **GND** | 138 other pins |
 | B4 | VBUS | **KBD_VBUS** | U202.1, C201.1, C202.1, C203.1, R209.1 |
-| B5 | CC2 | **KBD_CC2** | U201.4, R202.2, U301.41 |
+| B5 | CC2 | **KBD_CC2** | U201.4, R202.2, U301.42 |
 | B6 | D+ | KBD_USBJ_D_P | U201.1, R203.1, R205.1 |
 | B7 | D- | KBD_USBJ_D_N | U201.6, R204.1, R206.1 |
 | B8 | SBU2 | no-connect flag | |
@@ -326,8 +326,8 @@ Sheet `usb_ports.kicad_sch`. The dock is the **source** here: Rp pull-ups on CC,
 |---|---|---|---|
 | 1 | D1+ | KBD_USBJ_D_P | J201.A6, J201.B6, R203.1, R205.1 |
 | 2 | GND | **GND** | 142 other pins |
-| 3 | D2+ | **KBD_CC1** | J201.A5, R201.2, U301.40 |
-| 4 | D2- | **KBD_CC2** | J201.B5, R202.2, U301.41 |
+| 3 | D2+ | **KBD_CC1** | J201.A5, R201.2, U301.43 |
+| 4 | D2- | **KBD_CC2** | J201.B5, R202.2, U301.42 |
 | 5 | NC | no-connect flag | |
 | 6 | D1- | KBD_USBJ_D_N | J201.A7, J201.B7, R204.1, R206.1 |
 
@@ -336,7 +336,7 @@ Sheet `usb_ports.kicad_sch`. The dock is the **source** here: Rp pull-ups on CC,
 | 1 | OUT | **KBD_VBUS** | J201.A4, J201.A9, J201.B4, J201.B9, C201.1, C202.1, C203.1, R209.1 |
 | 2 | GND | **GND** | 142 other pins |
 | 3 | ISET | KBD_ISET | R207.1 |
-| 4 | EN | **KBD_VBUS_EN** | R208.1, U301.8 |
+| 4 | EN | **KBD_VBUS_EN** | R208.1, U301.12 |
 | 5 | IN | **+5V** | 10 other pins |
 
 | Part | Pin 1 | Pin 2 |
@@ -361,7 +361,7 @@ Sheet `usb_ports.kicad_sch`. The dock is the **source** here: Rp pull-ups on CC,
 - J201 on the left edge. U201 within 5 mm. R201/R202 near J201.
 - U202 between the +5V trunk and J201; R207 short to U202 pin 3. C201 (Ø 6.3 mm, THT) and C202/C203 at J201's VBUS pads.
 - R205/R206 **near MCU A** (series termination at the driver); R203/R204 anywhere on the pair, near J201 is fine.
-- KBD_USB pair as a 90 Ω differential pair; GPIO6/GPIO7 are on MCU A's left side, facing J201.
+- KBD_USB pair as a 90 Ω differential pair; GPIO2/GPIO3 are on MCU A's left side, facing J201.
 - KBD_VBUS is Power class.
 
 ---
@@ -372,7 +372,7 @@ Sheet `usb_ports.kicad_sch`. The dock is a **sink** (Rd) but draws no power: VBU
 
 ```text
  J202 (Personal PC, back edge)                               J203 (Work PC) is the same with R217–R222, U204,
- J202 VBUS ── PC1_VBUS ── R213 22 k ──●── PC1_VBUS_DET ──► MCU A GPIO0     PC2_* nets, MCU B GPIO2 and B's USB pins
+ J202 VBUS ── PC1_VBUS ── R213 22 k ──●── PC1_VBUS_DET ──► MCU A GPIO1     PC2_* nets, MCU B GPIO29 and B's USB pins
                                       └── R214 33 k ── GND
  J202 CC1 (A5) ──●── PC1_CC1 ── R211 5.1 k ── GND;  U203 pin 3
  J202 CC2 (B5) ──●── PC1_CC2 ── R212 5.1 k ── GND;  U203 pin 4
@@ -509,7 +509,7 @@ Sheet `mcu_a.kicad_sch`. Core circuit = Raspberry Pi's Minimal design (`hardware
  U301 pin 60 QSPI_SS ── A_QSPI_SS ── R303 1 k ── A_BOOTSEL_BTN ── SW301 ── GND      (BOOTSEL A)
  U301 pin 26 RUN ── A_RUN ── SW302 ── GND                                            (RESET A)
  U301 pins 24/25 SWCLK/SWDIO ── TP301/TP302;  TP303 ── GND
- U301 GPIO2 ── A_LED ── R305 1 k ── A_LED_R ── D301 anode (2); cathode (1) ── GND
+ U301 GPIO0 ── A_LED ── R305 1 k ── A_LED_R ── D301 anode (2); cathode (1) ── GND
  QSPI_SD0–3, QSPI_SCLK (55–59): no-connect (the 2 MB flash inside uses them)
 ```
 
@@ -551,62 +551,62 @@ Sheet `mcu_a.kicad_sch`. Core circuit = Raspberry Pi's Minimal design (`hardware
 
 | GPIO | Pin | Net | Goes to |
 |---|---|---|---|
-| GPIO0 | 2 | **PC1_VBUS_DET** | J202 VBUS divider (R213/R214) |
-| GPIO1 | 3 | spare (no-connect flag) |  |
-| GPIO2 | 4 | A_LED | R305 → D301 |
-| GPIO3 | 5 | spare (no-connect flag) |  |
+| GPIO0 | 2 | A_LED | R305 → D301 |
+| GPIO1 | 3 | **PC1_VBUS_DET** | J202 VBUS divider (R213/R214) |
+| GPIO2 | 4 | **KBD_USB_D_N** | PIO-USB D− → R206 → J201 (D− = D+ − 1: PIO_USB_PINOUT_DMDP) |
+| GPIO3 | 5 | **KBD_USB_D_P** | PIO-USB D+ → R205 → J201 |
 | GPIO4 | 7 | spare (no-connect flag) |  |
-| GPIO5 | 8 | **KBD_VBUS_EN** | U202 EN (R208 pull-down) |
-| GPIO6 | 9 | **KBD_USB_D_P** | PIO-USB D+ → R205 → J201 |
-| GPIO7 | 10 | **KBD_USB_D_N** | PIO-USB D− → R206 → J201 (D− = D+ + 1) |
-| GPIO8 | 12 | **BLE_TX** | UART1 TX → ESP32 RXD0 (U501.30) |
-| GPIO9 | 13 | **BLE_RX** | UART1 RX ← ESP32 TXD0 (U501.31) |
-| GPIO10 | 14 | **BLE_EN** | ESP32 EN, open-drain |
-| GPIO11 | 15 | **BLE_BOOT** | ESP32 GPIO9, open-drain |
-| GPIO12 | 16 | **POGO_TX** | PIO UART TX → R601 → pogo pin 5 |
-| GPIO13 | 17 | **POGO_RX** | PIO UART RX ← R602 ← pogo pin 4 |
+| GPIO5 | 8 | spare (no-connect flag) |  |
+| GPIO6 | 9 | spare (no-connect flag) |  |
+| GPIO7 | 10 | spare (no-connect flag) |  |
+| GPIO8 | 12 | **KBD_VBUS_EN** | U202 EN (R208 pull-down) |
+| GPIO9 | 13 | **BLE_EN** | ESP32 EN, open-drain |
+| GPIO10 | 14 | **BLE_BOOT** | ESP32 GPIO9, open-drain |
+| GPIO11 | 15 | **POGO_OFF** | Q602 gate: high = pogo 5 V off |
+| GPIO12 | 16 | **BLE_TX** | UART0 TX → ESP32 RXD0 (U501.30) |
+| GPIO13 | 17 | **BLE_RX** | UART0 RX ← ESP32 TXD0 (U501.31) |
 | GPIO14 | 18 | **POGO_DET** | pogo DET (low = docked), also Q601 gate |
-| GPIO15 | 19 | **POGO_OFF** | Q602 gate: high = pogo 5 V off |
-| GPIO16 | 27 | **B_LINK_TX** | UART0 TX → B GPIO1 (RX) |
-| GPIO17 | 28 | **B_LINK_RX** | UART0 RX ← B GPIO0 (TX) |
-| GPIO18 | 29 | **B_RUN** | B RUN, open-drain (R406 pull-up) |
-| GPIO19 | 31 | **B_BOOTSEL** | R404 → B QSPI_SS, open-drain (R407 pull-up) |
-| GPIO20 | 32 | **PD_SDA** | I2C0 SDA → CH224A CFG3/SDA |
-| GPIO21 | 33 | **PD_SCL** | I2C0 SCL → CH224A CFG2/SCL |
-| GPIO22 | 34 | **PD_PG** | CH224A PG (R102 pull-up) |
-| GPIO23 | 35 | **B_SWCLK** | B SWCLK (PIO SWD probe) |
-| GPIO24 | 36 | **B_SWDIO** | B SWDIO |
-| GPIO25 | 37 | spare (no-connect flag) |  |
-| GPIO26 | 40 | **KBD_CC1** | ADC0: J201 CC1 (Rp R201) |
-| GPIO27 | 41 | **KBD_CC2** | ADC1: J201 CC2 (Rp R202) |
-| GPIO28 | 42 | **KBD_VBUS_SENSE** | ADC2: R209/R210 divider |
-| GPIO29 | 43 | **POGO_5V_SENSE** | ADC3: R607/R608 divider |
+| GPIO15 | 19 | **POGO_RX** | PIO UART RX ← R602 ← pogo pin 4 |
+| GPIO16 | 27 | **POGO_TX** | PIO UART TX → R601 → pogo pin 5 |
+| GPIO17 | 28 | **PD_PG** | CH224A PG (R102 pull-up) |
+| GPIO18 | 29 | **PD_SDA** | I2C1 SDA → CH224A CFG3/SDA |
+| GPIO19 | 31 | **PD_SCL** | I2C1 SCL → CH224A CFG2/SCL |
+| GPIO20 | 32 | **B_RUN** | B RUN, open-drain (R406 pull-up) |
+| GPIO21 | 33 | **B_SWDIO** | B SWDIO |
+| GPIO22 | 34 | **B_SWCLK** | B SWCLK (PIO SWD probe) |
+| GPIO23 | 35 | **B_LINK_RX** | UART1 RX (F11 aux) ← B GPIO6 (TX) |
+| GPIO24 | 36 | **B_LINK_TX** | UART1 TX → B GPIO5 (RX) |
+| GPIO25 | 37 | **B_BOOTSEL** | R404 → B QSPI_SS, open-drain (R407 pull-up) |
+| GPIO26 | 40 | **POGO_5V_SENSE** | ADC0: R607/R608 divider |
+| GPIO27 | 41 | **KBD_VBUS_SENSE** | ADC1: R209/R210 divider |
+| GPIO28 | 42 | **KBD_CC2** | ADC2: J201 CC2 (Rp R202) |
+| GPIO29 | 43 | **KBD_CC1** | ADC3: J201 CC1 (Rp R201) |
 
-Why these pins: hardware UART0 TX/RX only exist on GPIO 0/1, 12/13, 16/17, 28/29 (UART1 on 4/5, 8/9, 20/21, 24/25); I2C0 on 20/21; the ADC only on 26–29; PIO-USB needs two adjacent GPIOs (D− = D+ + 1). Sides of the QFN-60 (top view, pin 1 top-left, counter-clockwise): left = GPIO0–11 (faces J201 and the ESP32), bottom = GPIO12–18 (faces the pogo), right = GPIO19–29 (faces MCU B and the CH224A), top = regulator and USB (faces J202).
+Why these pins (chosen to keep the routing on 2 layers with as few crossings as possible): hardware UART0 TX/RX exist on GPIO 0/1, 2/3, 12/13, 14/15, 16/17, 18/19, 28/29 (TX even, RX odd); UART1 on 4/5, 6/7, 8/9, 10/11, 20/21, 22/23, 24/25, 26/27 (any TX with any RX of the same UART); I2C1 SDA/SCL on 18/19 (and 2/3, 6/7, 10/11, 14/15, 22/23); the ADC only on 26–29; PIO-USB needs two adjacent GPIOs — here D− = D+ − 1, so the firmware uses `PIO_USB_PINOUT_DMDP` with `pin_dp = 3`. The ESP32 is on UART0 and the B link on UART1; the CH224A is on I2C1. Sides of the QFN-60 (top view, pin 1 top-left, counter-clockwise): left = GPIO0–11 (faces J201), bottom = GPIO12–18 (faces the ESP32 and the pogo), right = GPIO19–29 (faces MCU B; the CH224A lines run under B), top = regulator and USB (faces J202).
 
 **Wiring — U301**
 
 | U301 pin | Name | Net | Also on this net |
 |---|---|---|---|
 | 1 | IOVDD | **+3V3** | 48 other pins |
-| 2 | GPIO0 | **PC1_VBUS_DET** | R213.2, R214.1 |
-| 3 | GPIO1 | no-connect flag | |
-| 4 | GPIO2 | A_LED | R305.1 |
-| 5 | GPIO3 | no-connect flag | |
+| 2 | GPIO0 | A_LED | R305.1 |
+| 3 | GPIO1 | **PC1_VBUS_DET** | R213.2, R214.1 |
+| 4 | GPIO2 | **KBD_USB_D_N** | R206.2 |
+| 5 | GPIO3 | **KBD_USB_D_P** | R205.2 |
 | 6 | DVDD | A_1V1 | L301.1, C302.1, C304.1, C305.1, C306.1 |
 | 7 | GPIO4 | no-connect flag | |
-| 8 | GPIO5 | **KBD_VBUS_EN** | U202.4, R208.1 |
-| 9 | GPIO6 | **KBD_USB_D_P** | R205.2 |
-| 10 | GPIO7 | **KBD_USB_D_N** | R206.2 |
+| 8 | GPIO5 | no-connect flag | |
+| 9 | GPIO6 | no-connect flag | |
+| 10 | GPIO7 | no-connect flag | |
 | 11 | IOVDD | **+3V3** | 48 other pins |
-| 12 | GPIO8 | **BLE_TX** | U501.30, TP504.1 |
-| 13 | GPIO9 | **BLE_RX** | U501.31, TP503.1 |
-| 14 | GPIO10 | **BLE_EN** | U501.8, R501.2, C501.1 |
-| 15 | GPIO11 | **BLE_BOOT** | U501.23, R504.2 |
-| 16 | GPIO12 | **POGO_TX** | R601.1 |
-| 17 | GPIO13 | **POGO_RX** | R602.2 |
+| 12 | GPIO8 | **KBD_VBUS_EN** | U202.4, R208.1 |
+| 13 | GPIO9 | **BLE_EN** | U501.8, R501.2, C501.1 |
+| 14 | GPIO10 | **BLE_BOOT** | U501.23, R504.2 |
+| 15 | GPIO11 | **POGO_OFF** | Q602.1, R609.1 |
+| 16 | GPIO12 | **BLE_TX** | U501.30, TP504.1 |
+| 17 | GPIO13 | **BLE_RX** | U501.31, TP503.1 |
 | 18 | GPIO14 | **POGO_DET** | R603.2, Q601.1, R604.2 |
-| 19 | GPIO15 | **POGO_OFF** | Q602.1, R609.1 |
+| 19 | GPIO15 | **POGO_RX** | R602.2 |
 | 20 | IOVDD | **+3V3** | 48 other pins |
 | 21 | XIN | A_XIN | Y301.1, C315.1 |
 | 22 | XOUT | A_XOUT | R302.1 |
@@ -614,23 +614,23 @@ Why these pins: hardware UART0 TX/RX only exist on GPIO 0/1, 12/13, 16/17, 28/29
 | 24 | SWCLK | A_SWCLK | TP301.1 |
 | 25 | SWDIO | A_SWDIO | TP302.1 |
 | 26 | RUN | A_RUN | SW302.1 |
-| 27 | GPIO16 | **B_LINK_TX** | U401.3 |
-| 28 | GPIO17 | **B_LINK_RX** | U401.2 |
-| 29 | GPIO18 | **B_RUN** | U401.26, R406.2 |
+| 27 | GPIO16 | **POGO_TX** | R601.1 |
+| 28 | GPIO17 | **PD_PG** | U102.10, R102.2 |
+| 29 | GPIO18 | **PD_SDA** | U102.3, R104.2 |
 | 30 | IOVDD | **+3V3** | 48 other pins |
-| 31 | GPIO19 | **B_BOOTSEL** | R404.1, R407.2 |
-| 32 | GPIO20 | **PD_SDA** | U102.3, R104.2 |
-| 33 | GPIO21 | **PD_SCL** | U102.2, R103.2 |
-| 34 | GPIO22 | **PD_PG** | U102.10, R102.2 |
-| 35 | GPIO23 | **B_SWCLK** | U401.24, TP401.1 |
-| 36 | GPIO24 | **B_SWDIO** | U401.25, TP402.1 |
-| 37 | GPIO25 | no-connect flag | |
+| 31 | GPIO19 | **PD_SCL** | U102.2, R103.2 |
+| 32 | GPIO20 | **B_RUN** | U401.26, R406.2 |
+| 33 | GPIO21 | **B_SWDIO** | U401.25, TP402.1 |
+| 34 | GPIO22 | **B_SWCLK** | U401.24, TP401.1 |
+| 35 | GPIO23 | **B_LINK_RX** | U401.9 |
+| 36 | GPIO24 | **B_LINK_TX** | U401.8 |
+| 37 | GPIO25 | **B_BOOTSEL** | R404.1, R407.2 |
 | 38 | IOVDD | **+3V3** | 48 other pins |
 | 39 | DVDD | A_1V1 | L301.1, C302.1, C304.1, C305.1, C306.1 |
-| 40 | GPIO26/ADC0 | **KBD_CC1** | J201.A5, U201.3, R201.2 |
-| 41 | GPIO27/ADC1 | **KBD_CC2** | J201.B5, U201.4, R202.2 |
-| 42 | GPIO28/ADC2 | **KBD_VBUS_SENSE** | R209.2, R210.1 |
-| 43 | GPIO29/ADC3 | **POGO_5V_SENSE** | R607.2, R608.1 |
+| 40 | GPIO26/ADC0 | **POGO_5V_SENSE** | R607.2, R608.1 |
+| 41 | GPIO27/ADC1 | **KBD_VBUS_SENSE** | R209.2, R210.1 |
+| 42 | GPIO28/ADC2 | **KBD_CC2** | J201.B5, U201.4, R202.2 |
+| 43 | GPIO29/ADC3 | **KBD_CC1** | J201.A5, U201.3, R201.2 |
 | 44 | ADC_AVDD | **+3V3** | 48 other pins |
 | 45 | IOVDD | **+3V3** | 48 other pins |
 | 46 | VREG_AVDD | A_VREG_AVDD | C303.1, R301.2 |
@@ -693,14 +693,14 @@ Sheet `mcu_b.kicad_sch`. Same core as MCU A (B_ nets, U401 …). What differs: B
 
 ```text
  (core: as MCU A, with U401, L401, C401–C416, R401, R402, Y401, B_* local nets)
- U401 pin 26 RUN ── B_RUN ◄── MCU A GPIO18 (open-drain);  R406 10 k to +3V3
+ U401 pin 26 RUN ── B_RUN ◄── MCU A GPIO20 (open-drain);  R406 10 k to +3V3
  U401 pin 60 QSPI_SS ──●── B_QSPI_SS ── R403 1 k ── B_BOOTSEL_BTN ── SW401 ── GND     (BOOTSEL B)
-                       └── R404 1 k ── B_BOOTSEL ◄── MCU A GPIO19 (open-drain);  R407 10 k to +3V3
- U401 pins 24/25 SWCLK/SWDIO ──●── B_SWCLK / B_SWDIO ◄── MCU A GPIO23 / GPIO24
+                       └── R404 1 k ── B_BOOTSEL ◄── MCU A GPIO25 (open-drain);  R407 10 k to +3V3
+ U401 pins 24/25 SWCLK/SWDIO ──●── B_SWCLK / B_SWDIO ◄── MCU A GPIO22 / GPIO21
                                └── TP401 / TP402;  TP403 ── GND
- U401 GPIO0 (UART0 TX) ── B_LINK_RX ──► MCU A GPIO17 (UART0 RX)
- U401 GPIO1 (UART0 RX) ◄── B_LINK_TX ◄── MCU A GPIO16 (UART0 TX)
- U401 GPIO2 ◄── PC2_VBUS_DET;   U401 GPIO3 ── B_LED ── R405 1 k ── D401 ── GND
+ U401 GPIO6 (UART1 TX) ── B_LINK_RX ──► MCU A GPIO23 (UART1 RX)
+ U401 GPIO5 (UART1 RX) ◄── B_LINK_TX ◄── MCU A GPIO24 (UART1 TX)
+ U401 GPIO29 ◄── PC2_VBUS_DET;   U401 GPIO3 ── B_LED ── R405 1 k ── D401 ── GND
  U401 pins 52/51 USB_DP/DM ── PC2_USB_D_P / PC2_USB_D_N (from R221/R222)
 ```
 
@@ -746,25 +746,25 @@ R406/R407 matter: at reset and in BOOTSEL mode, MCU A's pins are inputs with wea
 
 | GPIO | Pin | Net | Goes to |
 |---|---|---|---|
-| GPIO0 | 2 | **B_LINK_RX** | UART0 TX → A GPIO17 |
-| GPIO1 | 3 | **B_LINK_TX** | UART0 RX ← A GPIO16 |
-| GPIO2 | 4 | **PC2_VBUS_DET** | J203 VBUS divider (R219/R220) |
 | GPIO3 | 5 | B_LED | R405 → D401 |
-| GPIO4–29 | … | spare (no-connect flags) | |
+| GPIO5 | 8 | **B_LINK_TX** | UART1 RX ← A GPIO24 |
+| GPIO6 | 9 | **B_LINK_RX** | UART1 TX (F11 aux) → A GPIO23 |
+| GPIO29 | 43 | **PC2_VBUS_DET** | J203 VBUS divider (R219/R220) |
+| all other GPIOs | … | spare (no-connect flags) | |
 
 **Wiring — U401**
 
 | U401 pin | Name | Net | Also on this net |
 |---|---|---|---|
 | 1 | IOVDD | **+3V3** | 48 other pins |
-| 2 | GPIO0 | **B_LINK_RX** | U301.28 |
-| 3 | GPIO1 | **B_LINK_TX** | U301.27 |
-| 4 | GPIO2 | **PC2_VBUS_DET** | R219.2, R220.1 |
+| 2 | GPIO0 | no-connect flag | |
+| 3 | GPIO1 | no-connect flag | |
+| 4 | GPIO2 | no-connect flag | |
 | 5 | GPIO3 | B_LED | R405.1 |
 | 6 | DVDD | B_1V1 | L401.1, C402.1, C404.1, C405.1, C406.1 |
 | 7 | GPIO4 | no-connect flag | |
-| 8 | GPIO5 | no-connect flag | |
-| 9 | GPIO6 | no-connect flag | |
+| 8 | GPIO5 | **B_LINK_TX** | U301.36 |
+| 9 | GPIO6 | **B_LINK_RX** | U301.35 |
 | 10 | GPIO7 | no-connect flag | |
 | 11 | IOVDD | **+3V3** | 48 other pins |
 | 12 | GPIO8 | no-connect flag | |
@@ -779,9 +779,9 @@ R406/R407 matter: at reset and in BOOTSEL mode, MCU A's pins are inputs with wea
 | 21 | XIN | B_XIN | Y401.1, C415.1 |
 | 22 | XOUT | B_XOUT | R402.1 |
 | 23 | DVDD | B_1V1 | L401.1, C402.1, C404.1, C405.1, C406.1 |
-| 24 | SWCLK | **B_SWCLK** | U301.35, TP401.1 |
-| 25 | SWDIO | **B_SWDIO** | U301.36, TP402.1 |
-| 26 | RUN | **B_RUN** | U301.29, R406.2 |
+| 24 | SWCLK | **B_SWCLK** | U301.34, TP401.1 |
+| 25 | SWDIO | **B_SWDIO** | U301.33, TP402.1 |
+| 26 | RUN | **B_RUN** | U301.32, R406.2 |
 | 27 | GPIO16 | no-connect flag | |
 | 28 | GPIO17 | no-connect flag | |
 | 29 | GPIO18 | no-connect flag | |
@@ -798,7 +798,7 @@ R406/R407 matter: at reset and in BOOTSEL mode, MCU A's pins are inputs with wea
 | 40 | GPIO26/ADC0 | no-connect flag | |
 | 41 | GPIO27/ADC1 | no-connect flag | |
 | 42 | GPIO28/ADC2 | no-connect flag | |
-| 43 | GPIO29/ADC3 | no-connect flag | |
+| 43 | GPIO29/ADC3 | **PC2_VBUS_DET** | R219.2, R220.1 |
 | 44 | ADC_AVDD | **+3V3** | 48 other pins |
 | 45 | IOVDD | **+3V3** | 48 other pins |
 | 46 | VREG_AVDD | B_VREG_AVDD | C403.1, R401.2 |
@@ -851,7 +851,7 @@ Crystal: Y401 → B_XIN (1 = B_XIN, 3 = B_XOUT_R, 2 and 4 = GND). Test pads: TP4
 
 **Placement**
 
-- U401 back-right; top side towards J203. Its left side (GPIO0–3) faces MCU A.
+- U401 back-right; top side towards J203. Its left side (link, LED) faces MCU A; PC2_VBUS_DET is on the top-right pin towards J203.
 - `copy_rpi_core_layout.py … U401` for the core.
 - R406/R407 near U401 (RUN pin 26, QSPI_SS pin 60); R404 at QSPI_SS.
 
@@ -863,12 +863,12 @@ Sheet `ble.kicad_sch`.
 
 ```text
  +3V3 ──●── U501 pin 3 3V3;  C502 10 µF, C503 100 nF ── GND (at pin 3)
-        ├── R501 10 k ──●── BLE_EN ── U501 pin 8 EN;  C501 1 µF ── GND;  ◄── MCU A GPIO10 (open-drain)
-        ├── R504 10 k ──●── BLE_BOOT ── U501 pin 23 GPIO9 ◄── MCU A GPIO11 (open-drain; low at reset = download mode)
+        ├── R501 10 k ──●── BLE_EN ── U501 pin 8 EN;  C501 1 µF ── GND;  ◄── MCU A GPIO9 (open-drain)
+        ├── R504 10 k ──●── BLE_BOOT ── U501 pin 23 GPIO9 ◄── MCU A GPIO10 (open-drain; low at reset = download mode)
         ├── R502 10 k ──── BLE_GPIO8 ── U501 pin 22 GPIO8   (must be high for UART download)
         └── R503 10 k ──── BLE_GPIO2 ── U501 pin 5 GPIO2    (Espressif: keep high)
- U501 pin 30 RXD0 ◄── BLE_TX ◄── MCU A GPIO8 (UART1 TX);  TP504
- U501 pin 31 TXD0 ──► BLE_RX ──► MCU A GPIO9 (UART1 RX);  TP503
+ U501 pin 30 RXD0 ◄── BLE_TX ◄── MCU A GPIO12 (UART0 TX);  TP504
+ U501 pin 31 TXD0 ──► BLE_RX ──► MCU A GPIO13 (UART0 RX);  TP503
  U501 pins 26/27 GPIO18/19 (native USB): no-connect (USB test pads dropped);  TP505 ── GND
  GND pins 1, 2, 11, 14, 36–53 ── GND;  NC and unused GPIOs: no-connect flags
 ```
@@ -902,7 +902,7 @@ R504 is needed for the same reason as R406/R407: the ESP32's GPIO9 pull-up is we
 | 5 | GPIO2/ADC1_CH2 | BLE_GPIO2 | R503.2 |
 | 6 | GPIO3/ADC1_CH3 | no-connect flag | |
 | 7 | NC | no-connect flag | |
-| 8 | EN/CHIP_PU | **BLE_EN** | U301.14, R501.2, C501.1 |
+| 8 | EN/CHIP_PU | **BLE_EN** | U301.13, R501.2, C501.1 |
 | 9 | NC | no-connect flag | |
 | 10 | NC | no-connect flag | |
 | 11 | GND | **GND** | 121 other pins |
@@ -917,15 +917,15 @@ R504 is needed for the same reason as R406/R407: the ESP32's GPIO9 pull-up is we
 | 20 | GPIO6 | no-connect flag | |
 | 21 | GPIO7 | no-connect flag | |
 | 22 | GPIO8 | BLE_GPIO8 | R502.2 |
-| 23 | GPIO9 | **BLE_BOOT** | U301.15, R504.2 |
+| 23 | GPIO9 | **BLE_BOOT** | U301.14, R504.2 |
 | 24 | NC | no-connect flag | |
 | 25 | NC | no-connect flag | |
 | 26 | GPIO18/USB_D- | no-connect flag | |
 | 27 | GPIO19/USB_D+ | no-connect flag | |
 | 28 | NC | no-connect flag | |
 | 29 | NC | no-connect flag | |
-| 30 | GPIO20/U0RXD | **BLE_TX** | U301.12, TP504.1 |
-| 31 | GPIO21/U0TXD | **BLE_RX** | U301.13, TP503.1 |
+| 30 | GPIO20/U0RXD | **BLE_TX** | U301.16, TP504.1 |
+| 31 | GPIO21/U0TXD | **BLE_RX** | U301.17, TP503.1 |
 | 32 | NC | no-connect flag | |
 | 33 | NC | no-connect flag | |
 | 34 | NC | no-connect flag | |
@@ -976,22 +976,22 @@ Sheet `pogo.kicad_sch`. **7 contacts**, dock side: `GND | +5V | DET | RX | TX | 
  J601 pin 1, pin 7 ── GND
  J601 pins 2 and 6 (+5V, both ends) ──●── POGO_5V ◄── U602 pin 1 OUT (SY6280)
                     ├── C602 10 µF, C603 1 µF ── GND
-                    └── R607 10 k ──●── POGO_5V_SENSE ──► MCU A GPIO29 (ADC3)
+                    └── R607 10 k ──●── POGO_5V_SENSE ──► MCU A GPIO26 (ADC0)
                                     └── R608 15 k ── GND
  +5V ──●── U602 pin 5 IN;  C601 1 µF ── GND        U602 pin 3 ISET ── R606 4.7 k ── GND (1.45 A)
  U602 pin 4 EN ──●── POGO_EN ── R605 100 k ── +3V3
                  ├── Q601 drain   (Q601 gate = POGO_DET, source = GND)
-                 └── Q602 drain   (Q602 gate = POGO_OFF ◄── MCU A GPIO15, R609 100 k to GND; source = GND)
+                 └── Q602 drain   (Q602 gate = POGO_OFF ◄── MCU A GPIO11, R609 100 k to GND; source = GND)
  J601 pin 3 (DET) ──●── POGO_DET_J ── R603 1 k ──●── POGO_DET ──► MCU A GPIO14, Q601 gate
                     └── U601 pin 4 (ESD)         └── R604 10 k ── +3V3
- J601 pin 4 (RX)  ──●── POGO_RX_J ── R602 1 k ── POGO_RX ──► MCU A GPIO13 (PIO UART RX)
+ J601 pin 4 (RX)  ──●── POGO_RX_J ── R602 1 k ── POGO_RX ──► MCU A GPIO15 (PIO UART RX)
                     └── U601 pin 3
- J601 pin 5 (TX)  ──●── POGO_TX_J ── R601 1 k ── POGO_TX ◄── MCU A GPIO12 (PIO UART TX)
+ J601 pin 5 (TX)  ──●── POGO_TX_J ── R601 1 k ── POGO_TX ◄── MCU A GPIO16 (PIO UART TX)
                     └── U601 pin 6
  U601 pin 2 ── GND;  pins 1, 5: no-connect
 ```
 
-How the enable works: undocked, DET is pulled up → Q601 on → EN low → contacts dead. Docked, the pad grounds DET → Q601 off → R605 pulls EN high → 5 V on, **with no firmware**. MCU A can veto by driving POGO_OFF high (Q602 on). Q602 exists so that A's reset-state pull-down on GPIO15 means "no veto": a direct connection to EN would drag it to ≈ 1.1 V and stop pad charging whenever A has no firmware.
+How the enable works: undocked, DET is pulled up → Q601 on → EN low → contacts dead. Docked, the pad grounds DET → Q601 off → R605 pulls EN high → 5 V on, **with no firmware**. MCU A can veto by driving POGO_OFF high (Q602 on). Q602 exists so that A's reset-state pull-down on GPIO11 means "no veto": a direct connection to EN would drag it to ≈ 1.1 V and stop pad charging whenever A has no firmware.
 
 **Parts**
 
@@ -1079,36 +1079,36 @@ Use a **global label** with exactly these names (the power nets GND, +3V3 and +5
 
 | Net | Sheets | Pins |
 |---|---|---|
-| BLE_BOOT | BLE, MCU_A | U301.15, U501.23, R504.2 |
-| BLE_EN | BLE, MCU_A | U301.14, U501.8, R501.2, C501.1 |
-| BLE_RX | BLE, MCU_A | U301.13, U501.31, TP503.1 |
-| BLE_TX | BLE, MCU_A | U301.12, U501.30, TP504.1 |
-| B_BOOTSEL | MCU_A, MCU_B | U301.31, R404.1, R407.2 |
-| B_LINK_RX | MCU_A, MCU_B | U301.28, U401.2 |
-| B_LINK_TX | MCU_A, MCU_B | U301.27, U401.3 |
-| B_RUN | MCU_A, MCU_B | U301.29, U401.26, R406.2 |
-| B_SWCLK | MCU_A, MCU_B | U301.35, U401.24, TP401.1 |
-| B_SWDIO | MCU_A, MCU_B | U301.36, U401.25, TP402.1 |
-| KBD_CC1 | MCU_A, USB_PORTS | J201.A5, U201.3, R201.2, U301.40 |
-| KBD_CC2 | MCU_A, USB_PORTS | J201.B5, U201.4, R202.2, U301.41 |
-| KBD_USB_D_N | MCU_A, USB_PORTS | R206.2, U301.10 |
-| KBD_USB_D_P | MCU_A, USB_PORTS | R205.2, U301.9 |
-| KBD_VBUS_EN | MCU_A, USB_PORTS | U202.4, R208.1, U301.8 |
-| KBD_VBUS_SENSE | MCU_A, USB_PORTS | R209.2, R210.1, U301.42 |
+| BLE_BOOT | BLE, MCU_A | U301.14, U501.23, R504.2 |
+| BLE_EN | BLE, MCU_A | U301.13, U501.8, R501.2, C501.1 |
+| BLE_RX | BLE, MCU_A | U301.17, U501.31, TP503.1 |
+| BLE_TX | BLE, MCU_A | U301.16, U501.30, TP504.1 |
+| B_BOOTSEL | MCU_A, MCU_B | U301.37, R404.1, R407.2 |
+| B_LINK_RX | MCU_A, MCU_B | U301.35, U401.9 |
+| B_LINK_TX | MCU_A, MCU_B | U301.36, U401.8 |
+| B_RUN | MCU_A, MCU_B | U301.32, U401.26, R406.2 |
+| B_SWCLK | MCU_A, MCU_B | U301.34, U401.24, TP401.1 |
+| B_SWDIO | MCU_A, MCU_B | U301.33, U401.25, TP402.1 |
+| KBD_CC1 | MCU_A, USB_PORTS | J201.A5, U201.3, R201.2, U301.43 |
+| KBD_CC2 | MCU_A, USB_PORTS | J201.B5, U201.4, R202.2, U301.42 |
+| KBD_USB_D_N | MCU_A, USB_PORTS | R206.2, U301.4 |
+| KBD_USB_D_P | MCU_A, USB_PORTS | R205.2, U301.5 |
+| KBD_VBUS_EN | MCU_A, USB_PORTS | U202.4, R208.1, U301.12 |
+| KBD_VBUS_SENSE | MCU_A, USB_PORTS | R209.2, R210.1, U301.41 |
 | PC1_USB_D_N | MCU_A, USB_PORTS | R216.2, U301.51 |
 | PC1_USB_D_P | MCU_A, USB_PORTS | R215.2, U301.52 |
-| PC1_VBUS_DET | MCU_A, USB_PORTS | R213.2, R214.1, U301.2 |
+| PC1_VBUS_DET | MCU_A, USB_PORTS | R213.2, R214.1, U301.3 |
 | PC2_USB_D_N | MCU_B, USB_PORTS | R222.2, U401.51 |
 | PC2_USB_D_P | MCU_B, USB_PORTS | R221.2, U401.52 |
-| PC2_VBUS_DET | MCU_B, USB_PORTS | R219.2, R220.1, U401.4 |
-| PD_PG | MCU_A, POWER | U102.10, R102.2, U301.34 |
-| PD_SCL | MCU_A, POWER | U102.2, R103.2, U301.33 |
-| PD_SDA | MCU_A, POWER | U102.3, R104.2, U301.32 |
-| POGO_5V_SENSE | MCU_A, POGO | U301.43, R607.2, R608.1 |
+| PC2_VBUS_DET | MCU_B, USB_PORTS | R219.2, R220.1, U401.43 |
+| PD_PG | MCU_A, POWER | U102.10, R102.2, U301.28 |
+| PD_SCL | MCU_A, POWER | U102.2, R103.2, U301.31 |
+| PD_SDA | MCU_A, POWER | U102.3, R104.2, U301.29 |
+| POGO_5V_SENSE | MCU_A, POGO | U301.40, R607.2, R608.1 |
 | POGO_DET | MCU_A, POGO | U301.18, R603.2, Q601.1, R604.2 |
-| POGO_OFF | MCU_A, POGO | U301.19, Q602.1, R609.1 |
-| POGO_RX | MCU_A, POGO | U301.17, R602.2 |
-| POGO_TX | MCU_A, POGO | U301.16, R601.1 |
+| POGO_OFF | MCU_A, POGO | U301.15, Q602.1, R609.1 |
+| POGO_RX | MCU_A, POGO | U301.19, R602.2 |
+| POGO_TX | MCU_A, POGO | U301.27, R601.1 |
 
 ---
 
@@ -1132,8 +1132,8 @@ Use a **global label** with exactly these names (the power nets GND, +3V3 and +5
 - **U203**: 5 (NC)
 - **J203**: A8 (SBU1), B8 (SBU2)
 - **U204**: 5 (NC)
-- **U301**: 55 (QSPI_SD3), 56 (QSPI_SCLK), 57 (QSPI_SD0), 58 (QSPI_SD2), 59 (QSPI_SD1), 3 (GPIO1), 5 (GPIO3), 7 (GPIO4), 37 (GPIO25)
-- **U401**: 55 (QSPI_SD3), 56 (QSPI_SCLK), 57 (QSPI_SD0), 58 (QSPI_SD2), 59 (QSPI_SD1), 7 (GPIO4), 8 (GPIO5), 9 (GPIO6), 10 (GPIO7), 12 (GPIO8), 13 (GPIO9), 14 (GPIO10), 15 (GPIO11), 16 (GPIO12), 17 (GPIO13), 18 (GPIO14), 19 (GPIO15), 27 (GPIO16), 28 (GPIO17), 29 (GPIO18), 31 (GPIO19), 32 (GPIO20), 33 (GPIO21), 34 (GPIO22), 35 (GPIO23), 36 (GPIO24), 37 (GPIO25), 40 (GPIO26/ADC0), 41 (GPIO27/ADC1), 42 (GPIO28/ADC2), 43 (GPIO29/ADC3)
+- **U301**: 55 (QSPI_SD3), 56 (QSPI_SCLK), 57 (QSPI_SD0), 58 (QSPI_SD2), 59 (QSPI_SD1), 7 (GPIO4), 8 (GPIO5), 9 (GPIO6), 10 (GPIO7)
+- **U401**: 55 (QSPI_SD3), 56 (QSPI_SCLK), 57 (QSPI_SD0), 58 (QSPI_SD2), 59 (QSPI_SD1), 2 (GPIO0), 3 (GPIO1), 4 (GPIO2), 7 (GPIO4), 10 (GPIO7), 12 (GPIO8), 13 (GPIO9), 14 (GPIO10), 15 (GPIO11), 16 (GPIO12), 17 (GPIO13), 18 (GPIO14), 19 (GPIO15), 27 (GPIO16), 28 (GPIO17), 29 (GPIO18), 31 (GPIO19), 32 (GPIO20), 33 (GPIO21), 34 (GPIO22), 35 (GPIO23), 36 (GPIO24), 37 (GPIO25), 40 (GPIO26/ADC0), 41 (GPIO27/ADC1), 42 (GPIO28/ADC2)
 - **U501**: 4 (NC), 7 (NC), 9 (NC), 10 (NC), 15 (NC), 17 (NC), 24 (NC), 25 (NC), 28 (NC), 29 (NC), 32 (NC), 33 (NC), 34 (NC), 35 (NC), 6 (GPIO3/ADC1_CH3), 12 (GPIO0/ADC1_CH0/XTAL_32K_P), 13 (GPIO1/ADC1_CH1/XTAL_32K_N), 16 (GPIO10), 18 (GPIO4/ADC1_CH4), 19 (GPIO5/ADC2_CH0), 20 (GPIO6), 21 (GPIO7), 26 (GPIO18/USB_D-), 27 (GPIO19/USB_D+)
 - **U601**: 1 (D1+), 5 (NC)
 
@@ -1153,7 +1153,7 @@ Generated from the connection model that the tables above come from; checked aga
 | +5V | R106.1, L101.2, C108.1, C109.1, C110.1, U104.3 (VI), C111.1, U202.5 (IN), C204.1, U602.5 (IN), C601.1 |
 | A_1V1 | U301.6 (DVDD), U301.23 (DVDD), U301.39 (DVDD), U301.50 (VREG_FB), L301.1, C302.1, C304.1, C305.1, C306.1 |
 | A_BOOTSEL_BTN | R303.2, SW301.1 |
-| A_LED | R305.1, U301.4 (GPIO2) |
+| A_LED | R305.1, U301.2 (GPIO0) |
 | A_LED_R | R305.2, D301.2 (A) |
 | A_QSPI_SS | U301.60 (QSPI_SS), R303.1 |
 | A_RUN | U301.26 (RUN), SW302.1 |
@@ -1164,12 +1164,12 @@ Generated from the connection model that the tables above come from; checked aga
 | A_XIN | U301.21 (XIN), Y301.1, C315.1 |
 | A_XOUT | U301.22 (XOUT), R302.1 |
 | A_XOUT_R | Y301.3, C316.1, R302.2 |
-| BLE_BOOT | U301.15 (GPIO11), U501.23 (GPIO9), R504.2 |
-| BLE_EN | U301.14 (GPIO10), U501.8 (EN/CHIP_PU), R501.2, C501.1 |
+| BLE_BOOT | U301.14 (GPIO10), U501.23 (GPIO9), R504.2 |
+| BLE_EN | U301.13 (GPIO9), U501.8 (EN/CHIP_PU), R501.2, C501.1 |
 | BLE_GPIO2 | U501.5 (GPIO2/ADC1_CH2), R503.2 |
 | BLE_GPIO8 | U501.22 (GPIO8), R502.2 |
-| BLE_RX | U301.13 (GPIO9), U501.31 (GPIO21/U0TXD), TP503.1 |
-| BLE_TX | U301.12 (GPIO8), U501.30 (GPIO20/U0RXD), TP504.1 |
+| BLE_RX | U301.17 (GPIO13), U501.31 (GPIO21/U0TXD), TP503.1 |
+| BLE_TX | U301.16 (GPIO12), U501.30 (GPIO20/U0RXD), TP504.1 |
 | BUCK_BOOT | U103.1 (BOOT), C104.1 |
 | BUCK_COMP | U103.6 (COMP), R105.1, C107.1 |
 | BUCK_COMP_RC | R105.2, C106.1 |
@@ -1177,31 +1177,31 @@ Generated from the connection model that the tables above come from; checked aga
 | BUCK_SS | U103.4 (SS), C105.1 |
 | BUCK_SW | U103.8 (PH), C104.2, D102.1 (K), L101.1 |
 | B_1V1 | U401.6 (DVDD), U401.23 (DVDD), U401.39 (DVDD), U401.50 (VREG_FB), L401.1, C402.1, C404.1, C405.1, C406.1 |
-| B_BOOTSEL | U301.31 (GPIO19), R404.1, R407.2 |
+| B_BOOTSEL | U301.37 (GPIO25), R404.1, R407.2 |
 | B_BOOTSEL_BTN | R403.2, SW401.1 |
 | B_LED | R405.1, U401.5 (GPIO3) |
 | B_LED_R | R405.2, D401.2 (A) |
-| B_LINK_RX | U301.28 (GPIO17), U401.2 (GPIO0) |
-| B_LINK_TX | U301.27 (GPIO16), U401.3 (GPIO1) |
+| B_LINK_RX | U301.35 (GPIO23), U401.9 (GPIO6) |
+| B_LINK_TX | U301.36 (GPIO24), U401.8 (GPIO5) |
 | B_QSPI_SS | U401.60 (QSPI_SS), R403.1, R404.2 |
-| B_RUN | U301.29 (GPIO18), U401.26 (RUN), R406.2 |
-| B_SWCLK | U301.35 (GPIO23), U401.24 (SWCLK), TP401.1 |
-| B_SWDIO | U301.36 (GPIO24), U401.25 (SWDIO), TP402.1 |
+| B_RUN | U301.32 (GPIO20), U401.26 (RUN), R406.2 |
+| B_SWCLK | U301.34 (GPIO22), U401.24 (SWCLK), TP401.1 |
+| B_SWDIO | U301.33 (GPIO21), U401.25 (SWDIO), TP402.1 |
 | B_VREG_AVDD | U401.46 (VREG_AVDD), C403.1, R401.2 |
 | B_VREG_LX | U401.48 (VREG_LX), L401.2 |
 | B_XIN | U401.21 (XIN), Y401.1, C415.1 |
 | B_XOUT | U401.22 (XOUT), R402.1 |
 | B_XOUT_R | Y401.3, C416.1, R402.2 |
-| KBD_CC1 | J201.A5 (CC1), U201.3 (D2+), R201.2, U301.40 (GPIO26/ADC0) |
-| KBD_CC2 | J201.B5 (CC2), U201.4 (D2-), R202.2, U301.41 (GPIO27/ADC1) |
+| KBD_CC1 | J201.A5 (CC1), U201.3 (D2+), R201.2, U301.43 (GPIO29/ADC3) |
+| KBD_CC2 | J201.B5 (CC2), U201.4 (D2-), R202.2, U301.42 (GPIO28/ADC2) |
 | KBD_ISET | U202.3 (ISET), R207.1 |
 | KBD_USBJ_D_N | J201.A7 (D-), J201.B7 (D-), U201.6 (D1-), R204.1, R206.1 |
 | KBD_USBJ_D_P | J201.A6 (D+), J201.B6 (D+), U201.1 (D1+), R203.1, R205.1 |
-| KBD_USB_D_N | R206.2, U301.10 (GPIO7) |
-| KBD_USB_D_P | R205.2, U301.9 (GPIO6) |
+| KBD_USB_D_N | R206.2, U301.4 (GPIO2) |
+| KBD_USB_D_P | R205.2, U301.5 (GPIO3) |
 | KBD_VBUS | J201.A4 (VBUS), J201.A9 (VBUS), J201.B4 (VBUS), J201.B9 (VBUS), U202.1 (OUT), C201.1, C202.1, C203.1, R209.1 |
-| KBD_VBUS_EN | U202.4 (EN), R208.1, U301.8 (GPIO5) |
-| KBD_VBUS_SENSE | R209.2, R210.1, U301.42 (GPIO28/ADC2) |
+| KBD_VBUS_EN | U202.4 (EN), R208.1, U301.12 (GPIO8) |
+| KBD_VBUS_SENSE | R209.2, R210.1, U301.41 (GPIO27/ADC1) |
 | PC1_CC1 | J202.A5 (CC1), U203.3 (D2+), R211.1 |
 | PC1_CC2 | J202.B5 (CC2), U203.4 (D2-), R212.1 |
 | PC1_USBJ_D_N | J202.A7 (D-), J202.B7 (D-), U203.6 (D1-), R216.1 |
@@ -1209,7 +1209,7 @@ Generated from the connection model that the tables above come from; checked aga
 | PC1_USB_D_N | R216.2, U301.51 (USB_DM) |
 | PC1_USB_D_P | R215.2, U301.52 (USB_DP) |
 | PC1_VBUS | J202.A4 (VBUS), J202.A9 (VBUS), J202.B4 (VBUS), J202.B9 (VBUS), R213.1 |
-| PC1_VBUS_DET | R213.2, R214.1, U301.2 (GPIO0) |
+| PC1_VBUS_DET | R213.2, R214.1, U301.3 (GPIO1) |
 | PC2_CC1 | J203.A5 (CC1), U204.3 (D2+), R217.1 |
 | PC2_CC2 | J203.B5 (CC2), U204.4 (D2-), R218.1 |
 | PC2_USBJ_D_N | J203.A7 (D-), J203.B7 (D-), U204.6 (D1-), R222.1 |
@@ -1217,25 +1217,25 @@ Generated from the connection model that the tables above come from; checked aga
 | PC2_USB_D_N | R222.2, U401.51 (USB_DM) |
 | PC2_USB_D_P | R221.2, U401.52 (USB_DP) |
 | PC2_VBUS | J203.A4 (VBUS), J203.A9 (VBUS), J203.B4 (VBUS), J203.B9 (VBUS), R219.1 |
-| PC2_VBUS_DET | R219.2, R220.1, U401.4 (GPIO2) |
+| PC2_VBUS_DET | R219.2, R220.1, U401.43 (GPIO29/ADC3) |
 | PD_CC1 | J101.A5 (CC1), U101.3 (D2+), U102.7 (CC1) |
 | PD_CC2 | J101.B5 (CC2), U101.4 (D2-), U102.6 (CC2) |
 | PD_CFG1 | U102.9 (CFG1), R101.1 |
 | PD_DM | J101.A7 (D-), J101.B7 (D-), U101.6 (D1-), U102.5 (DM) |
 | PD_DP | J101.A6 (D+), J101.B6 (D+), U101.1 (D1+), U102.4 (DP) |
-| PD_PG | U102.10 (PG), R102.2, U301.34 (GPIO22) |
-| PD_SCL | U102.2 (CFG2/SCL), R103.2, U301.33 (GPIO21) |
-| PD_SDA | U102.3 (CFG3/SDA), R104.2, U301.32 (GPIO20) |
+| PD_PG | U102.10 (PG), R102.2, U301.28 (GPIO17) |
+| PD_SCL | U102.2 (CFG2/SCL), R103.2, U301.31 (GPIO19) |
+| PD_SDA | U102.3 (CFG3/SDA), R104.2, U301.29 (GPIO18) |
 | POGO_5V | J601.2 (Pin_2), J601.6 (Pin_6), U602.1 (OUT), C602.1, C603.1, R607.1 |
-| POGO_5V_SENSE | U301.43 (GPIO29/ADC3), R607.2, R608.1 |
+| POGO_5V_SENSE | U301.40 (GPIO26/ADC0), R607.2, R608.1 |
 | POGO_DET | U301.18 (GPIO14), R603.2, Q601.1 (G), R604.2 |
 | POGO_DET_J | J601.3 (Pin_3), U601.4 (D2-), R603.1 |
 | POGO_EN | U602.4 (EN), Q601.3 (D), Q602.3 (D), R605.2 |
 | POGO_ISET | U602.3 (ISET), R606.1 |
-| POGO_OFF | U301.19 (GPIO15), Q602.1 (G), R609.1 |
-| POGO_RX | U301.17 (GPIO13), R602.2 |
+| POGO_OFF | U301.15 (GPIO11), Q602.1 (G), R609.1 |
+| POGO_RX | U301.19 (GPIO15), R602.2 |
 | POGO_RX_J | J601.4 (Pin_4), U601.3 (D2+), R602.1 |
-| POGO_TX | U301.16 (GPIO12), R601.1 |
+| POGO_TX | U301.27 (GPIO16), R601.1 |
 | POGO_TX_J | J601.5 (Pin_5), U601.6 (D1-), R601.2 |
 | VBUS_IN | J101.A4 (VBUS), J101.A9 (VBUS), J101.B4 (VBUS), J101.B9 (VBUS), D101.1 (A1), U102.1 (VHV), U102.8 (VBUS), C101.1, U103.2 (VIN), C102.1, C103.1 |
 

@@ -85,15 +85,15 @@ On the PCB: right edge, next to J101
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 VHV | VBUS_IN | J101.A4 (VBUS), J101.A9 (VBUS), J101.B4 (VBUS), J101.B9 (VBUS), D101.1 (A1), C101.1, U103.2 (VIN), C102.1, C103.1 | wire (or local label `VBUS_IN`) |
-| 2 CFG2/SCL | PD_SCL | R103.2; MCU_A sheet: U301.33 (GPIO21) | **global label `PD_SCL`** |
-| 3 CFG3/SDA | PD_SDA | R104.2; MCU_A sheet: U301.32 (GPIO20) | **global label `PD_SDA`** |
+| 2 CFG2/SCL | PD_SCL | R103.2; MCU_A sheet: U301.31 (GPIO19) | **global label `PD_SCL`** |
+| 3 CFG3/SDA | PD_SDA | R104.2; MCU_A sheet: U301.29 (GPIO18) | **global label `PD_SDA`** |
 | 4 DP | PD_DP | J101.A6 (D+), J101.B6 (D+), U101.1 (D1+) | wire (or local label `PD_DP`) |
 | 5 DM | PD_DM | J101.A7 (D-), J101.B7 (D-), U101.6 (D1-) | wire (or local label `PD_DM`) |
 | 6 CC2 | PD_CC2 | J101.B5 (CC2), U101.4 (D2-) | wire (or local label `PD_CC2`) |
 | 7 CC1 | PD_CC1 | J101.A5 (CC1), U101.3 (D2+) | wire (or local label `PD_CC1`) |
 | 8 VBUS | VBUS_IN | J101.A4 (VBUS), J101.A9 (VBUS), J101.B4 (VBUS), J101.B9 (VBUS), D101.1 (A1), C101.1, U103.2 (VIN), C102.1, C103.1 | wire (or local label `VBUS_IN`) |
 | 9 CFG1 | PD_CFG1 | R101.1 | wire (or local label `PD_CFG1`) |
-| 10 PG | PD_PG | R102.2; MCU_A sheet: U301.34 (GPIO22) | **global label `PD_PG`** |
+| 10 PG | PD_PG | R102.2; MCU_A sheet: U301.28 (GPIO17) | **global label `PD_PG`** |
 | 11 GND | GND |  | power symbol `GND` |
 
 #### C101 · 1uF · VHV to GND
@@ -115,21 +115,21 @@ On the PCB: right edge, next to J101
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | +3V3 |  | power symbol `+3V3` |
-| 2 | PD_PG | U102.10 (PG); MCU_A sheet: U301.34 (GPIO22) | **global label `PD_PG`** |
+| 2 | PD_PG | U102.10 (PG); MCU_A sheet: U301.28 (GPIO17) | **global label `PD_PG`** |
 
 #### R103 · 4.7k · SCL pull-up to 3V3
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | +3V3 |  | power symbol `+3V3` |
-| 2 | PD_SCL | U102.2 (CFG2/SCL); MCU_A sheet: U301.33 (GPIO21) | **global label `PD_SCL`** |
+| 2 | PD_SCL | U102.2 (CFG2/SCL); MCU_A sheet: U301.31 (GPIO19) | **global label `PD_SCL`** |
 
 #### R104 · 4.7k · SDA pull-up to 3V3
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | +3V3 |  | power symbol `+3V3` |
-| 2 | PD_SDA | U102.3 (CFG3/SDA); MCU_A sheet: U301.32 (GPIO20) | **global label `PD_SDA`** |
+| 2 | PD_SDA | U102.3 (CFG3/SDA); MCU_A sheet: U301.29 (GPIO18) | **global label `PD_SDA`** |
 
 ### 5 V buck TPS54331 (TI Table 7-1, 5 V)
 
@@ -313,7 +313,7 @@ On the PCB: left edge, y ≈ 18 (22 Ω resistors near MCU A)
 |---|---|---|---|
 | A1 GND | GND |  | power symbol `GND` |
 | A4 VBUS | KBD_VBUS | U202.1 (OUT), C201.1, C202.1, C203.1, R209.1 | wire (or local label `KBD_VBUS`) |
-| A5 CC1 | KBD_CC1 | U201.3 (D2+), R201.2; MCU_A sheet: U301.40 (GPIO26/ADC0) | **global label `KBD_CC1`** |
+| A5 CC1 | KBD_CC1 | U201.3 (D2+), R201.2; MCU_A sheet: U301.43 (GPIO29/ADC3) | **global label `KBD_CC1`** |
 | A6 D+ | KBD_USBJ_D_P | U201.1 (D1+), R203.1, R205.1 | wire (or local label `KBD_USBJ_D_P`) |
 | A7 D- | KBD_USBJ_D_N | U201.6 (D1-), R204.1, R206.1 | wire (or local label `KBD_USBJ_D_N`) |
 | A8 SBU1 | — | nothing | no-connect flag (X) |
@@ -321,7 +321,7 @@ On the PCB: left edge, y ≈ 18 (22 Ω resistors near MCU A)
 | A12 GND | GND |  | power symbol `GND` |
 | B1 GND | GND |  | power symbol `GND` |
 | B4 VBUS | KBD_VBUS | U202.1 (OUT), C201.1, C202.1, C203.1, R209.1 | wire (or local label `KBD_VBUS`) |
-| B5 CC2 | KBD_CC2 | U201.4 (D2-), R202.2; MCU_A sheet: U301.41 (GPIO27/ADC1) | **global label `KBD_CC2`** |
+| B5 CC2 | KBD_CC2 | U201.4 (D2-), R202.2; MCU_A sheet: U301.42 (GPIO28/ADC2) | **global label `KBD_CC2`** |
 | B6 D+ | KBD_USBJ_D_P | U201.1 (D1+), R203.1, R205.1 | wire (or local label `KBD_USBJ_D_P`) |
 | B7 D- | KBD_USBJ_D_N | U201.6 (D1-), R204.1, R206.1 | wire (or local label `KBD_USBJ_D_N`) |
 | B8 SBU2 | — | nothing | no-connect flag (X) |
@@ -335,8 +335,8 @@ On the PCB: left edge, y ≈ 18 (22 Ω resistors near MCU A)
 |---|---|---|---|
 | 1 D1+ | KBD_USBJ_D_P | J201.A6 (D+), J201.B6 (D+), R203.1, R205.1 | wire (or local label `KBD_USBJ_D_P`) |
 | 2 GND | GND |  | power symbol `GND` |
-| 3 D2+ | KBD_CC1 | J201.A5 (CC1), R201.2; MCU_A sheet: U301.40 (GPIO26/ADC0) | **global label `KBD_CC1`** |
-| 4 D2- | KBD_CC2 | J201.B5 (CC2), R202.2; MCU_A sheet: U301.41 (GPIO27/ADC1) | **global label `KBD_CC2`** |
+| 3 D2+ | KBD_CC1 | J201.A5 (CC1), R201.2; MCU_A sheet: U301.43 (GPIO29/ADC3) | **global label `KBD_CC1`** |
+| 4 D2- | KBD_CC2 | J201.B5 (CC2), R202.2; MCU_A sheet: U301.42 (GPIO28/ADC2) | **global label `KBD_CC2`** |
 | 5 NC | — | nothing | no-connect flag (X) |
 | 6 D1- | KBD_USBJ_D_N | J201.A7 (D-), J201.B7 (D-), R204.1, R206.1 | wire (or local label `KBD_USBJ_D_N`) |
 
@@ -345,14 +345,14 @@ On the PCB: left edge, y ≈ 18 (22 Ω resistors near MCU A)
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | +3V3 |  | power symbol `+3V3` |
-| 2 | KBD_CC1 | J201.A5 (CC1), U201.3 (D2+); MCU_A sheet: U301.40 (GPIO26/ADC0) | **global label `KBD_CC1`** |
+| 2 | KBD_CC1 | J201.A5 (CC1), U201.3 (D2+); MCU_A sheet: U301.43 (GPIO29/ADC3) | **global label `KBD_CC1`** |
 
 #### R202 · 33k · CC2 Rp to 3V3
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | +3V3 |  | power symbol `+3V3` |
-| 2 | KBD_CC2 | J201.B5 (CC2), U201.4 (D2-); MCU_A sheet: U301.41 (GPIO27/ADC1) | **global label `KBD_CC2`** |
+| 2 | KBD_CC2 | J201.B5 (CC2), U201.4 (D2-); MCU_A sheet: U301.42 (GPIO28/ADC2) | **global label `KBD_CC2`** |
 
 #### R203 · 15k · D+ host pull-down
 
@@ -373,14 +373,14 @@ On the PCB: left edge, y ≈ 18 (22 Ω resistors near MCU A)
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | KBD_USBJ_D_P | J201.A6 (D+), J201.B6 (D+), U201.1 (D1+), R203.1 | wire (or local label `KBD_USBJ_D_P`) |
-| 2 | KBD_USB_D_P | MCU_A sheet: U301.9 (GPIO6) | **global label `KBD_USB_D_P`** |
+| 2 | KBD_USB_D_P | MCU_A sheet: U301.5 (GPIO3) | **global label `KBD_USB_D_P`** |
 
 #### R206 · 22 · D- series, near MCU A
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | KBD_USBJ_D_N | J201.A7 (D-), J201.B7 (D-), U201.6 (D1-), R204.1 | wire (or local label `KBD_USBJ_D_N`) |
-| 2 | KBD_USB_D_N | MCU_A sheet: U301.10 (GPIO7) | **global label `KBD_USB_D_N`** |
+| 2 | KBD_USB_D_N | MCU_A sheet: U301.4 (GPIO2) | **global label `KBD_USB_D_N`** |
 
 ### Keyboard VBUS switch
 
@@ -393,7 +393,7 @@ On the PCB: between J201 and the +5V trunk; C201 (THT) at J201
 | 1 OUT | KBD_VBUS | J201.A4 (VBUS), J201.A9 (VBUS), J201.B4 (VBUS), J201.B9 (VBUS), C201.1, C202.1, C203.1, R209.1 | wire (or local label `KBD_VBUS`) |
 | 2 GND | GND |  | power symbol `GND` |
 | 3 ISET | KBD_ISET | R207.1 | wire (or local label `KBD_ISET`) |
-| 4 EN | KBD_VBUS_EN | R208.1; MCU_A sheet: U301.8 (GPIO5) | **global label `KBD_VBUS_EN`** |
+| 4 EN | KBD_VBUS_EN | R208.1; MCU_A sheet: U301.12 (GPIO8) | **global label `KBD_VBUS_EN`** |
 | 5 IN | +5V |  | power symbol `+5V` |
 
 #### R207 · 6.8k · ISET: 1.0 A
@@ -407,7 +407,7 @@ On the PCB: between J201 and the +5V trunk; C201 (THT) at J201
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | KBD_VBUS_EN | U202.4 (EN); MCU_A sheet: U301.8 (GPIO5) | **global label `KBD_VBUS_EN`** |
+| 1 | KBD_VBUS_EN | U202.4 (EN); MCU_A sheet: U301.12 (GPIO8) | **global label `KBD_VBUS_EN`** |
 | 2 | GND |  | power symbol `GND` |
 
 #### C201 · 220uF 16V · HAND-SOLDER: Koshin PKRJ-016V221ME070-T/A5.0 (Ozdisan)
@@ -443,13 +443,13 @@ On the PCB: between J201 and the +5V trunk; C201 (THT) at J201
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | KBD_VBUS | J201.A4 (VBUS), J201.A9 (VBUS), J201.B4 (VBUS), J201.B9 (VBUS), U202.1 (OUT), C201.1, C202.1, C203.1 | wire (or local label `KBD_VBUS`) |
-| 2 | KBD_VBUS_SENSE | R210.1; MCU_A sheet: U301.42 (GPIO28/ADC2) | **global label `KBD_VBUS_SENSE`** |
+| 2 | KBD_VBUS_SENSE | R210.1; MCU_A sheet: U301.41 (GPIO27/ADC1) | **global label `KBD_VBUS_SENSE`** |
 
 #### R210 · 15k · KBD_VBUS divider bottom
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | KBD_VBUS_SENSE | R209.2; MCU_A sheet: U301.42 (GPIO28/ADC2) | **global label `KBD_VBUS_SENSE`** |
+| 1 | KBD_VBUS_SENSE | R209.2; MCU_A sheet: U301.41 (GPIO27/ADC1) | **global label `KBD_VBUS_SENSE`** |
 | 2 | GND |  | power symbol `GND` |
 
 ### Personal PC port J202 (back, left)
@@ -508,13 +508,13 @@ On the PCB: back edge, left, above MCU A (22 Ω near MCU A)
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | PC1_VBUS | J202.A4 (VBUS), J202.A9 (VBUS), J202.B4 (VBUS), J202.B9 (VBUS) | wire (or local label `PC1_VBUS`) |
-| 2 | PC1_VBUS_DET | R214.1; MCU_A sheet: U301.2 (GPIO0) | **global label `PC1_VBUS_DET`** |
+| 2 | PC1_VBUS_DET | R214.1; MCU_A sheet: U301.3 (GPIO1) | **global label `PC1_VBUS_DET`** |
 
 #### R214 · 33k · VBUS sense bottom
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | PC1_VBUS_DET | R213.2; MCU_A sheet: U301.2 (GPIO0) | **global label `PC1_VBUS_DET`** |
+| 1 | PC1_VBUS_DET | R213.2; MCU_A sheet: U301.3 (GPIO1) | **global label `PC1_VBUS_DET`** |
 | 2 | GND |  | power symbol `GND` |
 
 #### R215 · 22 · D+ series, near MCU A
@@ -587,13 +587,13 @@ On the PCB: back edge, right, above MCU B (22 Ω near MCU B)
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | PC2_VBUS | J203.A4 (VBUS), J203.A9 (VBUS), J203.B4 (VBUS), J203.B9 (VBUS) | wire (or local label `PC2_VBUS`) |
-| 2 | PC2_VBUS_DET | R220.1; MCU_B sheet: U401.4 (GPIO2) | **global label `PC2_VBUS_DET`** |
+| 2 | PC2_VBUS_DET | R220.1; MCU_B sheet: U401.43 (GPIO29/ADC3) | **global label `PC2_VBUS_DET`** |
 
 #### R220 · 33k · VBUS sense bottom
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | PC2_VBUS_DET | R219.2; MCU_B sheet: U401.4 (GPIO2) | **global label `PC2_VBUS_DET`** |
+| 1 | PC2_VBUS_DET | R219.2; MCU_B sheet: U401.43 (GPIO29/ADC3) | **global label `PC2_VBUS_DET`** |
 | 2 | GND |  | power symbol `GND` |
 
 #### R221 · 22 · D+ series, near MCU B
@@ -630,24 +630,24 @@ On the PCB: back-left, ≈ (24, 22); regulator/USB side towards J202
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 IOVDD | +3V3 |  | power symbol `+3V3` |
-| 2 GPIO0 | PC1_VBUS_DET | USB_PORTS sheet: R213.2, R214.1 | **global label `PC1_VBUS_DET`** |
-| 3 GPIO1 | — | nothing | no-connect flag (X) |
-| 4 GPIO2 | A_LED | R305.1 | wire (or local label `A_LED`) |
-| 5 GPIO3 | — | nothing | no-connect flag (X) |
+| 2 GPIO0 | A_LED | R305.1 | wire (or local label `A_LED`) |
+| 3 GPIO1 | PC1_VBUS_DET | USB_PORTS sheet: R213.2, R214.1 | **global label `PC1_VBUS_DET`** |
+| 4 GPIO2 | KBD_USB_D_N | USB_PORTS sheet: R206.2 | **global label `KBD_USB_D_N`** |
+| 5 GPIO3 | KBD_USB_D_P | USB_PORTS sheet: R205.2 | **global label `KBD_USB_D_P`** |
 | 6 DVDD | A_1V1 | L301.1, C302.1, C304.1, C305.1, C306.1 | wire (or local label `A_1V1`) |
 | 7 GPIO4 | — | nothing | no-connect flag (X) |
-| 8 GPIO5 | KBD_VBUS_EN | USB_PORTS sheet: U202.4 (EN), R208.1 | **global label `KBD_VBUS_EN`** |
-| 9 GPIO6 | KBD_USB_D_P | USB_PORTS sheet: R205.2 | **global label `KBD_USB_D_P`** |
-| 10 GPIO7 | KBD_USB_D_N | USB_PORTS sheet: R206.2 | **global label `KBD_USB_D_N`** |
+| 8 GPIO5 | — | nothing | no-connect flag (X) |
+| 9 GPIO6 | — | nothing | no-connect flag (X) |
+| 10 GPIO7 | — | nothing | no-connect flag (X) |
 | 11 IOVDD | +3V3 |  | power symbol `+3V3` |
-| 12 GPIO8 | BLE_TX | BLE sheet: U501.30 (GPIO20/U0RXD), TP504.1 | **global label `BLE_TX`** |
-| 13 GPIO9 | BLE_RX | BLE sheet: U501.31 (GPIO21/U0TXD), TP503.1 | **global label `BLE_RX`** |
-| 14 GPIO10 | BLE_EN | BLE sheet: U501.8 (EN/CHIP_PU), R501.2, C501.1 | **global label `BLE_EN`** |
-| 15 GPIO11 | BLE_BOOT | BLE sheet: U501.23 (GPIO9), R504.2 | **global label `BLE_BOOT`** |
-| 16 GPIO12 | POGO_TX | POGO sheet: R601.1 | **global label `POGO_TX`** |
-| 17 GPIO13 | POGO_RX | POGO sheet: R602.2 | **global label `POGO_RX`** |
+| 12 GPIO8 | KBD_VBUS_EN | USB_PORTS sheet: U202.4 (EN), R208.1 | **global label `KBD_VBUS_EN`** |
+| 13 GPIO9 | BLE_EN | BLE sheet: U501.8 (EN/CHIP_PU), R501.2, C501.1 | **global label `BLE_EN`** |
+| 14 GPIO10 | BLE_BOOT | BLE sheet: U501.23 (GPIO9), R504.2 | **global label `BLE_BOOT`** |
+| 15 GPIO11 | POGO_OFF | POGO sheet: Q602.1 (G), R609.1 | **global label `POGO_OFF`** |
+| 16 GPIO12 | BLE_TX | BLE sheet: U501.30 (GPIO20/U0RXD), TP504.1 | **global label `BLE_TX`** |
+| 17 GPIO13 | BLE_RX | BLE sheet: U501.31 (GPIO21/U0TXD), TP503.1 | **global label `BLE_RX`** |
 | 18 GPIO14 | POGO_DET | POGO sheet: R603.2, Q601.1 (G), R604.2 | **global label `POGO_DET`** |
-| 19 GPIO15 | POGO_OFF | POGO sheet: Q602.1 (G), R609.1 | **global label `POGO_OFF`** |
+| 19 GPIO15 | POGO_RX | POGO sheet: R602.2 | **global label `POGO_RX`** |
 | 20 IOVDD | +3V3 |  | power symbol `+3V3` |
 | 21 XIN | A_XIN | Y301.1, C315.1 | wire (or local label `A_XIN`) |
 | 22 XOUT | A_XOUT | R302.1 | wire (or local label `A_XOUT`) |
@@ -655,23 +655,23 @@ On the PCB: back-left, ≈ (24, 22); regulator/USB side towards J202
 | 24 SWCLK | A_SWCLK | TP301.1 | wire (or local label `A_SWCLK`) |
 | 25 SWDIO | A_SWDIO | TP302.1 | wire (or local label `A_SWDIO`) |
 | 26 RUN | A_RUN | SW302.1 | wire (or local label `A_RUN`) |
-| 27 GPIO16 | B_LINK_TX | MCU_B sheet: U401.3 (GPIO1) | **global label `B_LINK_TX`** |
-| 28 GPIO17 | B_LINK_RX | MCU_B sheet: U401.2 (GPIO0) | **global label `B_LINK_RX`** |
-| 29 GPIO18 | B_RUN | MCU_B sheet: U401.26 (RUN), R406.2 | **global label `B_RUN`** |
+| 27 GPIO16 | POGO_TX | POGO sheet: R601.1 | **global label `POGO_TX`** |
+| 28 GPIO17 | PD_PG | POWER sheet: U102.10 (PG), R102.2 | **global label `PD_PG`** |
+| 29 GPIO18 | PD_SDA | POWER sheet: U102.3 (CFG3/SDA), R104.2 | **global label `PD_SDA`** |
 | 30 IOVDD | +3V3 |  | power symbol `+3V3` |
-| 31 GPIO19 | B_BOOTSEL | MCU_B sheet: R404.1, R407.2 | **global label `B_BOOTSEL`** |
-| 32 GPIO20 | PD_SDA | POWER sheet: U102.3 (CFG3/SDA), R104.2 | **global label `PD_SDA`** |
-| 33 GPIO21 | PD_SCL | POWER sheet: U102.2 (CFG2/SCL), R103.2 | **global label `PD_SCL`** |
-| 34 GPIO22 | PD_PG | POWER sheet: U102.10 (PG), R102.2 | **global label `PD_PG`** |
-| 35 GPIO23 | B_SWCLK | MCU_B sheet: U401.24 (SWCLK), TP401.1 | **global label `B_SWCLK`** |
-| 36 GPIO24 | B_SWDIO | MCU_B sheet: U401.25 (SWDIO), TP402.1 | **global label `B_SWDIO`** |
-| 37 GPIO25 | — | nothing | no-connect flag (X) |
+| 31 GPIO19 | PD_SCL | POWER sheet: U102.2 (CFG2/SCL), R103.2 | **global label `PD_SCL`** |
+| 32 GPIO20 | B_RUN | MCU_B sheet: U401.26 (RUN), R406.2 | **global label `B_RUN`** |
+| 33 GPIO21 | B_SWDIO | MCU_B sheet: U401.25 (SWDIO), TP402.1 | **global label `B_SWDIO`** |
+| 34 GPIO22 | B_SWCLK | MCU_B sheet: U401.24 (SWCLK), TP401.1 | **global label `B_SWCLK`** |
+| 35 GPIO23 | B_LINK_RX | MCU_B sheet: U401.9 (GPIO6) | **global label `B_LINK_RX`** |
+| 36 GPIO24 | B_LINK_TX | MCU_B sheet: U401.8 (GPIO5) | **global label `B_LINK_TX`** |
+| 37 GPIO25 | B_BOOTSEL | MCU_B sheet: R404.1, R407.2 | **global label `B_BOOTSEL`** |
 | 38 IOVDD | +3V3 |  | power symbol `+3V3` |
 | 39 DVDD | A_1V1 | L301.1, C302.1, C304.1, C305.1, C306.1 | wire (or local label `A_1V1`) |
-| 40 GPIO26/ADC0 | KBD_CC1 | USB_PORTS sheet: J201.A5 (CC1), U201.3 (D2+), R201.2 | **global label `KBD_CC1`** |
-| 41 GPIO27/ADC1 | KBD_CC2 | USB_PORTS sheet: J201.B5 (CC2), U201.4 (D2-), R202.2 | **global label `KBD_CC2`** |
-| 42 GPIO28/ADC2 | KBD_VBUS_SENSE | USB_PORTS sheet: R209.2, R210.1 | **global label `KBD_VBUS_SENSE`** |
-| 43 GPIO29/ADC3 | POGO_5V_SENSE | POGO sheet: R607.2, R608.1 | **global label `POGO_5V_SENSE`** |
+| 40 GPIO26/ADC0 | POGO_5V_SENSE | POGO sheet: R607.2, R608.1 | **global label `POGO_5V_SENSE`** |
+| 41 GPIO27/ADC1 | KBD_VBUS_SENSE | USB_PORTS sheet: R209.2, R210.1 | **global label `KBD_VBUS_SENSE`** |
+| 42 GPIO28/ADC2 | KBD_CC2 | USB_PORTS sheet: J201.B5 (CC2), U201.4 (D2-), R202.2 | **global label `KBD_CC2`** |
+| 43 GPIO29/ADC3 | KBD_CC1 | USB_PORTS sheet: J201.A5 (CC1), U201.3 (D2+), R201.2 | **global label `KBD_CC1`** |
 | 44 ADC_AVDD | +3V3 |  | power symbol `+3V3` |
 | 45 IOVDD | +3V3 |  | power symbol `+3V3` |
 | 46 VREG_AVDD | A_VREG_AVDD | C303.1, R301.2 | wire (or local label `A_VREG_AVDD`) |
@@ -899,7 +899,7 @@ On the PCB: near the MCU, buttons reachable from above
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | A_LED | U301.4 (GPIO2) | wire (or local label `A_LED`) |
+| 1 | A_LED | U301.2 (GPIO0) | wire (or local label `A_LED`) |
 | 2 | A_LED_R | D301.2 (A) | wire (or local label `A_LED_R`) |
 
 ---
@@ -922,14 +922,14 @@ On the PCB: back-right, ≈ (64, 22); regulator/USB side towards J203
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 IOVDD | +3V3 |  | power symbol `+3V3` |
-| 2 GPIO0 | B_LINK_RX | MCU_A sheet: U301.28 (GPIO17) | **global label `B_LINK_RX`** |
-| 3 GPIO1 | B_LINK_TX | MCU_A sheet: U301.27 (GPIO16) | **global label `B_LINK_TX`** |
-| 4 GPIO2 | PC2_VBUS_DET | USB_PORTS sheet: R219.2, R220.1 | **global label `PC2_VBUS_DET`** |
+| 2 GPIO0 | — | nothing | no-connect flag (X) |
+| 3 GPIO1 | — | nothing | no-connect flag (X) |
+| 4 GPIO2 | — | nothing | no-connect flag (X) |
 | 5 GPIO3 | B_LED | R405.1 | wire (or local label `B_LED`) |
 | 6 DVDD | B_1V1 | L401.1, C402.1, C404.1, C405.1, C406.1 | wire (or local label `B_1V1`) |
 | 7 GPIO4 | — | nothing | no-connect flag (X) |
-| 8 GPIO5 | — | nothing | no-connect flag (X) |
-| 9 GPIO6 | — | nothing | no-connect flag (X) |
+| 8 GPIO5 | B_LINK_TX | MCU_A sheet: U301.36 (GPIO24) | **global label `B_LINK_TX`** |
+| 9 GPIO6 | B_LINK_RX | MCU_A sheet: U301.35 (GPIO23) | **global label `B_LINK_RX`** |
 | 10 GPIO7 | — | nothing | no-connect flag (X) |
 | 11 IOVDD | +3V3 |  | power symbol `+3V3` |
 | 12 GPIO8 | — | nothing | no-connect flag (X) |
@@ -944,9 +944,9 @@ On the PCB: back-right, ≈ (64, 22); regulator/USB side towards J203
 | 21 XIN | B_XIN | Y401.1, C415.1 | wire (or local label `B_XIN`) |
 | 22 XOUT | B_XOUT | R402.1 | wire (or local label `B_XOUT`) |
 | 23 DVDD | B_1V1 | L401.1, C402.1, C404.1, C405.1, C406.1 | wire (or local label `B_1V1`) |
-| 24 SWCLK | B_SWCLK | TP401.1; MCU_A sheet: U301.35 (GPIO23) | **global label `B_SWCLK`** |
-| 25 SWDIO | B_SWDIO | TP402.1; MCU_A sheet: U301.36 (GPIO24) | **global label `B_SWDIO`** |
-| 26 RUN | B_RUN | R406.2; MCU_A sheet: U301.29 (GPIO18) | **global label `B_RUN`** |
+| 24 SWCLK | B_SWCLK | TP401.1; MCU_A sheet: U301.34 (GPIO22) | **global label `B_SWCLK`** |
+| 25 SWDIO | B_SWDIO | TP402.1; MCU_A sheet: U301.33 (GPIO21) | **global label `B_SWDIO`** |
+| 26 RUN | B_RUN | R406.2; MCU_A sheet: U301.32 (GPIO20) | **global label `B_RUN`** |
 | 27 GPIO16 | — | nothing | no-connect flag (X) |
 | 28 GPIO17 | — | nothing | no-connect flag (X) |
 | 29 GPIO18 | — | nothing | no-connect flag (X) |
@@ -963,7 +963,7 @@ On the PCB: back-right, ≈ (64, 22); regulator/USB side towards J203
 | 40 GPIO26/ADC0 | — | nothing | no-connect flag (X) |
 | 41 GPIO27/ADC1 | — | nothing | no-connect flag (X) |
 | 42 GPIO28/ADC2 | — | nothing | no-connect flag (X) |
-| 43 GPIO29/ADC3 | — | nothing | no-connect flag (X) |
+| 43 GPIO29/ADC3 | PC2_VBUS_DET | USB_PORTS sheet: R219.2, R220.1 | **global label `PC2_VBUS_DET`** |
 | 44 ADC_AVDD | +3V3 |  | power symbol `+3V3` |
 | 45 IOVDD | +3V3 |  | power symbol `+3V3` |
 | 46 VREG_AVDD | B_VREG_AVDD | C403.1, R401.2 | wire (or local label `B_VREG_AVDD`) |
@@ -1159,7 +1159,7 @@ On the PCB: near the MCU, buttons reachable from above
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | B_BOOTSEL | R407.2; MCU_A sheet: U301.31 (GPIO19) | **global label `B_BOOTSEL`** |
+| 1 | B_BOOTSEL | R407.2; MCU_A sheet: U301.37 (GPIO25) | **global label `B_BOOTSEL`** |
 | 2 | B_QSPI_SS | U401.60 (QSPI_SS), R403.1 | wire (or local label `B_QSPI_SS`) |
 
 #### R406 · 10k · B_RUN pull-up (beats A pull-down at reset)
@@ -1167,26 +1167,26 @@ On the PCB: near the MCU, buttons reachable from above
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | +3V3 |  | power symbol `+3V3` |
-| 2 | B_RUN | U401.26 (RUN); MCU_A sheet: U301.29 (GPIO18) | **global label `B_RUN`** |
+| 2 | B_RUN | U401.26 (RUN); MCU_A sheet: U301.32 (GPIO20) | **global label `B_RUN`** |
 
 #### R407 · 10k · B_BOOTSEL pull-up (beats A pull-down)
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | +3V3 |  | power symbol `+3V3` |
-| 2 | B_BOOTSEL | R404.1; MCU_A sheet: U301.31 (GPIO19) | **global label `B_BOOTSEL`** |
+| 2 | B_BOOTSEL | R404.1; MCU_A sheet: U301.37 (GPIO25) | **global label `B_BOOTSEL`** |
 
 #### TP401 · TestPoint · SWCLK
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | B_SWCLK | U401.24 (SWCLK); MCU_A sheet: U301.35 (GPIO23) | **global label `B_SWCLK`** |
+| 1 | B_SWCLK | U401.24 (SWCLK); MCU_A sheet: U301.34 (GPIO22) | **global label `B_SWCLK`** |
 
 #### TP402 · TestPoint · SWDIO
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | B_SWDIO | U401.25 (SWDIO); MCU_A sheet: U301.36 (GPIO24) | **global label `B_SWDIO`** |
+| 1 | B_SWDIO | U401.25 (SWDIO); MCU_A sheet: U301.33 (GPIO21) | **global label `B_SWDIO`** |
 
 #### TP403 · TestPoint · GND
 
@@ -1234,7 +1234,7 @@ On the PCB: left edge, front half, antenna end on the edge, keep-out clear
 | 5 GPIO2/ADC1_CH2 | BLE_GPIO2 | R503.2 | wire (or local label `BLE_GPIO2`) |
 | 6 GPIO3/ADC1_CH3 | — | nothing | no-connect flag (X) |
 | 7 NC | — | nothing | no-connect flag (X) |
-| 8 EN/CHIP_PU | BLE_EN | R501.2, C501.1; MCU_A sheet: U301.14 (GPIO10) | **global label `BLE_EN`** |
+| 8 EN/CHIP_PU | BLE_EN | R501.2, C501.1; MCU_A sheet: U301.13 (GPIO9) | **global label `BLE_EN`** |
 | 9 NC | — | nothing | no-connect flag (X) |
 | 10 NC | — | nothing | no-connect flag (X) |
 | 11 GND | GND |  | power symbol `GND` |
@@ -1249,15 +1249,15 @@ On the PCB: left edge, front half, antenna end on the edge, keep-out clear
 | 20 GPIO6 | — | nothing | no-connect flag (X) |
 | 21 GPIO7 | — | nothing | no-connect flag (X) |
 | 22 GPIO8 | BLE_GPIO8 | R502.2 | wire (or local label `BLE_GPIO8`) |
-| 23 GPIO9 | BLE_BOOT | R504.2; MCU_A sheet: U301.15 (GPIO11) | **global label `BLE_BOOT`** |
+| 23 GPIO9 | BLE_BOOT | R504.2; MCU_A sheet: U301.14 (GPIO10) | **global label `BLE_BOOT`** |
 | 24 NC | — | nothing | no-connect flag (X) |
 | 25 NC | — | nothing | no-connect flag (X) |
 | 26 GPIO18/USB_D- | — | nothing | no-connect flag (X) |
 | 27 GPIO19/USB_D+ | — | nothing | no-connect flag (X) |
 | 28 NC | — | nothing | no-connect flag (X) |
 | 29 NC | — | nothing | no-connect flag (X) |
-| 30 GPIO20/U0RXD | BLE_TX | TP504.1; MCU_A sheet: U301.12 (GPIO8) | **global label `BLE_TX`** |
-| 31 GPIO21/U0TXD | BLE_RX | TP503.1; MCU_A sheet: U301.13 (GPIO9) | **global label `BLE_RX`** |
+| 30 GPIO20/U0RXD | BLE_TX | TP504.1; MCU_A sheet: U301.16 (GPIO12) | **global label `BLE_TX`** |
+| 31 GPIO21/U0TXD | BLE_RX | TP503.1; MCU_A sheet: U301.17 (GPIO13) | **global label `BLE_RX`** |
 | 32 NC | — | nothing | no-connect flag (X) |
 | 33 NC | — | nothing | no-connect flag (X) |
 | 34 NC | — | nothing | no-connect flag (X) |
@@ -1304,13 +1304,13 @@ On the PCB: at the module's EN (8), GPIO8/9 (22/23), GPIO2 (5) pins
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | +3V3 |  | power symbol `+3V3` |
-| 2 | BLE_EN | U501.8 (EN/CHIP_PU), C501.1; MCU_A sheet: U301.14 (GPIO10) | **global label `BLE_EN`** |
+| 2 | BLE_EN | U501.8 (EN/CHIP_PU), C501.1; MCU_A sheet: U301.13 (GPIO9) | **global label `BLE_EN`** |
 
 #### C501 · 1uF · EN RC delay
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | BLE_EN | U501.8 (EN/CHIP_PU), R501.2; MCU_A sheet: U301.14 (GPIO10) | **global label `BLE_EN`** |
+| 1 | BLE_EN | U501.8 (EN/CHIP_PU), R501.2; MCU_A sheet: U301.13 (GPIO9) | **global label `BLE_EN`** |
 | 2 | GND |  | power symbol `GND` |
 
 #### R502 · 10k · GPIO8 pull-up
@@ -1332,7 +1332,7 @@ On the PCB: at the module's EN (8), GPIO8/9 (22/23), GPIO2 (5) pins
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | +3V3 |  | power symbol `+3V3` |
-| 2 | BLE_BOOT | U501.23 (GPIO9); MCU_A sheet: U301.15 (GPIO11) | **global label `BLE_BOOT`** |
+| 2 | BLE_BOOT | U501.23 (GPIO9); MCU_A sheet: U301.14 (GPIO10) | **global label `BLE_BOOT`** |
 
 ### Test pads (UART, GND)
 
@@ -1342,13 +1342,13 @@ On the PCB: near the module, reachable with a probe
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | BLE_RX | U501.31 (GPIO21/U0TXD); MCU_A sheet: U301.13 (GPIO9) | **global label `BLE_RX`** |
+| 1 | BLE_RX | U501.31 (GPIO21/U0TXD); MCU_A sheet: U301.17 (GPIO13) | **global label `BLE_RX`** |
 
 #### TP504 · TestPoint · RXD0
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | BLE_TX | U501.30 (GPIO20/U0RXD); MCU_A sheet: U301.12 (GPIO8) | **global label `BLE_TX`** |
+| 1 | BLE_TX | U501.30 (GPIO20/U0RXD); MCU_A sheet: U301.16 (GPIO12) | **global label `BLE_TX`** |
 
 #### TP505 · TestPoint · GND
 
@@ -1398,7 +1398,7 @@ On the PCB: front edge, centre (hand-soldered); ESD right at the pins
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | POGO_TX | MCU_A sheet: U301.16 (GPIO12) | **global label `POGO_TX`** |
+| 1 | POGO_TX | MCU_A sheet: U301.27 (GPIO16) | **global label `POGO_TX`** |
 | 2 | POGO_TX_J | J601.5 (Pin_5), U601.6 (D1-) | wire (or local label `POGO_TX_J`) |
 
 #### R602 · 1k · RX series
@@ -1406,7 +1406,7 @@ On the PCB: front edge, centre (hand-soldered); ESD right at the pins
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | POGO_RX_J | J601.4 (Pin_4), U601.3 (D2+) | wire (or local label `POGO_RX_J`) |
-| 2 | POGO_RX | MCU_A sheet: U301.17 (GPIO13) | **global label `POGO_RX`** |
+| 2 | POGO_RX | MCU_A sheet: U301.19 (GPIO15) | **global label `POGO_RX`** |
 
 #### R603 · 1k · DET series
 
@@ -1455,7 +1455,7 @@ On the PCB: behind J601
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 G | POGO_OFF | R609.1; MCU_A sheet: U301.19 (GPIO15) | **global label `POGO_OFF`** |
+| 1 G | POGO_OFF | R609.1; MCU_A sheet: U301.15 (GPIO11) | **global label `POGO_OFF`** |
 | 2 S | GND |  | power symbol `GND` |
 | 3 D | POGO_EN | U602.4 (EN), Q601.3 (D), R605.2 | wire (or local label `POGO_EN`) |
 
@@ -1463,7 +1463,7 @@ On the PCB: behind J601
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | POGO_OFF | Q602.1 (G); MCU_A sheet: U301.19 (GPIO15) | **global label `POGO_OFF`** |
+| 1 | POGO_OFF | Q602.1 (G); MCU_A sheet: U301.15 (GPIO11) | **global label `POGO_OFF`** |
 | 2 | GND |  | power symbol `GND` |
 
 #### R606 · 4.7k · ISET: 6800/4700 = 1.45 A (1.09-1.81 A); 2 x 1 A +5V contacts
@@ -1499,11 +1499,11 @@ On the PCB: behind J601
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
 | 1 | POGO_5V | J601.2 (Pin_2), J601.6 (Pin_6), U602.1 (OUT), C602.1, C603.1 | wire (or local label `POGO_5V`) |
-| 2 | POGO_5V_SENSE | R608.1; MCU_A sheet: U301.43 (GPIO29/ADC3) | **global label `POGO_5V_SENSE`** |
+| 2 | POGO_5V_SENSE | R608.1; MCU_A sheet: U301.40 (GPIO26/ADC0) | **global label `POGO_5V_SENSE`** |
 
 #### R608 · 15k · POGO_5V divider bottom
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
-| 1 | POGO_5V_SENSE | R607.2; MCU_A sheet: U301.43 (GPIO29/ADC3) | **global label `POGO_5V_SENSE`** |
+| 1 | POGO_5V_SENSE | R607.2; MCU_A sheet: U301.40 (GPIO26/ADC0) | **global label `POGO_5V_SENSE`** |
 | 2 | GND |  | power symbol `GND` |

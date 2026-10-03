@@ -2896,23 +2896,23 @@
 		(uuid "fa2723cc-d176-4070-9466-e5ea11f54288")
 	)
 	(no_connect
-		(at 182.88 210.82)
+		(at 182.88 137.16)
 		(uuid "0532b45c-7488-499a-a1b3-4df11f5ae954")
 	)
 	(no_connect
-		(at 182.88 177.8)
+		(at 182.88 139.7)
 		(uuid "14f07148-cdb0-4742-a126-cd1cc17c2863")
 	)
 	(no_connect
-		(at 182.88 167.64)
+		(at 182.88 142.24)
 		(uuid "2e22ec17-6034-4f59-8f94-44df19b7eed2")
 	)
 	(no_connect
-		(at 182.88 213.36)
+		(at 182.88 147.32)
 		(uuid "30f64f1a-329a-4969-8e42-643906db251f")
 	)
 	(no_connect
-		(at 182.88 200.66)
+		(at 182.88 154.94)
 		(uuid "39fff972-76df-4a46-b592-581d09f61815")
 	)
 	(no_connect
@@ -2924,23 +2924,23 @@
 		(uuid "52cfbcfa-0088-4c4b-b5c2-851e87188a63")
 	)
 	(no_connect
-		(at 182.88 175.26)
+		(at 182.88 157.48)
 		(uuid "5fb28d32-fb00-41e3-9962-133f90dca2cc")
 	)
 	(no_connect
-		(at 182.88 162.56)
+		(at 182.88 160.02)
 		(uuid "627034ec-ece9-46c7-ac79-85a20b370ba6")
 	)
 	(no_connect
-		(at 182.88 187.96)
+		(at 182.88 162.56)
 		(uuid "640f829a-f8f0-4d1a-afd9-a487b0a17a52")
 	)
 	(no_connect
-		(at 182.88 180.34)
+		(at 182.88 165.1)
 		(uuid "64ed7def-ee9a-4bf3-b1ea-2ccc5d81a60e")
 	)
 	(no_connect
-		(at 182.88 149.86)
+		(at 182.88 167.64)
 		(uuid "6905d6f9-42a5-4bc3-9098-1059290e56dc")
 	)
 	(no_connect
@@ -2948,15 +2948,15 @@
 		(uuid "78575e22-558a-41d9-987b-c17b2a24f4d0")
 	)
 	(no_connect
-		(at 182.88 147.32)
+		(at 182.88 170.18)
 		(uuid "7cc75ec1-762c-4955-8939-20da0655883b")
 	)
 	(no_connect
-		(at 182.88 198.12)
+		(at 182.88 172.72)
 		(uuid "87025286-e4a0-4468-acbf-7e72cc0e8af4")
 	)
 	(no_connect
-		(at 182.88 205.74)
+		(at 182.88 175.26)
 		(uuid "8a78fc8f-6e6a-48b0-a2f7-70f9d08e157a")
 	)
 	(no_connect
@@ -2964,23 +2964,23 @@
 		(uuid "98442133-03fe-4fab-b279-265bbb078a0c")
 	)
 	(no_connect
-		(at 182.88 157.48)
+		(at 182.88 177.8)
 		(uuid "a42a1554-aea1-4415-be6b-df9fdf397dde")
 	)
 	(no_connect
-		(at 182.88 160.02)
+		(at 182.88 180.34)
 		(uuid "aeccfae2-ba58-4775-889d-4b7bc7813225")
 	)
 	(no_connect
-		(at 182.88 195.58)
+		(at 182.88 182.88)
 		(uuid "b12447a8-674f-425d-bc96-5454461f6e1a")
 	)
 	(no_connect
-		(at 182.88 152.4)
+		(at 182.88 185.42)
 		(uuid "b39a2b8c-715e-474e-b9bd-b70077ab3e5c")
 	)
 	(no_connect
-		(at 182.88 182.88)
+		(at 182.88 187.96)
 		(uuid "b3c4e7f9-a1d8-4cfe-b3c2-56df8f706528")
 	)
 	(no_connect
@@ -2988,7 +2988,7 @@
 		(uuid "b6df84ab-4eed-4c90-84ae-4796b4a7da11")
 	)
 	(no_connect
-		(at 182.88 172.72)
+		(at 182.88 193.04)
 		(uuid "c4c76f73-5ce9-4e80-b1a5-4ce305b0b0f7")
 	)
 	(no_connect
@@ -2996,27 +2996,27 @@
 		(uuid "c901d0e9-2cb7-4b8e-9e2f-b94a90be806f")
 	)
 	(no_connect
-		(at 182.88 185.42)
+		(at 182.88 195.58)
 		(uuid "d8bb8865-7205-45fb-af32-549a5541085e")
 	)
 	(no_connect
-		(at 182.88 170.18)
+		(at 182.88 198.12)
 		(uuid "e1a570d8-168e-4393-9339-78e3ab508cdd")
 	)
 	(no_connect
-		(at 182.88 165.1)
+		(at 182.88 200.66)
 		(uuid "f3ffced3-c72b-450e-84f5-e8e7f2f9fd7f")
 	)
 	(no_connect
-		(at 182.88 208.28)
+		(at 182.88 205.74)
 		(uuid "f5b7e170-4bc0-4988-b84e-c8c1cfa4c57b")
 	)
 	(no_connect
-		(at 182.88 154.94)
+		(at 182.88 208.28)
 		(uuid "fceaf2b8-79e1-45f6-b0dd-cf8753a55c4a")
 	)
 	(no_connect
-		(at 182.88 193.04)
+		(at 182.88 210.82)
 		(uuid "fcf52c12-e532-4aae-9ec1-1922e7bdb6a1")
 	)
 	(wire
@@ -3589,7 +3589,7 @@
 	)
 	(global_label "WRK_VBUS_DET"
 		(shape input)
-		(at 182.88 142.24 0)
+		(at 182.88 213.36 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3599,7 +3599,7 @@
 		)
 		(uuid "6a6b0e0b-28c4-4c89-b10e-9b608725c078")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 200.077 142.24 0)
+			(at 200.077 213.36 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3757,7 +3757,7 @@
 	)
 	(global_label "B_LINK_RX"
 		(shape input)
-		(at 182.88 137.16 0)
+		(at 182.88 152.4 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3767,7 +3767,7 @@
 		)
 		(uuid "e1f62d78-febc-4a26-bb7d-8d8f4e094fd1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 195.7833 137.16 0)
+			(at 195.7833 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3781,7 +3781,7 @@
 	)
 	(global_label "B_LINK_TX"
 		(shape input)
-		(at 182.88 139.7 0)
+		(at 182.88 149.86 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3791,7 +3791,7 @@
 		)
 		(uuid "e64e734f-5f63-4f41-ac07-0cd894b04ba6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 195.4809 139.7 0)
+			(at 195.4809 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

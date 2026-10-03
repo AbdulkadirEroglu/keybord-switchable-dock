@@ -100,12 +100,12 @@ def mcu_core(p, X):
     two(f'R{p}05', f'{X}_LED', f'{X}_LED_R')
     add({f'{X}_LED_R': [f'D{p}01.2'], 'GND': [f'D{p}01.1']})   # Device:LED: 1 = K, 2 = A
 
-A_GPIO = {0: 'PC1_VBUS_DET', 1: None, 2: 'A_LED', 3: None, 4: None, 5: 'KBD_VBUS_EN',
-          6: 'KBD_USB_D_P', 7: 'KBD_USB_D_N', 8: 'BLE_TX', 9: 'BLE_RX', 10: 'BLE_EN', 11: 'BLE_BOOT',
-          12: 'POGO_TX', 13: 'POGO_RX', 14: 'POGO_DET', 15: 'POGO_OFF', 16: 'B_LINK_TX', 17: 'B_LINK_RX',
-          18: 'B_RUN', 19: 'B_BOOTSEL', 20: 'PD_SDA', 21: 'PD_SCL', 22: 'PD_PG', 23: 'B_SWCLK',
-          24: 'B_SWDIO', 25: None, 26: 'KBD_CC1', 27: 'KBD_CC2', 28: 'KBD_VBUS_SENSE', 29: 'POGO_5V_SENSE'}
-B_GPIO = {0: 'B_LINK_RX', 1: 'B_LINK_TX', 2: 'PC2_VBUS_DET', 3: 'B_LED'}
+A_GPIO = {0: 'A_LED', 1: 'PC1_VBUS_DET', 2: 'KBD_USB_D_N', 3: 'KBD_USB_D_P', 4: None, 5: None, 6: None, 7: None,
+          8: 'KBD_VBUS_EN', 9: 'BLE_EN', 10: 'BLE_BOOT', 11: 'POGO_OFF', 12: 'BLE_TX', 13: 'BLE_RX',
+          14: 'POGO_DET', 15: 'POGO_RX', 16: 'POGO_TX', 17: 'PD_PG', 18: 'PD_SDA', 19: 'PD_SCL',
+          20: 'B_RUN', 21: 'B_SWDIO', 22: 'B_SWCLK', 23: 'B_LINK_RX', 24: 'B_LINK_TX', 25: 'B_BOOTSEL',
+          26: 'POGO_5V_SENSE', 27: 'KBD_VBUS_SENSE', 28: 'KBD_CC2', 29: 'KBD_CC1'}
+B_GPIO = {3: 'B_LED', 5: 'B_LINK_TX', 6: 'B_LINK_RX', 29: 'PC2_VBUS_DET'}
 
 mcu_core(3, 'A')
 for g, net in A_GPIO.items():

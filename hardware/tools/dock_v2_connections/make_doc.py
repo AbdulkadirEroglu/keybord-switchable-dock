@@ -95,27 +95,35 @@ def repl(m):
             'ONE': single}[kind](refs)
 doc = re.sub(r'\{\{(PARTS|IC|TWO|FET|ONE):([^}]*)\}\}', repl, T)
 
+# GPIO numbers in the text come from the pin maps in dock_nets.py
+AG = {n: g for g, n in A_GPIO.items() if n}
+BG = {n: g for g, n in B_GPIO.items() if n}
+doc = re.sub(r'\{\{A:(\w+)\}\}', lambda m: str(AG[m.group(1)]), doc)
+doc = re.sub(r'\{\{B:(\w+)\}\}', lambda m: str(BG[m.group(1)]), doc)
+doc = re.sub(r'\{\{ADC:(\w+)\}\}', lambda m: str(AG[m.group(1)] - 26), doc)
+
 # A pin map
 rows = ['| GPIO | Pin | Net | Goes to |', '|---|---|---|---|']
 goes = {'PC1_VBUS_DET': 'J202 VBUS divider (R213/R214)', 'A_LED': 'R305 → D301', 'KBD_VBUS_EN': 'U202 EN (R208 pull-down)',
-        'KBD_USB_D_P': 'PIO-USB D+ → R205 → J201', 'KBD_USB_D_N': 'PIO-USB D− → R206 → J201 (D− = D+ + 1)',
-        'BLE_TX': 'UART1 TX → ESP32 RXD0 (U501.30)', 'BLE_RX': 'UART1 RX ← ESP32 TXD0 (U501.31)',
+        'KBD_USB_D_P': 'PIO-USB D+ → R205 → J201', 'KBD_USB_D_N': 'PIO-USB D− → R206 → J201 (D− = D+ − 1: PIO_USB_PINOUT_DMDP)',
+        'BLE_TX': 'UART0 TX → ESP32 RXD0 (U501.30)', 'BLE_RX': 'UART0 RX ← ESP32 TXD0 (U501.31)',
         'BLE_EN': 'ESP32 EN, open-drain', 'BLE_BOOT': 'ESP32 GPIO9, open-drain', 'POGO_TX': 'PIO UART TX → R601 → pogo pin 5',
         'POGO_RX': 'PIO UART RX ← R602 ← pogo pin 4', 'POGO_DET': 'pogo DET (low = docked), also Q601 gate',
-        'POGO_OFF': 'Q602 gate: high = pogo 5 V off', 'B_LINK_TX': 'UART0 TX → B GPIO1 (RX)', 'B_LINK_RX': 'UART0 RX ← B GPIO0 (TX)',
+        'POGO_OFF': 'Q602 gate: high = pogo 5 V off', 'B_LINK_TX': f'UART1 TX → B GPIO{BG["B_LINK_TX"]} (RX)', 'B_LINK_RX': f'UART1 RX (F11 aux) ← B GPIO{BG["B_LINK_RX"]} (TX)',
         'B_RUN': 'B RUN, open-drain (R406 pull-up)', 'B_BOOTSEL': 'R404 → B QSPI_SS, open-drain (R407 pull-up)',
-        'PD_SDA': 'I2C0 SDA → CH224A CFG3/SDA', 'PD_SCL': 'I2C0 SCL → CH224A CFG2/SCL', 'PD_PG': 'CH224A PG (R102 pull-up)',
-        'B_SWCLK': 'B SWCLK (PIO SWD probe)', 'B_SWDIO': 'B SWDIO', 'KBD_CC1': 'ADC0: J201 CC1 (Rp R201)',
-        'KBD_CC2': 'ADC1: J201 CC2 (Rp R202)', 'KBD_VBUS_SENSE': 'ADC2: R209/R210 divider', 'POGO_5V_SENSE': 'ADC3: R607/R608 divider'}
+        'PD_SDA': 'I2C1 SDA → CH224A CFG3/SDA', 'PD_SCL': 'I2C1 SCL → CH224A CFG2/SCL', 'PD_PG': 'CH224A PG (R102 pull-up)',
+        'B_SWCLK': 'B SWCLK (PIO SWD probe)', 'B_SWDIO': 'B SWDIO', 'KBD_CC1': f'ADC{AG["KBD_CC1"]-26}: J201 CC1 (Rp R201)',
+        'KBD_CC2': f'ADC{AG["KBD_CC2"]-26}: J201 CC2 (Rp R202)', 'KBD_VBUS_SENSE': f'ADC{AG["KBD_VBUS_SENSE"]-26}: R209/R210 divider',
+        'POGO_5V_SENSE': f'ADC{AG["POGO_5V_SENSE"]-26}: R607/R608 divider'}
 for g in range(30):
     n = A_GPIO[g]
     rows.append(f"| GPIO{g} | {GPIO_PIN[g]} | {bold(n) if n else 'spare (no-connect flag)'} | {goes.get(n, '')} |")
 doc = doc.replace('{{APINMAP}}', '\n'.join(rows))
 rows = ['| GPIO | Pin | Net | Goes to |', '|---|---|---|---|']
-gb = {'B_LINK_RX': 'UART0 TX → A GPIO17', 'B_LINK_TX': 'UART0 RX ← A GPIO16', 'PC2_VBUS_DET': 'J203 VBUS divider (R219/R220)', 'B_LED': 'R405 → D401'}
-for g in range(4):
+gb = {'B_LINK_RX': f'UART1 TX (F11 aux) → A GPIO{AG["B_LINK_RX"]}', 'B_LINK_TX': f'UART1 RX ← A GPIO{AG["B_LINK_TX"]}', 'PC2_VBUS_DET': 'J203 VBUS divider (R219/R220)', 'B_LED': 'R405 → D401'}
+for g in sorted(B_GPIO):
     rows.append(f"| GPIO{g} | {GPIO_PIN[g]} | {bold(B_GPIO[g])} | {gb[B_GPIO[g]]} |")
-rows.append('| GPIO4–29 | … | spare (no-connect flags) | |')
+rows.append('| all other GPIOs | … | spare (no-connect flags) | |')
 doc = doc.replace('{{BPINMAP}}', '\n'.join(rows))
 
 # crossing nets
