@@ -48,3 +48,19 @@ Sources: [Trendyol 50E](https://www.trendyol.com/12mens/samsung-inr21700-50e-3-7
 Rejected: buck-boost TPS63802 (C2845237, $0.57) / TPS63020 ($0.65): full range but inductor, switching noise near the antenna, more parts. Cheaper LDOs: TLV75533P (500 mA, C404027), ME6211C33 (C82942, larger dropout at high current).
 
 Sources: [ESP32-S3-MINI-1 datasheet](https://documentation.espressif.com/esp32-s3-mini-1_mini-1u_datasheet_en.html), [ESP-IDF current measurement](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/api-guides/current-consumption-measurement-modules.html), [LCSC TLV75733PDBVR](https://www.lcsc.com/product-detail/C485517.html), [LCSC TPS63802](https://www.lcsc.com/product-detail/C2845237.html).
+
+## 6. Voltage levels along the chain (2026-10-04)
+
+| Point | Min | Typical | Max | From |
+|---|---|---|---|---|
+| Dock USB-C input (PD 9 V contract) | 8.55 V | 9.0 V | 9.45 V | USB PD fixed supply ± 5 %; 5 V before negotiation or with a non-PD charger |
+| Dock 5 V rail (TPS54331, 12 k / 2.2 k) | 4.98 V (4.90 V with 1 % resistors) | 5.16 V | 5.34 V (5.44 V) | reference 0.772 / 0.800 / 0.828 V (datasheet) × 6.4545 |
+| At the pad's pogo input | ≈ 4.7 V at ≈ 1 A | ≈ 5.1 V | 5.44 V | rail minus SY6280, cable and contact drops (estimate) |
+| ETA6003 input: allowed | 4.4 V | | 5.5 V operating, **6 V absolute** | datasheet; reduces its current when the input sags to 4.5 V |
+| Pad VSYS, docked | 3.6 V | | 4.5 V | ETA6003 |
+| Pad VSYS, on battery | ≈ 3.3 V (firmware cutoff) | | 4.2 V | follows the cell (50 mΩ path) |
+| Cell | 2.4 V (DW01A cutoff, approx.) / 3.3 V (firmware) | ≈ 4.0–4.1 V docked with the 80 % limit (estimate) | 4.20 V (4.16–4.24) | ETA6003 CV |
+| 3.3 V rail | ≈ 3.0 V near empty | 3.3 V | | TLV75733P |
+| 5 V LED rail | | ≈ 5.05 V | | TPS61023 (v1 divider) |
+
+In normal operation the pad's input never exceeds 5.44 V (inside the ETA6003's 5.5 V operating limit). More can only arrive from a dock fault (TPS54331 switch shorted: 9 V on the 5 V rail). The SMAJ5.0A alone does not protect against that (it clamps at ≈ 9.2 V, above the 6 V limit).

@@ -98,7 +98,7 @@ Before ordering: print the key area 1:1 and check a switch, a socket and the LED
 
 - Module **15.4 × 20.5 mm, top side**, lying along the front edge at the **front-left corner**: x 0–20.5, y 84.6–100, **antenna end at the left board edge** (x = 0). Key 9's switch body ends at y 84.1, so 0.5 mm clearance.
 - **Antenna keep-out:** no copper on either layer under and around the antenna end (the module's datasheet layout guide gives the exact zone), no screws, magnets or battery within ≈ 15 mm. The case wall at the front-left must be plastic.
-- **Footprint:** KiCad has the `ESP32-S3-MINI-1` symbol but no footprint; I'll make one (as for the dock's ESP32-C3) with the keep-out drawn in.
+- **Footprint:** `pad_v2:ESP32-S3-MINI-1` (`hardware/libraries/pad_v2.pretty`). Pads are KiCad's `ESP32-S2-MINI-1` land pattern (identical; KiCad's own S3 symbol points to it), with the body outline, courtyard and antenna keep-out redrawn for the 20.5 mm S3 module (datasheet v1.7, fig. 11-1). The keep-out covers only the antenna area, because the module sits inside the board with the antenna at the edge. **Position (9.50, 92.30), rotation 90°** puts the body at x 0–20.5, y 84.6–100 with the antenna at the left edge.
 - **BLE path:** the dock's ESP32-C3 sits a few centimetres below, so the link is short; the battery (steel can) is at the back, away from the antenna.
 - Decoupling (10 µF + 100 nF) at the module's 3V3 pins; the 3.3 V LDO in the left strip just above it.
 
@@ -173,7 +173,7 @@ GND: pour on both layers, stitched; keep it out of the antenna keep-out and the 
 
 ## 12. Open points
 
-- ESP32-S3-MINI-1 footprint (to make), pogo footprint for the straight set (check against the part), Kailh socket + 5-pin MX footprint (v1's `dock:SW_MX_Hotswap_Kailh` plus peg holes).
+- Pogo footprint for the straight set (check against the part), Kailh socket + 5-pin MX footprint (v1's `dock:SW_MX_Hotswap_Kailh` plus peg holes).
 - ETA6003 input overvoltage stage: decide in the schematic.
 - Back height of the case with one cell.
 - Pin assignment of the ESP32-S3 GPIOs: done at schematic time with routing in mind (as on the dock).
