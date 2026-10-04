@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "pad_v2_custom") (type "KiCad") (uri "${KIPRJMOD}/pad_v2_custom.kicad_sym") (options "") (descr "Pad v2 project symbols"))
+)

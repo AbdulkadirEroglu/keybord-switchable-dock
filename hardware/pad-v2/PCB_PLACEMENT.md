@@ -40,7 +40,7 @@ The JLC parts all sit on the top side, so the order stays single-sided assembly 
 
 Coordinates are **mm from the board's back-left corner**, seen from the top (key side): x to the right, y towards the front. KiCad setup as in v1: draw the outline, **Place → Grid Origin** at its top-left corner, and set **Display origin: Grid origin, Y axis: increases down**.
 
-- **Outline:** 100 × 100 mm, (0, 0) to (100, 100), Edge.Cuts, optional 1 mm corner radius. Fits JLC's 100 × 100 tier.
+- **Outline:** 100 × 100 mm, already drawn in `pad-v2.kicad_pcb` from page position (100, 50) to (200, 150), with the grid origin at (100, 50). With **Display origin: Grid origin** the board reads (0, 0) to (100, 100). GND pours on both layers are in place. Fits JLC's 100 × 100 tier.
 - **Mounting holes:** M3, `MountingHole:MountingHole_3.2mm_M3`, with schematic symbols this time (so the parity check stays clean).
 
 | Hole | X | Y | Note |
@@ -109,8 +109,8 @@ Zones are in the drawing. Exact positions are your call while routing; keep the 
 | Zone | Where | Parts |
 |---|---|---|
 | **Left strip** | x 0–14.4, y 31–84 (top) | top: encoder 1 RC filter (10 k + 10 nF ×2), **level shifter SN74AHCT1G125 + series resistor** (next to ring 1's 6 o'clock LED), **USB-C** at the left edge (≈ y 50; data only, for flashing/debug) with its **TPD4E1U06** ESD, **TLV75733P LDO** + caps (lower end, near the ESP), BOOT/RESET buttons, display power switch **AO3401** + gate resistor, battery and dock-5 V sense dividers |
-| **Power strip** | x 85.6–100, y 31–84 (top) | top, from the back: encoder 2 RC filter, **ETA6003 charger** (QFN-16) + 2.2 µH + input/SYS/BAT caps + ISET1/ISET2 resistors, **DW01A + FS8205** protection, **TPS61023 boost** + 1 µH (≥ 4.5 A) + caps + FB divider. Keep each switcher's loop tight (input cap, IC, inductor, output cap within a few mm), FB dividers away from the inductors. The 3 MHz charger and 1 MHz boost stay on this side, away from the antenna |
-| **Front strip** | y 84.1–100, x 20.5–100 | ESP32 support (strapping resistors, GPIO fan-out), **pogo input:** TVS + TPD4E1U06 + 1 k series resistors on TX/RX, ETA6003 input overvoltage stage (if added) |
+| **Power strip** | x 85.6–100, y 31–84 (top) | top, from the back: encoder 2 RC filter, **ETA6003 charger** (QFN-16) + 2.2 µH + input/SYS/BAT caps + ISET1/ISET2 resistors, **DW01A + FS8205A** (TSSOP-8) protection, **TPS61023 boost** + 1 µH (≥ 4.5 A) + caps + FB divider. Keep each switcher's loop tight (input cap, IC, inductor, output cap within a few mm), FB dividers away from the inductors. The 3 MHz charger and 1 MHz boost stay on this side, away from the antenna |
+| **Front strip** | y 84.1–100, x 20.5–100 | ESP32 support (strapping resistors, GPIO fan-out), **pogo input:** SMBJ15A TVS, TPD4E1U06, 1 k series resistors on TX/RX, **WS3222D overvoltage switch** (cuts off at 5.69 V) feeding the charger |
 | **Back strip** | x 30.5–69.5, y 0–31 | under the display module: **top side flat or empty** (≤ 1.2 mm parts at most); bottom: display connector |
 | **Key field** | between switches | only flat SMD parts in the 5 mm gaps between switch bodies: key-LED 100 nF caps, LED data vias |
 
@@ -122,7 +122,7 @@ All hand-soldered THT, **bottom side**, side-entry (horizontal) unless noted, op
 |---|---|---|---|
 | Display | JST-PH 9-pin, `S9B-PH-K` side entry | back strip, back edge | BLK CS DC RES SDA SCL VCC GND + GND |
 | Pogo cable | JST-XH 7-pin (same as the dock's J601) | front strip, bottom | 1:1 to the pad's pogo board in the floor |
-| Battery | JST-XH 4-pin | power strip, right edge | B+, B− (to FS8205), NTC, GND |
+| Battery | JST-XH 4-pin | power strip, right edge | B+, B− (to FS8205A), NTC, NTC return (GND) |
 | Toggle | JST-XH 3-pin | power strip, right edge | PERSONAL, COM (GND), WORK |
 | USB-C | TYPE-C-31-M-12 (as the dock), **top side, JLC** | left edge, ≈ y 50 | flashing / debug only (VBUS not used for charging) |
 
@@ -174,6 +174,5 @@ GND: pour on both layers, stitched; keep it out of the antenna keep-out and the 
 ## 12. Open points
 
 - Pogo footprint for the straight set (check against the part), Kailh socket + 5-pin MX footprint (v1's `dock:SW_MX_Hotswap_Kailh` plus peg holes).
-- ETA6003 input overvoltage stage: decide in the schematic.
 - Back height of the case with one cell.
 - Pin assignment of the ESP32-S3 GPIOs: done at schematic time with routing in mind (as on the dock).

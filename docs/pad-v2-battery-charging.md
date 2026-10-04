@@ -64,3 +64,15 @@ Sources: [ESP32-S3-MINI-1 datasheet](https://documentation.espressif.com/esp32-s
 | 5 V LED rail | | ≈ 5.05 V | | TPS61023 (v1 divider) |
 
 In normal operation the pad's input never exceeds 5.44 V (inside the ETA6003's 5.5 V operating limit). More can only arrive from a dock fault (TPS54331 switch shorted: 9 V on the 5 V rail). The SMAJ5.0A alone does not protect against that (it clamps at ≈ 9.2 V, above the 6 V limit).
+
+## 7. Overvoltage switch (decided 2026-10-04): WS3222D
+
+**WS3222D (LCSC C239703, $0.33, DFN2x2-8):** input up to 28 V, 45 mΩ, 3 A, OVLO = 1.2 V × (1 + R1/R2) with a 1.17–1.23 V reference. R1 = 51 k + 5.1 k, R2 = 15 k → **5.69 V** (≈ 5.5–5.9 V with tolerances): above the dock's 5.44 V maximum, below the ETA6003's 6 V limit. The TVS in front of it is an **SMBJ15A** (as on the dock), not the SMAJ5.0A of v1: a 5 V TVS would conduct continuously if the dock put 9 V on the contacts.
+
+Rejected: NCP360 (fixed 5.675 V, but only 600 mA and 20 V). Not checked further: BQ24314 (170 mΩ would drop ≈ 0.2 V at 1.2 A).
+
+Protection FET: **FS8205A in TSSOP-8 (C14212)** with the symbol already verified in v1, instead of the SOT-23-6 FS8205 named in §4.
+
+NTC network for a 10 k B3950 thermistor on the cell: 10 k ∥ 33 k from IN to NTC, 100 k from NTC to GND → charging allowed ≈ 0–45 °C (ETA6003 thresholds 76.5 % / 35 % of VIN). Charge current: ISET1 1 k → 1.0 A, ISET2 2.2 k → 0.45 A (USB_DET high).
+
+Sources: [LCSC WS3222D](https://www.lcsc.com/product-detail/Power-Distribution-Switches_WILLSEMI-Will-Semicon-WS3222D-8-TR_C239703.html), [WS3222D datasheet](http://www.sinotimes-tech.com/product/20180824110159443.pdf), [NCP360 datasheet](https://www.onsemi.com/pdf/datasheet/ncp360-d.pdf), [XL-2020RGBC-WS2812B datasheet](https://www.lcsc.com/datasheet/C5349955.pdf).

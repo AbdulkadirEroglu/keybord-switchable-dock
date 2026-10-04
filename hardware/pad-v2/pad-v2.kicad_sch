@@ -1,0 +1,251 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "c348787c-35a6-4c40-81d7-0eeb948bfe4d")
+	(paper "A4")
+	(title_block
+		(title "Pad v2 - top level")
+		(date "2026-10-04")
+		(rev "v2.0")
+		(comment 1 "ESP32-S3-MINI-1, 1x 21700 + ETA6003, sits on top of the dock, JLCPCB assembly (top side)")
+		(comment 2 "Decisions: docs/pad-v2-*.md; placement: hardware/pad-v2/PCB_PLACEMENT.md")
+	)
+	(lib_symbols)
+	(sheet
+		(at 20 50)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "32e87f91-a442-4164-a6e4-4653e89053ed")
+		(property "Sheetname" "POWER"
+			(at 20 49.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power.kicad_sch"
+			(at 20 76.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "pad-v2"
+				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 90 50)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "24fc9cbe-c5a7-4a31-aa16-34ec958d99a1")
+		(property "Sheetname" "MCU"
+			(at 90 49.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "mcu.kicad_sch"
+			(at 90 76.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "pad-v2"
+				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 160 50)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "3728a1c4-dc90-4859-af3f-dfb5c2605473")
+		(property "Sheetname" "INPUTS"
+			(at 160 49.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "inputs.kicad_sch"
+			(at 160 76.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "pad-v2"
+				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 20 95)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "e3300751-2761-42e2-a754-483e49e25bfb")
+		(property "Sheetname" "RGB"
+			(at 20 94.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "rgb.kicad_sch"
+			(at 20 121.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "pad-v2"
+				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 90 95)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "41e8144f-af4e-429a-84eb-e53a8ac26d50")
+		(property "Sheetname" "DISPLAY"
+			(at 90 94.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "display.kicad_sch"
+			(at 90 121.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "pad-v2"
+				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

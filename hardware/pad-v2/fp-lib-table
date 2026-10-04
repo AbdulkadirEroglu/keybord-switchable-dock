@@ -1,0 +1,5 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "dock") (type "KiCad") (uri "${KIPRJMOD}/../libraries/dock.pretty") (options "") (descr "Shared footprints: MX hot-swap, PEC11R, pogo"))
+	(lib (name "pad_v2") (type "KiCad") (uri "${KIPRJMOD}/../libraries/pad_v2.pretty") (options "") (descr "Pad v2 footprints: ESP32-S3-MINI-1, XL-2020 LED"))
+)
