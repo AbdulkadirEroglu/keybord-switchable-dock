@@ -256,14 +256,14 @@ Sheet `mcu_a.kicad_sch`. Core circuit = Raspberry Pi's Minimal design (`hardware
  Y301 pins 2, 4 ── GND
  U301 pin 60 QSPI_SS ── A_QSPI_SS ── R303 1 k ── A_BOOTSEL_BTN ── SW301 ── GND      (BOOTSEL A)
  U301 pin 26 RUN ── A_RUN ── SW302 ── GND                                            (RESET A)
- U301 pins 24/25 SWCLK/SWDIO ── TP301/TP302;  TP303 ── GND
+ U301 pins 24/25 SWCLK/SWDIO: no-connect (test pads removed; A is flashed over USB in BOOTSEL mode)
  U301 GPIO{{A:A_LED}} ── A_LED ── R305 1 k ── A_LED_R ── D301 anode (2); cathode (1) ── GND
  QSPI_SD0–3, QSPI_SCLK (55–59): no-connect (the 2 MB flash inside uses them)
 ```
 
 **Parts**
 
-{{PARTS:U301, L301, C301, C302, C303, R301, C304, C305, C306, C307, C308, C309, C310, C311, C312, C313, C314, Y301, C315, C316, R302, SW301, R303, SW302, TP301, TP302, TP303, D301, R305}}
+{{PARTS:U301, L301, C301, C302, C303, R301, C304, C305, C306, C307, C308, C309, C310, C311, C312, C313, C314, Y301, C315, C316, R302, SW301, R303, SW302, D301, R305}}
 
 **Pin map — MCU A GPIOs**
 
@@ -277,13 +277,13 @@ Why these pins (chosen to keep the routing on 2 layers with as few crossings as 
 
 {{TWO:L301, C301, C302, C303, R301, C304, C305, C306, C307, C308, C309, C310, C311, C312, C313, C314, C315, C316, R302, R303, SW301, SW302, R305, D301}}
 
-Crystal: {{ONE:Y301}} is 4 pins — 1 = A_XIN, 3 = A_XOUT_R, 2 and 4 = GND. Test pads: {{ONE:TP301, TP302, TP303}}.
+Crystal: {{ONE:Y301}} is 4 pins — 1 = A_XIN, 3 = A_XOUT_R, 2 and 4 = GND.
 
 **Placement**
 
 - U301 back-left; top side (regulator, USB pins) towards J202, left side towards J201.
 - Run `copy_rpi_core_layout.py … U301`: it places L301, C301–C313, R301, Y301, C315, C316, R302 exactly as RPi does (inductor dot towards A_1V1) and copies the pours and tracks.
-- C314 (10 µF) near U104's +3V3 feed into this chip. SW301/SW302 reachable from above; TP301–303 in a row.
+- C314 (10 µF) near U104's +3V3 feed into this chip. SW301/SW302 reachable from above.
 
 ---
 
@@ -297,7 +297,6 @@ Sheet `mcu_b.kicad_sch`. Same core as MCU A (B_ nets, U401 …). What differs: B
  U401 pin 60 QSPI_SS ──●── B_QSPI_SS ── R403 1 k ── B_BOOTSEL_BTN ── SW401 ── GND     (BOOTSEL B)
                        └── R404 1 k ── B_BOOTSEL ◄── MCU A GPIO{{A:B_BOOTSEL}} (open-drain);  R407 10 k to +3V3
  U401 pins 24/25 SWCLK/SWDIO ──●── B_SWCLK / B_SWDIO ◄── MCU A GPIO{{A:B_SWCLK}} / GPIO{{A:B_SWDIO}}
-                               └── TP401 / TP402;  TP403 ── GND
  U401 GPIO{{B:B_LINK_RX}} (UART1 TX) ── B_LINK_RX ──► MCU A GPIO{{A:B_LINK_RX}} (UART1 RX)
  U401 GPIO{{B:B_LINK_TX}} (UART1 RX) ◄── B_LINK_TX ◄── MCU A GPIO{{A:B_LINK_TX}} (UART1 TX)
  U401 GPIO{{B:PC2_VBUS_DET}} ◄── PC2_VBUS_DET;   U401 GPIO{{B:B_LED}} ── B_LED ── R405 1 k ── D401 ── GND
@@ -308,7 +307,7 @@ R406/R407 matter: at reset and in BOOTSEL mode, MCU A's pins are inputs with wea
 
 **Parts**
 
-{{PARTS:U401, L401, C401, C402, C403, R401, C404, C405, C406, C407, C408, C409, C410, C411, C412, C413, C414, Y401, C415, C416, R402, SW401, R403, R404, R406, R407, TP401, TP402, TP403, D401, R405}}
+{{PARTS:U401, L401, C401, C402, C403, R401, C404, C405, C406, C407, C408, C409, C410, C411, C412, C413, C414, Y401, C415, C416, R402, SW401, R403, R404, R406, R407, D401, R405}}
 
 **Pin map — MCU B GPIOs**
 
@@ -320,7 +319,7 @@ R406/R407 matter: at reset and in BOOTSEL mode, MCU A's pins are inputs with wea
 
 {{TWO:L401, C401, C402, C403, R401, C404, C405, C406, C407, C408, C409, C410, C411, C412, C413, C414, C415, C416, R402, R403, R404, R406, R407, SW401, R405, D401}}
 
-Crystal: {{ONE:Y401}} (1 = B_XIN, 3 = B_XOUT_R, 2 and 4 = GND). Test pads: {{ONE:TP401, TP402, TP403}}.
+Crystal: {{ONE:Y401}} (1 = B_XIN, 3 = B_XOUT_R, 2 and 4 = GND).
 
 **Placement**
 

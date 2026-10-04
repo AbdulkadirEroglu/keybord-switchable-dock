@@ -11,6 +11,193 @@
 		(comment 1 "Parts placed, not wired. Values/LCSC from docs/dock-v2-*.md; group notes say where each part goes.")
 	)
 	(lib_symbols
+		(symbol "Connector_Generic:Conn_01x03"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x03"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Conn_01x03_1_1"
+				(rectangle
+					(start -1.27 3.81)
+					(end 1.27 -3.81)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -1.27 2.667)
+					(end 0 2.413)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:C"
 			(pin_numbers
 				(hide yes)
@@ -2757,16 +2944,8 @@
 		(uuid "4fd10c76-fded-4173-b34d-00a430d51529")
 	)
 	(no_connect
-		(at 158.75 154.94)
-		(uuid "57d71495-f29c-4df0-9972-24cb0d43c7dc")
-	)
-	(no_connect
 		(at 158.75 119.38)
 		(uuid "7c7db45b-7c60-4df9-8883-8d04e1da2aa1")
-	)
-	(no_connect
-		(at 158.75 152.4)
-		(uuid "83970ecf-387d-4d7c-a27c-48b99cc52034")
 	)
 	(no_connect
 		(at 209.55 99.06)
@@ -3022,6 +3201,16 @@
 	)
 	(wire
 		(pts
+			(xy 148.59 154.94) (xy 158.75 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aba9652e-13e0-4a3a-8754-49b1f3da282f")
+	)
+	(wire
+		(pts
 			(xy 144.78 127) (xy 144.78 129.54)
 		)
 		(stroke
@@ -3039,6 +3228,16 @@
 			(type default)
 		)
 		(uuid "bf73989b-d667-4c61-a021-f453ca74b7fc")
+	)
+	(wire
+		(pts
+			(xy 148.59 152.4) (xy 158.75 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c50ab7e4-4ee3-4fe8-a0d9-1d077edbbe7b")
 	)
 	(wire
 		(pts
@@ -6553,7 +6752,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 144.78 142.24 90)
+		(at 144.78 142.24 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6563,7 +6762,7 @@
 		(dnp no)
 		(uuid "852ebd68-d268-4ac4-913b-9bdecbe3fbfb")
 		(property "Reference" "R302"
-			(at 146.812 140.208 90)
+			(at 142.748 144.272 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6574,7 +6773,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 146.304 142.24 90)
+			(at 143.256 142.24 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6629,7 +6828,7 @@
 			)
 		)
 		(property "Note" "XOUT series (RPi R2)"
-			(at 148.59 138.68 0)
+			(at 140.97 145.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7469,6 +7668,85 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 148.59 157.48 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c4cc2834-3782-421d-bdd8-8e87a67c8e4b")
+		(property "Reference" "#PWR0410"
+			(at 154.94 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 152.4 157.4799 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 148.59 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 148.59 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 148.59 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "94117534-8f91-4aa1-8f2a-45eb480d72dc")
+		)
+		(instances
+			(project "dock-v2"
+				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/bcfba91e-3181-4d07-9970-4b16b455c32a"
+					(reference "#PWR0410")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:PWR_FLAG")
 		(at 198.12 38.1 0)
 		(unit 1)
@@ -7908,6 +8186,88 @@
 			(project "dock-v2"
 				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/bcfba91e-3181-4d07-9970-4b16b455c32a"
 					(reference "SW301")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x03")
+		(at 143.51 154.94 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "fb028731-157b-4196-a1ed-58ffb60fa346")
+		(property "Reference" "J401"
+			(at 144.526 150.114 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_01x03"
+			(at 141.224 154.94 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
+			(at 143.51 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 143.51 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 143.51 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "54340463-320c-482e-b0d6-06249974d9d0")
+		)
+		(pin "1"
+			(uuid "b8697949-d13d-4abc-ad11-0f78ca63588d")
+		)
+		(pin "2"
+			(uuid "69984647-07d4-40b3-a856-0e2b19bdced0")
+		)
+		(instances
+			(project "dock-v2"
+				(path "/928a9dc6-b0ce-4f47-a17d-f26fd77e396a/bcfba91e-3181-4d07-9970-4b16b455c32a"
+					(reference "J401")
 					(unit 1)
 				)
 			)

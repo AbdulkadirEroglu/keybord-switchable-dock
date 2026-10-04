@@ -614,12 +614,12 @@ On the PCB: back edge, right, above MCU B (22 Ω near MCU B)
 
 ## Sheet MCU_A
 
-File `mcu_a.kicad_sch` · 29 parts
+File `mcu_a.kicad_sch` · 26 parts
 
 - Power symbols: `+3V3`, `GND`
 - Global labels on this sheet: `BLE_BOOT`, `BLE_EN`, `BLE_RX`, `BLE_TX`, `B_BOOTSEL`, `B_LINK_RX`, `B_LINK_TX`, `B_RUN`, `B_SWCLK`, `B_SWDIO`, `KBD_CC1`, `KBD_CC2`, `KBD_USB_D_N`, `KBD_USB_D_P`, `KBD_VBUS_EN`, `KBD_VBUS_SENSE`, `PC1_USB_D_N`, `PC1_USB_D_P`, `PC1_VBUS_DET`, `PD_PG`, `PD_SCL`, `PD_SDA`, `POGO_5V_SENSE`, `POGO_DET`, `POGO_OFF`, `POGO_RX`, `POGO_TX`
 - PWR_FLAG on: `A_1V1`, `A_VREG_AVDD`
-- No-connect flags: 9
+- No-connect flags: 11
 
 ### RP2354A A
 
@@ -652,8 +652,8 @@ On the PCB: back-left, ≈ (24, 22); regulator/USB side towards J202
 | 21 XIN | A_XIN | Y301.1, C315.1 | wire (or local label `A_XIN`) |
 | 22 XOUT | A_XOUT | R302.1 | wire (or local label `A_XOUT`) |
 | 23 DVDD | A_1V1 | L301.1, C302.1, C304.1, C305.1, C306.1 | wire (or local label `A_1V1`) |
-| 24 SWCLK | A_SWCLK | TP301.1 | wire (or local label `A_SWCLK`) |
-| 25 SWDIO | A_SWDIO | TP302.1 | wire (or local label `A_SWDIO`) |
+| 24 SWCLK | — | nothing | no-connect flag (X) |
+| 25 SWDIO | — | nothing | no-connect flag (X) |
 | 26 RUN | A_RUN | SW302.1 | wire (or local label `A_RUN`) |
 | 27 GPIO16 | POGO_TX | POGO sheet: R601.1 | **global label `POGO_TX`** |
 | 28 GPIO17 | PD_PG | POWER sheet: U102.10 (PG), R102.2 | **global label `PD_PG`** |
@@ -661,8 +661,8 @@ On the PCB: back-left, ≈ (24, 22); regulator/USB side towards J202
 | 30 IOVDD | +3V3 |  | power symbol `+3V3` |
 | 31 GPIO19 | PD_SCL | POWER sheet: U102.2 (CFG2/SCL), R103.2 | **global label `PD_SCL`** |
 | 32 GPIO20 | B_RUN | MCU_B sheet: U401.26 (RUN), R406.2 | **global label `B_RUN`** |
-| 33 GPIO21 | B_SWDIO | MCU_B sheet: U401.25 (SWDIO), TP402.1 | **global label `B_SWDIO`** |
-| 34 GPIO22 | B_SWCLK | MCU_B sheet: U401.24 (SWCLK), TP401.1 | **global label `B_SWCLK`** |
+| 33 GPIO21 | B_SWDIO | MCU_B sheet: U401.25 (SWDIO) | **global label `B_SWDIO`** |
+| 34 GPIO22 | B_SWCLK | MCU_B sheet: U401.24 (SWCLK) | **global label `B_SWCLK`** |
 | 35 GPIO23 | B_LINK_RX | MCU_B sheet: U401.9 (GPIO6) | **global label `B_LINK_RX`** |
 | 36 GPIO24 | B_LINK_TX | MCU_B sheet: U401.8 (GPIO5) | **global label `B_LINK_TX`** |
 | 37 GPIO25 | B_BOOTSEL | MCU_B sheet: R404.1, R407.2 | **global label `B_BOOTSEL`** |
@@ -870,24 +870,6 @@ On the PCB: near the MCU, buttons reachable from above
 | 1 | A_RUN | U301.26 (RUN) | wire (or local label `A_RUN`) |
 | 2 | GND |  | power symbol `GND` |
 
-#### TP301 · TestPoint · SWCLK
-
-| Pin | Net | Connects to | Draw |
-|---|---|---|---|
-| 1 | A_SWCLK | U301.24 (SWCLK) | wire (or local label `A_SWCLK`) |
-
-#### TP302 · TestPoint · SWDIO
-
-| Pin | Net | Connects to | Draw |
-|---|---|---|---|
-| 1 | A_SWDIO | U301.25 (SWDIO) | wire (or local label `A_SWDIO`) |
-
-#### TP303 · TestPoint · GND
-
-| Pin | Net | Connects to | Draw |
-|---|---|---|---|
-| 1 | GND |  | power symbol `GND` |
-
 #### D301 · LED red · status LED
 
 | Pin | Net | Connects to | Draw |
@@ -906,7 +888,7 @@ On the PCB: near the MCU, buttons reachable from above
 
 ## Sheet MCU_B
 
-File `mcu_b.kicad_sch` · 31 parts
+File `mcu_b.kicad_sch` · 28 parts
 
 - Power symbols: `+3V3`, `GND`
 - Global labels on this sheet: `B_BOOTSEL`, `B_LINK_RX`, `B_LINK_TX`, `B_RUN`, `B_SWCLK`, `B_SWDIO`, `PC2_USB_D_N`, `PC2_USB_D_P`, `PC2_VBUS_DET`
@@ -944,8 +926,8 @@ On the PCB: back-right, ≈ (64, 22); regulator/USB side towards J203
 | 21 XIN | B_XIN | Y401.1, C415.1 | wire (or local label `B_XIN`) |
 | 22 XOUT | B_XOUT | R402.1 | wire (or local label `B_XOUT`) |
 | 23 DVDD | B_1V1 | L401.1, C402.1, C404.1, C405.1, C406.1 | wire (or local label `B_1V1`) |
-| 24 SWCLK | B_SWCLK | TP401.1; MCU_A sheet: U301.34 (GPIO22) | **global label `B_SWCLK`** |
-| 25 SWDIO | B_SWDIO | TP402.1; MCU_A sheet: U301.33 (GPIO21) | **global label `B_SWDIO`** |
+| 24 SWCLK | B_SWCLK | MCU_A sheet: U301.34 (GPIO22) | **global label `B_SWCLK`** |
+| 25 SWDIO | B_SWDIO | MCU_A sheet: U301.33 (GPIO21) | **global label `B_SWDIO`** |
 | 26 RUN | B_RUN | R406.2; MCU_A sheet: U301.32 (GPIO20) | **global label `B_RUN`** |
 | 27 GPIO16 | — | nothing | no-connect flag (X) |
 | 28 GPIO17 | — | nothing | no-connect flag (X) |
@@ -1175,24 +1157,6 @@ On the PCB: near the MCU, buttons reachable from above
 |---|---|---|---|
 | 1 | +3V3 |  | power symbol `+3V3` |
 | 2 | B_BOOTSEL | R404.1; MCU_A sheet: U301.37 (GPIO25) | **global label `B_BOOTSEL`** |
-
-#### TP401 · TestPoint · SWCLK
-
-| Pin | Net | Connects to | Draw |
-|---|---|---|---|
-| 1 | B_SWCLK | U401.24 (SWCLK); MCU_A sheet: U301.34 (GPIO22) | **global label `B_SWCLK`** |
-
-#### TP402 · TestPoint · SWDIO
-
-| Pin | Net | Connects to | Draw |
-|---|---|---|---|
-| 1 | B_SWDIO | U401.25 (SWDIO); MCU_A sheet: U301.33 (GPIO21) | **global label `B_SWDIO`** |
-
-#### TP403 · TestPoint · GND
-
-| Pin | Net | Connects to | Draw |
-|---|---|---|---|
-| 1 | GND |  | power symbol `GND` |
 
 #### D401 · LED red · status LED
 

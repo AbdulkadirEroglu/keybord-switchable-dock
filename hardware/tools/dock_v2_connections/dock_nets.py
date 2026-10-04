@@ -96,7 +96,6 @@ def mcu_core(p, X):
     two(f'C{p}15', f'{X}_XIN', 'GND'); two(f'C{p}16', f'{X}_XOUT_R', 'GND')
     two(f'R{p}02', f'{X}_XOUT', f'{X}_XOUT_R')
     two(f'R{p}03', f'{X}_QSPI_SS', f'{X}_BOOTSEL_BTN'); two(f'SW{p}01', f'{X}_BOOTSEL_BTN', 'GND')
-    add({'GND': [f'TP{p}03.1']})
     two(f'R{p}05', f'{X}_LED', f'{X}_LED_R')
     add({f'{X}_LED_R': [f'D{p}01.2'], 'GND': [f'D{p}01.1']})   # Device:LED: 1 = K, 2 = A
 
@@ -110,8 +109,8 @@ B_GPIO = {3: 'B_LED', 5: 'B_LINK_TX', 6: 'B_LINK_RX', 29: 'PC2_VBUS_DET'}
 mcu_core(3, 'A')
 for g, net in A_GPIO.items():
     (add({net: [f'U301.{GPIO_PIN[g]}']}) if net else NC.append(f'U301.{GPIO_PIN[g]}'))
-add({'PC1_USB_D_P': ['U301.52'], 'PC1_USB_D_N': ['U301.51'], 'A_RUN': ['U301.26'],
-     'A_SWCLK': ['U301.24', 'TP301.1'], 'A_SWDIO': ['U301.25', 'TP302.1']})
+add({'PC1_USB_D_P': ['U301.52'], 'PC1_USB_D_N': ['U301.51'], 'A_RUN': ['U301.26']})
+NC.extend(['U301.24', 'U301.25'])   # A's SWD: test pads removed 2026-10-04 (A is flashed over USB BOOTSEL)
 two('SW302', 'A_RUN', 'GND')
 
 mcu_core(4, 'B')
@@ -119,7 +118,7 @@ for g in range(30):
     net = B_GPIO.get(g)
     (add({net: [f'U401.{GPIO_PIN[g]}']}) if net else NC.append(f'U401.{GPIO_PIN[g]}'))
 add({'PC2_USB_D_P': ['U401.52'], 'PC2_USB_D_N': ['U401.51'], 'B_RUN': ['U401.26'],
-     'B_SWCLK': ['U401.24', 'TP401.1'], 'B_SWDIO': ['U401.25', 'TP402.1']})
+     'B_SWCLK': ['U401.24'], 'B_SWDIO': ['U401.25']})
 two('R404', 'B_BOOTSEL', 'B_QSPI_SS')
 two('R406', '+3V3', 'B_RUN'); two('R407', '+3V3', 'B_BOOTSEL')
 

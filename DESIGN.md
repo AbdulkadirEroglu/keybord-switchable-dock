@@ -565,8 +565,8 @@ Every programmable MCU has a physical debug/recovery path.
 
 | MCU | Normal update | Recovery |
 |---|---|---|
-| A (U301) | UF2: BOOTSEL A button (or firmware reboot-to-BOOTSEL) → drive on the **Personal PC** | SWD pads TP301–303; RESET A button |
-| B (U401) | UF2: BOOTSEL B button → drive on the **Work PC**; or A puts B into BOOTSEL (B_RUN + B_BOOTSEL) | **A reflashes B over SWD** (B_SWCLK/B_SWDIO); SWD pads TP401–403 |
+| A (U301) | UF2: BOOTSEL A button (or firmware reboot-to-BOOTSEL) → drive on the **Personal PC** | RESET A button (SWD pads removed 2026-10-04: no SWD access to A) |
+| B (U401) | UF2: BOOTSEL B button → drive on the **Work PC**; or A puts B into BOOTSEL (B_RUN + B_BOOTSEL) | **A reflashes B over SWD** (B_SWCLK/B_SWDIO); SWD pads removed 2026-10-04 |
 | ESP32-C3 (U501) | A holds GPIO9 low, pulses EN, and bridges esptool from the Personal PC to the ESP32's UART0 | test pads TP503–505: TXD0/RXD0, GND (the native-USB pads were dropped) |
 
 A single USB cable to the Personal PC can therefore update all three chips.

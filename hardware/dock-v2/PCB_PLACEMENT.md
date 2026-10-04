@@ -107,12 +107,10 @@ Place each group as a cluster at its zone, then route between groups.
 | | | Y301, C3xx, R3xx | ABM8-272-T3, 15 pF ×2, 1 k | 3225 / 0402 | crystal **as close as possible** to XIN/XOUT, no traces under it |
 | | | C3xx | 100 nF × ≈ 11, 10 µF | 0402 / 0805 | one per power pin, on the pin |
 | | | SW301, SW302 | TS-1187A: BOOTSEL A, RESET A | 5.1 × 5.1 mm | reachable from above; 1 k from QSPI_SS to SW301 near the chip |
-| | | TP301–303 | SWD A (SWCLK, SWDIO, GND) | test pads | |
 | | | D301, R3xx | status LED A | 0603 / 0402 | optional |
 | **7b** | **MCU B** (back-right, centre ≈ (64, 22)) | U401 + same support parts | RP2354A | as 7a | USB side towards J203 |
 | | | SW401 | BOOTSEL B | TS-1187A | |
 | | | R4xx | 1 k B_BOOTSEL (from A) | 0402 | at B's QSPI_SS |
-| | | TP401–403 | SWD B | test pads | A's SWD lines join here too |
 | **8** | **BLE** (left edge, front half, ≈ x 0–17, y 40–53) | U501 | ESP32-C3-MINI-1-H4X | module 13.2 × 16.6 mm | **antenna end on the left edge**, keep-out: no copper on any layer, no parts (§6) |
 | | | R5xx, C5xx | 10 k + 1 µF EN, 10 k GPIO8, 10 k GPIO2, 10 µF + 100 nF | 0402 / 0805 | decoupling at the 3V3 pin |
 | | | TP503–505 | TXD0, RXD0, GND | test pads | fallback flashing over UART (the GPIO18/19 USB pads were dropped) |
