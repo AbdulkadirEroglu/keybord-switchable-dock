@@ -30300,7 +30300,7 @@
 			)
 		)
 	)
-	(footprint "Connector_JST:JST_XH_B7B-XH-A_1x07_P2.50mm_Vertical"
+	(footprint "dock:JST_XH_B7B-XH-A_1x07_P2.50mm_Vertical_EdgeTrim"
 		(layer "F.Cu")
 		(uuid "e06dbd69-fba6-4822-9822-e2c901dc048a")
 		(at 172.74 132)

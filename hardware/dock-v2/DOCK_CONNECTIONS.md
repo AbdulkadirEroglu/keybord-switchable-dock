@@ -993,7 +993,7 @@ How the enable works: undocked, DET is pulled up → Q601 on → EN low → cont
 
 | Ref | Value | Footprint | LCSC | Job |
 |---|---|---|---|---|
-| J601 | B7B-XH-A (to lid pogo board) | `JST_XH_B7B-XH-A_1x07_P2.50mm_Vertical` | C144398 | HAND-SOLDER: JST-XH 7-pin header; 1:1 cable to the pogo board in the dock lid (contacts: guide §8) |
+| J601 | B7B-XH-A (to lid pogo board) | `JST_XH_B7B-XH-A_1x07_P2.50mm_Vertical_EdgeTrim` | C144398 | HAND-SOLDER: JST-XH 7-pin header; 1:1 cable to the pogo board in the dock lid (contacts: guide §8) |
 | U601 | TPD4E1U06DBVR | `SOT-23-6` | C124691 | ESD on DET, TX, RX (1 spare) |
 | R601 | 1k | `R_0402_1005Metric` | C11702 | TX series |
 | R602 | 1k | `R_0402_1005Metric` | C11702 | RX series |

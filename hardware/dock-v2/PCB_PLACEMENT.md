@@ -114,7 +114,7 @@ Place each group as a cluster at its zone, then route between groups.
 | **8** | **BLE** (left edge, front half, ≈ x 0–17, y 40–53) | U501 | ESP32-C3-MINI-1-H4X | module 13.2 × 16.6 mm | **antenna end on the left edge**, keep-out: no copper on any layer, no parts (§6) |
 | | | R5xx, C5xx | 10 k + 1 µF EN, 10 k GPIO8, 10 k GPIO2, 10 µF + 100 nF | 0402 / 0805 | decoupling at the 3V3 pin |
 | | | TP503–505 | TXD0, RXD0, GND | test pads | fallback flashing over UART (the GPIO18/19 USB pads were dropped) |
-| **9** | **Pogo** (front edge, centre) | J601 | JST-XH 7-pin vertical header B7B-XH-A, cable to the lid pogo board | `Connector_JST:JST_XH_B7B-XH-A_1x07_P2.50mm_Vertical` | **hand-soldered**; see §4 |
+| **9** | **Pogo** (front edge, centre) | J601 | JST-XH 7-pin vertical header B7B-XH-A, cable to the lid pogo board | `dock:JST_XH_B7B-XH-A_1x07_P2.50mm_Vertical_EdgeTrim` (KiCad's footprint, silk trimmed at the edge) | **hand-soldered**; see §4 |
 | | | U601 | TPD4E1U06 | SOT-23-6 | ESD on DET, TX, RX, right at J601 (the cable entry) |
 | | | R6xx | 1 k ×3 (TX, RX, DET), 10 k DET pull-up, 100 k EN pull-up, 6.8 k ISET, 10 k / 15 k POGO_5V divider | 0402 | series resistors between U601 and the MCU A traces |
 | | | Q601 | 2N7002 | SOT-23 | DET inverter → SY6280 EN |
@@ -198,7 +198,7 @@ Which symbol and footprint to use for each part (every custom symbol already has
 | 2N7002 | `Transistor_FET:2N7002` | `Package_TO_SOT_SMD:SOT-23` |
 | SMBJ15A, SS54 | `Device:D_TVS`, `Device:D_Schottky` | `Diode_SMD:D_SMB`, `Diode_SMD:D_SMC` |
 | 6.8 µH SLO0630H6R8MTT | `Device:L` | `Inductor_SMD:L_TechFuse_SL0630` (same 7.1 × 6.6 mm body and 3.6 mm pad gap as Sunltech's land pattern) |
-| Pogo cable header (J601) | `Connector_Generic:Conn_01x07` | `Connector_JST:JST_XH_B7B-XH-A_1x07_P2.50mm_Vertical` |
+| Pogo cable header (J601) | `Connector_Generic:Conn_01x07` | `dock:JST_XH_B7B-XH-A_1x07_P2.50mm_Vertical_EdgeTrim` (KiCad's footprint, silk trimmed at the edge) |
 | 220 µF THT | `Device:C_Polarized` | `dock_v2:CP_Radial_D6.3mm_P5.00mm` (KiCad has only P2.50 for D6.3; check the delivered leads, P2.50 is the stock fallback) |
 
 ## 9. Copying Raspberry Pi's core layout
