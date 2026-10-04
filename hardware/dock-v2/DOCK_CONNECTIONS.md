@@ -4,7 +4,7 @@ Use this to understand the v2 dock circuit, sheet by sheet (sketches, reasons, p
 All parts are already on their sheets (`hardware/dock-v2/`, placed, not wired) with the references used here.
 Why each part was chosen is in `docs/dock-v2-*.md`; where it goes on the board is in [PCB_PLACEMENT.md](PCB_PLACEMENT.md).
 
-The tables are generated from one connection model and checked against the placed schematic: 154 parts, 490 connected pins on 90 nets, 79 no-connect pins. Every pin of every part is listed once, either on a net or as a no-connect.
+The tables are generated from one connection model and checked against the placed schematic: 158 parts, 490 connected pins on 90 nets, 79 no-connect pins. Every pin of every part is listed once, either on a net or as a no-connect.
 
 How to read the tables:
 
@@ -993,7 +993,7 @@ How the enable works: undocked, DET is pulled up → Q601 on → EN low → cont
 
 | Ref | Value | Footprint | LCSC | Job |
 |---|---|---|---|---|
-| J601 | Pogo 7-pin | `Pogo-7` | — | HAND-SOLDER: Motorobit 7-pin 90deg magnetic (order: guide §8) |
+| J601 | B7B-XH-A (to lid pogo board) | `JST_XH_B7B-XH-A_1x07_P2.50mm_Vertical` | C144398 | HAND-SOLDER: JST-XH 7-pin header; 1:1 cable to the pogo board in the dock lid (contacts: guide §8) |
 | U601 | TPD4E1U06DBVR | `SOT-23-6` | C124691 | ESD on DET, TX, RX (1 spare) |
 | R601 | 1k | `R_0402_1005Metric` | C11702 | TX series |
 | R602 | 1k | `R_0402_1005Metric` | C11702 | RX series |
@@ -1062,9 +1062,9 @@ How the enable works: undocked, DET is pulled up → Q601 on → EN low → cont
 
 **Placement**
 
-- J601 at the front edge, centre: Motorobit **7-pin 2.54 mm 90° magnetic set with ears** (a straight 7-pin version exists for the pad-on-top alternative, PCB_PLACEMENT.md §4). Hand-soldered. Footprint `dock:Pogo-7` is scaled from Pogo-6: check the body and ears against the delivered part.
+- J601 at the front edge, centre: **JST-XH 7-pin vertical header (B7B-XH-A)**, cable 1:1 to the lid pogo board (straight Motorobit 7-pin magnetic contacts; the pad docks on top). Hand-soldered.
 - U601 right at J601; R601–R603 between U601 and the MCU A traces.
-- U602, Q601, Q602 and their resistors behind J601; C602/C603 near J601. POGO_5V goes to **both ends** of the connector (pins 2 and 6): run it as a wide Power-class trace or pour to both pins so the two contacts share the current. Same for GND (pins 1 and 7).
+- U602, Q601, Q602 and their resistors behind J601; C602/C603 near J601. POGO_5V goes to **both** +5V pins of the header (pins 2 and 6): run it as a wide Power-class trace or pour to both pins so the two contacts share the current. Same for GND (pins 1 and 7).
 - POGO_5V is Power class. Mark pin 1 on the silkscreen.
 
 ---

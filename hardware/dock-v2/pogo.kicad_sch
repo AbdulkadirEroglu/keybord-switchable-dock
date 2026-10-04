@@ -4026,7 +4026,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Pogo 7-pin"
+		(property "Value" "B7B-XH-A (to lid pogo board)"
 			(at 38.1 33.02 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4037,7 +4037,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "dock:Pogo-7"
+		(property "Footprint" "Connector_JST:JST_XH_B7B-XH-A_1x07_P2.50mm_Vertical"
 			(at 41.91 34.29 0)
 			(hide yes)
 			(show_name no)
@@ -4059,7 +4059,7 @@
 				)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"
+		(property "Description" ""
 			(at 41.91 34.29 0)
 			(hide yes)
 			(show_name no)
@@ -4070,7 +4070,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C144398"
 			(at 41.91 34.29 0)
 			(hide yes)
 			(show_name no)
@@ -4081,7 +4081,7 @@
 				)
 			)
 		)
-		(property "Note" "HAND-SOLDER: Motorobit 7-pin 90deg magnetic (order: guide §8)"
+		(property "Note" "HAND-SOLDER: JST-XH 7-pin header; 1:1 cable to the pogo board in the dock lid (contacts: guide §8)"
 			(at 38.1 30.48 0)
 			(hide yes)
 			(show_name no)

@@ -538,7 +538,7 @@ Firmware thresholds: see the operating-window table in §12.1 (warning ≈ 3.50 
 
 ## 15. Docking Interface
 
-Seven magnetic pogo contacts (Motorobit 7-pin 2.54 mm set, rated 1 A per contact; right-angle with ears for docking at the dock's front edge, a straight version exists if the pad sits on top of the dock):
+Seven magnetic pogo contacts (Motorobit **straight** 7-pin 2.54 mm set, rated 1 A per contact). **The pad sits on top of the dock** (decided 2026-10-04): flat contacts on a small pogo board in the dock lid, spring pins on the pad's underside. The lid board connects 1:1 to the dock board's J601 (JST-XH 7-pin B7B-XH-A). Contact order:
 
 ```text
  dock (J601):  GND | +5V | DET | RX | TX | +5V | GND
@@ -553,7 +553,7 @@ Seven magnetic pogo contacts (Motorobit 7-pin 2.54 mm set, rated 1 A per contact
 - Magnets on both sides of the pogo area provide alignment and retention.
 - **Orientation:** reversed docking is harmless (power pins are symmetric, see above), but the pogo UART only works the right way round. Mark pin 1 on both silkscreens and on the case.
 
-Pad side: small pogo board (`hardware/pogo/`, 7 pins: +5V on pins 2 and 6), cable to the main board. Its position (back wall, or underside if the pad sits on top of the dock) is part of the pad redesign.
+Pad side: small pogo board (`hardware/pogo/`, 7 pins: +5V on pins 2 and 6) in the pad's **floor**, cable to the main board. The dock's lid board uses the same design: two identical boards facing each other meet pin 1 to pin 7, which gives the mirrored order above.
 
 ---
 
@@ -593,7 +593,7 @@ SWD  → low-level recovery
 
 - PCB **90 × 70 mm** to start (shrink after placement), 4 layers, all SMD on top. Edges: **PC cables at the back** (Personal left, Work right), **keyboard left**, **charger right**, **pogo front** (see `hardware/dock-v2/PCB_PLACEMENT.md`).
 - ESP32-C3 antenna at the left edge, front half; no metal, magnets or screws within ≈ 15 mm.
-- **Pad in front of the dock or on top of it: open**, decided with the pad redesign. On top saves table space (the dock hides under the pad) but raises the keys by the dock's height and moves the pad's pogo board to its underside. On the dock this only changes J601 (right-angle at the front edge vs vertical on top).
+- **The pad sits on top of the dock** (decided 2026-10-04): saves table space; raises the pad by the dock's height. Pogo contacts on a small board in the dock lid, cabled to J601 (JST-XH 7-pin); the pad's pogo board sits in its floor.
 
 ### Pad (v1 plan, to be redesigned)
 

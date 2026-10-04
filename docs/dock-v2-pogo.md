@@ -10,7 +10,8 @@ The pad side does not change (pogo board with SMAJ5.0A + TPD4E1U06, DET tied to 
 
 ## 1. What carries over from v1
 
-- **Connector:** Motorobit "7-Pin 2.54mm 90C Pogo Pin Magnetic Connector Set – With Ear" (330 TL + VAT; a straight 7-pin set, 200 TL, exists for docking the pad on top), footprint `dock:Pogo-7` (scaled from Pogo-6: check against the part). Through-hole: **hand-soldered**. (v1 and the first v2 plan used the 6-pin set.)
+- **Connector (changed 2026-10-04, pad docks on top of the dock):** the contacts are the **straight** Motorobit 7-pin 2.54 mm magnetic pogo set (≈ 200 TL), on a small **lid pogo board** in the dock's top cover: flat contacts on the dock, spring pins on the pad's underside. The dock board carries **J601 = JST-XH 7-pin vertical header B7B-XH-A (LCSC C144398, 3 A/contact)**, wired **1:1** (pin n to pin n) to the lid board. Hand-soldered. (v1 and the first v2 plan used a right-angle pogo at the front edge.)
+- **Lid board = the pad's pogo board design:** two identical boards facing each other meet pin 1 to pin 7, which is exactly the mirrored order below; only the contact half (flat vs spring) and the signal names differ. The housing of J601 overhangs the PCB edge by 0.5 mm (the pins stay on the original row to keep the routing); allow for it in the case.
 - **Contact order:** `GND | +5V | DET | RX | TX | +5V | GND` (dock side; pad pin 1 meets dock pin 7; pad side `GND | +5V | TX | RX | DET | +5V | GND`). Because +5V (pins 2, 6) and GND (pins 1, 7) are mirror-symmetric, a pad fitted the wrong way round still gets +5V on +5V and GND on GND: it is powered and charges normally. Only the UART lines cross (dock TX → pad DET, pad TX → dock DET, RX ↔ RX), all through 1 kΩ, so nothing is damaged; the pogo UART just doesn't work that way round.
 - **+5 V is off while undocked:** the contacts are exposed, so they are dead until a pad pulls DET low.
 - **BLE is the normal data link;** the pogo UART is for diagnostics/recovery only.
@@ -68,7 +69,8 @@ The pad draws from the pogo 5 V while docked:
 
 | Part | Qty | Feeder |
 |---|---|---|
-| 7-pin magnetic pogo (Motorobit, 90° with ears), THT | 1 | hand-soldered |
+| JST-XH 7-pin vertical header B7B-XH-A (C144398), THT | 1 | hand-soldered |
+| Straight 7-pin magnetic pogo set (Motorobit), on the lid board | 1 | hand-soldered (lid board) |
 | SY6280AAC (C55136) | 1 | shared with the keyboard switch |
 | TPD4E1U06 (C124691) | 1 (DET, TX, RX; 1 spare) | shared with the USB ports |
 | 2N7002 (C8545) | 1 | Basic |
@@ -86,6 +88,6 @@ The pad draws from the pogo 5 V while docked:
 ## 7. Not verified
 
 - The pogo set's current and cycle rating (not on the Motorobit listing).
-- The 7-pin footprint (`dock:Pogo-7`) is scaled from the 6-pin one: check the body and ears against the delivered part.
+- The straight pogo set's footprint on the lid/pad pogo board: check against the delivered part.
 
 Sources: [SY6280 datasheet (Silergy)](https://www.olimex.com/Products/Components/IC/SY6280/resources/SY6280AAC.PDF), [Motorobit 7-pin 90° magnetic pogo set](https://www.motorobit.com/7-pin-254mm-90c-pogo-pin-magnetic-connector-set-with-ear), DESIGN.md §10, §12, §15 (pad loads and pad-side pogo board), JLCPCB parts search.

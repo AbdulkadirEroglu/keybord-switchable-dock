@@ -63,7 +63,7 @@ The project consists of two custom devices:
 | Keyboard VBUS | SY6280AAC, 1.0 A, switched on only when a keyboard is detected on CC |
 | Pad 5 V (pogo) | SY6280AAC, 1.45 A, switched on in hardware when the pad is docked (DET) |
 | ESD | TPD4E1U06 on every USB-C port and the pogo contacts |
-| Connectors | 4 × USB-C (TYPE-C-31-M-12), 7-pin 2.54 mm magnetic pogo |
+| Connectors | 4 × USB-C (TYPE-C-31-M-12); 7-pin JST-XH header to the pogo board in the dock lid (straight 7-pin magnetic pogo contacts) |
 | Crystals | ABM8-272-T3 (Raspberry Pi's recommended part) |
 
 Every part, its value and LCSC number: [`hardware/dock-v2/DOCK_CONNECTIONS.md`](hardware/dock-v2/DOCK_CONNECTIONS.md). Why each was chosen: `docs/dock-v2-*.md`.
@@ -135,7 +135,7 @@ The design should fail toward **released keys and no routing**, not toward a stu
 
 ## Mechanical Baseline
 
-- **Dock:** PCB 90 × 70 mm to start. PC cables leave at the back, the keyboard at the left, the charger at the right, the pogo connector is at the front. Whether the pad docks **in front of** the dock or **on top of** it is open (decided with the pad redesign).
+- **Dock:** PCB 100 × 100 mm, 2 layers. PC cables leave at the back, the keyboard at the left, the charger at the right. **The pad sits on top of the dock:** the pogo contacts are on a small board in the dock lid, cabled to the dock board.
 - **Pad (v1 plan):** wedge enclosure ≈ 160 × 110–120 mm, front ≈ 25 mm, back ≈ 44 mm, battery at the back under the display/encoder row.
 
 Docking contacts (dock side), magnets on both sides:
@@ -167,7 +167,7 @@ dock-pad/
 ## Current Project State
 
 - **Dock v2 (branch `dock-v2`):** every part decided and placed on the six schematic sheets (154 parts, values, footprints, LCSC numbers). Next: wiring the schematic by hand from [DOCK_WIRING.md](hardware/dock-v2/DOCK_WIRING.md) (component by component; the circuit is explained in DOCK_CONNECTIONS.md) (checked with `hardware/tools/dock_v2_connections/check_wiring.py`), then placement and routing on a 4-layer board. The order cost will be calculated when the PCB is ready.
-- **Pad:** to be redesigned (enclosure, pogo position, possibly docking on top of the dock). The 7-pin pogo board is already updated; the rest of `hardware/pad/` is the v1 plan.
+- **Pad:** being redesigned. Decided so far: **ESP32-S3-MINI-1-N8** (MCU + BLE, JLC assembly), the pad **sits on top of the dock** with its pogo board in the floor. The rest of `hardware/pad/` is still the v1 plan.
 - **v1 dock:** complete (routed, DRC clean) on `master`; superseded by v2.
 
 See [DESIGN.md](DESIGN.md) for the engineering baseline.

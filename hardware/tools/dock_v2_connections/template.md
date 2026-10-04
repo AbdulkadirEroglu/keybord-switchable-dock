@@ -410,9 +410,9 @@ How the enable works: undocked, DET is pulled up → Q601 on → EN low → cont
 
 **Placement**
 
-- J601 at the front edge, centre: Motorobit **7-pin 2.54 mm 90° magnetic set with ears** (a straight 7-pin version exists for the pad-on-top alternative, PCB_PLACEMENT.md §4). Hand-soldered. Footprint `dock:Pogo-7` is scaled from Pogo-6: check the body and ears against the delivered part.
+- J601 at the front edge, centre: **JST-XH 7-pin vertical header (B7B-XH-A)**, cable 1:1 to the lid pogo board (straight Motorobit 7-pin magnetic contacts; the pad docks on top). Hand-soldered.
 - U601 right at J601; R601–R603 between U601 and the MCU A traces.
-- U602, Q601, Q602 and their resistors behind J601; C602/C603 near J601. POGO_5V goes to **both ends** of the connector (pins 2 and 6): run it as a wide Power-class trace or pour to both pins so the two contacts share the current. Same for GND (pins 1 and 7).
+- U602, Q601, Q602 and their resistors behind J601; C602/C603 near J601. POGO_5V goes to **both** +5V pins of the header (pins 2 and 6): run it as a wide Power-class trace or pour to both pins so the two contacts share the current. Same for GND (pins 1 and 7).
 - POGO_5V is Power class. Mark pin 1 on the silkscreen.
 
 ---

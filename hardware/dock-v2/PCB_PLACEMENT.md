@@ -114,8 +114,8 @@ Place each group as a cluster at its zone, then route between groups.
 | **8** | **BLE** (left edge, front half, ≈ x 0–17, y 40–53) | U501 | ESP32-C3-MINI-1-H4X | module 13.2 × 16.6 mm | **antenna end on the left edge**, keep-out: no copper on any layer, no parts (§6) |
 | | | R5xx, C5xx | 10 k + 1 µF EN, 10 k GPIO8, 10 k GPIO2, 10 µF + 100 nF | 0402 / 0805 | decoupling at the 3V3 pin |
 | | | TP503–505 | TXD0, RXD0, GND | test pads | fallback flashing over UART (the GPIO18/19 USB pads were dropped) |
-| **9** | **Pogo** (front edge, centre) | J601 | 7-pin 2.54 mm magnetic pogo, right-angle with ears (Motorobit) | `dock:Pogo-7` (27.7 × 4.6 mm, scaled from Pogo-6) | **hand-soldered**; centre ≈ (45, 67.7); see §4 |
-| | | U601 | TPD4E1U06 | SOT-23-6 | ESD on DET, TX, RX, **right at J601** |
+| **9** | **Pogo** (front edge, centre) | J601 | JST-XH 7-pin vertical header B7B-XH-A, cable to the lid pogo board | `Connector_JST:JST_XH_B7B-XH-A_1x07_P2.50mm_Vertical` | **hand-soldered**; see §4 |
+| | | U601 | TPD4E1U06 | SOT-23-6 | ESD on DET, TX, RX, right at J601 (the cable entry) |
 | | | R6xx | 1 k ×3 (TX, RX, DET), 10 k DET pull-up, 100 k EN pull-up, 6.8 k ISET, 10 k / 15 k POGO_5V divider | 0402 | series resistors between U601 and the MCU A traces |
 | | | Q601 | 2N7002 | SOT-23 | DET inverter → SY6280 EN |
 | | | U602 | SY6280AAC | SOT-23-5 | pogo 5 V switch |
@@ -123,7 +123,7 @@ Place each group as a cluster at its zone, then route between groups.
 
 ## 4. Pogo: front edge or pad on top
 
-Two ways to dock the pad; the **electronics are identical**, only J601's footprint and position change:
+**Decided 2026-10-04: the pad sits on top of the dock.** J601 became a 7-pin JST-XH cable header; the straight pogo contacts sit on a small board in the dock lid (same design as the pad's pogo board). The comparison that led to it:
 
 | | Pad in front (current) | Pad on top of the dock |
 |---|---|---|
@@ -134,7 +134,7 @@ Two ways to dock the pad; the **electronics are identical**, only J601's footpri
 | BLE | antenna free | pad covers the antenna while docked (distance is centimetres, fine); undocked it's free |
 | Cables | exit back and sides | exit from under the pad's edges |
 
-Nothing else on the board depends on this choice. Keep the pogo group at the front-centre zone either way, and pick J601's footprint when the enclosure is designed.
+Nothing else on the board depended on this choice.
 
 ## 5. Layers, sides and net classes
 
@@ -198,7 +198,7 @@ Which symbol and footprint to use for each part (every custom symbol already has
 | 2N7002 | `Transistor_FET:2N7002` | `Package_TO_SOT_SMD:SOT-23` |
 | SMBJ15A, SS54 | `Device:D_TVS`, `Device:D_Schottky` | `Diode_SMD:D_SMB`, `Diode_SMD:D_SMC` |
 | 6.8 µH SLO0630H6R8MTT | `Device:L` | `Inductor_SMD:L_TechFuse_SL0630` (same 7.1 × 6.6 mm body and 3.6 mm pad gap as Sunltech's land pattern) |
-| Pogo 7-pin | `Connector_Generic:Conn_01x07` | `dock:Pogo-7` |
+| Pogo cable header (J601) | `Connector_Generic:Conn_01x07` | `Connector_JST:JST_XH_B7B-XH-A_1x07_P2.50mm_Vertical` |
 | 220 µF THT | `Device:C_Polarized` | `dock_v2:CP_Radial_D6.3mm_P5.00mm` (KiCad has only P2.50 for D6.3; check the delivered leads, P2.50 is the stock fallback) |
 
 ## 9. Copying Raspberry Pi's core layout

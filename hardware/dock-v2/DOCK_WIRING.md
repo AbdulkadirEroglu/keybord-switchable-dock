@@ -1351,7 +1351,7 @@ File `pogo.kicad_sch` · 17 parts
 
 On the PCB: front edge, centre (hand-soldered); ESD right at the pins
 
-#### J601 · Pogo 7-pin · HAND-SOLDER: Motorobit 7-pin 90deg magnetic (order: guide §8)
+#### J601 · B7B-XH-A (to lid pogo board) · HAND-SOLDER: JST-XH 7-pin header; 1:1 cable to the pogo board in the dock lid (contacts: guide §8)
 
 | Pin | Net | Connects to | Draw |
 |---|---|---|---|
