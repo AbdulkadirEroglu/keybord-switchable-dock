@@ -63,6 +63,8 @@ Why two chips: no affordable MCU has three USB 2.0 controllers (researched in `d
 
 ### 2.2 Wireless Control Pad (v1 plan, to be redesigned)
 
+> **Being redesigned (v2, 2026-10-04).** Decided so far: ESP32-S3-MINI-1-N8 replaces the Pico 2 WH and the TCA9555 (`docs/pad-v2-mcu-selection.md`); the pad sits on top of the dock (§15); one 21700-50E with an ETA6003 switching charger replaces the 2-cell pack, TP4056 and TPS2116, no USB-C charging (`docs/pad-v2-battery-charging.md`). The rest of this section is the v1 plan until its topic is reviewed.
+
 Responsibilities:
 
 - Read 12 mechanical keys.

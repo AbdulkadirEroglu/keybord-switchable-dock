@@ -167,7 +167,7 @@ dock-pad/
 ## Current Project State
 
 - **Dock v2 (branch `dock-v2`):** every part decided and placed on the six schematic sheets (154 parts, values, footprints, LCSC numbers). Next: wiring the schematic by hand from [DOCK_WIRING.md](hardware/dock-v2/DOCK_WIRING.md) (component by component; the circuit is explained in DOCK_CONNECTIONS.md) (checked with `hardware/tools/dock_v2_connections/check_wiring.py`), then placement and routing on a 4-layer board. The order cost will be calculated when the PCB is ready.
-- **Pad:** being redesigned. Decided so far: **ESP32-S3-MINI-1-N8** (MCU + BLE, JLC assembly), the pad **sits on top of the dock** with its pogo board in the floor. The rest of `hardware/pad/` is still the v1 plan.
+- **Pad:** being redesigned. Decided so far: **ESP32-S3-MINI-1-N8** (MCU + BLE, JLC assembly), the pad **sits on top of the dock** with its pogo board in the floor, **1 × 21700-50E** with an **ETA6003** switching charger (power path), charged only on the dock. Decisions: `docs/pad-v2-*.md`. The rest of `hardware/pad/` is still the v1 plan.
 - **v1 dock:** complete (routed, DRC clean) on `master`; superseded by v2.
 
 See [DESIGN.md](DESIGN.md) for the engineering baseline.
