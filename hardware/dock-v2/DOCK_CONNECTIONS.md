@@ -4,7 +4,7 @@ Use this to understand the v2 dock circuit, sheet by sheet (sketches, reasons, p
 All parts are already on their sheets (`hardware/dock-v2/`, placed, not wired) with the references used here.
 Why each part was chosen is in `docs/dock-v2-*.md`; where it goes on the board is in [PCB_PLACEMENT.md](PCB_PLACEMENT.md).
 
-The tables are generated from one connection model and checked against the placed schematic: 146 parts, 482 connected pins on 88 nets, 81 no-connect pins. Every pin of every part is listed once, either on a net or as a no-connect.
+The tables are generated from one connection model and checked against the placed schematic: 154 parts, 490 connected pins on 90 nets, 79 no-connect pins. Every pin of every part is listed once, either on a net or as a no-connect.
 
 How to read the tables:
 
@@ -98,30 +98,30 @@ Sheet `power.kicad_sch`.
 
 | J101 pin | Name | Net | Also on this net |
 |---|---|---|---|
-| A1 | GND | **GND** | 136 other pins |
+| A1 | GND | **GND** | 138 other pins |
 | A4 | VBUS | **VBUS_IN** | D101.1, U102.1, U102.8, C101.1, U103.2, C102.1, C103.1 |
 | A5 | CC1 | **PD_CC1** | U101.3, U102.7 |
 | A6 | D+ | **PD_DP** | U101.1, U102.4 |
 | A7 | D- | **PD_DM** | U101.6, U102.5 |
 | A8 | SBU1 | no-connect flag | |
 | A9 | VBUS | **VBUS_IN** | D101.1, U102.1, U102.8, C101.1, U103.2, C102.1, C103.1 |
-| A12 | GND | **GND** | 136 other pins |
-| B1 | GND | **GND** | 136 other pins |
+| A12 | GND | **GND** | 138 other pins |
+| B1 | GND | **GND** | 138 other pins |
 | B4 | VBUS | **VBUS_IN** | D101.1, U102.1, U102.8, C101.1, U103.2, C102.1, C103.1 |
 | B5 | CC2 | **PD_CC2** | U101.4, U102.6 |
 | B6 | D+ | **PD_DP** | U101.1, U102.4 |
 | B7 | D- | **PD_DM** | U101.6, U102.5 |
 | B8 | SBU2 | no-connect flag | |
 | B9 | VBUS | **VBUS_IN** | D101.1, U102.1, U102.8, C101.1, U103.2, C102.1, C103.1 |
-| B12 | GND | **GND** | 136 other pins |
-| SH | SHIELD | **GND** | 136 other pins |
+| B12 | GND | **GND** | 138 other pins |
+| SH | SHIELD | **GND** | 138 other pins |
 
 **Wiring — U101 (ESD) and U102 (CH224A)**
 
 | U101 pin | Name | Net | Also on this net |
 |---|---|---|---|
 | 1 | D1+ | **PD_DP** | J101.A6, J101.B6, U102.4 |
-| 2 | GND | **GND** | 140 other pins |
+| 2 | GND | **GND** | 142 other pins |
 | 3 | D2+ | **PD_CC1** | J101.A5, U102.7 |
 | 4 | D2- | **PD_CC2** | J101.B5, U102.6 |
 | 5 | NC | no-connect flag | |
@@ -139,7 +139,7 @@ Sheet `power.kicad_sch`.
 | 8 | VBUS | **VBUS_IN** | J101.A4, J101.A9, J101.B4, J101.B9, D101.1, C101.1, U103.2, C102.1 … |
 | 9 | CFG1 | PD_CFG1 | R101.1 |
 | 10 | PG | **PD_PG** | R102.2, U301.28 |
-| 11 | GND | **GND** | 140 other pins |
+| 11 | GND | **GND** | 142 other pins |
 
 | Part | Pin 1 | Pin 2 |
 |---|---|---|
@@ -218,12 +218,12 @@ Sheet `power.kicad_sch`. Values from TI's TPS54331 Table 7-1 (5 V design), on JL
 | 4 | SS | BUCK_SS | C105.1 |
 | 5 | VSENSE | BUCK_FB | R106.2, R107.1 |
 | 6 | COMP | BUCK_COMP | R105.1, C107.1 |
-| 7 | GND | **GND** | 140 other pins |
+| 7 | GND | **GND** | 142 other pins |
 | 8 | PH | BUCK_SW | C104.2, D102.1, L101.1 |
 
 | U104 pin | Name | Net | Also on this net |
 |---|---|---|---|
-| 1 | GND | **GND** | 140 other pins |
+| 1 | GND | **GND** | 142 other pins |
 | 2 | VO | **+3V3** | 57 other pins |
 | 3 | VI | **+5V** | 10 other pins |
 
@@ -304,28 +304,28 @@ Sheet `usb_ports.kicad_sch`. The dock is the **source** here: Rp pull-ups on CC,
 
 | J201 pin | Name | Net | Also on this net |
 |---|---|---|---|
-| A1 | GND | **GND** | 136 other pins |
+| A1 | GND | **GND** | 138 other pins |
 | A4 | VBUS | **KBD_VBUS** | U202.1, C201.1, C202.1, C203.1, R209.1 |
 | A5 | CC1 | **KBD_CC1** | U201.3, R201.2, U301.43 |
 | A6 | D+ | KBD_USBJ_D_P | U201.1, R203.1, R205.1 |
 | A7 | D- | KBD_USBJ_D_N | U201.6, R204.1, R206.1 |
 | A8 | SBU1 | no-connect flag | |
 | A9 | VBUS | **KBD_VBUS** | U202.1, C201.1, C202.1, C203.1, R209.1 |
-| A12 | GND | **GND** | 136 other pins |
-| B1 | GND | **GND** | 136 other pins |
+| A12 | GND | **GND** | 138 other pins |
+| B1 | GND | **GND** | 138 other pins |
 | B4 | VBUS | **KBD_VBUS** | U202.1, C201.1, C202.1, C203.1, R209.1 |
 | B5 | CC2 | **KBD_CC2** | U201.4, R202.2, U301.42 |
 | B6 | D+ | KBD_USBJ_D_P | U201.1, R203.1, R205.1 |
 | B7 | D- | KBD_USBJ_D_N | U201.6, R204.1, R206.1 |
 | B8 | SBU2 | no-connect flag | |
 | B9 | VBUS | **KBD_VBUS** | U202.1, C201.1, C202.1, C203.1, R209.1 |
-| B12 | GND | **GND** | 136 other pins |
-| SH | SHIELD | **GND** | 136 other pins |
+| B12 | GND | **GND** | 138 other pins |
+| SH | SHIELD | **GND** | 138 other pins |
 
 | U201 pin | Name | Net | Also on this net |
 |---|---|---|---|
 | 1 | D1+ | KBD_USBJ_D_P | J201.A6, J201.B6, R203.1, R205.1 |
-| 2 | GND | **GND** | 140 other pins |
+| 2 | GND | **GND** | 142 other pins |
 | 3 | D2+ | **KBD_CC1** | J201.A5, R201.2, U301.43 |
 | 4 | D2- | **KBD_CC2** | J201.B5, R202.2, U301.42 |
 | 5 | NC | no-connect flag | |
@@ -334,7 +334,7 @@ Sheet `usb_ports.kicad_sch`. The dock is the **source** here: Rp pull-ups on CC,
 | U202 pin | Name | Net | Also on this net |
 |---|---|---|---|
 | 1 | OUT | **KBD_VBUS** | J201.A4, J201.A9, J201.B4, J201.B9, C201.1, C202.1, C203.1, R209.1 |
-| 2 | GND | **GND** | 140 other pins |
+| 2 | GND | **GND** | 142 other pins |
 | 3 | ISET | KBD_ISET | R207.1 |
 | 4 | EN | **KBD_VBUS_EN** | R208.1, U301.12 |
 | 5 | IN | **+5V** | 10 other pins |
@@ -408,28 +408,28 @@ Sheet `usb_ports.kicad_sch`. The dock is a **sink** (Rd) but draws no power: VBU
 
 | J202 pin | Name | Net | Also on this net |
 |---|---|---|---|
-| A1 | GND | **GND** | 136 other pins |
+| A1 | GND | **GND** | 138 other pins |
 | A4 | VBUS | **PC1_VBUS** | R213.1 |
 | A5 | CC1 | **PC1_CC1** | U203.3, R211.1 |
 | A6 | D+ | PC1_USBJ_D_P | U203.1, R215.1 |
 | A7 | D- | PC1_USBJ_D_N | U203.6, R216.1 |
 | A8 | SBU1 | no-connect flag | |
 | A9 | VBUS | **PC1_VBUS** | R213.1 |
-| A12 | GND | **GND** | 136 other pins |
-| B1 | GND | **GND** | 136 other pins |
+| A12 | GND | **GND** | 138 other pins |
+| B1 | GND | **GND** | 138 other pins |
 | B4 | VBUS | **PC1_VBUS** | R213.1 |
 | B5 | CC2 | **PC1_CC2** | U203.4, R212.1 |
 | B6 | D+ | PC1_USBJ_D_P | U203.1, R215.1 |
 | B7 | D- | PC1_USBJ_D_N | U203.6, R216.1 |
 | B8 | SBU2 | no-connect flag | |
 | B9 | VBUS | **PC1_VBUS** | R213.1 |
-| B12 | GND | **GND** | 136 other pins |
-| SH | SHIELD | **GND** | 136 other pins |
+| B12 | GND | **GND** | 138 other pins |
+| SH | SHIELD | **GND** | 138 other pins |
 
 | U203 pin | Name | Net | Also on this net |
 |---|---|---|---|
 | 1 | D1+ | PC1_USBJ_D_P | J202.A6, J202.B6, R215.1 |
-| 2 | GND | **GND** | 140 other pins |
+| 2 | GND | **GND** | 142 other pins |
 | 3 | D2+ | **PC1_CC1** | J202.A5, R211.1 |
 | 4 | D2- | **PC1_CC2** | J202.B5, R212.1 |
 | 5 | NC | no-connect flag | |
@@ -448,28 +448,28 @@ Sheet `usb_ports.kicad_sch`. The dock is a **sink** (Rd) but draws no power: VBU
 
 | J203 pin | Name | Net | Also on this net |
 |---|---|---|---|
-| A1 | GND | **GND** | 136 other pins |
+| A1 | GND | **GND** | 138 other pins |
 | A4 | VBUS | **PC2_VBUS** | R219.1 |
 | A5 | CC1 | **PC2_CC1** | U204.3, R217.1 |
 | A6 | D+ | PC2_USBJ_D_P | U204.1, R221.1 |
 | A7 | D- | PC2_USBJ_D_N | U204.6, R222.1 |
 | A8 | SBU1 | no-connect flag | |
 | A9 | VBUS | **PC2_VBUS** | R219.1 |
-| A12 | GND | **GND** | 136 other pins |
-| B1 | GND | **GND** | 136 other pins |
+| A12 | GND | **GND** | 138 other pins |
+| B1 | GND | **GND** | 138 other pins |
 | B4 | VBUS | **PC2_VBUS** | R219.1 |
 | B5 | CC2 | **PC2_CC2** | U204.4, R218.1 |
 | B6 | D+ | PC2_USBJ_D_P | U204.1, R221.1 |
 | B7 | D- | PC2_USBJ_D_N | U204.6, R222.1 |
 | B8 | SBU2 | no-connect flag | |
 | B9 | VBUS | **PC2_VBUS** | R219.1 |
-| B12 | GND | **GND** | 136 other pins |
-| SH | SHIELD | **GND** | 136 other pins |
+| B12 | GND | **GND** | 138 other pins |
+| SH | SHIELD | **GND** | 138 other pins |
 
 | U204 pin | Name | Net | Also on this net |
 |---|---|---|---|
 | 1 | D1+ | PC2_USBJ_D_P | J203.A6, J203.B6, R221.1 |
-| 2 | GND | **GND** | 140 other pins |
+| 2 | GND | **GND** | 142 other pins |
 | 3 | D2+ | **PC2_CC1** | J203.A5, R217.1 |
 | 4 | D2- | **PC2_CC2** | J203.B5, R218.1 |
 | 5 | NC | no-connect flag | |
@@ -508,7 +508,7 @@ Sheet `mcu_a.kicad_sch`. Core circuit = Raspberry Pi's Minimal design (`hardware
  Y301 pins 2, 4 ── GND
  U301 pin 60 QSPI_SS ── A_QSPI_SS ── R303 1 k ── A_BOOTSEL_BTN ── SW301 ── GND      (BOOTSEL A)
  U301 pin 26 RUN ── A_RUN ── SW302 ── GND                                            (RESET A)
- U301 pins 24/25 SWCLK/SWDIO: no-connect (test pads removed; A is flashed over USB in BOOTSEL mode)
+ U301 pins 24/25 SWCLK/SWDIO ── J401 pins 3/2 (1x3 2.54 mm SWD header; pin 1 = GND)
  U301 GPIO0 ── A_LED ── R305 1 k ── A_LED_R ── D301 anode (2); cathode (1) ── GND
  QSPI_SD0–3, QSPI_SCLK (55–59): no-connect (the 2 MB flash inside uses them)
 ```
@@ -543,6 +543,7 @@ Sheet `mcu_a.kicad_sch`. Core circuit = Raspberry Pi's Minimal design (`hardware
 | SW302 | SW_Push | `SW_Push_1P1T_XKB_TS-1187A` | C318884 | RESET A (RUN to GND) |
 | D301 | LED red | `LED_0603_1608Metric` | C2286 | status LED |
 | R305 | 1k | `R_0402_1005Metric` | C11702 | LED series |
+| J401 | Conn_01x03 | `PinHeader_1x03_P2.54mm_Vertical` | — |  |
 
 **Pin map — MCU A GPIOs**
 
@@ -608,8 +609,8 @@ Why these pins (chosen to keep the routing on 2 layers with as few crossings as 
 | 21 | XIN | A_XIN | Y301.1, C315.1 |
 | 22 | XOUT | A_XOUT | R302.1 |
 | 23 | DVDD | A_1V1 | L301.1, C302.1, C304.1, C305.1, C306.1 |
-| 24 | SWCLK | no-connect flag | |
-| 25 | SWDIO | no-connect flag | |
+| 24 | SWCLK | A_SWCLK | J401.3 |
+| 25 | SWDIO | A_SWDIO | J401.2 |
 | 26 | RUN | A_RUN | SW302.1 |
 | 27 | GPIO16 | **POGO_TX** | R601.1 |
 | 28 | GPIO17 | **PD_PG** | U102.10, R102.2 |
@@ -617,8 +618,8 @@ Why these pins (chosen to keep the routing on 2 layers with as few crossings as 
 | 30 | IOVDD | **+3V3** | 48 other pins |
 | 31 | GPIO19 | **PD_SCL** | U102.2, R103.2 |
 | 32 | GPIO20 | **B_RUN** | U401.26, R406.2 |
-| 33 | GPIO21 | **B_SWDIO** | U401.25 |
-| 34 | GPIO22 | **B_SWCLK** | U401.24 |
+| 33 | GPIO21 | **B_SWDIO** | U401.25, J501.2 |
+| 34 | GPIO22 | **B_SWCLK** | U401.24, J501.3 |
 | 35 | GPIO23 | **B_LINK_RX** | U401.9 |
 | 36 | GPIO24 | **B_LINK_TX** | U401.8 |
 | 37 | GPIO25 | **B_BOOTSEL** | R404.1, R407.2 |
@@ -631,7 +632,7 @@ Why these pins (chosen to keep the routing on 2 layers with as few crossings as 
 | 44 | ADC_AVDD | **+3V3** | 48 other pins |
 | 45 | IOVDD | **+3V3** | 48 other pins |
 | 46 | VREG_AVDD | A_VREG_AVDD | C303.1, R301.2 |
-| 47 | VREG_PGND | **GND** | 139 other pins |
+| 47 | VREG_PGND | **GND** | 141 other pins |
 | 48 | VREG_LX | A_VREG_LX | L301.2 |
 | 49 | VREG_VIN | **+3V3** | 48 other pins |
 | 50 | VREG_FB | A_1V1 | L301.1, C302.1, C304.1, C305.1, C306.1 |
@@ -645,7 +646,7 @@ Why these pins (chosen to keep the routing on 2 layers with as few crossings as 
 | 58 | QSPI_SD2 | no-connect flag | |
 | 59 | QSPI_SD1 | no-connect flag | |
 | 60 | QSPI_SS | A_QSPI_SS | R303.1 |
-| 61 | GND | **GND** | 139 other pins |
+| 61 | GND | **GND** | 141 other pins |
 
 | Part | Pin 1 | Pin 2 |
 |---|---|---|
@@ -694,6 +695,7 @@ Sheet `mcu_b.kicad_sch`. Same core as MCU A (B_ nets, U401 …). What differs: B
  U401 pin 60 QSPI_SS ──●── B_QSPI_SS ── R403 1 k ── B_BOOTSEL_BTN ── SW401 ── GND     (BOOTSEL B)
                        └── R404 1 k ── B_BOOTSEL ◄── MCU A GPIO25 (open-drain);  R407 10 k to +3V3
  U401 pins 24/25 SWCLK/SWDIO ──●── B_SWCLK / B_SWDIO ◄── MCU A GPIO22 / GPIO21
+                               └── J501 pins 3/2 (1x3 SWD header; pin 1 = GND)
  U401 GPIO6 (UART1 TX) ── B_LINK_RX ──► MCU A GPIO23 (UART1 RX)
  U401 GPIO5 (UART1 RX) ◄── B_LINK_TX ◄── MCU A GPIO24 (UART1 TX)
  U401 GPIO29 ◄── PC2_VBUS_DET;   U401 GPIO3 ── B_LED ── R405 1 k ── D401 ── GND
@@ -734,6 +736,7 @@ R406/R407 matter: at reset and in BOOTSEL mode, MCU A's pins are inputs with wea
 | R407 | 10k | `R_0402_1005Metric` | C25744 | B_BOOTSEL pull-up (beats A pull-down) |
 | D401 | LED red | `LED_0603_1608Metric` | C2286 | status LED |
 | R405 | 1k | `R_0402_1005Metric` | C11702 | LED series |
+| J501 | Conn_01x03 | `PinHeader_1x03_P2.54mm_Vertical` | — |  |
 
 **Pin map — MCU B GPIOs**
 
@@ -772,8 +775,8 @@ R406/R407 matter: at reset and in BOOTSEL mode, MCU A's pins are inputs with wea
 | 21 | XIN | B_XIN | Y401.1, C415.1 |
 | 22 | XOUT | B_XOUT | R402.1 |
 | 23 | DVDD | B_1V1 | L401.1, C402.1, C404.1, C405.1, C406.1 |
-| 24 | SWCLK | **B_SWCLK** | U301.34 |
-| 25 | SWDIO | **B_SWDIO** | U301.33 |
+| 24 | SWCLK | **B_SWCLK** | U301.34, J501.3 |
+| 25 | SWDIO | **B_SWDIO** | U301.33, J501.2 |
 | 26 | RUN | **B_RUN** | U301.32, R406.2 |
 | 27 | GPIO16 | no-connect flag | |
 | 28 | GPIO17 | no-connect flag | |
@@ -795,7 +798,7 @@ R406/R407 matter: at reset and in BOOTSEL mode, MCU A's pins are inputs with wea
 | 44 | ADC_AVDD | **+3V3** | 48 other pins |
 | 45 | IOVDD | **+3V3** | 48 other pins |
 | 46 | VREG_AVDD | B_VREG_AVDD | C403.1, R401.2 |
-| 47 | VREG_PGND | **GND** | 139 other pins |
+| 47 | VREG_PGND | **GND** | 141 other pins |
 | 48 | VREG_LX | B_VREG_LX | L401.2 |
 | 49 | VREG_VIN | **+3V3** | 48 other pins |
 | 50 | VREG_FB | B_1V1 | L401.1, C402.1, C404.1, C405.1, C406.1 |
@@ -809,7 +812,7 @@ R406/R407 matter: at reset and in BOOTSEL mode, MCU A's pins are inputs with wea
 | 58 | QSPI_SD2 | no-connect flag | |
 | 59 | QSPI_SD1 | no-connect flag | |
 | 60 | QSPI_SS | B_QSPI_SS | R403.1, R404.2 |
-| 61 | GND | **GND** | 139 other pins |
+| 61 | GND | **GND** | 141 other pins |
 
 | Part | Pin 1 | Pin 2 |
 |---|---|---|
@@ -888,8 +891,8 @@ R504 is needed for the same reason as R406/R407: the ESP32's GPIO9 pull-up is we
 
 | U501 pin | Name | Net | Also on this net |
 |---|---|---|---|
-| 1 | GND | **GND** | 119 other pins |
-| 2 | GND | **GND** | 119 other pins |
+| 1 | GND | **GND** | 121 other pins |
+| 2 | GND | **GND** | 121 other pins |
 | 3 | 3V3 | **+3V3** | 57 other pins |
 | 4 | NC | no-connect flag | |
 | 5 | GPIO2/ADC1_CH2 | BLE_GPIO2 | R503.2 |
@@ -898,10 +901,10 @@ R504 is needed for the same reason as R406/R407: the ESP32's GPIO9 pull-up is we
 | 8 | EN/CHIP_PU | **BLE_EN** | U301.13, R501.2, C501.1 |
 | 9 | NC | no-connect flag | |
 | 10 | NC | no-connect flag | |
-| 11 | GND | **GND** | 119 other pins |
+| 11 | GND | **GND** | 121 other pins |
 | 12 | GPIO0/ADC1_CH0/XTAL_32K_P | no-connect flag | |
 | 13 | GPIO1/ADC1_CH1/XTAL_32K_N | no-connect flag | |
-| 14 | GND | **GND** | 119 other pins |
+| 14 | GND | **GND** | 121 other pins |
 | 15 | NC | no-connect flag | |
 | 16 | GPIO10 | no-connect flag | |
 | 17 | NC | no-connect flag | |
@@ -923,24 +926,24 @@ R504 is needed for the same reason as R406/R407: the ESP32's GPIO9 pull-up is we
 | 33 | NC | no-connect flag | |
 | 34 | NC | no-connect flag | |
 | 35 | NC | no-connect flag | |
-| 36 | GND | **GND** | 119 other pins |
-| 37 | GND | **GND** | 119 other pins |
-| 38 | GND | **GND** | 119 other pins |
-| 39 | GND | **GND** | 119 other pins |
-| 40 | GND | **GND** | 119 other pins |
-| 41 | GND | **GND** | 119 other pins |
-| 42 | GND | **GND** | 119 other pins |
-| 43 | GND | **GND** | 119 other pins |
-| 44 | GND | **GND** | 119 other pins |
-| 45 | GND | **GND** | 119 other pins |
-| 46 | GND | **GND** | 119 other pins |
-| 47 | GND | **GND** | 119 other pins |
-| 48 | GND | **GND** | 119 other pins |
-| 49 | GND | **GND** | 119 other pins |
-| 50 | GND | **GND** | 119 other pins |
-| 51 | GND | **GND** | 119 other pins |
-| 52 | GND | **GND** | 119 other pins |
-| 53 | GND | **GND** | 119 other pins |
+| 36 | GND | **GND** | 121 other pins |
+| 37 | GND | **GND** | 121 other pins |
+| 38 | GND | **GND** | 121 other pins |
+| 39 | GND | **GND** | 121 other pins |
+| 40 | GND | **GND** | 121 other pins |
+| 41 | GND | **GND** | 121 other pins |
+| 42 | GND | **GND** | 121 other pins |
+| 43 | GND | **GND** | 121 other pins |
+| 44 | GND | **GND** | 121 other pins |
+| 45 | GND | **GND** | 121 other pins |
+| 46 | GND | **GND** | 121 other pins |
+| 47 | GND | **GND** | 121 other pins |
+| 48 | GND | **GND** | 121 other pins |
+| 49 | GND | **GND** | 121 other pins |
+| 50 | GND | **GND** | 121 other pins |
+| 51 | GND | **GND** | 121 other pins |
+| 52 | GND | **GND** | 121 other pins |
+| 53 | GND | **GND** | 121 other pins |
 
 | Part | Pin 1 | Pin 2 |
 |---|---|---|
@@ -1012,18 +1015,18 @@ How the enable works: undocked, DET is pulled up → Q601 on → EN low → cont
 
 | J601 pin | Name | Net | Also on this net |
 |---|---|---|---|
-| 1 | Pin_1 | **GND** | 139 other pins |
+| 1 | Pin_1 | **GND** | 141 other pins |
 | 2 | Pin_2 | **POGO_5V** | U602.1, C602.1, C603.1, R607.1 |
 | 3 | Pin_3 | POGO_DET_J | U601.4, R603.1 |
 | 4 | Pin_4 | POGO_RX_J | U601.3, R602.1 |
 | 5 | Pin_5 | POGO_TX_J | U601.6, R601.2 |
 | 6 | Pin_6 | **POGO_5V** | U602.1, C602.1, C603.1, R607.1 |
-| 7 | Pin_7 | **GND** | 139 other pins |
+| 7 | Pin_7 | **GND** | 141 other pins |
 
 | U601 pin | Name | Net | Also on this net |
 |---|---|---|---|
 | 1 | D1+ | no-connect flag | |
-| 2 | GND | **GND** | 140 other pins |
+| 2 | GND | **GND** | 142 other pins |
 | 3 | D2+ | POGO_RX_J | J601.4, R602.1 |
 | 4 | D2- | POGO_DET_J | J601.3, R603.1 |
 | 5 | NC | no-connect flag | |
@@ -1032,7 +1035,7 @@ How the enable works: undocked, DET is pulled up → Q601 on → EN low → cont
 | U602 pin | Name | Net | Also on this net |
 |---|---|---|---|
 | 1 | OUT | **POGO_5V** | J601.2, J601.6, C602.1, C603.1, R607.1 |
-| 2 | GND | **GND** | 140 other pins |
+| 2 | GND | **GND** | 142 other pins |
 | 3 | ISET | POGO_ISET | R606.1 |
 | 4 | EN | POGO_EN | Q601.3, Q602.3, R605.2 |
 | 5 | IN | **+5V** | 10 other pins |
@@ -1072,6 +1075,8 @@ Use a **global label** with exactly these names (the power nets GND, +3V3 and +5
 
 | Net | Sheets | Pins |
 |---|---|---|
+| A_SWCLK | MCU_A, MCU_B | U301.24, J401.3 |
+| A_SWDIO | MCU_A, MCU_B | U301.25, J401.2 |
 | BLE_BOOT | BLE, MCU_A | U301.14, U501.23, R504.2 |
 | BLE_EN | BLE, MCU_A | U301.13, U501.8, R501.2, C501.1 |
 | BLE_RX | BLE, MCU_A | U301.17, U501.31, TP503.1 |
@@ -1080,8 +1085,8 @@ Use a **global label** with exactly these names (the power nets GND, +3V3 and +5
 | B_LINK_RX | MCU_A, MCU_B | U301.35, U401.9 |
 | B_LINK_TX | MCU_A, MCU_B | U301.36, U401.8 |
 | B_RUN | MCU_A, MCU_B | U301.32, U401.26, R406.2 |
-| B_SWCLK | MCU_A, MCU_B | U301.34, U401.24 |
-| B_SWDIO | MCU_A, MCU_B | U301.33, U401.25 |
+| B_SWCLK | BLE, MCU_A, MCU_B | U301.34, U401.24, J501.3 |
+| B_SWDIO | BLE, MCU_A, MCU_B | U301.33, U401.25, J501.2 |
 | KBD_CC1 | MCU_A, USB_PORTS | J201.A5, U201.3, R201.2, U301.43 |
 | KBD_CC2 | MCU_A, USB_PORTS | J201.B5, U201.4, R202.2, U301.42 |
 | KBD_USB_D_N | MCU_A, USB_PORTS | R206.2, U301.4 |
@@ -1125,7 +1130,7 @@ Use a **global label** with exactly these names (the power nets GND, +3V3 and +5
 - **U203**: 5 (NC)
 - **J203**: A8 (SBU1), B8 (SBU2)
 - **U204**: 5 (NC)
-- **U301**: 55 (QSPI_SD3), 56 (QSPI_SCLK), 57 (QSPI_SD0), 58 (QSPI_SD2), 59 (QSPI_SD1), 7 (GPIO4), 8 (GPIO5), 9 (GPIO6), 10 (GPIO7), 24 (SWCLK), 25 (SWDIO)
+- **U301**: 55 (QSPI_SD3), 56 (QSPI_SCLK), 57 (QSPI_SD0), 58 (QSPI_SD2), 59 (QSPI_SD1), 7 (GPIO4), 8 (GPIO5), 9 (GPIO6), 10 (GPIO7)
 - **U401**: 55 (QSPI_SD3), 56 (QSPI_SCLK), 57 (QSPI_SD0), 58 (QSPI_SD2), 59 (QSPI_SD1), 2 (GPIO0), 3 (GPIO1), 4 (GPIO2), 7 (GPIO4), 10 (GPIO7), 12 (GPIO8), 13 (GPIO9), 14 (GPIO10), 15 (GPIO11), 16 (GPIO12), 17 (GPIO13), 18 (GPIO14), 19 (GPIO15), 27 (GPIO16), 28 (GPIO17), 29 (GPIO18), 31 (GPIO19), 32 (GPIO20), 33 (GPIO21), 34 (GPIO22), 35 (GPIO23), 36 (GPIO24), 37 (GPIO25), 40 (GPIO26/ADC0), 41 (GPIO27/ADC1), 42 (GPIO28/ADC2)
 - **U501**: 4 (NC), 7 (NC), 9 (NC), 10 (NC), 15 (NC), 17 (NC), 24 (NC), 25 (NC), 28 (NC), 29 (NC), 32 (NC), 33 (NC), 34 (NC), 35 (NC), 6 (GPIO3/ADC1_CH3), 12 (GPIO0/ADC1_CH0/XTAL_32K_P), 13 (GPIO1/ADC1_CH1/XTAL_32K_N), 16 (GPIO10), 18 (GPIO4/ADC1_CH4), 19 (GPIO5/ADC2_CH0), 20 (GPIO6), 21 (GPIO7), 26 (GPIO18/USB_D-), 27 (GPIO19/USB_D+)
 - **U601**: 1 (D1+), 5 (NC)
@@ -1141,7 +1146,7 @@ Generated from the connection model that the tables above come from; checked aga
 
 | Net | Pins (ref.pin name) |
 |---|---|
-| GND | 141 pins (every GND pin, shield and exposed pad) |
+| GND | 143 pins (every GND pin, shield and exposed pad) |
 | +3V3 | R102.1, R103.1, R104.1, U104.2 (VO), C112.1, R201.1, R202.1, U301.1 (IOVDD), U301.11 (IOVDD), U301.20 (IOVDD), U301.30 (IOVDD), U301.38 (IOVDD), U301.45 (IOVDD), U301.44 (ADC_AVDD), U301.49 (VREG_VIN), U301.53 (USB_OTP_VDD), U301.54 (QSPI_IOVDD), C301.1, R301.1, C307.1, C308.1, C309.1, C310.1, C311.1, C312.1, C313.1, C314.1, U401.1 (IOVDD), U401.11 (IOVDD), U401.20 (IOVDD), U401.30 (IOVDD), U401.38 (IOVDD), U401.45 (IOVDD), U401.44 (ADC_AVDD), U401.49 (VREG_VIN), U401.53 (USB_OTP_VDD), U401.54 (QSPI_IOVDD), C401.1, R401.1, C407.1, C408.1, C409.1, C410.1, C411.1, C412.1, C413.1, C414.1, R406.1, R407.1, U501.3 (3V3), C502.1, C503.1, R501.1, R502.1, R503.1, R504.1, R604.1, R605.1 |
 | +5V | R106.1, L101.2, C108.1, C109.1, C110.1, U104.3 (VI), C111.1, U202.5 (IN), C204.1, U602.5 (IN), C601.1 |
 | A_1V1 | U301.6 (DVDD), U301.23 (DVDD), U301.39 (DVDD), U301.50 (VREG_FB), L301.1, C302.1, C304.1, C305.1, C306.1 |
@@ -1150,6 +1155,8 @@ Generated from the connection model that the tables above come from; checked aga
 | A_LED_R | R305.2, D301.2 (A) |
 | A_QSPI_SS | U301.60 (QSPI_SS), R303.1 |
 | A_RUN | U301.26 (RUN), SW302.1 |
+| A_SWCLK | U301.24 (SWCLK), J401.3 (Pin_3) |
+| A_SWDIO | U301.25 (SWDIO), J401.2 (Pin_2) |
 | A_VREG_AVDD | U301.46 (VREG_AVDD), C303.1, R301.2 |
 | A_VREG_LX | U301.48 (VREG_LX), L301.2 |
 | A_XIN | U301.21 (XIN), Y301.1, C315.1 |
@@ -1176,8 +1183,8 @@ Generated from the connection model that the tables above come from; checked aga
 | B_LINK_TX | U301.36 (GPIO24), U401.8 (GPIO5) |
 | B_QSPI_SS | U401.60 (QSPI_SS), R403.1, R404.2 |
 | B_RUN | U301.32 (GPIO20), U401.26 (RUN), R406.2 |
-| B_SWCLK | U301.34 (GPIO22), U401.24 (SWCLK) |
-| B_SWDIO | U301.33 (GPIO21), U401.25 (SWDIO) |
+| B_SWCLK | U301.34 (GPIO22), U401.24 (SWCLK), J501.3 (Pin_3) |
+| B_SWDIO | U301.33 (GPIO21), U401.25 (SWDIO), J501.2 (Pin_2) |
 | B_VREG_AVDD | U401.46 (VREG_AVDD), C403.1, R401.2 |
 | B_VREG_LX | U401.48 (VREG_LX), L401.2 |
 | B_XIN | U401.21 (XIN), Y401.1, C415.1 |

@@ -109,8 +109,8 @@ B_GPIO = {3: 'B_LED', 5: 'B_LINK_TX', 6: 'B_LINK_RX', 29: 'PC2_VBUS_DET'}
 mcu_core(3, 'A')
 for g, net in A_GPIO.items():
     (add({net: [f'U301.{GPIO_PIN[g]}']}) if net else NC.append(f'U301.{GPIO_PIN[g]}'))
-add({'PC1_USB_D_P': ['U301.52'], 'PC1_USB_D_N': ['U301.51'], 'A_RUN': ['U301.26']})
-NC.extend(['U301.24', 'U301.25'])   # A's SWD: test pads removed 2026-10-04 (A is flashed over USB BOOTSEL)
+add({'PC1_USB_D_P': ['U301.52'], 'PC1_USB_D_N': ['U301.51'], 'A_RUN': ['U301.26'],
+     'A_SWCLK': ['U301.24', 'J401.3'], 'A_SWDIO': ['U301.25', 'J401.2'], 'GND': ['J401.1']})   # SWD header A
 two('SW302', 'A_RUN', 'GND')
 
 mcu_core(4, 'B')
@@ -118,7 +118,7 @@ for g in range(30):
     net = B_GPIO.get(g)
     (add({net: [f'U401.{GPIO_PIN[g]}']}) if net else NC.append(f'U401.{GPIO_PIN[g]}'))
 add({'PC2_USB_D_P': ['U401.52'], 'PC2_USB_D_N': ['U401.51'], 'B_RUN': ['U401.26'],
-     'B_SWCLK': ['U401.24'], 'B_SWDIO': ['U401.25']})
+     'B_SWCLK': ['U401.24', 'J501.3'], 'B_SWDIO': ['U401.25', 'J501.2'], 'GND': ['J501.1']})   # SWD header B
 two('R404', 'B_BOOTSEL', 'B_QSPI_SS')
 two('R406', '+3V3', 'B_RUN'); two('R407', '+3V3', 'B_BOOTSEL')
 
