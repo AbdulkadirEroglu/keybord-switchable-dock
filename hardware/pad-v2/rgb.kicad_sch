@@ -2,7 +2,7 @@
 	(version 20260306)
 	(generator "eeschema")
 	(generator_version "10.0")
-	(uuid "e669ccb0-647a-49d0-af56-7a1d12ccc77c")
+	(uuid "85f35b25-e285-4865-8c57-d3ddcf3695b3")
 	(paper "A1")
 	(title_block
 		(title "Pad v2 - RGB")
@@ -857,277 +857,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "LED:WS2812B-2020"
-			(pin_names
-				(offset 0.254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "D"
-				(at 5.08 5.715 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify right bottom)
-				)
-			)
-			(property "Value" "WS2812B-2020"
-				(at 1.27 -5.715 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Footprint" "LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm"
-				(at 1.27 -7.62 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
-				(at 2.54 -9.525 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "RGB LED NeoPixel Nano addressable"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "LED*WS2812*-2020_PLCC4*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "WS2812B-2020_0_0"
-				(text "RGB"
-					(at 2.286 -4.191 0)
-					(effects
-						(font
-							(size 0.762 0.762)
-						)
-					)
-				)
-			)
-			(symbol "WS2812B-2020_0_1"
-				(polyline
-					(pts
-						(xy 1.27 -2.54) (xy 1.778 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -3.556) (xy 1.778 -3.556)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.286 -1.524) (xy 1.27 -2.54) (xy 1.27 -2.032)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.286 -2.54) (xy 1.27 -3.556) (xy 1.27 -3.048)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.683 -1.016) (xy 3.683 -3.556) (xy 3.683 -4.064)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 4.699 -1.524) (xy 2.667 -1.524) (xy 3.683 -3.556) (xy 4.699 -1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 4.699 -3.556) (xy 2.667 -3.556)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 5.08 5.08)
-					(end -5.08 -5.08)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-			)
-			(symbol "WS2812B-2020_1_1"
-				(pin output line
-					(at 7.62 0 180)
-					(length 2.54)
-					(name "DOUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 -7.62 90)
-					(length 2.54)
-					(name "VSS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -7.62 0 0)
-					(length 2.54)
-					(name "DIN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 7.62 270)
-					(length 2.54)
-					(name "VDD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "LED:SK6812MINI-E"
 			(pin_names
 				(offset 0.254)
@@ -1399,6 +1128,277 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "LED:WS2812B-2020"
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 5.08 5.715 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify right bottom)
+				)
+			)
+			(property "Value" "WS2812B-2020"
+				(at 1.27 -5.715 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm"
+				(at 1.27 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+				(at 2.54 -9.525 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "RGB LED NeoPixel Nano addressable"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "LED*WS2812*-2020_PLCC4*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "WS2812B-2020_0_0"
+				(text "RGB"
+					(at 2.286 -4.191 0)
+					(effects
+						(font
+							(size 0.762 0.762)
+						)
+					)
+				)
+			)
+			(symbol "WS2812B-2020_0_1"
+				(polyline
+					(pts
+						(xy 1.27 -2.54) (xy 1.778 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -3.556) (xy 1.778 -3.556)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.286 -1.524) (xy 1.27 -2.54) (xy 1.27 -2.032)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.286 -2.54) (xy 1.27 -3.556) (xy 1.27 -3.048)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.683 -1.016) (xy 3.683 -3.556) (xy 3.683 -4.064)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.699 -1.524) (xy 2.667 -1.524) (xy 3.683 -3.556) (xy 4.699 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.699 -3.556) (xy 2.667 -3.556)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 5.08 5.08)
+					(end -5.08 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "WS2812B-2020_1_1"
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "DOUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "VSS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "DIN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 7.62 270)
+					(length 2.54)
+					(name "VDD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(rectangle
 		(start 12.70 17.78)
@@ -1410,7 +1410,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "9e8742c4-804c-4983-86ae-4f68099cdd17")
+		(uuid "d1790830-3b49-44ed-8def-60d2f564aa6e")
 	)
 	(text "5 V boost TPS61023 (power strip)"
 		(exclude_from_sim no)
@@ -1422,7 +1422,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "2ddf0dde-a8ae-4f01-98bd-ea4ee3d552c8")
+		(uuid "5daf412b-575c-4233-bff7-5b6c447f5199")
 	)
 	(rectangle
 		(start 147.32 17.78)
@@ -1434,7 +1434,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "706455cc-2bd9-416e-9189-f222a307485d")
+		(uuid "4dcdd3ca-d740-4b78-9e8f-984621c5fc0b")
 	)
 	(text "Data level shifter"
 		(exclude_from_sim no)
@@ -1446,11 +1446,11 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "d6ef1552-1610-4ce7-948c-2c881a83d4df")
+		(uuid "c8e7f84e-84bf-497a-ad3e-f6fb151a79f3")
 	)
 	(rectangle
 		(start 233.68 17.78)
-		(end 511.81 139.70)
+		(end 370.84 139.70)
 		(stroke
 			(width 0)
 			(type dash)
@@ -1458,9 +1458,9 @@
 		(fill
 			(type none)
 		)
-		(uuid "3d416b38-e4a0-4ddf-837c-11d870fdc86c")
+		(uuid "0c6459f1-94c8-4e5c-968a-bca56a267796")
 	)
-	(text "Ring 1 (ENC1), clockwise from 6 o'clock"
+	(text "Key LEDs: keys 9, 10, 11, 12 (chain starts here)"
 		(exclude_from_sim no)
 		(at 236.22 21.59 0)
 		(effects
@@ -1470,11 +1470,11 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "21cce845-04b9-4798-99cc-486e9026c9ef")
+		(uuid "edca430e-0d4d-43b6-9bbc-e44dd80c0417")
 	)
 	(rectangle
-		(start 516.89 17.78)
-		(end 655.32 139.70)
+		(start 375.92 17.78)
+		(end 514.35 139.70)
 		(stroke
 			(width 0)
 			(type dash)
@@ -1482,11 +1482,11 @@
 		(fill
 			(type none)
 		)
-		(uuid "82152df3-421b-4202-bcd7-7b1426213137")
+		(uuid "aa1c5ddd-248e-4f83-a93f-b7fc38114ba6")
 	)
-	(text "Key LEDs, keys 1-4"
+	(text "Key LEDs: keys 8, 7, 6, 5"
 		(exclude_from_sim no)
-		(at 519.43 21.59 0)
+		(at 378.46 21.59 0)
 		(effects
 			(font
 				(size 2 2)
@@ -1494,7 +1494,31 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "559b297f-46ab-4038-9eac-ec33dd5f8b2a")
+		(uuid "57ef67a2-768b-4379-87ea-52c6920fe548")
+	)
+	(rectangle
+		(start 519.43 17.78)
+		(end 657.86 139.70)
+		(stroke
+			(width 0)
+			(type dash)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "46a2e8ea-a726-4f09-b194-918afd0080d2")
+	)
+	(text "Key LEDs: keys 1, 2, 3, 4"
+		(exclude_from_sim no)
+		(at 521.97 21.59 0)
+		(effects
+			(font
+				(size 2 2)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "21e71497-87ad-4c84-9816-41b6a3ddf5cd")
 	)
 	(rectangle
 		(start 12.70 144.78)
@@ -1506,9 +1530,9 @@
 		(fill
 			(type none)
 		)
-		(uuid "c0dd0ce2-39db-4ce9-abea-aaded7dfe5b1")
+		(uuid "9ad5b96e-3ea9-4a47-95ee-e72696844856")
 	)
-	(text "Ring 2 (ENC2), clockwise from 7 o'clock"
+	(text "Ring 2 (ENC2), counter-clockwise from 7 o'clock"
 		(exclude_from_sim no)
 		(at 15.24 148.59 0)
 		(effects
@@ -1518,11 +1542,11 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "df460129-7f0d-4ca9-9280-f32a5c32dccd")
+		(uuid "9ac45c9b-90d9-4828-9e1d-c39530dcd8ba")
 	)
 	(rectangle
 		(start 295.91 144.78)
-		(end 434.34 266.70)
+		(end 575.31 266.70)
 		(stroke
 			(width 0)
 			(type dash)
@@ -1530,9 +1554,9 @@
 		(fill
 			(type none)
 		)
-		(uuid "04104360-eb41-402c-8f08-1902621f542b")
+		(uuid "f8d6a456-44cf-4950-9f09-28bb3d5aeb44")
 	)
-	(text "Key LEDs, keys 8, 7, 6, 5"
+	(text "Ring 1 (ENC1), counter-clockwise from 4 o'clock"
 		(exclude_from_sim no)
 		(at 298.45 148.59 0)
 		(effects
@@ -1542,31 +1566,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "7180663e-d49c-4f6a-a632-6370441d3be2")
-	)
-	(rectangle
-		(start 439.42 144.78)
-		(end 577.85 266.70)
-		(stroke
-			(width 0)
-			(type dash)
-		)
-		(fill
-			(type none)
-		)
-		(uuid "a6f031fe-6795-4716-bc1d-4af859aa27d1")
-	)
-	(text "Key LEDs, keys 9-12"
-		(exclude_from_sim no)
-		(at 441.96 148.59 0)
-		(effects
-			(font
-				(size 2 2)
-				(bold yes)
-			)
-			(justify left bottom)
-		)
-		(uuid "40e73a78-d549-4859-a9f6-7a44dcccd940")
+		(uuid "fef43a27-f57f-40aa-9f3f-cf142b25385d")
 	)
 	(symbol
 		(lib_id "pad_v2_custom:TPS61023DRL")
@@ -1579,7 +1579,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "daf1a675-4f0e-46ed-900a-22739db57d46")
+		(uuid "ab612727-e681-4ab3-a124-a13420f99c15")
 		(property "Reference" "U401"
 			(at 40.64 34.29 0)
 			(show_name no)
@@ -1646,7 +1646,7 @@
 				)
 			)
 		)
-		(property "Note" "VSYS -> 5V_RGB; EN from a GPIO (true disconnect when low)"
+		(property "Note" "VSYS -> 5V_RGB; EN = RGB_EN (IO26), true disconnect when low"
 			(at 40.64 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1658,26 +1658,26 @@
 			)
 		)
 		(pin "3"
-			(uuid "7c0449b2-5027-4d88-aa05-8f2aaf215f43")
+			(uuid "32a9ccb9-6c25-4074-9b38-b72a318fcc22")
 		)
 		(pin "2"
-			(uuid "6b4d7d87-d727-4ceb-9df3-0a57000bf57a")
+			(uuid "e44220e6-36da-4d75-ae9f-cf0f2db4c339")
 		)
 		(pin "4"
-			(uuid "3e4f79ff-15c1-4805-b54d-9e67575e5c94")
+			(uuid "79cbf72e-f5f7-451c-b91a-9fc59fa1515f")
 		)
 		(pin "5"
-			(uuid "0df5ee0a-425d-491b-87ad-758b3fcd6f84")
+			(uuid "4765dac3-a10e-4eaf-88fc-8fd38c2460f7")
 		)
 		(pin "6"
-			(uuid "4945c566-598b-4109-9714-ac3a0fc34d58")
+			(uuid "09444232-b723-4d9b-8454-e7518a2fd14d")
 		)
 		(pin "1"
-			(uuid "754be166-a68d-4895-a317-05bd356eba7b")
+			(uuid "e1ccfa4b-7851-40b5-98bd-01e3040f6eba")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "U401")
 					(unit 1)
 				)
@@ -1695,7 +1695,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "983d84ca-b283-48fe-aaac-2ee5dcc67179")
+		(uuid "09bffa07-6445-43ff-83d1-2828a6a67d09")
 		(property "Reference" "L401"
 			(at 20.95 55.88 0)
 			(show_name no)
@@ -1774,14 +1774,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "3613bca0-bb8f-4adb-b99e-52fd271d9e46")
+			(uuid "f0321af6-b1a7-4527-8284-b965babf12ee")
 		)
 		(pin "2"
-			(uuid "4be24768-b910-4935-b4a2-bb57c6e468f7")
+			(uuid "611cd7a5-1a1c-4ab8-806a-03112ae2806d")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "L401")
 					(unit 1)
 				)
@@ -1799,7 +1799,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "85e8ba1a-4820-4ce8-a425-9315017ea63a")
+		(uuid "90e27f44-0de7-4622-8d87-10a761fbf2c3")
 		(property "Reference" "C401"
 			(at 24.89 71.12 0)
 			(show_name no)
@@ -1878,14 +1878,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "282c0244-8938-4f92-8932-d0075fc5b905")
+			(uuid "28133874-9768-495d-acfd-e6a8a487819e")
 		)
 		(pin "2"
-			(uuid "c2e28c8b-c31a-476b-b1a0-dcbfd767756d")
+			(uuid "370fe432-f93b-49c7-8f67-caedc1be8e96")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C401")
 					(unit 1)
 				)
@@ -1903,7 +1903,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "37e2ec1e-70e5-4b10-9b34-b32c7f932bc8")
+		(uuid "23e8cb46-372b-4bf9-bd09-6bbf58c20b7e")
 		(property "Reference" "C402"
 			(at 24.89 86.36 0)
 			(show_name no)
@@ -1982,14 +1982,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "b4a11625-18fa-4618-9057-5458a8e017f6")
+			(uuid "0ae455fc-1d88-455e-adbb-6561db854e57")
 		)
 		(pin "2"
-			(uuid "083d064e-385b-4c5a-b24b-e28ae65c58c5")
+			(uuid "1024d9d4-297e-425c-b09c-d62bf40a7d87")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C402")
 					(unit 1)
 				)
@@ -2007,7 +2007,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "30f6ce44-e966-413d-9e06-200e8956ce4d")
+		(uuid "e943a23d-50c1-4696-8b55-3c587e136fc9")
 		(property "Reference" "C403"
 			(at 24.89 101.60 0)
 			(show_name no)
@@ -2086,14 +2086,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "30ab65dc-3a0b-496b-9f6b-4de4ba971528")
+			(uuid "312ae0eb-801a-4524-b416-ca13a4896391")
 		)
 		(pin "2"
-			(uuid "37cc78fb-1100-4e9f-9a2a-11bc82b829d9")
+			(uuid "9c14eb58-b47a-4084-aa76-6bf1daa6bce9")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C403")
 					(unit 1)
 				)
@@ -2111,7 +2111,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "ddfcece6-b0f0-4326-a341-126322b57ada")
+		(uuid "ce3ccdd5-c192-4df2-baca-aa13433c5177")
 		(property "Reference" "R401"
 			(at 22.61 116.84 0)
 			(show_name no)
@@ -2190,14 +2190,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "e11cc334-c4b5-4b96-9cf9-352ee0f80989")
+			(uuid "093f850b-9540-4125-ae6e-713e9d276e68")
 		)
 		(pin "2"
-			(uuid "e8e69438-a17c-4bc4-8d50-3fc517edf45e")
+			(uuid "186f19bb-ac28-475d-bd85-39263bf9343f")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "R401")
 					(unit 1)
 				)
@@ -2215,7 +2215,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "d92e6103-a962-4987-a5ef-cadfb2d595d7")
+		(uuid "03ec734a-0567-429c-8d59-a53c784a6233")
 		(property "Reference" "R402"
 			(at 97.54 30.48 0)
 			(show_name no)
@@ -2294,14 +2294,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "a2b7f1b6-e5d2-410d-bcf1-bc6c4d45a36a")
+			(uuid "6c5549d1-84c4-444e-b2ab-e45f03c57a13")
 		)
 		(pin "2"
-			(uuid "3927f9b2-56ed-4d98-b1fb-2ece2ea7d00e")
+			(uuid "da96a13c-0781-409b-9969-b480f6367784")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "R402")
 					(unit 1)
 				)
@@ -2319,7 +2319,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "45780659-648d-435f-8da1-6b3293f8f3e2")
+		(uuid "bdaaac2e-34f7-41a4-9c3b-41a331f55ce6")
 		(property "Reference" "R403"
 			(at 97.54 45.72 0)
 			(show_name no)
@@ -2398,14 +2398,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "adfb90ae-a11b-44c6-9a3e-2489834d8540")
+			(uuid "17ca2e29-1c25-44c1-ad40-a10fb4a7309e")
 		)
 		(pin "2"
-			(uuid "db9388d5-cc4c-412f-a6ce-0ca9a7d04ea1")
+			(uuid "7e1f3124-84c2-4b7b-a254-a0748bea5ee0")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "R403")
 					(unit 1)
 				)
@@ -2423,7 +2423,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "d8e665d4-50c2-450a-a405-77b153724c1a")
+		(uuid "eb3c3c0e-251b-4432-bf5b-26c44e1769d3")
 		(property "Reference" "U402"
 			(at 182.88 36.83 0)
 			(show_name no)
@@ -2490,7 +2490,7 @@
 				)
 			)
 		)
-		(property "Note" "powered from 5V_RGB; OE to GND"
+		(property "Note" "input RGB_DATA (IO46); powered from 5V_RGB; OE (pin 1) to GND; place near the ESP32 / key 9"
 			(at 182.88 41.91 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2502,23 +2502,23 @@
 			)
 		)
 		(pin "1"
-			(uuid "0b12d98c-8cab-4a18-8a2b-829f02826767")
+			(uuid "256d7685-2d86-4c2a-9e80-cbd2bcd0b977")
 		)
 		(pin "2"
-			(uuid "f8851c8d-c173-44ab-ae8f-101a080ff928")
+			(uuid "52bcb18c-6e8a-479f-8897-836ebd47d93a")
 		)
 		(pin "3"
-			(uuid "36708fb0-630b-4148-97e6-ab7c422d1d39")
+			(uuid "a8ae3bca-4585-43a1-aa5e-70198ab06df3")
 		)
 		(pin "4"
-			(uuid "ce70b794-36b4-48dc-8df2-38d59a6749bd")
+			(uuid "47cee89f-c003-41ca-9672-2f271af521f8")
 		)
 		(pin "5"
-			(uuid "9586848a-0362-4bce-a90c-d389d0ac9952")
+			(uuid "16ae316d-3923-4fb5-b90a-7512c6628f13")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "U402")
 					(unit 1)
 				)
@@ -2536,7 +2536,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "3375de35-d620-4ea4-88a4-bdfdd6c4d7b6")
+		(uuid "0b8d4d8b-2e10-4909-859e-93d025ae3f0d")
 		(property "Reference" "C404"
 			(at 159.51 58.42 0)
 			(show_name no)
@@ -2615,14 +2615,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "191350d4-2cfb-4aa5-9a23-f0a4a9c050ea")
+			(uuid "1c733d07-abb5-40c9-8a34-82297f38a834")
 		)
 		(pin "2"
-			(uuid "3cef5f55-e719-4560-ba57-91717f898232")
+			(uuid "0b1973a1-3101-4631-ba31-2aa76bce5d5e")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C404")
 					(unit 1)
 				)
@@ -2640,7 +2640,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "fe2fa19f-e176-4b68-9c80-179713ef76fa")
+		(uuid "06656714-0523-4ab8-8684-2e3ff383c98d")
 		(property "Reference" "R404"
 			(at 157.23 73.66 0)
 			(show_name no)
@@ -2707,7 +2707,7 @@
 				)
 			)
 		)
-		(property "Note" "series, U402 output to D401 DIN"
+		(property "Note" "series, U402 output to D401 DIN (key 9 LED)"
 			(at 157.23 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2719,14 +2719,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "cd39b307-ba61-4965-bed0-328e3b5f204f")
+			(uuid "86a25a9a-7e94-4c10-9a0c-0888079fc1df")
 		)
 		(pin "2"
-			(uuid "2e2931ad-57fb-436d-8943-77210f05cf6b")
+			(uuid "642c6fad-1a43-44f9-ae48-a5d764a42c64")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "R404")
 					(unit 1)
 				)
@@ -2734,7 +2734,7 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:WS2812B-2020")
+		(lib_id "LED:SK6812MINI-E")
 		(at 246.38 35.56 0)
 		(unit 1)
 		(body_style 1)
@@ -2744,7 +2744,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "8d4e9e99-bafe-48bd-87f4-7aa7da42d961")
+		(uuid "8d42751f-527a-48ee-8637-5ac0b5cec250")
 		(property "Reference" "D401"
 			(at 256.54 34.29 0)
 			(show_name no)
@@ -2756,7 +2756,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "XL-2020RGBC-WS2812B"
+		(property "Value" "SK6812MINI-E"
 			(at 256.54 36.83 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2767,7 +2767,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
 			(at 246.38 35.56 0)
 			(hide yes)
 			(show_name no)
@@ -2778,7 +2778,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
 			(at 246.38 35.56 0)
 			(hide yes)
 			(show_name no)
@@ -2789,7 +2789,7 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+		(property "Description" "RGB LED with integrated controller"
 			(at 246.38 35.56 0)
 			(hide yes)
 			(show_name no)
@@ -2800,7 +2800,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C5349955"
+		(property "LCSC" "C5149201"
 			(at 246.38 35.56 0)
 			(hide yes)
 			(show_name no)
@@ -2811,7 +2811,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 0: ring 1, 6 o'clock"
+		(property "Note" "chain index 0: key 9 (bottom side, HAND-SOLDER)"
 			(at 256.54 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2823,20 +2823,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "ae83c781-29aa-49ce-af3f-70acb3fca515")
+			(uuid "3f56bfb1-538d-43f4-bd7a-08486395b124")
 		)
 		(pin "2"
-			(uuid "a060336f-f5cd-4212-a2f8-ab809a12d229")
+			(uuid "9560510c-78a8-477c-8b4e-95a2bf32b47a")
 		)
 		(pin "3"
-			(uuid "826e6949-1e4f-4f43-92cb-ee3ac8526040")
+			(uuid "5567c2c2-04ce-400f-95ff-ecd04bb028d1")
 		)
 		(pin "4"
-			(uuid "0c18956b-be12-4147-aa49-f6206a366f71")
+			(uuid "199f158c-fb92-4c06-9906-090150d782e3")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "D401")
 					(unit 1)
 				)
@@ -2854,7 +2854,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "8826f30e-e14d-4c7e-9a05-f099530baef7")
+		(uuid "bc35b7b4-4a5a-41d3-ae5c-58640617a70d")
 		(property "Reference" "C405"
 			(at 244.60 53.34 0)
 			(show_name no)
@@ -2933,14 +2933,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "32503d38-832c-4b2a-ad82-a562a0f5d602")
+			(uuid "daf1edc6-86cc-4190-9fc6-03a50350c14c")
 		)
 		(pin "2"
-			(uuid "929cc18d-15b1-4b8e-b5ef-4617c57c41fa")
+			(uuid "d74ab33b-c356-49fc-a8e0-ee26588740d6")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C405")
 					(unit 1)
 				)
@@ -2948,7 +2948,7 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:WS2812B-2020")
+		(lib_id "LED:SK6812MINI-E")
 		(at 246.38 73.66 0)
 		(unit 1)
 		(body_style 1)
@@ -2958,7 +2958,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "d7f1d52c-fa4b-48be-8bba-65bcaa534f61")
+		(uuid "6b929319-6a31-45a7-a7cc-b4ef0fd0162c")
 		(property "Reference" "D402"
 			(at 256.54 72.39 0)
 			(show_name no)
@@ -2970,7 +2970,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "XL-2020RGBC-WS2812B"
+		(property "Value" "SK6812MINI-E"
 			(at 256.54 74.93 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2981,7 +2981,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
 			(at 246.38 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -2992,7 +2992,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
 			(at 246.38 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -3003,7 +3003,7 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+		(property "Description" "RGB LED with integrated controller"
 			(at 246.38 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -3014,7 +3014,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C5349955"
+		(property "LCSC" "C5149201"
 			(at 246.38 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -3025,7 +3025,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 1: ring 1, 7 o'clock"
+		(property "Note" "chain index 1: key 10 (bottom side, HAND-SOLDER)"
 			(at 256.54 77.47 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3037,20 +3037,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "51563aed-79c2-4956-817d-65c694171f02")
+			(uuid "29b20a0e-7578-4460-b663-a035c7900c4c")
 		)
 		(pin "2"
-			(uuid "417f7ffd-883d-46e5-81de-310b6b6e62d9")
+			(uuid "e1f5dbf8-83de-4bae-bc04-d8c6f4fceb52")
 		)
 		(pin "3"
-			(uuid "c1230401-02d1-42c3-a1f1-7a0335688cd0")
+			(uuid "2ab3f78f-45c1-410f-9222-1fde8054bae2")
 		)
 		(pin "4"
-			(uuid "c17b2033-d892-419f-a185-6c023d44c083")
+			(uuid "d45da789-f3bc-48b3-93e9-c1915b0bfd1e")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "D402")
 					(unit 1)
 				)
@@ -3068,7 +3068,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "d400f65a-d8a6-4ec3-b51c-dafd7b1736fd")
+		(uuid "a2987b23-a9a4-4498-8471-b557332e8758")
 		(property "Reference" "C406"
 			(at 244.60 91.44 0)
 			(show_name no)
@@ -3147,14 +3147,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "91f46174-9b2b-481b-b011-98961f23e8b6")
+			(uuid "231a91e0-0aac-49d1-b039-2c6e0e1dc308")
 		)
 		(pin "2"
-			(uuid "48f18233-46de-4cae-ade3-b616bb1d8855")
+			(uuid "9ac7959d-8881-4b60-8c0c-ad832461d0d9")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C406")
 					(unit 1)
 				)
@@ -3162,7 +3162,7 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:WS2812B-2020")
+		(lib_id "LED:SK6812MINI-E")
 		(at 246.38 111.76 0)
 		(unit 1)
 		(body_style 1)
@@ -3172,7 +3172,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "0945e8e9-8a75-45aa-b1e9-ccd3332282b3")
+		(uuid "8d7cbc57-dd25-492b-9bd3-14a5d9c3cb25")
 		(property "Reference" "D403"
 			(at 256.54 110.49 0)
 			(show_name no)
@@ -3184,7 +3184,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "XL-2020RGBC-WS2812B"
+		(property "Value" "SK6812MINI-E"
 			(at 256.54 113.03 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3195,7 +3195,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
 			(at 246.38 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -3206,7 +3206,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
 			(at 246.38 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -3217,7 +3217,7 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+		(property "Description" "RGB LED with integrated controller"
 			(at 246.38 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -3228,7 +3228,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C5349955"
+		(property "LCSC" "C5149201"
 			(at 246.38 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -3239,7 +3239,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 2: ring 1, 8 o'clock"
+		(property "Note" "chain index 2: key 11 (bottom side, HAND-SOLDER)"
 			(at 256.54 115.57 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3251,20 +3251,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "84c05876-0b2b-4a01-a010-4b748b47525a")
+			(uuid "6a9fb876-e92d-45e7-bb18-80b3771bb04d")
 		)
 		(pin "2"
-			(uuid "90e91063-9fb0-42c0-a13d-0a5c271bf5a2")
+			(uuid "1718af1a-4507-4ac1-8687-f4e21f27e00f")
 		)
 		(pin "3"
-			(uuid "451272fd-3766-4ca3-9cfa-07fdad17ed80")
+			(uuid "28c3bf9d-ad7b-418b-8a21-dae023348d49")
 		)
 		(pin "4"
-			(uuid "73dbb3f6-6cdf-4564-9e30-1b53442c91aa")
+			(uuid "1a6e5ec8-3c90-4f05-8a9e-8a49517617be")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "D403")
 					(unit 1)
 				)
@@ -3282,7 +3282,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "4bdd558a-4741-40bd-907b-0fc458aa17e3")
+		(uuid "e3e8dafd-f8e6-4511-9426-bf816dd6844f")
 		(property "Reference" "C407"
 			(at 244.60 129.54 0)
 			(show_name no)
@@ -3361,14 +3361,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "12d8823b-c0ae-497b-b372-da56ec89f3f1")
+			(uuid "8df4275f-0756-46ef-b69e-65c008985539")
 		)
 		(pin "2"
-			(uuid "85968c4a-4aaf-4c0b-9dd8-4490b76c4dc7")
+			(uuid "24837701-7210-4d13-917e-b2de0cc9d122")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C407")
 					(unit 1)
 				)
@@ -3376,7 +3376,7 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:WS2812B-2020")
+		(lib_id "LED:SK6812MINI-E")
 		(at 316.23 35.56 0)
 		(unit 1)
 		(body_style 1)
@@ -3386,7 +3386,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "8118fa34-05da-456f-94ad-39cb91c12d3d")
+		(uuid "9f4ce732-6b07-4e07-a777-de3fd60744fb")
 		(property "Reference" "D404"
 			(at 326.39 34.29 0)
 			(show_name no)
@@ -3398,7 +3398,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "XL-2020RGBC-WS2812B"
+		(property "Value" "SK6812MINI-E"
 			(at 326.39 36.83 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3409,7 +3409,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
 			(at 316.23 35.56 0)
 			(hide yes)
 			(show_name no)
@@ -3420,7 +3420,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
 			(at 316.23 35.56 0)
 			(hide yes)
 			(show_name no)
@@ -3431,7 +3431,7 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+		(property "Description" "RGB LED with integrated controller"
 			(at 316.23 35.56 0)
 			(hide yes)
 			(show_name no)
@@ -3442,7 +3442,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C5349955"
+		(property "LCSC" "C5149201"
 			(at 316.23 35.56 0)
 			(hide yes)
 			(show_name no)
@@ -3453,7 +3453,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 3: ring 1, 9 o'clock"
+		(property "Note" "chain index 3: key 12 (bottom side, HAND-SOLDER)"
 			(at 326.39 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3465,20 +3465,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "86b99734-c5d7-4c51-9a7e-d843b554e4b7")
+			(uuid "4c6b9ee3-9ffa-4bdd-82bd-31eaa052e4c7")
 		)
 		(pin "2"
-			(uuid "1d301aee-3347-43bb-aaff-38caea832c15")
+			(uuid "0e6b847d-7973-404a-9e8e-0cdcef09886a")
 		)
 		(pin "3"
-			(uuid "1e73b07b-5728-49a8-9680-f8b86193d10f")
+			(uuid "006f02e0-11c1-4c33-bb65-f14ccdceb306")
 		)
 		(pin "4"
-			(uuid "9cfc0a73-a7f3-4fac-af18-efa3fbd85f17")
+			(uuid "c0875fda-22d3-4f0e-b550-cf021a273960")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "D404")
 					(unit 1)
 				)
@@ -3496,7 +3496,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "73dfe620-6c7b-4755-8905-71cd4684f19f")
+		(uuid "8ff31f3c-5621-440e-9e83-2b660b8bf541")
 		(property "Reference" "C408"
 			(at 315.72 53.34 0)
 			(show_name no)
@@ -3575,14 +3575,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "7d9c7f80-abca-466e-bbb8-b8fef6abaa9b")
+			(uuid "e4d870be-87cf-4265-858b-f452b3fbca93")
 		)
 		(pin "2"
-			(uuid "141bd1cd-355d-4241-9c6e-2bdfd2b75dff")
+			(uuid "85e65c13-a3e3-44e3-b9e5-dd8e83a735c5")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C408")
 					(unit 1)
 				)
@@ -3590,8 +3590,8 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:WS2812B-2020")
-		(at 316.23 73.66 0)
+		(lib_id "LED:SK6812MINI-E")
+		(at 388.62 35.56 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3600,9 +3600,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "8bac6305-46eb-4c00-ac07-1d8ce74fb658")
+		(uuid "ce0dca90-5453-41e2-8f7f-9e35f810f727")
 		(property "Reference" "D405"
-			(at 326.39 72.39 0)
+			(at 398.78 34.29 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3612,8 +3612,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "XL-2020RGBC-WS2812B"
-			(at 326.39 74.93 0)
+		(property "Value" "SK6812MINI-E"
+			(at 398.78 36.83 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3623,8 +3623,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
-			(at 316.23 73.66 0)
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
+			(at 388.62 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3634,8 +3634,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
-			(at 316.23 73.66 0)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
+			(at 388.62 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3645,8 +3645,8 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
-			(at 316.23 73.66 0)
+		(property "Description" "RGB LED with integrated controller"
+			(at 388.62 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3656,8 +3656,8 @@
 				)
 			)
 		)
-		(property "LCSC" "C5349955"
-			(at 316.23 73.66 0)
+		(property "LCSC" "C5149201"
+			(at 388.62 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3667,8 +3667,8 @@
 				)
 			)
 		)
-		(property "Note" "chain index 4: ring 1, 10 o'clock"
-			(at 326.39 77.47 0)
+		(property "Note" "chain index 4: key 8 (bottom side, HAND-SOLDER)"
+			(at 398.78 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3679,20 +3679,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "09951350-8e4d-4149-ba3f-dda4db83c35c")
+			(uuid "01ccf9c4-5883-45e3-aca8-94de154e2724")
 		)
 		(pin "2"
-			(uuid "adf7bcfc-ade6-4682-9d2b-51f59e00db59")
+			(uuid "b9c6ab26-a406-4749-9d26-223459ca6c98")
 		)
 		(pin "3"
-			(uuid "bd6853e2-b329-4d2c-9ed0-cfb9d205a05d")
+			(uuid "79d853ca-fafb-41ef-a85b-e934b2701d47")
 		)
 		(pin "4"
-			(uuid "f432f30e-cbad-49be-a289-2825a0649793")
+			(uuid "c98cbfb4-227d-43fb-8ee4-b57b001ebdfc")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "D405")
 					(unit 1)
 				)
@@ -3701,7 +3701,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 311.15 92.71 0)
+		(at 383.54 54.61 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3710,9 +3710,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "7f31d180-dd6b-4b25-966a-6daa224940f3")
+		(uuid "b7ef53b5-86df-46bf-869a-0ee706e9c47c")
 		(property "Reference" "C409"
-			(at 315.72 91.44 0)
+			(at 388.11 53.34 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3723,7 +3723,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 315.72 93.98 0)
+			(at 388.11 55.88 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3734,7 +3734,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 311.15 92.71 0)
+			(at 383.54 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3745,7 +3745,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 311.15 92.71 0)
+			(at 383.54 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3756,7 +3756,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 311.15 92.71 0)
+			(at 383.54 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3767,7 +3767,7 @@
 			)
 		)
 		(property "LCSC" "C1525"
-			(at 311.15 92.71 0)
+			(at 383.54 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3778,7 +3778,7 @@
 			)
 		)
 		(property "Note" "at D405 VDD (top side)"
-			(at 315.72 96.52 0)
+			(at 388.11 58.42 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3789,14 +3789,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "90b220dc-28e8-460e-a8de-b7b77d6803e9")
+			(uuid "2b679017-9730-4682-a30c-4269860fd8cf")
 		)
 		(pin "2"
-			(uuid "af15f126-a51c-4715-aae0-60ffd189400f")
+			(uuid "5e6c6866-5832-4dd2-aa58-0510900ca56e")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C409")
 					(unit 1)
 				)
@@ -3804,8 +3804,8 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:WS2812B-2020")
-		(at 316.23 111.76 0)
+		(lib_id "LED:SK6812MINI-E")
+		(at 388.62 73.66 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3814,9 +3814,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "ac254aa9-0603-454f-9973-7ae82aca96e4")
+		(uuid "94e3b9f6-17ef-45c4-8bd2-37a518b1ca98")
 		(property "Reference" "D406"
-			(at 326.39 110.49 0)
+			(at 398.78 72.39 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3826,8 +3826,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "XL-2020RGBC-WS2812B"
-			(at 326.39 113.03 0)
+		(property "Value" "SK6812MINI-E"
+			(at 398.78 74.93 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3837,8 +3837,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
-			(at 316.23 111.76 0)
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
+			(at 388.62 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3848,8 +3848,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
-			(at 316.23 111.76 0)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
+			(at 388.62 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3859,8 +3859,8 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
-			(at 316.23 111.76 0)
+		(property "Description" "RGB LED with integrated controller"
+			(at 388.62 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3870,8 +3870,8 @@
 				)
 			)
 		)
-		(property "LCSC" "C5349955"
-			(at 316.23 111.76 0)
+		(property "LCSC" "C5149201"
+			(at 388.62 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3881,8 +3881,8 @@
 				)
 			)
 		)
-		(property "Note" "chain index 5: ring 1, 11 o'clock"
-			(at 326.39 115.57 0)
+		(property "Note" "chain index 5: key 7 (bottom side, HAND-SOLDER)"
+			(at 398.78 77.47 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3893,20 +3893,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "24bb7491-1d11-4d3f-94db-fea774913d94")
+			(uuid "d17534fe-0765-49a0-ace5-d6ca188361fe")
 		)
 		(pin "2"
-			(uuid "fb6647e7-fa22-46d6-b318-dad1dbda6d22")
+			(uuid "7e294150-c767-4579-aa37-db3ce2d9c54f")
 		)
 		(pin "3"
-			(uuid "7d77921b-f764-4198-8426-6a44564873d5")
+			(uuid "893199c1-57f9-4047-9d6f-e9ea5d2051e8")
 		)
 		(pin "4"
-			(uuid "0fd430e3-718b-4ebf-b747-eac0f0c3e36a")
+			(uuid "5f6f295d-431b-4665-b987-a50fcf9d4e5a")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "D406")
 					(unit 1)
 				)
@@ -3915,7 +3915,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 311.15 130.81 0)
+		(at 383.54 92.71 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3924,9 +3924,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "af4bf90b-4354-4281-ab69-7ca7ea464940")
+		(uuid "d754deb7-40f4-4ae9-91aa-72b55c16b2ba")
 		(property "Reference" "C410"
-			(at 315.72 129.54 0)
+			(at 388.11 91.44 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3937,7 +3937,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 315.72 132.08 0)
+			(at 388.11 93.98 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3948,7 +3948,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 311.15 130.81 0)
+			(at 383.54 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3959,7 +3959,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 311.15 130.81 0)
+			(at 383.54 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3970,7 +3970,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 311.15 130.81 0)
+			(at 383.54 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3981,7 +3981,7 @@
 			)
 		)
 		(property "LCSC" "C1525"
-			(at 311.15 130.81 0)
+			(at 383.54 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3992,7 +3992,7 @@
 			)
 		)
 		(property "Note" "at D406 VDD (top side)"
-			(at 315.72 134.62 0)
+			(at 388.11 96.52 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4003,14 +4003,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "c61de82a-e923-47dd-9921-0cca1f212538")
+			(uuid "3c4a8081-76d8-4279-b505-600913e949b6")
 		)
 		(pin "2"
-			(uuid "a6f3807e-ebfd-4c6a-b6aa-837bf7246161")
+			(uuid "0a15f2d7-9db0-479a-8be7-2add0f79e44c")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C410")
 					(unit 1)
 				)
@@ -4018,8 +4018,8 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:WS2812B-2020")
-		(at 386.08 35.56 0)
+		(lib_id "LED:SK6812MINI-E")
+		(at 388.62 111.76 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4028,9 +4028,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "dc77484b-095d-4b52-9b24-e0ac6a5de3b2")
+		(uuid "f04d2437-91ba-422a-84ad-1683677e0804")
 		(property "Reference" "D407"
-			(at 396.24 34.29 0)
+			(at 398.78 110.49 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4040,8 +4040,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "XL-2020RGBC-WS2812B"
-			(at 396.24 36.83 0)
+		(property "Value" "SK6812MINI-E"
+			(at 398.78 113.03 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4051,8 +4051,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
-			(at 386.08 35.56 0)
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
+			(at 388.62 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4062,8 +4062,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
-			(at 386.08 35.56 0)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
+			(at 388.62 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4073,8 +4073,8 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
-			(at 386.08 35.56 0)
+		(property "Description" "RGB LED with integrated controller"
+			(at 388.62 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4084,8 +4084,8 @@
 				)
 			)
 		)
-		(property "LCSC" "C5349955"
-			(at 386.08 35.56 0)
+		(property "LCSC" "C5149201"
+			(at 388.62 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4095,8 +4095,8 @@
 				)
 			)
 		)
-		(property "Note" "chain index 6: ring 1, 12 o'clock"
-			(at 396.24 39.37 0)
+		(property "Note" "chain index 6: key 6 (bottom side, HAND-SOLDER)"
+			(at 398.78 115.57 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4107,20 +4107,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "f7db330e-4d7d-4a30-a08f-cb5839816a68")
+			(uuid "b064b39a-9f2a-4e9a-a235-8e1808cda2a4")
 		)
 		(pin "2"
-			(uuid "7ec3620d-3b56-4d17-a425-350facd169d2")
+			(uuid "523b4d4e-74df-4620-a41d-74b549d070db")
 		)
 		(pin "3"
-			(uuid "a249ede0-03ad-4a05-a1c2-4812047ad3c7")
+			(uuid "fa9d5a87-9f3c-4245-903c-20808effc8df")
 		)
 		(pin "4"
-			(uuid "5b017171-1744-4450-8170-48fff66020b7")
+			(uuid "eb50b2e2-96b7-416c-a3c6-53fe89b76e47")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "D407")
 					(unit 1)
 				)
@@ -4129,7 +4129,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 381.00 54.61 0)
+		(at 383.54 130.81 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4138,9 +4138,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "c9576733-c66e-4eba-9a5e-55a2a863aac9")
+		(uuid "4ca45522-5fc0-4bd9-a8df-47fba71ea122")
 		(property "Reference" "C411"
-			(at 385.57 53.34 0)
+			(at 388.11 129.54 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4151,7 +4151,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 385.57 55.88 0)
+			(at 388.11 132.08 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4162,7 +4162,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 381.00 54.61 0)
+			(at 383.54 130.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4173,7 +4173,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 381.00 54.61 0)
+			(at 383.54 130.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4184,7 +4184,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 381.00 54.61 0)
+			(at 383.54 130.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4195,7 +4195,7 @@
 			)
 		)
 		(property "LCSC" "C1525"
-			(at 381.00 54.61 0)
+			(at 383.54 130.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4206,7 +4206,7 @@
 			)
 		)
 		(property "Note" "at D407 VDD (top side)"
-			(at 385.57 58.42 0)
+			(at 388.11 134.62 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4217,14 +4217,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "4db3fc34-5a0e-4961-a09b-7da267439aed")
+			(uuid "eb8ad0e2-72d9-47df-b9c0-205a58d509e2")
 		)
 		(pin "2"
-			(uuid "9b21fb5b-fada-4483-849c-ec86a07dabfb")
+			(uuid "960a565e-abc0-41af-a41e-4b72ea58474d")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C411")
 					(unit 1)
 				)
@@ -4232,8 +4232,8 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:WS2812B-2020")
-		(at 386.08 73.66 0)
+		(lib_id "LED:SK6812MINI-E")
+		(at 459.74 35.56 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4242,9 +4242,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "ab870509-dedd-4c11-874d-bf1254e91599")
+		(uuid "1ea4a3ef-f1c6-4dc9-b6ba-1a4d02daf89a")
 		(property "Reference" "D408"
-			(at 396.24 72.39 0)
+			(at 469.90 34.29 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4254,8 +4254,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "XL-2020RGBC-WS2812B"
-			(at 396.24 74.93 0)
+		(property "Value" "SK6812MINI-E"
+			(at 469.90 36.83 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4265,8 +4265,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
-			(at 386.08 73.66 0)
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
+			(at 459.74 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4276,8 +4276,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
-			(at 386.08 73.66 0)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
+			(at 459.74 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4287,8 +4287,8 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
-			(at 386.08 73.66 0)
+		(property "Description" "RGB LED with integrated controller"
+			(at 459.74 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4298,8 +4298,8 @@
 				)
 			)
 		)
-		(property "LCSC" "C5349955"
-			(at 386.08 73.66 0)
+		(property "LCSC" "C5149201"
+			(at 459.74 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4309,8 +4309,8 @@
 				)
 			)
 		)
-		(property "Note" "chain index 7: ring 1, 1 o'clock"
-			(at 396.24 77.47 0)
+		(property "Note" "chain index 7: key 5 (bottom side, HAND-SOLDER)"
+			(at 469.90 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4321,20 +4321,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "c2ae3227-8934-43a5-8c24-8e4a34f94c4a")
+			(uuid "8da1ceae-ae24-4c0c-8ecb-a05a9592943d")
 		)
 		(pin "2"
-			(uuid "1078896a-34a1-4be2-b631-82c132b3d6d8")
+			(uuid "138638eb-387c-4368-9482-2b0cbf4731db")
 		)
 		(pin "3"
-			(uuid "21be62fc-15ca-4380-b021-02b68255e819")
+			(uuid "f30513b7-cd8c-4547-954c-e5bb167d74ea")
 		)
 		(pin "4"
-			(uuid "a1217fc3-0f8b-4f7e-8a09-afe1a16d61aa")
+			(uuid "e88becbd-6d7a-4805-bb81-1074e75cdb8a")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "D408")
 					(unit 1)
 				)
@@ -4343,7 +4343,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 381.00 92.71 0)
+		(at 453.39 54.61 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4352,9 +4352,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "4d9f8ecc-2f4e-4343-93ed-6148a2cb3382")
+		(uuid "c0a46d66-119a-4114-8dea-62878e619e0d")
 		(property "Reference" "C412"
-			(at 385.57 91.44 0)
+			(at 457.96 53.34 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4365,7 +4365,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 385.57 93.98 0)
+			(at 457.96 55.88 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4376,7 +4376,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 381.00 92.71 0)
+			(at 453.39 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4387,7 +4387,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 381.00 92.71 0)
+			(at 453.39 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4398,7 +4398,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 381.00 92.71 0)
+			(at 453.39 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4409,7 +4409,7 @@
 			)
 		)
 		(property "LCSC" "C1525"
-			(at 381.00 92.71 0)
+			(at 453.39 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4420,7 +4420,7 @@
 			)
 		)
 		(property "Note" "at D408 VDD (top side)"
-			(at 385.57 96.52 0)
+			(at 457.96 58.42 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4431,14 +4431,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "c65cb820-4566-4618-aeb8-477b86d729b3")
+			(uuid "de26e0c5-2492-4484-a100-d946f23ed390")
 		)
 		(pin "2"
-			(uuid "aa249f8b-9aec-4926-a396-aea71c3d7d42")
+			(uuid "6f83f467-cf02-4226-b9b6-74c7c656b261")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C412")
 					(unit 1)
 				)
@@ -4446,8 +4446,8 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:WS2812B-2020")
-		(at 386.08 111.76 0)
+		(lib_id "LED:SK6812MINI-E")
+		(at 532.13 35.56 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4456,9 +4456,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "a03da698-2476-48ed-8c32-e498b456f20e")
+		(uuid "76b7f861-1399-42f9-bbae-568a1c95831a")
 		(property "Reference" "D409"
-			(at 396.24 110.49 0)
+			(at 542.29 34.29 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4468,8 +4468,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "XL-2020RGBC-WS2812B"
-			(at 396.24 113.03 0)
+		(property "Value" "SK6812MINI-E"
+			(at 542.29 36.83 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4479,8 +4479,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
-			(at 386.08 111.76 0)
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
+			(at 532.13 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4490,8 +4490,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
-			(at 386.08 111.76 0)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
+			(at 532.13 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4501,8 +4501,8 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
-			(at 386.08 111.76 0)
+		(property "Description" "RGB LED with integrated controller"
+			(at 532.13 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4512,8 +4512,8 @@
 				)
 			)
 		)
-		(property "LCSC" "C5349955"
-			(at 386.08 111.76 0)
+		(property "LCSC" "C5149201"
+			(at 532.13 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4523,8 +4523,8 @@
 				)
 			)
 		)
-		(property "Note" "chain index 8: ring 1, 2 o'clock"
-			(at 396.24 115.57 0)
+		(property "Note" "chain index 8: key 1 (bottom side, HAND-SOLDER)"
+			(at 542.29 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4535,20 +4535,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "38e1fbe3-38b3-44fb-a147-f3737ff815b0")
+			(uuid "c1db62d5-8f44-49ac-8bd6-1517161bd76b")
 		)
 		(pin "2"
-			(uuid "142d8e8b-5b26-49ba-a192-d5d3759ea40f")
+			(uuid "50a782a6-8c10-4c6e-928f-5f9b106135d7")
 		)
 		(pin "3"
-			(uuid "669f2443-5094-4459-8755-26e7bb1c00a6")
+			(uuid "73f0bfe8-a2c0-407a-aa67-a462306b9075")
 		)
 		(pin "4"
-			(uuid "ea990a4a-b1fd-4019-811f-19efff490621")
+			(uuid "4efde917-8076-4142-8016-67fde63727d2")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "D409")
 					(unit 1)
 				)
@@ -4557,7 +4557,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 381.00 130.81 0)
+		(at 527.05 54.61 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4566,9 +4566,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "e8e7b645-2b19-49e7-9e97-9dc5ad1cb4be")
+		(uuid "ed256eb4-54e5-495a-93bd-fa9c21eccb60")
 		(property "Reference" "C413"
-			(at 385.57 129.54 0)
+			(at 531.62 53.34 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4579,7 +4579,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 385.57 132.08 0)
+			(at 531.62 55.88 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4590,7 +4590,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 381.00 130.81 0)
+			(at 527.05 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4601,7 +4601,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 381.00 130.81 0)
+			(at 527.05 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4612,7 +4612,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 381.00 130.81 0)
+			(at 527.05 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4623,7 +4623,7 @@
 			)
 		)
 		(property "LCSC" "C1525"
-			(at 381.00 130.81 0)
+			(at 527.05 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4634,7 +4634,7 @@
 			)
 		)
 		(property "Note" "at D409 VDD (top side)"
-			(at 385.57 134.62 0)
+			(at 531.62 58.42 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4645,14 +4645,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "e4e7d6d2-92ac-4066-b2eb-e56c080abc12")
+			(uuid "1de29904-b93f-4fdc-a0eb-2c15564c9427")
 		)
 		(pin "2"
-			(uuid "d7d73028-a73e-41ac-85c2-0737a86f24b0")
+			(uuid "6b7f3f6c-7689-420a-812d-8100a74192d8")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C413")
 					(unit 1)
 				)
@@ -4660,8 +4660,8 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:WS2812B-2020")
-		(at 457.20 35.56 0)
+		(lib_id "LED:SK6812MINI-E")
+		(at 532.13 73.66 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4670,9 +4670,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "db5a7f44-a3e7-4bc4-b458-5145d68b314e")
+		(uuid "cab324e2-65be-4640-a68d-d34f7bbe51bf")
 		(property "Reference" "D410"
-			(at 467.36 34.29 0)
+			(at 542.29 72.39 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4682,8 +4682,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "XL-2020RGBC-WS2812B"
-			(at 467.36 36.83 0)
+		(property "Value" "SK6812MINI-E"
+			(at 542.29 74.93 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4693,8 +4693,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
-			(at 457.20 35.56 0)
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
+			(at 532.13 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4704,8 +4704,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
-			(at 457.20 35.56 0)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
+			(at 532.13 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4715,8 +4715,8 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
-			(at 457.20 35.56 0)
+		(property "Description" "RGB LED with integrated controller"
+			(at 532.13 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4726,8 +4726,8 @@
 				)
 			)
 		)
-		(property "LCSC" "C5349955"
-			(at 457.20 35.56 0)
+		(property "LCSC" "C5149201"
+			(at 532.13 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4737,8 +4737,8 @@
 				)
 			)
 		)
-		(property "Note" "chain index 9: ring 1, 3 o'clock"
-			(at 467.36 39.37 0)
+		(property "Note" "chain index 9: key 2 (bottom side, HAND-SOLDER)"
+			(at 542.29 77.47 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4749,20 +4749,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "388fec5b-1819-479d-a552-e1119934314d")
+			(uuid "da74cde6-90ee-4b8d-88ed-b12dbd6cb7a6")
 		)
 		(pin "2"
-			(uuid "b1dcfe86-8c5f-473e-81fd-63476f459a08")
+			(uuid "5ed0f293-994b-4f39-8e15-5ff318866980")
 		)
 		(pin "3"
-			(uuid "5f356b14-ca56-4f9d-aa90-bb46ea2a801b")
+			(uuid "d90f827e-a9dd-4f60-b185-ab0f4b07c121")
 		)
 		(pin "4"
-			(uuid "40b4cef8-c511-4f8c-bc3e-3b0ac4e0a0a6")
+			(uuid "c8a6a20b-0105-4e36-a47f-e819748623b2")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "D410")
 					(unit 1)
 				)
@@ -4771,7 +4771,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 450.85 54.61 0)
+		(at 527.05 92.71 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4780,9 +4780,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "8ae4bc64-3872-4954-9a6b-bd694489e0c3")
+		(uuid "53724ebe-f68a-4498-8c61-eb053b9ea754")
 		(property "Reference" "C414"
-			(at 455.42 53.34 0)
+			(at 531.62 91.44 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4793,7 +4793,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 455.42 55.88 0)
+			(at 531.62 93.98 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4804,7 +4804,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 450.85 54.61 0)
+			(at 527.05 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4815,7 +4815,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 450.85 54.61 0)
+			(at 527.05 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4826,7 +4826,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 450.85 54.61 0)
+			(at 527.05 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4837,7 +4837,7 @@
 			)
 		)
 		(property "LCSC" "C1525"
-			(at 450.85 54.61 0)
+			(at 527.05 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4848,7 +4848,7 @@
 			)
 		)
 		(property "Note" "at D410 VDD (top side)"
-			(at 455.42 58.42 0)
+			(at 531.62 96.52 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4859,14 +4859,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "04fe421c-022d-405e-a047-7a56d9199d45")
+			(uuid "418af4bf-12bb-4987-bac9-be0fe44d8d41")
 		)
 		(pin "2"
-			(uuid "1716c578-9e9b-4eba-8cd4-84eb093b1e99")
+			(uuid "d9de5aee-e424-4e46-b586-15f3d216152f")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C414")
 					(unit 1)
 				)
@@ -4874,8 +4874,8 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:WS2812B-2020")
-		(at 457.20 73.66 0)
+		(lib_id "LED:SK6812MINI-E")
+		(at 532.13 111.76 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4884,9 +4884,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "ab1df4f3-d778-41a0-aec6-ea94ea797f80")
+		(uuid "482cdd13-8e59-442b-baaf-a19a53d5282d")
 		(property "Reference" "D411"
-			(at 467.36 72.39 0)
+			(at 542.29 110.49 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4896,8 +4896,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "XL-2020RGBC-WS2812B"
-			(at 467.36 74.93 0)
+		(property "Value" "SK6812MINI-E"
+			(at 542.29 113.03 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4907,8 +4907,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
-			(at 457.20 73.66 0)
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
+			(at 532.13 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4918,8 +4918,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
-			(at 457.20 73.66 0)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
+			(at 532.13 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4929,8 +4929,8 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
-			(at 457.20 73.66 0)
+		(property "Description" "RGB LED with integrated controller"
+			(at 532.13 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4940,8 +4940,8 @@
 				)
 			)
 		)
-		(property "LCSC" "C5349955"
-			(at 457.20 73.66 0)
+		(property "LCSC" "C5149201"
+			(at 532.13 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4951,8 +4951,8 @@
 				)
 			)
 		)
-		(property "Note" "chain index 10: ring 1, 4 o'clock"
-			(at 467.36 77.47 0)
+		(property "Note" "chain index 10: key 3 (bottom side, HAND-SOLDER)"
+			(at 542.29 115.57 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4963,20 +4963,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "dc586703-aed8-4f4c-ba86-af3563fe887e")
+			(uuid "509d76ba-ea53-4b91-a119-b7a17c38b0bb")
 		)
 		(pin "2"
-			(uuid "8390841d-75f4-4ba4-a270-8925f1238b99")
+			(uuid "79edeac1-9df6-4b68-9ea9-bb7f72b321f0")
 		)
 		(pin "3"
-			(uuid "a971eaed-cb64-4155-b63f-5e72c6638fcd")
+			(uuid "d0e8aded-89c7-4873-aa80-0058530e02cf")
 		)
 		(pin "4"
-			(uuid "85ba96dc-deb8-4a44-a60a-8aa71d43186d")
+			(uuid "83d0b8c0-8683-48b5-af48-cdd950acfea6")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "D411")
 					(unit 1)
 				)
@@ -4985,7 +4985,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 450.85 92.71 0)
+		(at 527.05 130.81 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4994,9 +4994,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "5aaac145-80ff-4f14-950d-e8fb3e202856")
+		(uuid "ebcf51fd-f9ac-4555-a847-194bffdfc766")
 		(property "Reference" "C415"
-			(at 455.42 91.44 0)
+			(at 531.62 129.54 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5007,7 +5007,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 455.42 93.98 0)
+			(at 531.62 132.08 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5018,7 +5018,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 450.85 92.71 0)
+			(at 527.05 130.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5029,7 +5029,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 450.85 92.71 0)
+			(at 527.05 130.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5040,7 +5040,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 450.85 92.71 0)
+			(at 527.05 130.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5051,7 +5051,7 @@
 			)
 		)
 		(property "LCSC" "C1525"
-			(at 450.85 92.71 0)
+			(at 527.05 130.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5062,7 +5062,7 @@
 			)
 		)
 		(property "Note" "at D411 VDD (top side)"
-			(at 455.42 96.52 0)
+			(at 531.62 134.62 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5073,14 +5073,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "29436c26-6273-481b-bf64-b17881351f61")
+			(uuid "ade5a761-5aea-4d56-8197-96b118d9d464")
 		)
 		(pin "2"
-			(uuid "6fb0ecf8-071d-49ad-8b54-55bb1245f459")
+			(uuid "7cf60624-2ed8-437a-ae56-e39fd6cd52a3")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C415")
 					(unit 1)
 				)
@@ -5088,8 +5088,8 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:WS2812B-2020")
-		(at 457.20 111.76 0)
+		(lib_id "LED:SK6812MINI-E")
+		(at 603.25 35.56 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5098,9 +5098,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "ce72651a-22d0-4eb0-977e-21d958b69c7d")
+		(uuid "d9475c5d-5b29-44f9-9231-d8e021fbc6e1")
 		(property "Reference" "D412"
-			(at 467.36 110.49 0)
+			(at 613.41 34.29 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5110,8 +5110,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "XL-2020RGBC-WS2812B"
-			(at 467.36 113.03 0)
+		(property "Value" "SK6812MINI-E"
+			(at 613.41 36.83 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5121,8 +5121,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
-			(at 457.20 111.76 0)
+		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
+			(at 603.25 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5132,8 +5132,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
-			(at 457.20 111.76 0)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
+			(at 603.25 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5143,8 +5143,8 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
-			(at 457.20 111.76 0)
+		(property "Description" "RGB LED with integrated controller"
+			(at 603.25 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5154,8 +5154,8 @@
 				)
 			)
 		)
-		(property "LCSC" "C5349955"
-			(at 457.20 111.76 0)
+		(property "LCSC" "C5149201"
+			(at 603.25 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5165,8 +5165,8 @@
 				)
 			)
 		)
-		(property "Note" "chain index 11: ring 1, 5 o'clock"
-			(at 467.36 115.57 0)
+		(property "Note" "chain index 11: key 4 (bottom side, HAND-SOLDER)"
+			(at 613.41 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5177,20 +5177,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "79fa907b-b214-4b9c-b3cd-0d5c40131873")
+			(uuid "fa3d1b94-4395-4a29-abb8-d4b28410da6f")
 		)
 		(pin "2"
-			(uuid "aa391bc8-eebe-4e31-818c-a1dece4ca505")
+			(uuid "f8a1c480-48eb-4dfe-a75a-928a1b4332e3")
 		)
 		(pin "3"
-			(uuid "4ea11489-7202-4d64-8b4b-1c684e2c3960")
+			(uuid "61af0d81-b8c6-4d62-bf0b-a4c85896fc5e")
 		)
 		(pin "4"
-			(uuid "46ef4206-f4aa-43c2-a218-9b1c310ad81f")
+			(uuid "6a5d5577-05d8-4280-b4b7-77295094ec42")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "D412")
 					(unit 1)
 				)
@@ -5199,7 +5199,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 450.85 130.81 0)
+		(at 596.90 54.61 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5208,9 +5208,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "aaeca447-59b3-45c6-bd5d-22bd9aeef947")
+		(uuid "32e01902-fedf-4c8d-9a2d-13c6d05a4dcd")
 		(property "Reference" "C416"
-			(at 455.42 129.54 0)
+			(at 601.47 53.34 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5221,7 +5221,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 455.42 132.08 0)
+			(at 601.47 55.88 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5232,7 +5232,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 450.85 130.81 0)
+			(at 596.90 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5243,7 +5243,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 450.85 130.81 0)
+			(at 596.90 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5254,7 +5254,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 450.85 130.81 0)
+			(at 596.90 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5265,7 +5265,7 @@
 			)
 		)
 		(property "LCSC" "C1525"
-			(at 450.85 130.81 0)
+			(at 596.90 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5276,7 +5276,7 @@
 			)
 		)
 		(property "Note" "at D412 VDD (top side)"
-			(at 455.42 134.62 0)
+			(at 601.47 58.42 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5287,871 +5287,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "44b1303b-1d1e-427c-8fc5-8c523f360650")
+			(uuid "032256e6-ffd3-4d36-8ae5-cf387785fe5d")
 		)
 		(pin "2"
-			(uuid "ec8c1668-5464-4610-a0e1-979d47cb8136")
+			(uuid "59bd6453-a5e0-4975-8ecb-e0319432f988")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C416")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "LED:SK6812MINI-E")
-		(at 529.59 35.56 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced no)
-		(uuid "c6f0ffea-29dc-465e-a668-138bf00adbe0")
-		(property "Reference" "D413"
-			(at 539.75 34.29 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "SK6812MINI-E"
-			(at 539.75 36.83 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
-			(at 529.59 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
-			(at 529.59 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "RGB LED with integrated controller"
-			(at 529.59 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C5149201"
-			(at 529.59 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Note" "chain index 12: key 1 (bottom side, HAND-SOLDER)"
-			(at 539.75 39.37 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.0 1.0)
-				)
-				(justify left)
-			)
-		)
-		(pin "1"
-			(uuid "8cec76ed-958a-4ed8-9ea6-84afb9dd17f1")
-		)
-		(pin "2"
-			(uuid "1c530815-0636-4337-9454-7f12dd5b4931")
-		)
-		(pin "3"
-			(uuid "d156eda5-b78b-4b99-b435-a9f0901a2d49")
-		)
-		(pin "4"
-			(uuid "055d3e76-f1a1-42f0-be60-16b749d2a82c")
-		)
-		(instances
-			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D413")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 524.51 54.61 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced no)
-		(uuid "70d33d0b-d13f-4258-a456-1b31bd8a559d")
-		(property "Reference" "C417"
-			(at 529.08 53.34 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100nF"
-			(at 529.08 55.88 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 524.51 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 524.51 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 524.51 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C1525"
-			(at 524.51 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Note" "at D413 VDD (top side)"
-			(at 529.08 58.42 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.0 1.0)
-				)
-				(justify left)
-			)
-		)
-		(pin "1"
-			(uuid "1b142df0-223f-45e3-a5f0-122a4ac83afe")
-		)
-		(pin "2"
-			(uuid "11e557c9-63f7-4f82-9f1e-e5225a897500")
-		)
-		(instances
-			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C417")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "LED:SK6812MINI-E")
-		(at 529.59 73.66 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced no)
-		(uuid "d575560f-6cad-426f-9f11-6751b24cd4bd")
-		(property "Reference" "D414"
-			(at 539.75 72.39 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "SK6812MINI-E"
-			(at 539.75 74.93 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
-			(at 529.59 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
-			(at 529.59 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "RGB LED with integrated controller"
-			(at 529.59 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C5149201"
-			(at 529.59 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Note" "chain index 13: key 2 (bottom side, HAND-SOLDER)"
-			(at 539.75 77.47 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.0 1.0)
-				)
-				(justify left)
-			)
-		)
-		(pin "1"
-			(uuid "8dfbe635-309a-40d9-bab1-ccbe36bf3dc2")
-		)
-		(pin "2"
-			(uuid "416c87ca-da54-4eec-b9f0-3e96681c85df")
-		)
-		(pin "3"
-			(uuid "19b72c29-4ae5-4d78-b8ad-3e8f4f78e2ea")
-		)
-		(pin "4"
-			(uuid "25ba7c0d-f1f5-4ae0-8742-354b2a83bc00")
-		)
-		(instances
-			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D414")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 524.51 92.71 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced no)
-		(uuid "2fd27fa7-200d-4f34-a30d-ca1fcfb1722f")
-		(property "Reference" "C418"
-			(at 529.08 91.44 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100nF"
-			(at 529.08 93.98 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 524.51 92.71 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 524.51 92.71 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 524.51 92.71 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C1525"
-			(at 524.51 92.71 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Note" "at D414 VDD (top side)"
-			(at 529.08 96.52 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.0 1.0)
-				)
-				(justify left)
-			)
-		)
-		(pin "1"
-			(uuid "13f00a48-2be2-4fc8-ab30-75e63d67ea07")
-		)
-		(pin "2"
-			(uuid "4f3f407c-d471-4192-b093-7232f9d1c078")
-		)
-		(instances
-			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C418")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "LED:SK6812MINI-E")
-		(at 529.59 111.76 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced no)
-		(uuid "152f02ce-d5cc-4d2e-b807-846f4dd77624")
-		(property "Reference" "D415"
-			(at 539.75 110.49 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "SK6812MINI-E"
-			(at 539.75 113.03 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
-			(at 529.59 111.76 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
-			(at 529.59 111.76 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "RGB LED with integrated controller"
-			(at 529.59 111.76 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C5149201"
-			(at 529.59 111.76 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Note" "chain index 14: key 3 (bottom side, HAND-SOLDER)"
-			(at 539.75 115.57 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.0 1.0)
-				)
-				(justify left)
-			)
-		)
-		(pin "1"
-			(uuid "8379faf4-984d-4936-8692-f4365b07cc3b")
-		)
-		(pin "2"
-			(uuid "0a733337-e2e6-4536-8ecc-e5f47e2c0021")
-		)
-		(pin "3"
-			(uuid "aabbe6f9-6ce7-4368-a36d-e046560f7730")
-		)
-		(pin "4"
-			(uuid "5d5311f2-74d3-4177-9381-b31adf291b8e")
-		)
-		(instances
-			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D415")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 524.51 130.81 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced no)
-		(uuid "f0288e10-ec97-40af-81ae-c2478ac82bb1")
-		(property "Reference" "C419"
-			(at 529.08 129.54 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100nF"
-			(at 529.08 132.08 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 524.51 130.81 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 524.51 130.81 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 524.51 130.81 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C1525"
-			(at 524.51 130.81 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Note" "at D415 VDD (top side)"
-			(at 529.08 134.62 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.0 1.0)
-				)
-				(justify left)
-			)
-		)
-		(pin "1"
-			(uuid "fc2fe3fa-6ade-4893-bfbc-e534d94290ca")
-		)
-		(pin "2"
-			(uuid "2b557758-9794-4a76-83fd-7d96da05985b")
-		)
-		(instances
-			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C419")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "LED:SK6812MINI-E")
-		(at 600.71 35.56 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced no)
-		(uuid "a612d3c1-3b18-48b4-8dc3-65094dda8140")
-		(property "Reference" "D416"
-			(at 610.87 34.29 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "SK6812MINI-E"
-			(at 610.87 36.83 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
-			(at 600.71 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
-			(at 600.71 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "RGB LED with integrated controller"
-			(at 600.71 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C5149201"
-			(at 600.71 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Note" "chain index 15: key 4 (bottom side, HAND-SOLDER)"
-			(at 610.87 39.37 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.0 1.0)
-				)
-				(justify left)
-			)
-		)
-		(pin "1"
-			(uuid "4e95686b-968e-4a7c-9105-69e2acdc1f0b")
-		)
-		(pin "2"
-			(uuid "0953867c-2e7f-4d07-aff9-83610252cdeb")
-		)
-		(pin "3"
-			(uuid "391a281b-a000-4788-b950-4f8c7495b936")
-		)
-		(pin "4"
-			(uuid "3435a059-9cbc-4708-8ede-a4d4e394d043")
-		)
-		(instances
-			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D416")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 594.36 54.61 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced no)
-		(uuid "1b2a66da-f76f-43bf-9132-0ea4633ee091")
-		(property "Reference" "C420"
-			(at 598.93 53.34 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100nF"
-			(at 598.93 55.88 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 594.36 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 594.36 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 594.36 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C1525"
-			(at 594.36 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Note" "at D416 VDD (top side)"
-			(at 598.93 58.42 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.0 1.0)
-				)
-				(justify left)
-			)
-		)
-		(pin "1"
-			(uuid "f01c423a-ce8c-409b-aa28-348782a935ba")
-		)
-		(pin "2"
-			(uuid "90db2304-5597-40bd-be1e-fd58d16894ff")
-		)
-		(instances
-			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C420")
 					(unit 1)
 				)
 			)
@@ -6168,8 +5312,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "2fa5a66d-aeee-46ea-a94d-6a0f37344cde")
-		(property "Reference" "D417"
+		(uuid "36fd1c38-2b34-4468-af5e-5f8cbe6e54e2")
+		(property "Reference" "D413"
 			(at 35.56 161.29 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6235,7 +5379,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 16: ring 2, 7 o'clock"
+		(property "Note" "chain index 12: ring 2, 7 o'clock"
 			(at 35.56 166.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6247,21 +5391,21 @@
 			)
 		)
 		(pin "1"
-			(uuid "7f3f2d63-00c4-4338-85d8-b2bfec72d1f9")
+			(uuid "4c55f611-e4b3-4fbd-8c06-0cf704eea83e")
 		)
 		(pin "2"
-			(uuid "afe7e72c-4e18-4562-ac93-c44d003e9ce2")
+			(uuid "6b91ee0e-bb46-41f3-a471-df66fa38a41b")
 		)
 		(pin "3"
-			(uuid "c526aebd-94b9-4257-ade7-d6112fdad65f")
+			(uuid "5a3d8e37-0d3b-4026-96f5-ebbfa57928e8")
 		)
 		(pin "4"
-			(uuid "6df0e6a8-681f-40df-b7f7-5f98ccbde9ba")
+			(uuid "640f6ec2-8910-4929-af31-608b46acb163")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D417")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D413")
 					(unit 1)
 				)
 			)
@@ -6278,8 +5422,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "ac9fc627-03d7-4f1f-9d61-16bcb2280944")
-		(property "Reference" "C421"
+		(uuid "655d25aa-b365-4254-8fb7-737fb0db1e82")
+		(property "Reference" "C417"
 			(at 24.89 180.34 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6345,7 +5489,7 @@
 				)
 			)
 		)
-		(property "Note" "at D417 VDD (top side)"
+		(property "Note" "at D413 VDD (top side)"
 			(at 24.89 185.42 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6357,15 +5501,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "babecea6-0a1e-419d-9d2b-2a722e9df311")
+			(uuid "f328b74c-fc56-4275-8047-7e66c9703f32")
 		)
 		(pin "2"
-			(uuid "0d851b38-3d32-4a27-8706-f46eca23e2fd")
+			(uuid "6a8c01b6-674b-4be3-a078-94ea2ce5ed96")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C421")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C417")
 					(unit 1)
 				)
 			)
@@ -6382,8 +5526,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "ad2f69d6-cbbe-445a-a518-acc7ca3bbc3e")
-		(property "Reference" "D418"
+		(uuid "bcb71485-fbdc-408e-bb77-8ddc868ea8ed")
+		(property "Reference" "D414"
 			(at 35.56 199.39 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6449,7 +5593,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 17: ring 2, 8 o'clock"
+		(property "Note" "chain index 13: ring 2, 6 o'clock"
 			(at 35.56 204.47 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6461,21 +5605,21 @@
 			)
 		)
 		(pin "1"
-			(uuid "72072dba-ce56-4b54-a9e2-b6882a8cccc5")
+			(uuid "7f23e12e-d2b2-4220-bde4-2f695dcc3671")
 		)
 		(pin "2"
-			(uuid "91724052-f0cc-43df-adaf-3f5cc9c6d9d2")
+			(uuid "dc12667c-b2cd-4d30-804f-1137a04e4abd")
 		)
 		(pin "3"
-			(uuid "93007bc9-8727-4494-ad84-d9c24dadf92c")
+			(uuid "89171350-6e57-4ec4-8c4f-71c59c7d99d9")
 		)
 		(pin "4"
-			(uuid "5eca3d7e-cf90-4f6b-8671-ba436d658518")
+			(uuid "27603efd-d324-4957-b3f1-d24351acdd83")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D418")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D414")
 					(unit 1)
 				)
 			)
@@ -6492,8 +5636,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "915e34ed-8328-4229-ac20-772e9d08e421")
-		(property "Reference" "C422"
+		(uuid "60eb5367-3d23-44a0-833f-2bc26617db8b")
+		(property "Reference" "C418"
 			(at 24.89 218.44 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6559,7 +5703,7 @@
 				)
 			)
 		)
-		(property "Note" "at D418 VDD (top side)"
+		(property "Note" "at D414 VDD (top side)"
 			(at 24.89 223.52 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6571,15 +5715,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "815771f5-7d66-4359-88da-b540403e1360")
+			(uuid "68676718-d27a-4f98-919e-a3c913e3df0b")
 		)
 		(pin "2"
-			(uuid "ae66b0c0-fdb9-4783-bc51-103d11cfd5b8")
+			(uuid "b74dfe59-0237-4446-9c15-231a0fb9a0ce")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C422")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C418")
 					(unit 1)
 				)
 			)
@@ -6596,8 +5740,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "a4820c22-2c19-4a47-8470-4b6adb4eb6df")
-		(property "Reference" "D419"
+		(uuid "499ecd32-b193-47bb-a774-aa9df6de409f")
+		(property "Reference" "D415"
 			(at 35.56 237.49 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6663,7 +5807,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 18: ring 2, 9 o'clock"
+		(property "Note" "chain index 14: ring 2, 5 o'clock"
 			(at 35.56 242.57 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6675,21 +5819,21 @@
 			)
 		)
 		(pin "1"
-			(uuid "0f9d038c-22bd-4d54-a245-4ffc6597cd8b")
+			(uuid "2486a248-baf7-4cb3-b12e-cd24f50253ff")
 		)
 		(pin "2"
-			(uuid "c5182167-951d-49db-9568-f792f0bf1130")
+			(uuid "de328247-b004-4750-9cd5-58fbc5961ff6")
 		)
 		(pin "3"
-			(uuid "ab3e093f-5dd2-477f-adbf-17f38dd14c4c")
+			(uuid "27acb003-bde7-4b54-8fde-56cf060c019b")
 		)
 		(pin "4"
-			(uuid "f442e99d-fb30-42b4-9771-9d889b73ae13")
+			(uuid "ac02eb48-0e57-4a3c-bda6-af69b766c34a")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D419")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D415")
 					(unit 1)
 				)
 			)
@@ -6706,8 +5850,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "179c9894-b7f6-41c4-9a67-2522cdc140e1")
-		(property "Reference" "C423"
+		(uuid "a71e9647-aa7d-44ec-81d3-9731d29b2544")
+		(property "Reference" "C419"
 			(at 24.89 256.54 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6773,7 +5917,7 @@
 				)
 			)
 		)
-		(property "Note" "at D419 VDD (top side)"
+		(property "Note" "at D415 VDD (top side)"
 			(at 24.89 261.62 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6785,15 +5929,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "fecfc7a9-2b16-4b95-9b92-b549529c87b5")
+			(uuid "991b28fa-c660-4137-9917-e2480ea56e8e")
 		)
 		(pin "2"
-			(uuid "ae8672be-6a22-4b91-884b-b4fd687f8b81")
+			(uuid "61963b75-7a6a-420a-8fe6-83058c6fc7a2")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C423")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C419")
 					(unit 1)
 				)
 			)
@@ -6810,8 +5954,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "b9b3840a-24eb-4e94-8805-58f3dc6d9015")
-		(property "Reference" "D420"
+		(uuid "6b06a644-720e-4427-8b5f-191d23efbd18")
+		(property "Reference" "D416"
 			(at 105.41 161.29 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6877,7 +6021,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 19: ring 2, 10 o'clock"
+		(property "Note" "chain index 15: ring 2, 4 o'clock"
 			(at 105.41 166.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6889,21 +6033,21 @@
 			)
 		)
 		(pin "1"
-			(uuid "e2a5b134-db5f-40bf-839a-c3bca60cabdb")
+			(uuid "40275c31-3b48-4671-a0c5-23936336473c")
 		)
 		(pin "2"
-			(uuid "3272ed67-f474-4b10-ab44-b93a44319e02")
+			(uuid "27975bbd-a606-4ec5-8ec4-5b87934173b4")
 		)
 		(pin "3"
-			(uuid "ea6cccd3-cfca-416b-9863-5c6e82741464")
+			(uuid "44c83a75-797e-4761-bd13-a03d6d860726")
 		)
 		(pin "4"
-			(uuid "87a022a0-8f3f-4b3d-8bba-1007f92b9728")
+			(uuid "cc639d21-b328-462c-a5c1-4769e2f02db6")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D420")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D416")
 					(unit 1)
 				)
 			)
@@ -6920,8 +6064,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "f04593c6-700e-4e7c-a966-5c7245a436f9")
-		(property "Reference" "C424"
+		(uuid "fd1aecd4-9304-4f1d-ae29-85fb7dbbb356")
+		(property "Reference" "C420"
 			(at 94.74 180.34 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6987,7 +6131,7 @@
 				)
 			)
 		)
-		(property "Note" "at D420 VDD (top side)"
+		(property "Note" "at D416 VDD (top side)"
 			(at 94.74 185.42 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6999,15 +6143,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "63cc0a4e-b3ac-41b7-bf43-dabbb3754f1d")
+			(uuid "acbc7a2f-76da-4780-9364-bd25813d1543")
 		)
 		(pin "2"
-			(uuid "fbde596a-6aec-4d77-afa1-0d6170d7ee1b")
+			(uuid "9489119e-e17e-42b0-adc6-7d957c1aed01")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C424")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C420")
 					(unit 1)
 				)
 			)
@@ -7024,8 +6168,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "2460e6af-89a2-4ec3-b4c5-799d032bcd29")
-		(property "Reference" "D421"
+		(uuid "3b045a37-4a8c-44a1-a815-66d06b03ef79")
+		(property "Reference" "D417"
 			(at 105.41 199.39 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7091,7 +6235,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 20: ring 2, 11 o'clock"
+		(property "Note" "chain index 16: ring 2, 3 o'clock"
 			(at 105.41 204.47 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7103,21 +6247,21 @@
 			)
 		)
 		(pin "1"
-			(uuid "737c1419-8ee9-4fd1-9759-539f0676d7fe")
+			(uuid "66654672-e9e1-440e-855b-4f832b61ff62")
 		)
 		(pin "2"
-			(uuid "3bcfa074-6d69-40bc-80c9-63a20f3f075c")
+			(uuid "cd9b2cda-8c16-4171-8d9d-eb399964406a")
 		)
 		(pin "3"
-			(uuid "60b92db9-020e-4771-a556-e7adc34e319a")
+			(uuid "3448ed2d-b39b-4fb3-8b7a-8a4b3c0d7ea2")
 		)
 		(pin "4"
-			(uuid "3dc2571e-1a1b-4474-bea9-1bc382df61b0")
+			(uuid "0927b263-7335-498a-ac43-c931f872f66d")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D421")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D417")
 					(unit 1)
 				)
 			)
@@ -7134,8 +6278,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "eef33607-48bc-4422-9e9a-090e83847c98")
-		(property "Reference" "C425"
+		(uuid "122f4b98-b2ef-42f1-b60c-3853ccd01799")
+		(property "Reference" "C421"
 			(at 94.74 218.44 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7201,7 +6345,7 @@
 				)
 			)
 		)
-		(property "Note" "at D421 VDD (top side)"
+		(property "Note" "at D417 VDD (top side)"
 			(at 94.74 223.52 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7213,15 +6357,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "22362b48-13a0-496c-9c56-3057633b1059")
+			(uuid "72f9ee92-2a60-4d4e-8e9f-0b388828bd17")
 		)
 		(pin "2"
-			(uuid "81a29f42-bcd8-4b77-a4fb-2ef28026702a")
+			(uuid "4e4f7a1a-44ca-4c65-a0f7-47885bc9878e")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C425")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C421")
 					(unit 1)
 				)
 			)
@@ -7238,8 +6382,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "5fe5b99d-450b-4966-a7b0-79954dab9f73")
-		(property "Reference" "D422"
+		(uuid "0ce57b17-c898-4cf4-8191-e48e4ed934fe")
+		(property "Reference" "D418"
 			(at 105.41 237.49 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7305,7 +6449,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 21: ring 2, 12 o'clock"
+		(property "Note" "chain index 17: ring 2, 2 o'clock"
 			(at 105.41 242.57 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7317,21 +6461,21 @@
 			)
 		)
 		(pin "1"
-			(uuid "16e4a724-15b0-4093-82b6-7dd72fa47548")
+			(uuid "2b9775f1-c4a9-4aa0-8c0e-0f03c448b2d7")
 		)
 		(pin "2"
-			(uuid "903321ec-fdb5-4cdc-a9e7-f34b1aaadc1e")
+			(uuid "8967c053-de97-4b5e-8ab6-3a4311d9396f")
 		)
 		(pin "3"
-			(uuid "34be14b0-5c9b-4b38-b03d-ac4b5503b428")
+			(uuid "3b6a4343-54ac-4a60-a57d-cf4f0a4c081f")
 		)
 		(pin "4"
-			(uuid "2eaf88bf-5593-434d-98d3-dea393edfec4")
+			(uuid "3ec5883b-2581-4164-a96f-94e14eb1dc31")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D422")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D418")
 					(unit 1)
 				)
 			)
@@ -7348,8 +6492,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "2288b8e4-f1ef-4aa8-b4e0-62d3da1224bd")
-		(property "Reference" "C426"
+		(uuid "2d423983-e622-4fef-8461-9ade6d8b344b")
+		(property "Reference" "C422"
 			(at 94.74 256.54 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7415,7 +6559,7 @@
 				)
 			)
 		)
-		(property "Note" "at D422 VDD (top side)"
+		(property "Note" "at D418 VDD (top side)"
 			(at 94.74 261.62 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7427,15 +6571,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "9b1e1066-974f-4048-969e-ae6398db8e83")
+			(uuid "ecb8284a-0ec4-453d-b73d-396d9d792348")
 		)
 		(pin "2"
-			(uuid "e61a9e45-7734-4c95-ab65-b45f0bfdc96c")
+			(uuid "44adea7a-f6b6-4191-8988-d3e73e627620")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C426")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C422")
 					(unit 1)
 				)
 			)
@@ -7452,8 +6596,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "fe4cefb9-bca4-436e-acff-e5b8520915d9")
-		(property "Reference" "D423"
+		(uuid "7e4df50e-9e78-4763-aad7-210141e55ac4")
+		(property "Reference" "D419"
 			(at 176.53 161.29 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7519,7 +6663,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 22: ring 2, 1 o'clock"
+		(property "Note" "chain index 18: ring 2, 1 o'clock"
 			(at 176.53 166.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7531,21 +6675,21 @@
 			)
 		)
 		(pin "1"
-			(uuid "16a8f39c-88f3-4343-8130-55ad998ac609")
+			(uuid "87fb4a33-b22b-472e-8dda-e6d3b787b9bb")
 		)
 		(pin "2"
-			(uuid "5f744ba7-eeca-437f-8998-e77a2c0d2e14")
+			(uuid "aa2f9d3e-8efc-4e40-b59a-e2c23c9b6087")
 		)
 		(pin "3"
-			(uuid "825e72a6-023d-47fb-a1dc-443b8e555b30")
+			(uuid "0be141ff-d8b3-4767-9964-e526cecd5b5a")
 		)
 		(pin "4"
-			(uuid "704d4736-ed16-45ec-a8bf-852afd7ced86")
+			(uuid "192d56c6-9632-4ac4-af13-fa6d6b0c2715")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D423")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D419")
 					(unit 1)
 				)
 			)
@@ -7562,8 +6706,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "de63a358-22ca-4911-bf9d-1cb93598663f")
-		(property "Reference" "C427"
+		(uuid "6e7faf26-4b18-454b-a87a-975fa8e94eff")
+		(property "Reference" "C423"
 			(at 164.59 180.34 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7629,7 +6773,7 @@
 				)
 			)
 		)
-		(property "Note" "at D423 VDD (top side)"
+		(property "Note" "at D419 VDD (top side)"
 			(at 164.59 185.42 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7641,15 +6785,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "0bbc5b6c-b949-428c-add6-30c29a845984")
+			(uuid "c395e700-6d8c-42f6-a9bc-d078d6fb8fb3")
 		)
 		(pin "2"
-			(uuid "559a0f2d-44eb-4547-ad50-8a53afedd1a2")
+			(uuid "d6c2968d-4b01-4f05-8dfd-f299f29d0514")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C427")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C423")
 					(unit 1)
 				)
 			)
@@ -7666,8 +6810,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "d41d6c1c-3b8e-4b45-b33e-7a53bce8db33")
-		(property "Reference" "D424"
+		(uuid "9327a602-f15f-43e9-ae2d-ffed4f6ce005")
+		(property "Reference" "D420"
 			(at 176.53 199.39 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7733,7 +6877,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 23: ring 2, 2 o'clock"
+		(property "Note" "chain index 19: ring 2, 12 o'clock"
 			(at 176.53 204.47 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7745,21 +6889,21 @@
 			)
 		)
 		(pin "1"
-			(uuid "e724dbca-e963-4251-a887-6145305125cc")
+			(uuid "1ef9c7c2-97cb-40b5-970d-f275ae807633")
 		)
 		(pin "2"
-			(uuid "19990285-30c3-4941-816b-96fce20580ea")
+			(uuid "d5294384-58c9-4952-8437-a5d1d734bd9b")
 		)
 		(pin "3"
-			(uuid "60477285-49e0-4b63-9eda-2a55dd18bf1d")
+			(uuid "db8bb325-44bf-4c0e-982c-85d33c6d97a2")
 		)
 		(pin "4"
-			(uuid "ce102498-d5e0-410c-8d49-d78dbaf26bfd")
+			(uuid "4c245d01-d026-4da2-ac52-5e39d9b9e290")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D424")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D420")
 					(unit 1)
 				)
 			)
@@ -7776,8 +6920,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "78c10055-d867-4aec-a96f-205511acb861")
-		(property "Reference" "C428"
+		(uuid "4bf7ac65-c70c-4ff1-902d-961ef2ed65e9")
+		(property "Reference" "C424"
 			(at 164.59 218.44 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7843,7 +6987,7 @@
 				)
 			)
 		)
-		(property "Note" "at D424 VDD (top side)"
+		(property "Note" "at D420 VDD (top side)"
 			(at 164.59 223.52 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7855,15 +6999,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "8918ac92-f285-4499-8963-2b1fff3c15c7")
+			(uuid "551a4988-da31-4b60-96cd-b4118a919f9e")
 		)
 		(pin "2"
-			(uuid "f7f0615d-042c-403f-82e3-c6673e763864")
+			(uuid "624d110c-b157-4397-9f5c-f68beff249d1")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C428")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C424")
 					(unit 1)
 				)
 			)
@@ -7880,8 +7024,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "22c5d7b4-bf10-49ad-9013-a82b89687231")
-		(property "Reference" "D425"
+		(uuid "9cd16677-50a4-4ab6-a631-ac3374669b40")
+		(property "Reference" "D421"
 			(at 176.53 237.49 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7947,7 +7091,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 24: ring 2, 3 o'clock"
+		(property "Note" "chain index 20: ring 2, 11 o'clock"
 			(at 176.53 242.57 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7959,21 +7103,21 @@
 			)
 		)
 		(pin "1"
-			(uuid "2ba5f954-6ba0-4529-ba2b-2b66a92fd81d")
+			(uuid "e05c24f9-82d7-420f-ba70-83d63722e6e0")
 		)
 		(pin "2"
-			(uuid "b794366d-4638-4eb3-b475-f1bb7f9bddd3")
+			(uuid "beaf25cc-0d4b-4853-9ac4-105ad21d9d2d")
 		)
 		(pin "3"
-			(uuid "ea25b22b-0295-4015-aadb-0a44b5b4dfe3")
+			(uuid "8789f8fd-e3af-4370-85d2-2efa9a2c4599")
 		)
 		(pin "4"
-			(uuid "60ae9201-0e28-433f-8869-e5de98bebef4")
+			(uuid "77df02ee-907d-4f19-bc66-2bfc241ffedd")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D425")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D421")
 					(unit 1)
 				)
 			)
@@ -7990,8 +7134,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "56eb0ba7-7d10-4eb4-911c-f3cbdd3d6201")
-		(property "Reference" "C429"
+		(uuid "dbb241b6-da6c-45ff-a757-e147a3141485")
+		(property "Reference" "C425"
 			(at 164.59 256.54 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8057,7 +7201,7 @@
 				)
 			)
 		)
-		(property "Note" "at D425 VDD (top side)"
+		(property "Note" "at D421 VDD (top side)"
 			(at 164.59 261.62 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8069,15 +7213,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "ade41f2d-fa66-442e-b079-c7b7f42ef05e")
+			(uuid "03808654-be22-4c2c-bd7e-beb8bced77bd")
 		)
 		(pin "2"
-			(uuid "54a13a4f-4c11-4374-985c-30a1004e95a6")
+			(uuid "d5488eb7-2448-41ce-8dcd-9d98b467d0b9")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C429")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C425")
 					(unit 1)
 				)
 			)
@@ -8094,8 +7238,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "6220cc87-5248-43a1-a0b6-c30ba654f757")
-		(property "Reference" "D426"
+		(uuid "efc22d3b-a31c-47f0-9360-267f73fd69ff")
+		(property "Reference" "D422"
 			(at 246.38 161.29 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8161,7 +7305,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 25: ring 2, 4 o'clock"
+		(property "Note" "chain index 21: ring 2, 10 o'clock"
 			(at 246.38 166.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8173,21 +7317,21 @@
 			)
 		)
 		(pin "1"
-			(uuid "e9d504a0-2bd9-446b-a3eb-85662ab126ed")
+			(uuid "f168f6b7-ade7-4bce-88f3-a2e4dfb9fad4")
 		)
 		(pin "2"
-			(uuid "b1585b8a-fc5e-4474-ac89-20f52c86f2a4")
+			(uuid "16b9e390-c299-45f6-b283-8d1f4ca841a9")
 		)
 		(pin "3"
-			(uuid "d5b69f6e-bb03-4acb-b3a7-1f1d709af22f")
+			(uuid "dac3ff9f-8451-4608-9ec4-65e2bca00ef0")
 		)
 		(pin "4"
-			(uuid "d495ce49-1c1c-4b7a-b561-4ffd6ffcb08d")
+			(uuid "aa7554b9-8947-4dc7-802b-960f1739a5d8")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D426")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D422")
 					(unit 1)
 				)
 			)
@@ -8204,8 +7348,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "a7969f20-4a4e-4b4c-9564-eab222e4fde9")
-		(property "Reference" "C430"
+		(uuid "5530bc34-92c6-4a56-a9cf-2c683c88b6f6")
+		(property "Reference" "C426"
 			(at 235.71 180.34 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8271,7 +7415,7 @@
 				)
 			)
 		)
-		(property "Note" "at D426 VDD (top side)"
+		(property "Note" "at D422 VDD (top side)"
 			(at 235.71 185.42 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8283,15 +7427,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "54e9c7a7-70c3-4fdb-9cc1-e15b59647ea2")
+			(uuid "3d9fa23d-84c2-49bb-85ef-e47ffe12cbbb")
 		)
 		(pin "2"
-			(uuid "708f41f2-00af-4dd8-a6a5-f9627d2d3658")
+			(uuid "a503a13e-d8c2-4670-83f1-41fba91d01e0")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C430")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C426")
 					(unit 1)
 				)
 			)
@@ -8308,8 +7452,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "4f9f305c-e8ba-434c-b3cb-41a77ec08a24")
-		(property "Reference" "D427"
+		(uuid "0dac929e-78d7-4e14-9c82-a071aaba22de")
+		(property "Reference" "D423"
 			(at 246.38 199.39 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8375,7 +7519,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 26: ring 2, 5 o'clock"
+		(property "Note" "chain index 22: ring 2, 9 o'clock"
 			(at 246.38 204.47 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8387,21 +7531,21 @@
 			)
 		)
 		(pin "1"
-			(uuid "edb2ed7c-17d7-40f8-a083-04ce855cf986")
+			(uuid "ed7a5e95-8f25-4020-a62e-6ea9fadb4d58")
 		)
 		(pin "2"
-			(uuid "23c63987-9fe1-4659-b00d-207df3fadfd4")
+			(uuid "bd617e22-58cc-4d75-a4fc-6c9ce7a09d39")
 		)
 		(pin "3"
-			(uuid "8cb9fa7b-793d-4a7d-8797-315b9bba5cb6")
+			(uuid "1cefa3ae-325a-4361-9d4a-deb3217a7e67")
 		)
 		(pin "4"
-			(uuid "08b16f45-3e5a-4277-abd2-97aef5c6fa4c")
+			(uuid "3222f4f3-cdcb-4dd7-b0f2-4de23b0ad5e4")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D427")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D423")
 					(unit 1)
 				)
 			)
@@ -8418,8 +7562,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "54873705-d767-4cc3-82ee-3c014943e2ca")
-		(property "Reference" "C431"
+		(uuid "819eecec-73f2-4711-838a-ed6f537af561")
+		(property "Reference" "C427"
 			(at 235.71 218.44 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8485,7 +7629,7 @@
 				)
 			)
 		)
-		(property "Note" "at D427 VDD (top side)"
+		(property "Note" "at D423 VDD (top side)"
 			(at 235.71 223.52 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8497,15 +7641,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "385400fd-4598-4e09-84d6-bb2226d51ece")
+			(uuid "3db0bd51-e80c-405f-a8b2-f6a853b35915")
 		)
 		(pin "2"
-			(uuid "f24aafd7-ab4d-4068-886e-ff6d5b602472")
+			(uuid "c497f8f6-89bb-470a-8bbf-8d22862fd905")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C431")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C427")
 					(unit 1)
 				)
 			)
@@ -8522,8 +7666,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "bbbc05b5-edf0-47d6-b4e7-b8ea5128f203")
-		(property "Reference" "D428"
+		(uuid "72d94cb4-8f90-4c7b-96ca-c28bd455efaf")
+		(property "Reference" "D424"
 			(at 246.38 237.49 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8589,7 +7733,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 27: ring 2, 6 o'clock"
+		(property "Note" "chain index 23: ring 2, 8 o'clock"
 			(at 246.38 242.57 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8601,21 +7745,21 @@
 			)
 		)
 		(pin "1"
-			(uuid "53d915a4-8653-4e45-ad55-1b2efcae9e77")
+			(uuid "51d1ed39-8768-4ee8-bbd8-50180078265b")
 		)
 		(pin "2"
-			(uuid "79ebe869-84c6-4bbc-b5e0-eb4263f7ad1d")
+			(uuid "03045da0-98e2-405e-af42-a8506438bc75")
 		)
 		(pin "3"
-			(uuid "88ec544d-5189-4d4f-8710-571374155c3e")
+			(uuid "fa63e20f-f27f-4c1d-a0cc-8255313f0633")
 		)
 		(pin "4"
-			(uuid "b9a1744a-b42c-49a7-ad0f-0ef98dfa15d4")
+			(uuid "7a788baf-5cc7-4d8a-afb0-f1c1d3890ce3")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D428")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D424")
 					(unit 1)
 				)
 			)
@@ -8632,8 +7776,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "3754ebb6-ca61-4d99-9d25-0b5d60a6b06d")
-		(property "Reference" "C432"
+		(uuid "f900033c-34e2-4270-9a67-81d22a68d093")
+		(property "Reference" "C428"
 			(at 235.71 256.54 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8699,7 +7843,7 @@
 				)
 			)
 		)
-		(property "Note" "at D428 VDD (top side)"
+		(property "Note" "at D424 VDD (top side)"
 			(at 235.71 261.62 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8711,22 +7855,22 @@
 			)
 		)
 		(pin "1"
-			(uuid "e290f24f-383f-4e24-853c-9c014a7ed2f2")
+			(uuid "48fd02a7-0e59-404e-bc8b-b98280368d03")
 		)
 		(pin "2"
-			(uuid "b61f96d4-d8e3-4bd6-8c95-18522efcd015")
+			(uuid "418f907e-e8cf-48a0-90b2-0374bc5355b9")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C432")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C428")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "LED:SK6812MINI-E")
+		(lib_id "LED:WS2812B-2020")
 		(at 308.61 162.56 0)
 		(unit 1)
 		(body_style 1)
@@ -8736,8 +7880,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "58ef1aa5-d103-47b5-90c4-6ab3e05dbfcb")
-		(property "Reference" "D429"
+		(uuid "a46c1cf9-d5dd-47b2-b7ee-221b2fc48aa8")
+		(property "Reference" "D425"
 			(at 318.77 161.29 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8748,7 +7892,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SK6812MINI-E"
+		(property "Value" "XL-2020RGBC-WS2812B"
 			(at 318.77 163.83 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8759,7 +7903,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
+		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
 			(at 308.61 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -8770,7 +7914,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
 			(at 308.61 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -8781,7 +7925,7 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller"
+		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
 			(at 308.61 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -8792,7 +7936,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C5149201"
+		(property "LCSC" "C5349955"
 			(at 308.61 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -8803,7 +7947,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 28: key 8 (bottom side, HAND-SOLDER)"
+		(property "Note" "chain index 24: ring 1, 4 o'clock"
 			(at 318.77 166.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8815,21 +7959,21 @@
 			)
 		)
 		(pin "1"
-			(uuid "4b9dc838-edb0-4e0c-baa7-5f863452c27d")
+			(uuid "8c4c091b-709a-480a-9141-19e61fa5de66")
 		)
 		(pin "2"
-			(uuid "a474ca71-211f-48a9-b14c-ffb04ce93c90")
+			(uuid "3c9d4266-99bf-4c0c-9f66-719cebfd5721")
 		)
 		(pin "3"
-			(uuid "1c7e0dbe-7e5a-4ea0-a1a4-3a5a54193dd5")
+			(uuid "d864439a-ff1c-4d7b-bc1e-ef6c6c5012a7")
 		)
 		(pin "4"
-			(uuid "e419d701-5876-4a80-8667-d37d9876cd75")
+			(uuid "7044b2db-6201-43c3-9832-1a44e54c30ef")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D429")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D425")
 					(unit 1)
 				)
 			)
@@ -8846,8 +7990,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "393f1cca-90bd-4783-bd32-5b00e5a27aab")
-		(property "Reference" "C433"
+		(uuid "a2539604-524b-4de8-bc4c-389a74bc36f1")
+		(property "Reference" "C429"
 			(at 308.10 180.34 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8913,7 +8057,7 @@
 				)
 			)
 		)
-		(property "Note" "at D429 VDD (top side)"
+		(property "Note" "at D425 VDD (top side)"
 			(at 308.10 185.42 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8925,22 +8069,22 @@
 			)
 		)
 		(pin "1"
-			(uuid "64271b0b-cff0-4162-8b42-41c697c5a7ee")
+			(uuid "cb8b47f8-76b4-4fd7-8679-a9d82661293e")
 		)
 		(pin "2"
-			(uuid "12766fb2-3406-4c7b-aa80-dbf3def9c3d1")
+			(uuid "55597a95-27e1-49ba-a734-afd40a97c91f")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C433")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C429")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "LED:SK6812MINI-E")
+		(lib_id "LED:WS2812B-2020")
 		(at 308.61 200.66 0)
 		(unit 1)
 		(body_style 1)
@@ -8950,8 +8094,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "aae720e0-803c-460a-a347-abb9c3ca7ea7")
-		(property "Reference" "D430"
+		(uuid "202301ea-263d-47ca-a689-e1b5308b4478")
+		(property "Reference" "D426"
 			(at 318.77 199.39 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8962,7 +8106,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SK6812MINI-E"
+		(property "Value" "XL-2020RGBC-WS2812B"
 			(at 318.77 201.93 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8973,7 +8117,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
+		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
 			(at 308.61 200.66 0)
 			(hide yes)
 			(show_name no)
@@ -8984,7 +8128,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
 			(at 308.61 200.66 0)
 			(hide yes)
 			(show_name no)
@@ -8995,7 +8139,7 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller"
+		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
 			(at 308.61 200.66 0)
 			(hide yes)
 			(show_name no)
@@ -9006,7 +8150,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C5149201"
+		(property "LCSC" "C5349955"
 			(at 308.61 200.66 0)
 			(hide yes)
 			(show_name no)
@@ -9017,7 +8161,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 29: key 7 (bottom side, HAND-SOLDER)"
+		(property "Note" "chain index 25: ring 1, 3 o'clock"
 			(at 318.77 204.47 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9029,21 +8173,21 @@
 			)
 		)
 		(pin "1"
-			(uuid "56032910-780e-4349-985d-b7cf574260db")
+			(uuid "1f1945fa-ed47-45c8-8ff9-c273fabd7500")
 		)
 		(pin "2"
-			(uuid "ba7e37a9-4829-4cda-952d-90e876bb7995")
+			(uuid "d390f684-acca-45db-9f06-322ba3cefa97")
 		)
 		(pin "3"
-			(uuid "be4268cd-8e73-4350-8e2c-b322a79b3815")
+			(uuid "7235bfec-5f0a-4c43-b1c5-5139237b4f4e")
 		)
 		(pin "4"
-			(uuid "9f37eaea-5df6-4823-ac14-e64a87955c63")
+			(uuid "87369cde-4e04-46b7-ac1f-d8cd81afe6e7")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D430")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D426")
 					(unit 1)
 				)
 			)
@@ -9060,8 +8204,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "4998e430-1c27-43a6-a8cf-e065b9168754")
-		(property "Reference" "C434"
+		(uuid "a0f3c12c-f635-4fe4-aa4f-78e52268cc7b")
+		(property "Reference" "C430"
 			(at 308.10 218.44 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9127,7 +8271,7 @@
 				)
 			)
 		)
-		(property "Note" "at D430 VDD (top side)"
+		(property "Note" "at D426 VDD (top side)"
 			(at 308.10 223.52 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9139,22 +8283,22 @@
 			)
 		)
 		(pin "1"
-			(uuid "151948ac-638c-44f2-9c7d-78052f8ba2dd")
+			(uuid "3957eb7e-c8a0-4a1c-bc26-293cc2391343")
 		)
 		(pin "2"
-			(uuid "46f09428-7a03-46fb-be97-5da522df091c")
+			(uuid "30494adb-8604-4d33-ad60-78b76c77de48")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C434")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C430")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "LED:SK6812MINI-E")
+		(lib_id "LED:WS2812B-2020")
 		(at 308.61 238.76 0)
 		(unit 1)
 		(body_style 1)
@@ -9164,8 +8308,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "62ea99b9-30f9-45d0-805e-46ae55685eaf")
-		(property "Reference" "D431"
+		(uuid "46e85f3c-b8b7-448b-ba12-5cdb50ef9eee")
+		(property "Reference" "D427"
 			(at 318.77 237.49 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9176,7 +8320,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SK6812MINI-E"
+		(property "Value" "XL-2020RGBC-WS2812B"
 			(at 318.77 240.03 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9187,7 +8331,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
+		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
 			(at 308.61 238.76 0)
 			(hide yes)
 			(show_name no)
@@ -9198,7 +8342,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
 			(at 308.61 238.76 0)
 			(hide yes)
 			(show_name no)
@@ -9209,7 +8353,7 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller"
+		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
 			(at 308.61 238.76 0)
 			(hide yes)
 			(show_name no)
@@ -9220,7 +8364,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C5149201"
+		(property "LCSC" "C5349955"
 			(at 308.61 238.76 0)
 			(hide yes)
 			(show_name no)
@@ -9231,7 +8375,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 30: key 6 (bottom side, HAND-SOLDER)"
+		(property "Note" "chain index 26: ring 1, 2 o'clock"
 			(at 318.77 242.57 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9243,21 +8387,21 @@
 			)
 		)
 		(pin "1"
-			(uuid "984c7b62-6ea6-4426-9e9e-aadf308bc44a")
+			(uuid "b51bbd19-7687-4312-98c8-c60931591ec9")
 		)
 		(pin "2"
-			(uuid "f6a50ec4-5c4c-4191-9118-17fa39acafcb")
+			(uuid "cb7638f6-d8f6-4bf9-80eb-8096f3f08b2a")
 		)
 		(pin "3"
-			(uuid "d4d312fd-8b09-4741-a9b6-b77c26b487b3")
+			(uuid "649a3ac0-4492-4756-8d42-b9ba96aafaf6")
 		)
 		(pin "4"
-			(uuid "953b3768-2229-4d45-b103-4471ec2af87b")
+			(uuid "f8cd3ed9-8365-4fd1-9721-28a95ce03824")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D431")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D427")
 					(unit 1)
 				)
 			)
@@ -9274,8 +8418,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "44f7e31e-3f24-4244-bb31-0184586ea232")
-		(property "Reference" "C435"
+		(uuid "3e4f39d0-815b-4897-805d-f1af8fbb3628")
+		(property "Reference" "C431"
 			(at 308.10 256.54 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9341,7 +8485,7 @@
 				)
 			)
 		)
-		(property "Note" "at D431 VDD (top side)"
+		(property "Note" "at D427 VDD (top side)"
 			(at 308.10 261.62 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9353,22 +8497,22 @@
 			)
 		)
 		(pin "1"
-			(uuid "6dbb42e2-db00-4f97-8d7e-cf2debfd0893")
+			(uuid "22061233-a5c3-4bf9-9d04-e95b6e6558c8")
 		)
 		(pin "2"
-			(uuid "36c6a56d-60bc-48de-8425-fa8b9562b163")
+			(uuid "83c75a88-dabb-4566-9b22-caf5bf2f29fb")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C435")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C431")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "LED:SK6812MINI-E")
+		(lib_id "LED:WS2812B-2020")
 		(at 379.73 162.56 0)
 		(unit 1)
 		(body_style 1)
@@ -9378,8 +8522,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "7f2946c4-8a6d-4073-b147-8fa03c10dea0")
-		(property "Reference" "D432"
+		(uuid "3d6e6b06-93fb-4347-a956-b9c2d6f9c4e8")
+		(property "Reference" "D428"
 			(at 389.89 161.29 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9390,7 +8534,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SK6812MINI-E"
+		(property "Value" "XL-2020RGBC-WS2812B"
 			(at 389.89 163.83 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9401,7 +8545,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
+		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
 			(at 379.73 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -9412,7 +8556,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
 			(at 379.73 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -9423,7 +8567,7 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller"
+		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
 			(at 379.73 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -9434,7 +8578,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C5149201"
+		(property "LCSC" "C5349955"
 			(at 379.73 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -9445,7 +8589,7 @@
 				)
 			)
 		)
-		(property "Note" "chain index 31: key 5 (bottom side, HAND-SOLDER)"
+		(property "Note" "chain index 27: ring 1, 1 o'clock"
 			(at 389.89 166.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9457,21 +8601,21 @@
 			)
 		)
 		(pin "1"
-			(uuid "0e2a39ab-9a2c-45eb-9973-6f969b958520")
+			(uuid "01687544-75e3-4429-9b02-402991a03fc7")
 		)
 		(pin "2"
-			(uuid "05de9197-d6fe-4a50-8ef3-b12d8385cc87")
+			(uuid "429dfe7b-8453-438c-944a-2bf1776ba8f6")
 		)
 		(pin "3"
-			(uuid "9d3efb0f-99e5-4099-96a5-d6ee10a379f3")
+			(uuid "3596b76e-6e18-4a34-b3ae-d50dd738044a")
 		)
 		(pin "4"
-			(uuid "41d951f8-cf34-4063-abdb-653973c2fb49")
+			(uuid "d9d55a99-69ed-4565-8768-89c5b20a700c")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D432")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D428")
 					(unit 1)
 				)
 			)
@@ -9488,8 +8632,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "639e458b-0dbc-4099-a213-19357aa653e8")
-		(property "Reference" "C436"
+		(uuid "55b4c1d6-4f8d-4843-a69c-bef17b5242cc")
+		(property "Reference" "C432"
 			(at 377.95 180.34 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9555,7 +8699,7 @@
 				)
 			)
 		)
-		(property "Note" "at D432 VDD (top side)"
+		(property "Note" "at D428 VDD (top side)"
 			(at 377.95 185.42 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9567,23 +8711,23 @@
 			)
 		)
 		(pin "1"
-			(uuid "dee92039-8d52-42cd-82ab-5f3de4e712e6")
+			(uuid "de484a0c-368c-43a5-ad03-54860e75d55e")
 		)
 		(pin "2"
-			(uuid "664f7523-3171-4c90-94ca-63e3d5dec962")
+			(uuid "5fc9ed7b-1308-4912-bd3c-d9ee604def5d")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "C436")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C432")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "LED:SK6812MINI-E")
-		(at 452.12 162.56 0)
+		(lib_id "LED:WS2812B-2020")
+		(at 379.73 200.66 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9592,9 +8736,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "fe8c1573-ed8d-48a4-bf97-fe8e2f9e576b")
-		(property "Reference" "D433"
-			(at 462.28 161.29 0)
+		(uuid "ed3f08a9-3459-4b4b-ba9b-3e32fd00e223")
+		(property "Reference" "D429"
+			(at 389.89 199.39 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9604,8 +8748,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SK6812MINI-E"
-			(at 462.28 163.83 0)
+		(property "Value" "XL-2020RGBC-WS2812B"
+			(at 389.89 201.93 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9615,8 +8759,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
-			(at 452.12 162.56 0)
+		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
+			(at 379.73 200.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9626,8 +8770,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
-			(at 452.12 162.56 0)
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+			(at 379.73 200.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9637,8 +8781,8 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller"
-			(at 452.12 162.56 0)
+		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 379.73 200.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9648,8 +8792,8 @@
 				)
 			)
 		)
-		(property "LCSC" "C5149201"
-			(at 452.12 162.56 0)
+		(property "LCSC" "C5349955"
+			(at 379.73 200.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9659,8 +8803,8 @@
 				)
 			)
 		)
-		(property "Note" "chain index 32: key 9 (bottom side, HAND-SOLDER)"
-			(at 462.28 166.37 0)
+		(property "Note" "chain index 28: ring 1, 12 o'clock"
+			(at 389.89 204.47 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9671,21 +8815,21 @@
 			)
 		)
 		(pin "1"
-			(uuid "bb866f29-d073-41b2-8937-150ebaf8da23")
+			(uuid "3ca1598a-1a39-41fe-a92c-5a8ea73af85d")
 		)
 		(pin "2"
-			(uuid "f615979e-b73b-49dc-aa16-36729fdff0e7")
+			(uuid "7fe68d0d-5d93-4208-95ed-e201be3f04c3")
 		)
 		(pin "3"
-			(uuid "47dd3407-8c60-4d45-9f98-7677d327b765")
+			(uuid "086ecb41-40b7-4fce-8a85-f2e5cde55510")
 		)
 		(pin "4"
-			(uuid "1d3af60d-aafc-46d0-9181-c79bf3884f15")
+			(uuid "2822a78c-bbd1-40f2-acf3-241114f319ca")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
-					(reference "D433")
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D429")
 					(unit 1)
 				)
 			)
@@ -9693,7 +8837,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 447.04 181.61 0)
+		(at 373.38 219.71 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9702,9 +8846,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "1e6f7035-41a1-4e3b-b2ed-e31bae2bccc4")
-		(property "Reference" "C437"
-			(at 451.61 180.34 0)
+		(uuid "3c0ea0f6-558e-41f7-9b88-f08343f6d22c")
+		(property "Reference" "C433"
+			(at 377.95 218.44 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9715,7 +8859,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 451.61 182.88 0)
+			(at 377.95 220.98 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9726,7 +8870,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 447.04 181.61 0)
+			(at 373.38 219.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9737,7 +8881,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 447.04 181.61 0)
+			(at 373.38 219.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9748,7 +8892,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 447.04 181.61 0)
+			(at 373.38 219.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9759,7 +8903,863 @@
 			)
 		)
 		(property "LCSC" "C1525"
-			(at 447.04 181.61 0)
+			(at 373.38 219.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Note" "at D429 VDD (top side)"
+			(at 377.95 223.52 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.0 1.0)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "4026b8dc-5950-48c0-adb5-ab7fa9dfc22f")
+		)
+		(pin "2"
+			(uuid "c3c3c37f-c991-4504-a831-3d803f7c5cae")
+		)
+		(instances
+			(project "pad-v2"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C433")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "LED:WS2812B-2020")
+		(at 379.73 238.76 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "40ffca33-6492-4018-9661-d95634fe4aa2")
+		(property "Reference" "D430"
+			(at 389.89 237.49 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "XL-2020RGBC-WS2812B"
+			(at 389.89 240.03 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
+			(at 379.73 238.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+			(at 379.73 238.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 379.73 238.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C5349955"
+			(at 379.73 238.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Note" "chain index 29: ring 1, 11 o'clock"
+			(at 389.89 242.57 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.0 1.0)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "8a5793ed-f746-4019-bea3-6b029429743c")
+		)
+		(pin "2"
+			(uuid "f0f01036-4821-4dd0-9c84-0c2af2a9af36")
+		)
+		(pin "3"
+			(uuid "ee2cb6cf-ba05-44fa-8095-235536f416a0")
+		)
+		(pin "4"
+			(uuid "a552de99-bea2-4070-b4cf-62bd244c3e19")
+		)
+		(instances
+			(project "pad-v2"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D430")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 373.38 257.81 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "4cc9db63-28bd-4fcc-89bc-d4305bfa07eb")
+		(property "Reference" "C434"
+			(at 377.95 256.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 377.95 259.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 373.38 257.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 373.38 257.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 373.38 257.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C1525"
+			(at 373.38 257.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Note" "at D430 VDD (top side)"
+			(at 377.95 261.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.0 1.0)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "3b995ffa-501d-4c40-b2d4-e0c4a998fd0e")
+		)
+		(pin "2"
+			(uuid "27d88efb-bd26-40b2-8817-e845c4efb41a")
+		)
+		(instances
+			(project "pad-v2"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C434")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "LED:WS2812B-2020")
+		(at 449.58 162.56 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "f3f45ec9-3909-4bc7-ae73-466b1bf4a3f9")
+		(property "Reference" "D431"
+			(at 459.74 161.29 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "XL-2020RGBC-WS2812B"
+			(at 459.74 163.83 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
+			(at 449.58 162.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+			(at 449.58 162.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 449.58 162.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C5349955"
+			(at 449.58 162.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Note" "chain index 30: ring 1, 10 o'clock"
+			(at 459.74 166.37 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.0 1.0)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "29aada4d-bcb4-49b3-9c23-dfc1f06df51a")
+		)
+		(pin "2"
+			(uuid "5c720f00-38bd-4d82-bb6a-96d07acf70a9")
+		)
+		(pin "3"
+			(uuid "c638f7bf-b758-41a7-81fe-4bed0eb06559")
+		)
+		(pin "4"
+			(uuid "037e4fa7-50c4-4f73-b411-9dcbcd8d5f93")
+		)
+		(instances
+			(project "pad-v2"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D431")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 444.50 181.61 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "610a356e-0ae5-49c7-8498-a4c9aa3b625a")
+		(property "Reference" "C435"
+			(at 449.07 180.34 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 449.07 182.88 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 444.50 181.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 444.50 181.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 444.50 181.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C1525"
+			(at 444.50 181.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Note" "at D431 VDD (top side)"
+			(at 449.07 185.42 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.0 1.0)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "2b3c825c-2fb8-4150-b688-f4e61829febd")
+		)
+		(pin "2"
+			(uuid "91112e8f-2a0c-49da-affa-177c2c3077c9")
+		)
+		(instances
+			(project "pad-v2"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C435")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "LED:WS2812B-2020")
+		(at 449.58 200.66 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "e525ea8f-2071-4db9-9ab3-8f4a9cb30018")
+		(property "Reference" "D432"
+			(at 459.74 199.39 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "XL-2020RGBC-WS2812B"
+			(at 459.74 201.93 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
+			(at 449.58 200.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+			(at 449.58 200.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 449.58 200.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C5349955"
+			(at 449.58 200.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Note" "chain index 31: ring 1, 9 o'clock"
+			(at 459.74 204.47 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.0 1.0)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "0c487fbf-1b0d-4c5b-a685-e129656d266e")
+		)
+		(pin "2"
+			(uuid "dfc8f625-9a65-4553-9131-61989371b9a3")
+		)
+		(pin "3"
+			(uuid "d7b4b888-2942-4990-9034-c4754130916e")
+		)
+		(pin "4"
+			(uuid "92c72fad-11fb-4edb-9b42-2072ae662737")
+		)
+		(instances
+			(project "pad-v2"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D432")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 444.50 219.71 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "dce7b734-56a4-4cc3-b799-a0e6150c5904")
+		(property "Reference" "C436"
+			(at 449.07 218.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 449.07 220.98 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 444.50 219.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 444.50 219.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 444.50 219.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C1525"
+			(at 444.50 219.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Note" "at D432 VDD (top side)"
+			(at 449.07 223.52 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.0 1.0)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "a3df2316-fd93-485f-8592-ba1394109215")
+		)
+		(pin "2"
+			(uuid "88a23ea3-73a5-454d-9a13-61767533ab35")
+		)
+		(instances
+			(project "pad-v2"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "C436")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "LED:WS2812B-2020")
+		(at 449.58 238.76 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "91749b41-e759-428d-94cf-367661d01163")
+		(property "Reference" "D433"
+			(at 459.74 237.49 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "XL-2020RGBC-WS2812B"
+			(at 459.74 240.03 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
+			(at 449.58 238.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+			(at 449.58 238.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 449.58 238.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C5349955"
+			(at 449.58 238.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Note" "chain index 32: ring 1, 8 o'clock"
+			(at 459.74 242.57 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.0 1.0)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "f45c4780-c96b-44a0-bc12-73d0bd330bec")
+		)
+		(pin "2"
+			(uuid "327a651f-1171-4f40-bad5-da3e68d209c1")
+		)
+		(pin "3"
+			(uuid "94a18416-de7b-4368-ab52-fbf230352bb3")
+		)
+		(pin "4"
+			(uuid "12a8679d-e978-46d9-9b95-0ed6be97a537")
+		)
+		(instances
+			(project "pad-v2"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
+					(reference "D433")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 444.50 257.81 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "474d5509-ab3c-4cd6-b8fb-08a5e52be4ba")
+		(property "Reference" "C437"
+			(at 449.07 256.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 449.07 259.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 444.50 257.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 444.50 257.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 444.50 257.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C1525"
+			(at 444.50 257.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9770,7 +9770,7 @@
 			)
 		)
 		(property "Note" "at D433 VDD (top side)"
-			(at 451.61 185.42 0)
+			(at 449.07 261.62 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9781,14 +9781,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "816c1832-dee8-4680-971f-3c15c5f9c8d9")
+			(uuid "08c7c799-f2bf-4546-b39c-caeb6dbfc786")
 		)
 		(pin "2"
-			(uuid "6e5e2965-8921-4cf2-b57d-46e247327ec5")
+			(uuid "9e171f77-b860-4c0e-97cd-60911ebb5970")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C437")
 					(unit 1)
 				)
@@ -9796,8 +9796,8 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:SK6812MINI-E")
-		(at 452.12 200.66 0)
+		(lib_id "LED:WS2812B-2020")
+		(at 520.70 162.56 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9806,9 +9806,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "73be58ad-dca8-45d6-8a1c-7dedeaef8fb6")
+		(uuid "9e3b04b1-abc9-460a-98e0-f2ab350de5a2")
 		(property "Reference" "D434"
-			(at 462.28 199.39 0)
+			(at 530.86 161.29 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9818,8 +9818,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SK6812MINI-E"
-			(at 462.28 201.93 0)
+		(property "Value" "XL-2020RGBC-WS2812B"
+			(at 530.86 163.83 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9829,8 +9829,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
-			(at 452.12 200.66 0)
+		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
+			(at 520.70 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9840,8 +9840,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
-			(at 452.12 200.66 0)
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+			(at 520.70 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9851,8 +9851,8 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller"
-			(at 452.12 200.66 0)
+		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 520.70 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9862,8 +9862,8 @@
 				)
 			)
 		)
-		(property "LCSC" "C5149201"
-			(at 452.12 200.66 0)
+		(property "LCSC" "C5349955"
+			(at 520.70 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9873,8 +9873,8 @@
 				)
 			)
 		)
-		(property "Note" "chain index 33: key 10 (bottom side, HAND-SOLDER)"
-			(at 462.28 204.47 0)
+		(property "Note" "chain index 33: ring 1, 7 o'clock"
+			(at 530.86 166.37 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9885,20 +9885,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "bac295d0-c6b9-44fb-87f4-eaea1c2c239e")
+			(uuid "cf424ff0-60bb-4186-b685-254be9f8781e")
 		)
 		(pin "2"
-			(uuid "f6b8f9a0-c22a-4d99-adaf-bd4b677a62ef")
+			(uuid "3d325573-5ca3-4107-a339-368eb0f3f3f6")
 		)
 		(pin "3"
-			(uuid "d0ef07d7-9bc8-4fa3-a624-adf8d45ce576")
+			(uuid "5546801c-7e34-4a88-bcd7-0dddb501738c")
 		)
 		(pin "4"
-			(uuid "2d297c65-d94b-4f67-895b-e9e517fe19e7")
+			(uuid "484e04b4-e2ea-440f-adec-7a50d6ea061b")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "D434")
 					(unit 1)
 				)
@@ -9907,7 +9907,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 447.04 219.71 0)
+		(at 514.35 181.61 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9916,9 +9916,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "e97e8549-e54e-4351-b87b-87e9971fbe12")
+		(uuid "1dabcf0a-1649-4026-8189-8f56e854657f")
 		(property "Reference" "C438"
-			(at 451.61 218.44 0)
+			(at 518.92 180.34 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9929,7 +9929,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 451.61 220.98 0)
+			(at 518.92 182.88 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9940,7 +9940,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 447.04 219.71 0)
+			(at 514.35 181.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9951,7 +9951,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 447.04 219.71 0)
+			(at 514.35 181.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9962,7 +9962,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 447.04 219.71 0)
+			(at 514.35 181.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9973,7 +9973,7 @@
 			)
 		)
 		(property "LCSC" "C1525"
-			(at 447.04 219.71 0)
+			(at 514.35 181.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9984,7 +9984,7 @@
 			)
 		)
 		(property "Note" "at D434 VDD (top side)"
-			(at 451.61 223.52 0)
+			(at 518.92 185.42 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9995,14 +9995,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "7c655149-d7f6-4ec5-b615-3623a979f71e")
+			(uuid "16ccaa46-5810-4b75-8d1f-44cc6f3532e2")
 		)
 		(pin "2"
-			(uuid "73079ca4-7a07-4b0f-8cc8-5ab7f67e5332")
+			(uuid "3e0cc6ef-bfbb-40e3-819c-6a45de706711")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C438")
 					(unit 1)
 				)
@@ -10010,8 +10010,8 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:SK6812MINI-E")
-		(at 452.12 238.76 0)
+		(lib_id "LED:WS2812B-2020")
+		(at 520.70 200.66 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10020,9 +10020,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "c6b807a7-0569-4a88-87ca-089fa65ab7e8")
+		(uuid "b55327b0-93d6-404d-b63c-ad9086126399")
 		(property "Reference" "D435"
-			(at 462.28 237.49 0)
+			(at 530.86 199.39 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10032,8 +10032,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SK6812MINI-E"
-			(at 462.28 240.03 0)
+		(property "Value" "XL-2020RGBC-WS2812B"
+			(at 530.86 201.93 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10043,8 +10043,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
-			(at 452.12 238.76 0)
+		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
+			(at 520.70 200.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10054,8 +10054,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
-			(at 452.12 238.76 0)
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+			(at 520.70 200.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10065,8 +10065,8 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller"
-			(at 452.12 238.76 0)
+		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 520.70 200.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10076,8 +10076,8 @@
 				)
 			)
 		)
-		(property "LCSC" "C5149201"
-			(at 452.12 238.76 0)
+		(property "LCSC" "C5349955"
+			(at 520.70 200.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10087,8 +10087,8 @@
 				)
 			)
 		)
-		(property "Note" "chain index 34: key 11 (bottom side, HAND-SOLDER)"
-			(at 462.28 242.57 0)
+		(property "Note" "chain index 34: ring 1, 6 o'clock"
+			(at 530.86 204.47 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10099,20 +10099,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "378b20bd-477e-4975-8bec-8bedafcb4c30")
+			(uuid "a3d54952-56cb-4ebf-ac18-5e11b360c1f7")
 		)
 		(pin "2"
-			(uuid "54c78e63-e97b-4db8-9118-7f3e5b9a1546")
+			(uuid "61091deb-2353-4aea-8acc-a6596a08d510")
 		)
 		(pin "3"
-			(uuid "54e84375-3cbe-4d29-b6eb-3b411131cdcb")
+			(uuid "d5fe1593-4ad2-4ef8-967a-865bef51c2ef")
 		)
 		(pin "4"
-			(uuid "d72ecd7f-b485-4a07-b4b5-f28ddaf095b0")
+			(uuid "e9890bc2-e72e-4b9a-834f-af245e0a2aed")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "D435")
 					(unit 1)
 				)
@@ -10121,7 +10121,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 447.04 257.81 0)
+		(at 514.35 219.71 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10130,9 +10130,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "bffebb5f-9961-4a9a-82c3-16c96d4352d0")
+		(uuid "4305a05a-7d89-477d-9348-0dbd950c30df")
 		(property "Reference" "C439"
-			(at 451.61 256.54 0)
+			(at 518.92 218.44 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10143,7 +10143,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 451.61 259.08 0)
+			(at 518.92 220.98 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10154,7 +10154,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 447.04 257.81 0)
+			(at 514.35 219.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10165,7 +10165,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 447.04 257.81 0)
+			(at 514.35 219.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10176,7 +10176,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 447.04 257.81 0)
+			(at 514.35 219.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10187,7 +10187,7 @@
 			)
 		)
 		(property "LCSC" "C1525"
-			(at 447.04 257.81 0)
+			(at 514.35 219.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10198,7 +10198,7 @@
 			)
 		)
 		(property "Note" "at D435 VDD (top side)"
-			(at 451.61 261.62 0)
+			(at 518.92 223.52 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10209,14 +10209,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "dfcdb782-918c-4214-b432-54356bd0b5d9")
+			(uuid "e4a19bb6-4f9f-41e3-900b-5ae7b6678a5d")
 		)
 		(pin "2"
-			(uuid "938ba71b-bd99-47cc-9fca-c150697d60d0")
+			(uuid "bccb0c5a-ef8d-4193-95a5-03be35a367bd")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C439")
 					(unit 1)
 				)
@@ -10224,8 +10224,8 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:SK6812MINI-E")
-		(at 523.24 162.56 0)
+		(lib_id "LED:WS2812B-2020")
+		(at 520.70 238.76 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10234,9 +10234,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "c0d83287-c73e-439c-b954-9bdaf989d539")
+		(uuid "89c0ec00-a12f-4187-81e6-db1f65c4f3c7")
 		(property "Reference" "D436"
-			(at 533.40 161.29 0)
+			(at 530.86 237.49 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10246,8 +10246,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SK6812MINI-E"
-			(at 533.40 163.83 0)
+		(property "Value" "XL-2020RGBC-WS2812B"
+			(at 530.86 240.03 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10257,8 +10257,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
-			(at 523.24 162.56 0)
+		(property "Footprint" "pad_v2:LED_XL-2020RGBC_2.0x2.0mm"
+			(at 520.70 238.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10268,8 +10268,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
-			(at 523.24 162.56 0)
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+			(at 520.70 238.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10279,8 +10279,8 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED with integrated controller"
-			(at 523.24 162.56 0)
+		(property "Description" "RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 520.70 238.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10290,8 +10290,8 @@
 				)
 			)
 		)
-		(property "LCSC" "C5149201"
-			(at 523.24 162.56 0)
+		(property "LCSC" "C5349955"
+			(at 520.70 238.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10301,8 +10301,8 @@
 				)
 			)
 		)
-		(property "Note" "chain index 35: key 12 (bottom side, HAND-SOLDER)"
-			(at 533.40 166.37 0)
+		(property "Note" "chain index 35: ring 1, 5 o'clock"
+			(at 530.86 242.57 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10313,20 +10313,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "0a96897b-f6d6-41fd-8623-7c9510023636")
+			(uuid "f6abb6c3-73c7-44a7-83ec-97ff2f9f45e5")
 		)
 		(pin "2"
-			(uuid "fbbf6f87-da4f-4388-afae-35af3a09eab0")
+			(uuid "8c6025c5-3e23-4810-a86f-f30541b9e3ba")
 		)
 		(pin "3"
-			(uuid "e2232716-4dae-4bdc-939e-571d360b2f15")
+			(uuid "b4f08f45-9bb5-48a9-b88b-1406f6f0113e")
 		)
 		(pin "4"
-			(uuid "3b8d3043-0046-4294-ae43-0c0151047c97")
+			(uuid "02849f3d-0860-4712-bed5-383b60b929d4")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "D436")
 					(unit 1)
 				)
@@ -10335,7 +10335,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 516.89 181.61 0)
+		(at 514.35 257.81 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10344,9 +10344,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "b6946cfd-a612-430b-be92-7704244514d3")
+		(uuid "cd55894d-9dea-4592-8815-125c4b616724")
 		(property "Reference" "C440"
-			(at 521.46 180.34 0)
+			(at 518.92 256.54 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10357,7 +10357,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 521.46 182.88 0)
+			(at 518.92 259.08 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10368,7 +10368,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 516.89 181.61 0)
+			(at 514.35 257.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10379,7 +10379,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 516.89 181.61 0)
+			(at 514.35 257.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10390,7 +10390,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 516.89 181.61 0)
+			(at 514.35 257.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10401,7 +10401,7 @@
 			)
 		)
 		(property "LCSC" "C1525"
-			(at 516.89 181.61 0)
+			(at 514.35 257.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10412,7 +10412,7 @@
 			)
 		)
 		(property "Note" "at D436 VDD (top side)"
-			(at 521.46 185.42 0)
+			(at 518.92 261.62 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10423,14 +10423,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "ddb45567-4de2-4946-ad96-164266935c81")
+			(uuid "7a46988c-5081-422d-9509-009213bfa82a")
 		)
 		(pin "2"
-			(uuid "5613cc19-216a-4599-b72d-654b0637ea9b")
+			(uuid "b033e840-eb3d-4815-a3ea-5bf3d635237f")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/e3300751-2761-42e2-a754-483e49e25bfb"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/51566794-df4b-48d7-a7e3-f5ab4add393a"
 					(reference "C440")
 					(unit 1)
 				)

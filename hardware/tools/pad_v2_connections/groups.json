@@ -1,0 +1,291 @@
+{
+ "power.kicad_sch": [
+  [
+   "Pogo input (front strip)",
+   [
+    "J101",
+    "D101",
+    "U101",
+    "R101",
+    "R102"
+   ]
+  ],
+  [
+   "Overvoltage switch WS3222D (5.69 V)",
+   [
+    "U102",
+    "C101",
+    "R103",
+    "R104",
+    "R105",
+    "R106",
+    "R107"
+   ]
+  ],
+  [
+   "Charger ETA6003 (1 A / 0.45 A, power path)",
+   [
+    "U103",
+    "C102",
+    "C103",
+    "L101",
+    "C104",
+    "C105",
+    "C106",
+    "R108",
+    "R109",
+    "R110",
+    "R111",
+    "R112",
+    "R113",
+    "R114"
+   ]
+  ],
+  [
+   "Battery protection and sense",
+   [
+    "J102",
+    "J103",
+    "U104",
+    "Q101",
+    "R115",
+    "C107",
+    "R116",
+    "R117",
+    "R118",
+    "C108"
+   ]
+  ],
+  [
+   "3.3 V LDO (left strip, near the ESP32)",
+   [
+    "U105",
+    "C109",
+    "C110"
+   ]
+  ],
+  [
+   "Mounting holes (M3)",
+   [
+    "H101",
+    "H102",
+    "H103",
+    "H104",
+    "H105"
+   ]
+  ]
+ ],
+ "mcu.kicad_sch": [
+  [
+   "ESP32-S3-MINI-1 (front-left, antenna at the left edge)",
+   [
+    "U201",
+    "C201",
+    "C202"
+   ]
+  ],
+  [
+   "Reset and boot",
+   [
+    "R201",
+    "C203",
+    "SW201",
+    "SW202"
+   ]
+  ],
+  [
+   "USB-C (flashing / debug only, front edge next to the module)",
+   [
+    "J201",
+    "U202",
+    "R202",
+    "R203"
+   ]
+  ]
+ ],
+ "inputs.kicad_sch": [
+  [
+   "Keys 1-12 (one GPIO each, other side to GND)",
+   [
+    "SW301",
+    "SW302",
+    "SW303",
+    "SW304",
+    "SW305",
+    "SW306",
+    "SW307",
+    "SW308",
+    "SW309",
+    "SW310",
+    "SW311",
+    "SW312"
+   ]
+  ],
+  [
+   "Encoder 1: volume (left)",
+   [
+    "SW313",
+    "R301",
+    "R302",
+    "R303",
+    "R304",
+    "C301",
+    "C302"
+   ]
+  ],
+  [
+   "Encoder 2: mic / call (right)",
+   [
+    "SW314",
+    "R305",
+    "R306",
+    "R307",
+    "R308",
+    "C303",
+    "C304"
+   ]
+  ],
+  [
+   "Selector toggle (on the case)",
+   [
+    "J301"
+   ]
+  ]
+ ],
+ "rgb.kicad_sch": [
+  [
+   "5 V boost TPS61023 (power strip)",
+   [
+    "U401",
+    "L401",
+    "C401",
+    "C402",
+    "C403",
+    "R401",
+    "R402",
+    "R403"
+   ]
+  ],
+  [
+   "Data level shifter",
+   [
+    "U402",
+    "C404",
+    "R404"
+   ]
+  ],
+  [
+   "Key LEDs: keys 9, 10, 11, 12 (chain starts here)",
+   [
+    "D401",
+    "C405",
+    "D402",
+    "C406",
+    "D403",
+    "C407",
+    "D404",
+    "C408"
+   ]
+  ],
+  [
+   "Key LEDs: keys 8, 7, 6, 5",
+   [
+    "D405",
+    "C409",
+    "D406",
+    "C410",
+    "D407",
+    "C411",
+    "D408",
+    "C412"
+   ]
+  ],
+  [
+   "Key LEDs: keys 1, 2, 3, 4",
+   [
+    "D409",
+    "C413",
+    "D410",
+    "C414",
+    "D411",
+    "C415",
+    "D412",
+    "C416"
+   ]
+  ],
+  [
+   "Ring 2 (ENC2), counter-clockwise from 7 o'clock",
+   [
+    "D413",
+    "C417",
+    "D414",
+    "C418",
+    "D415",
+    "C419",
+    "D416",
+    "C420",
+    "D417",
+    "C421",
+    "D418",
+    "C422",
+    "D419",
+    "C423",
+    "D420",
+    "C424",
+    "D421",
+    "C425",
+    "D422",
+    "C426",
+    "D423",
+    "C427",
+    "D424",
+    "C428"
+   ]
+  ],
+  [
+   "Ring 1 (ENC1), counter-clockwise from 4 o'clock",
+   [
+    "D425",
+    "C429",
+    "D426",
+    "C430",
+    "D427",
+    "C431",
+    "D428",
+    "C432",
+    "D429",
+    "C433",
+    "D430",
+    "C434",
+    "D431",
+    "C435",
+    "D432",
+    "C436",
+    "D433",
+    "C437",
+    "D434",
+    "C438",
+    "D435",
+    "C439",
+    "D436",
+    "C440"
+   ]
+  ]
+ ],
+ "display.kicad_sch": [
+  [
+   "Display connector (back strip, bottom side)",
+   [
+    "J501",
+    "C501"
+   ]
+  ],
+  [
+   "Display power switch",
+   [
+    "Q501",
+    "R501"
+   ]
+  ]
+ ]
+}

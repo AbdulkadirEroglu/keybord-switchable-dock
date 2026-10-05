@@ -771,7 +771,7 @@
       {
         "filename": "pad-v2.kicad_sch",
         "name": "pad-v2",
-        "uuid": "c348787c-35a6-4c40-81d7-0eeb948bfe4d"
+        "uuid": "aa63e03b-1ac8-4926-b623-c7b31956768e"
       }
     ],
     "used_designators": "J401,J501,#PWR201-218,#PWR301-319,#PWR401-415,#PWR501-511,#PWR601-604,#PWR701-708,#FLG201-202,C205,C417,C701,R223,R304,R306,R504,R609",
@@ -779,27 +779,27 @@
   },
   "sheets": [
     [
-      "c348787c-35a6-4c40-81d7-0eeb948bfe4d",
+      "aa63e03b-1ac8-4926-b623-c7b31956768e",
       "pad-v2"
     ],
     [
-      "32e87f91-a442-4164-a6e4-4653e89053ed",
+      "9f916b28-0d34-4479-b784-8e1a24ce7686",
       "POWER"
     ],
     [
-      "24fc9cbe-c5a7-4a31-aa16-34ec958d99a1",
+      "70237507-d4af-4628-8cf6-83ee1d44b238",
       "MCU"
     ],
     [
-      "3728a1c4-dc90-4859-af3f-dfb5c2605473",
+      "9f788691-5465-4206-8a9a-b890c56a605e",
       "INPUTS"
     ],
     [
-      "e3300751-2761-42e2-a754-483e49e25bfb",
+      "51566794-df4b-48d7-a7e3-f5ab4add393a",
       "RGB"
     ],
     [
-      "41e8144f-af4e-429a-84eb-e53a8ac26d50",
+      "0f52c6a6-8bfa-4bd4-83e5-5c5f20abff80",
       "DISPLAY"
     ]
   ],

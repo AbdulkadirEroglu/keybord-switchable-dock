@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """Pad v2: project files, custom symbols, and all parts placed (unwired) on five sheets."""
-import re, uuid, os, math, json
+import re, uuid, os, math, json, sys
+sys.path.insert(0, '/home/ae/Work/dock-pad/hardware/tools/pad_v2_connections')
+import pad_nets as PN
+G = {v: k for k, v in PN.GPIO.items()}   # net -> GPIO number
 HW = '/home/ae/Work/dock-pad/hardware'
 PRJ = f'{HW}/pad-v2'
 STD = '/usr/share/kicad/symbols'
 CUSTOM = f'{PRJ}/pad_v2_custom.kicad_sym'
-src = open('/home/ae/.claude/jobs/e7adcb65/tmp/place_parts.py').read()
+src = open('/home/ae/.claude/jobs/e7adcb65/tmp/place_parts.py').read()   # dock generator (layout helpers)
 helpers = src[src.index('# ------------------------------------------------------------------ symbol library access'):src.index('def main():')]
 helpers = helpers.replace("lib == 'dock_v2_custom'", "lib == 'pad_v2_custom'")
 exec(helpers)
@@ -60,11 +63,12 @@ MX = ('Switch:SW_Push', 'MX switch (hot-swap socket)', 'dock:SW_MX_Hotswap_Kailh
 ENC = ('Device:RotaryEncoder_Switch_MP', 'PEC11R-4220F-S0024', 'dock:RotaryEncoder_Bourns_PEC11R-4xxxF-S_Vertical', '')
 
 def led_groups():
-    order = [('Ring 1 (ENC1), clockwise from 6 o\'clock', RING, [f'ring 1, {h} o\'clock' for h in (6,7,8,9,10,11,12,1,2,3,4,5)]),
-             ('Key LEDs, keys 1-4', KLED, [f'key {k} (bottom side, HAND-SOLDER)' for k in (1,2,3,4)]),
-             ('Ring 2 (ENC2), clockwise from 7 o\'clock', RING, [f'ring 2, {h} o\'clock' for h in (7,8,9,10,11,12,1,2,3,4,5,6)]),
-             ('Key LEDs, keys 8, 7, 6, 5', KLED, [f'key {k} (bottom side, HAND-SOLDER)' for k in (8,7,6,5)]),
-             ('Key LEDs, keys 9-12', KLED, [f'key {k} (bottom side, HAND-SOLDER)' for k in (9,10,11,12)])]
+    ch = PN.CHAIN
+    order = [('Key LEDs: keys 9, 10, 11, 12 (chain starts here)', KLED, [w + ' (bottom side, HAND-SOLDER)' for _, w in ch[0:4]]),
+             ('Key LEDs: keys 8, 7, 6, 5', KLED, [w + ' (bottom side, HAND-SOLDER)' for _, w in ch[4:8]]),
+             ('Key LEDs: keys 1, 2, 3, 4', KLED, [w + ' (bottom side, HAND-SOLDER)' for _, w in ch[8:12]]),
+             ('Ring 2 (ENC2), counter-clockwise from 7 o\'clock', RING, [w for _, w in ch[12:24]]),
+             ('Ring 1 (ENC1), counter-clockwise from 4 o\'clock', RING, [w for _, w in ch[24:36]])]
     out, n = [], 1
     for name, part, notes in order:
         g = []
@@ -79,10 +83,10 @@ SHEETS = {
  'power.kicad_sch': ('POWER', [
   ('Pogo input (front strip)', [
     ('J101', 'Connector_Generic:Conn_01x07', 'Pogo cable (to floor board)', 'Connector_JST:JST_XH_S7B-XH-A_1x07_P2.50mm_Horizontal', '', 'HAND-SOLDER, bottom. 1 GND, 2 +5V, 3 PAD_RX (dock TX), 4 PAD_TX (dock RX), 5 DET -> GND, 6 +5V, 7 GND'),
-    ('D101', 'Device:D_TVS', 'SMBJ15A', 'Diode_SMD:D_SMB', 'C113988', 'TVS on the pogo +5V (before the OVP switch)'),
+    ('D101', 'Device:D_TVS', 'SMBJ15A', 'Diode_SMD:D_SMB', 'C113988', 'TVS on the pogo +5V (before the OVP switch): pin 1 (cathode band) to +5V, pin 2 to GND'),
     ('U101', *TPD, 'ESD on PAD_RX and PAD_TX at J101'),
-    ('R101', *R('1k', L['r1k']), 'PAD_RX series (to ESP RXD0)'),
-    ('R102', *R('1k', L['r1k']), 'PAD_TX series (from ESP TXD0)'),
+    ('R101', *R('1k', L['r1k']), 'PAD_RX series (J101 pin 3 to ESP RXD0)'),
+    ('R102', *R('1k', L['r1k']), 'PAD_TX series (ESP TXD0 to J101 pin 4)'),
   ]),
   ('Overvoltage switch WS3222D (5.69 V)', [
     ('U102', 'pad_v2_custom:WS3222D', 'WS3222D', 'Package_DFN_QFN:DFN-8-1EP_2x2mm_P0.5mm_EP0.9x1.7mm', 'C239703', 'pogo +5V -> VIN_PROT (charger input); EP to GND'),
@@ -90,11 +94,11 @@ SHEETS = {
     ('R103', *R('51k', L['r51k']), 'OVLO top, part 1 (IN to R104)'),
     ('R104', *R('5.1k', L['r5k1']), 'OVLO top, part 2 (R103 to OVLO): 56.1k total'),
     ('R105', *R('15k', L['r15k']), 'OVLO bottom: 1.2 x (1 + 56.1/15) = 5.69 V'),
-    ('R106', *R('10k', L['r10k']), 'dock-5V sense top (VIN_PROT -> ADC)'),
+    ('R106', *R('10k', L['r10k']), 'dock-5V sense top (VIN_PROT -> VIN_SENSE, IO11)'),
     ('R107', *R('15k', L['r15k']), 'dock-5V sense bottom'),
   ]),
   ('Charger ETA6003 (1 A / 0.45 A, power path)', [
-    ('U103', 'pad_v2_custom:ETA6003', 'ETA6003', 'Package_DFN_QFN:QFN-16-1EP_3x3mm_P0.5mm_EP1.7x1.7mm', 'C5455585', 'ENPPB to GND; ENB low = charge; USB_DET high = ISET2; EP to GND'),
+    ('U103', 'pad_v2_custom:ETA6003', 'ETA6003', 'Package_DFN_QFN:QFN-16-1EP_3x3mm_P0.5mm_EP1.7x1.7mm', 'C5455585', 'ENPPB to GND; ENB = CHG_EN_N (IO15); USB_DET = CHG_ISEL (IO21); STAT = CHG_STAT (IO14); EP to GND'),
     ('C102', *C('10uF', L['c10u'], C0805), 'IN (pin 2) to PGND (pin 5), closest to the IC'),
     ('C103', *C('10uF', L['c10u'], C0805), 'IN to GND (pin 10)'),
     ('L101', 'Device:L', '2.2uH', 'Inductor_SMD:L_APV_ANR4030', '', 'SW to SYS. Isat >= 3.5 A, 4x4 mm (LCSC number at BOM time)'),
@@ -110,13 +114,14 @@ SHEETS = {
     ('R114', *R('10k', L['r10k']), 'STAT pull-up to 3V3'),
   ]),
   ('Battery protection and sense', [
-    ('J102', 'Connector_Generic:Conn_01x04', 'Battery 1x 21700 + NTC', 'Connector_JST:JST_XH_S4B-XH-A_1x04_P2.50mm_Horizontal', '', 'HAND-SOLDER, bottom. 1 B+, 2 B-, 3 NTC, 4 NTC return (GND)'),
+    ('J102', 'Connector_Generic:Conn_01x02', 'Battery 1x 21700 (holder with leads)', 'Connector_JST:JST_XH_S2B-XH-A_1x02_P2.50mm_Horizontal', '', 'HAND-SOLDER, bottom. 1 B+, 2 B-'),
+    ('J103', 'Connector_Generic:Conn_01x02', 'NTC 10k B3950 (on the cell)', 'Connector_JST:JST_XH_S2B-XH-A_1x02_P2.50mm_Horizontal', '', 'HAND-SOLDER, bottom. 1 NTC, 2 GND. No thermistor: fit a 10k resistor across it'),
     ('U104', 'Battery_Management:DW01A', 'DW01A', 'Package_TO_SOT_SMD:SOT-23-6', 'C351410', 'cell protection'),
     ('Q101', 'pad_v2_custom:FS8205A', 'FS8205A', 'Package_SO:TSSOP-8_4.4x3mm_P0.65mm', 'C14212', 'dual N-FET between B- and GND'),
     ('R115', *R('100', ''), 'DW01A VCC series (100 ohm; LCSC number at BOM time)'),
     ('C107', *C('100nF', L['c100n']), 'DW01A VCC'),
     ('R116', *R('1k', L['r1k']), 'DW01A CS'),
-    ('R117', *R('100k', L['r100k']), 'battery sense top (BATT -> ADC)'),
+    ('R117', *R('100k', L['r100k']), 'battery sense top (VBAT -> VBAT_SENSE, IO10)'),
     ('R118', *R('100k', L['r100k']), 'battery sense bottom'),
     ('C108', *C('100nF', L['c100n']), 'battery sense filter'),
   ]),
@@ -139,34 +144,34 @@ SHEETS = {
     ('SW201', *BTN, 'RESET: EN to GND'),
     ('SW202', *BTN, 'BOOT: GPIO0 to GND'),
   ]),
-  ('USB-C (flashing / debug only, left edge)', [
-    ('J201', 'Connector:USB_C_Receptacle_USB2.0_16P', 'TYPE-C-31-M-12', 'Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12', 'C165948', 'D+/D- to GPIO20/GPIO19; VBUS not used'),
+  ('USB-C (flashing / debug only, front edge next to the module)', [
+    ('J201', 'Connector:USB_C_Receptacle_USB2.0_16P', 'TYPE-C-31-M-12', 'Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12', 'C165948', 'FRONT edge, x = 27 (next to the module). D+/D- to IO20/IO19; VBUS pins joined, not used'),
     ('U202', *TPD, 'ESD on D+, D-'),
     ('R202', *R('5.1k', L['r5k1']), 'CC1 Rd'),
     ('R203', *R('5.1k', L['r5k1']), 'CC2 Rd'),
   ]),
  ]),
  'inputs.kicad_sch': ('INPUTS', [
-  ('Keys 1-12 (one GPIO each, other side to GND)', [(f'SW3{k:02d}', *MX, f'key {k}; socket HAND-SOLDER, bottom') for k in range(1, 13)]),
+  ('Keys 1-12 (one GPIO each, other side to GND)', [(f'SW3{k:02d}', *MX, f'key {k} -> IO{G[f"KEY{k}"]}; socket HAND-SOLDER, bottom') for k in range(1, 13)]),
   ('Encoder 1: volume (left)', [
-    ('SW313', *ENC, 'HAND-SOLDER. C and MP (lugs) to GND; A, B through the RC filter; switch to a GPIO'),
+    ('SW313', *ENC, 'HAND-SOLDER. C, MP (lugs), S2 to GND; A/B via RC to IO42/IO41; S1 to IO45'),
     ('R301', *R('10k', L['r10k']), 'A pull-up to 3V3'), ('R302', *R('10k', L['r10k']), 'B pull-up to 3V3'),
     ('R303', *R('10k', L['r10k']), 'A series'), ('R304', *R('10k', L['r10k']), 'B series'),
     ('C301', *C('10nF', L['c10n']), 'A filter, GPIO side'), ('C302', *C('10nF', L['c10n']), 'B filter, GPIO side'),
   ]),
   ('Encoder 2: mic / call (right)', [
-    ('SW314', *ENC, 'HAND-SOLDER'),
+    ('SW314', *ENC, 'HAND-SOLDER. C, MP, S2 to GND; A/B via RC to IO18/IO17; S1 to IO16'),
     ('R305', *R('10k', L['r10k']), 'A pull-up to 3V3'), ('R306', *R('10k', L['r10k']), 'B pull-up to 3V3'),
     ('R307', *R('10k', L['r10k']), 'A series'), ('R308', *R('10k', L['r10k']), 'B series'),
     ('C303', *C('10nF', L['c10n']), 'A filter, GPIO side'), ('C304', *C('10nF', L['c10n']), 'B filter, GPIO side'),
   ]),
   ('Selector toggle (on the case)', [
-    ('J301', 'Connector_Generic:Conn_01x03', 'Toggle PERSONAL-OFF-WORK', 'Connector_JST:JST_XH_S3B-XH-A_1x03_P2.50mm_Horizontal', '', 'HAND-SOLDER, bottom. 1 PERSONAL, 2 GND (common), 3 WORK'),
+    ('J301', 'Connector_Generic:Conn_01x03', 'Toggle PERSONAL-OFF-WORK', 'Connector_JST:JST_XH_S3B-XH-A_1x03_P2.50mm_Horizontal', '', 'HAND-SOLDER, bottom. 1 PERSONAL (IO13), 2 GND (common), 3 WORK (IO12)'),
   ]),
  ]),
  'rgb.kicad_sch': ('RGB', [
   ('5 V boost TPS61023 (power strip)', [
-    ('U401', 'pad_v2_custom:TPS61023DRL', 'TPS61023DRLR', 'Package_TO_SOT_SMD:SOT-563', 'C919459', 'VSYS -> 5V_RGB; EN from a GPIO (true disconnect when low)'),
+    ('U401', 'pad_v2_custom:TPS61023DRL', 'TPS61023DRLR', 'Package_TO_SOT_SMD:SOT-563', 'C919459', 'VSYS -> 5V_RGB; EN = RGB_EN (IO26), true disconnect when low'),
     ('L401', 'Device:L', '1uH', 'Inductor_SMD:L_APV_ANR4030', 'C5289359', 'XRNR4030-1uH/N, Isat 5.26 A'),
     ('C401', *C('10uF', L['c10u'], C0805), 'boost input'),
     ('C402', *C('22uF', L['c22u'], C0805), '5V_RGB output'),
@@ -176,18 +181,18 @@ SHEETS = {
     ('R403', *R('100k', L['r100k']), 'EN pull-down (LEDs off at reset)'),
   ]),
   ('Data level shifter', [
-    ('U402', '74xGxx:74AHCT1G125', 'SN74AHCT1G125DBVR', 'Package_TO_SOT_SMD:SOT-23-5', 'C7484', 'powered from 5V_RGB; OE to GND'),
+    ('U402', '74xGxx:74AHCT1G125', 'SN74AHCT1G125DBVR', 'Package_TO_SOT_SMD:SOT-23-5', 'C7484', 'input RGB_DATA (IO46); powered from 5V_RGB; OE (pin 1) to GND; place near the ESP32 / key 9'),
     ('C404', *C('100nF', L['c100n']), 'U402 VCC'),
-    ('R404', *R('33', L['r33']), 'series, U402 output to D401 DIN'),
+    ('R404', *R('33', L['r33']), 'series, U402 output to D401 DIN (key 9 LED)'),
   ]),
  ] + led_groups()),
  'display.kicad_sch': ('DISPLAY', [
   ('Display connector (back strip, bottom side)', [
-    ('J501', 'Connector_Generic:Conn_01x09', 'Display 1.69in ST7789V3', 'Connector_JST:JST_PH_S9B-PH-K_1x09_P2.00mm_Horizontal', '', 'HAND-SOLDER. 1 BLK, 2 CS, 3 DC, 4 RES, 5 SDA, 6 SCL, 7 VCC, 8 GND, 9 GND'),
+    ('J501', 'Connector_Generic:Conn_01x09', 'Display 1.69in ST7789V3', 'Connector_JST:JST_PH_S9B-PH-K_1x09_P2.00mm_Horizontal', '', 'HAND-SOLDER. 1 BLK IO37, 2 CS IO36, 3 DC IO35, 4 RES IO48, 5 SDA IO34, 6 SCL IO33, 7 VCC, 8 GND, 9 GND'),
     ('C501', *C('1uF', L['c1u']), 'DISP_VCC at J501'),
   ]),
   ('Display power switch', [
-    ('Q501', 'Transistor_FET:AO3401A', 'AO3401A', 'Package_TO_SOT_SMD:SOT-23', 'C15127', 'source 3V3, drain DISP_VCC, gate to a GPIO (low = on)'),
+    ('Q501', 'Transistor_FET:AO3401A', 'AO3401A', 'Package_TO_SOT_SMD:SOT-23', 'C15127', 'source 3V3, drain DISP_VCC, gate DISP_EN_N (IO47), low = on'),
     ('R501', *R('100k', L['r100k']), 'gate pull-up to 3V3 (off at reset)'),
   ]),
  ]),
@@ -198,6 +203,7 @@ U = lambda: str(uuid.uuid4())
 keep = f'{PRJ}/.uuids.json'
 ids = json.load(open(keep)) if os.path.exists(keep) else {'root': U(), **{f: [U(), U()] for f in SHEETS}}
 json.dump(ids, open(keep, 'w'))
+json.dump({f: [[g, [p[0] for p in parts]] for g, parts in gs] for f, (_, gs) in SHEETS.items()}, open('/home/ae/Work/dock-pad/hardware/tools/pad_v2_connections/groups.json', 'w'), indent=1)
 ROOT = ids['root']
 
 def sheet_block(i, fname, name):

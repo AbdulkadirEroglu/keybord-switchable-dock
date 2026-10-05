@@ -108,13 +108,15 @@
 <circle cx="360" cy="558" r="20.700000000000003" fill="none" stroke="#070" stroke-width="1.5"/>
 <circle cx="360" cy="558" r="9.600000000000001" fill="#070"/>
 <text x="360" y="552" font-size="9" text-anchor="middle" font-family="sans-serif" ></text>
-<text x="216" y="540" font-size="9" text-anchor="start" font-family="sans-serif" >front strip: ESP support, pogo cable (bottom),</text>
-<text x="216" y="558" font-size="9" text-anchor="start" font-family="sans-serif" >pogo ESD + TVS, spare</text>
-<text x="43.2" y="276" font-size="9" text-anchor="middle" font-family="sans-serif" >USB-C</text>
-<text x="43.2" y="291.0" font-size="8" text-anchor="middle" font-family="sans-serif" >→ left edge</text>
+<rect x="135.0" y="556.2" width="54" height="43.8" fill="#ddd" stroke="#333"/>
+<text x="162" y="582" font-size="9" text-anchor="middle" font-family="sans-serif" >USB-C</text>
+<text x="216" y="534" font-size="9" text-anchor="start" font-family="sans-serif" >front strip: pogo cable (bottom), TVS, ESD,</text>
+<text x="216" y="552" font-size="9" text-anchor="start" font-family="sans-serif" >overvoltage switch; bottom layer: key bus</text>
+<text x="43.2" y="276" font-size="8" text-anchor="middle" font-family="sans-serif" >enc 1 /</text>
+<text x="43.2" y="291.0" font-size="8" text-anchor="middle" font-family="sans-serif" >reset, boot</text>
 <text x="43.2" y="432" font-size="9" text-anchor="middle" font-family="sans-serif" >LDO</text>
-<text x="43.2" y="447.0" font-size="9" text-anchor="middle" font-family="sans-serif" >ESD</text>
-<text x="43.2" y="200.39999999999998" font-size="8" text-anchor="middle" font-family="sans-serif" >RC + shifter</text>
+<text x="43.2" y="447.0" font-size="9" text-anchor="middle" font-family="sans-serif" >shifter</text>
+<text x="43.2" y="200.39999999999998" font-size="8" text-anchor="middle" font-family="sans-serif" >RC filter</text>
 <text x="556.8" y="200.39999999999998" font-size="8" text-anchor="middle" font-family="sans-serif" >RC filters</text>
 <text x="556.8" y="264" font-size="9" text-anchor="middle" font-family="sans-serif" >charger</text>
 <text x="556.8" y="279.0" font-size="8" text-anchor="middle" font-family="sans-serif" >ETA6003</text>
@@ -123,6 +125,8 @@
 <text x="556.8" y="435.0" font-size="8" text-anchor="middle" font-family="sans-serif" >TPS61023</text>
 <text x="556.8" y="312" font-size="8" text-anchor="middle" font-family="sans-serif" >batt/toggle</text>
 <text x="556.8" y="327.0" font-size="8" text-anchor="middle" font-family="sans-serif" >hdrs (bottom)</text>
+<path d="M 123.0 516 L 186 516 L 186 186 L 264 186 L 264 36" fill="none" stroke="#07a" stroke-width="3" stroke-dasharray="8,5"/>
+<text x="192" y="288" font-size="8" text-anchor="start" font-family="sans-serif" fill="#07a">display lines (top)</text>
 <text x="0" y="-18" font-size="9" text-anchor="start" font-family="sans-serif" >(0,0) back-left</text>
 <text x="600" y="-18" font-size="9" text-anchor="end" font-family="sans-serif" >BACK edge (high side)</text>
 <text x="300" y="636" font-size="10" text-anchor="middle" font-family="sans-serif" >FRONT edge (low side, toward you)</text>

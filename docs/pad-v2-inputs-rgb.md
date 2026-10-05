@@ -39,3 +39,10 @@ All 36 LEDs white ≈ 1.3 A at 5 V. The pad gets ≤ 1.45 A from the dock, so th
 Key LEDs hand-soldered (≈ 300–330 °C, 2–3 s per leg, moisture-sensitive: keep sealed) instead of JLC double-sided assembly (+$25.56 setup, +$8.21 stencil).
 
 Sources: [LCSC SK6812MINI-E](https://www.lcsc.com/product-detail/C5149201.html), [SK6812MINI-E datasheet](https://akizukidenshi.com/goodsaffix/sk6812mini-e.pdf), [JLCPCB XL-2020RGBC-WS2812B](https://jlcpcb.com/partdetail/Xinglight-XL_2020RGBCWS2812B/C5349955), [WS2812B-2020 datasheet](https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf), [TPS61023 datasheet](https://www.ti.com/lit/ds/symlink/tps61023.pdf), [LCSC TPS61023](https://www.lcsc.com/product-detail/C919459.html), [JLCPCB XRNR4030-1uH](https://jlcpcb.com/partdetail/XR-XRNR4030_1uHN/C5289359), [LCSC SN74AHCT1G125](https://www.lcsc.com/product-detail/C7484.html), [JLCPCB assembly pricing](https://jlcpcb.com/help/article/pcb-assembly-price), [LCSC CPG151101S11](https://lcsc.com/product-detail/mechanical-keyboard-shaft_kailh-cpg151101s11_C2803348.html), [e-komponent PEC11R](https://www.e-komponent.com/rotary-encoder-mechanical-pec11r-4220f-s0024), [Robotistan IC145](https://www.robotistan.com/ic145-6-feet-toggle-switch-on-off-on), [Amazon.com.tr linear switches](https://www.amazon.com.tr/linear-switch/s?k=linear+switch).
+
+## 4. Corrections (2026-10-05)
+
+- The ESP32-S3-MINI-1-N8 has **39** usable GPIOs including TXD0/RXD0 (IO0–21, 26, 33–42, 45–48, 43, 44), not 41 as counted in §1. With the display power switch all 39 are used: no spare pin. Final map: `hardware/pad-v2/PAD_WIRING.md` §2.
+- XL-2020RGBC-WS2812B: 5 mA per colour (datasheet), VDD 3.5–5.5 V.
+- LED chain order changed to start at key 9 (PCB_PLACEMENT.md §4).
+- Battery: Motorobit single 21700 holder (85 × 24 × 22 mm, 39.15 TL) with leads to a 2-pin JST-XH (J102); separate 2-pin JST-XH (J103) for a 10 k B3950 thermistor on the cell.

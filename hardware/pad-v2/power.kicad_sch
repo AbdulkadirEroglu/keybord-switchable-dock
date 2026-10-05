@@ -2,7 +2,7 @@
 	(version 20260306)
 	(generator "eeschema")
 	(generator_version "10.0")
-	(uuid "1a095a76-081c-438e-83a7-2391fea3025b")
+	(uuid "46357add-d144-4158-a97f-b96f434254cb")
 	(paper "A3")
 	(title_block
 		(title "Pad v2 - POWER")
@@ -1763,7 +1763,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Connector_Generic:Conn_01x04"
+		(symbol "Connector_Generic:Conn_01x02"
 			(pin_names
 				(offset 1.016)
 				(hide yes)
@@ -1774,7 +1774,7 @@
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "J"
-				(at 0 5.08 0)
+				(at 0 2.54 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -1783,8 +1783,8 @@
 					)
 				)
 			)
-			(property "Value" "Conn_01x04"
-				(at 0 -7.62 0)
+			(property "Value" "Conn_01x02"
+				(at 0 -5.08 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -1815,7 +1815,7 @@
 					)
 				)
 			)
-			(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1848,27 +1848,16 @@
 					)
 				)
 			)
-			(symbol "Conn_01x04_1_1"
+			(symbol "Conn_01x02_1_1"
 				(rectangle
-					(start -1.27 3.81)
-					(end 1.27 -6.35)
+					(start -1.27 1.27)
+					(end 1.27 -3.81)
 					(stroke
 						(width 0.254)
 						(type default)
 					)
 					(fill
 						(type background)
-					)
-				)
-				(rectangle
-					(start -1.27 2.667)
-					(end 0 2.413)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
 					)
 				)
 				(rectangle
@@ -1893,19 +1882,8 @@
 						(type none)
 					)
 				)
-				(rectangle
-					(start -1.27 -4.953)
-					(end 0 -5.207)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
 				(pin passive line
-					(at -5.08 2.54 0)
+					(at -5.08 0 0)
 					(length 3.81)
 					(name "Pin_1"
 						(effects
@@ -1923,7 +1901,7 @@
 					)
 				)
 				(pin passive line
-					(at -5.08 0 0)
+					(at -5.08 -2.54 0)
 					(length 3.81)
 					(name "Pin_2"
 						(effects
@@ -1933,42 +1911,6 @@
 						)
 					)
 					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -2.54 0)
-					(length 3.81)
-					(name "Pin_3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -5.08 0)
-					(length 3.81)
-					(name "Pin_4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2710,7 +2652,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "f1853baa-2147-44e8-8c9d-cff72abbf77e")
+		(uuid "f2619fdc-a8aa-46c7-bbbe-9cc696cd463d")
 	)
 	(text "Pogo input (front strip)"
 		(exclude_from_sim no)
@@ -2722,7 +2664,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "a3a60de7-21ec-43c2-b067-272a0917833a")
+		(uuid "8c39865c-36be-4070-9907-da1864a8b866")
 	)
 	(rectangle
 		(start 85.09 17.78)
@@ -2734,7 +2676,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "068c7f4a-2f66-4fcb-ae93-7404ff833526")
+		(uuid "5f1473ea-2019-4c13-be67-9591220f0175")
 	)
 	(text "Overvoltage switch WS3222D (5.69 V)"
 		(exclude_from_sim no)
@@ -2746,7 +2688,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "725a098b-f45b-4f86-a018-a9d7f254f228")
+		(uuid "3898ee84-011a-42e3-97ec-fb59c28538ce")
 	)
 	(rectangle
 		(start 168.91 17.78)
@@ -2758,7 +2700,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "8fa9f658-2976-49a0-bf6b-8d328c70e9ae")
+		(uuid "6b831db9-eefc-468f-8723-5b6b60b66bd9")
 	)
 	(text "Charger ETA6003 (1 A / 0.45 A, power path)"
 		(exclude_from_sim no)
@@ -2770,11 +2712,11 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "85d26767-b5d0-4b51-b53c-2edf19308933")
+		(uuid "bb3f9064-53a4-484d-890a-7ac9f1bb60de")
 	)
 	(rectangle
 		(start 12.70 144.78)
-		(end 144.78 259.08)
+		(end 144.78 266.70)
 		(stroke
 			(width 0)
 			(type dash)
@@ -2782,7 +2724,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "c72198e7-e584-4ae8-a843-d04c6ac8a1d3")
+		(uuid "7daf5b56-d2f6-422f-9178-adebbf5bf0a4")
 	)
 	(text "Battery protection and sense"
 		(exclude_from_sim no)
@@ -2794,7 +2736,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "cbe10a1e-966e-4b19-87bf-1c79760f15a7")
+		(uuid "93a4a3e4-e69e-4ebc-b896-f29feae89220")
 	)
 	(rectangle
 		(start 149.86 144.78)
@@ -2806,7 +2748,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "317deb16-e3a5-488c-b360-4a07ae593430")
+		(uuid "49257e60-1d8e-449e-b679-c308efd1f675")
 	)
 	(text "3.3 V LDO (left strip, near the ESP32)"
 		(exclude_from_sim no)
@@ -2818,7 +2760,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "424f4e09-4fd1-4bd6-9b97-3c757aa0f66a")
+		(uuid "764d5e7b-dfd1-4d39-9379-c260104b1967")
 	)
 	(rectangle
 		(start 222.25 144.78)
@@ -2830,7 +2772,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "057303ef-4153-4a77-ab87-8074d1a98223")
+		(uuid "8cd4ca9d-0cab-41bf-8d61-9435fa8ecbbc")
 	)
 	(text "Mounting holes (M3)"
 		(exclude_from_sim no)
@@ -2842,7 +2784,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "b30a1fdf-dd75-496a-aeef-24986892b35d")
+		(uuid "d0b841df-54c8-4b2f-8466-5931e8d2dc68")
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x07")
@@ -2855,7 +2797,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "c24d30ab-3f2f-42ed-99b7-3fe0861c1ce8")
+		(uuid "aee8ac40-181e-4554-824c-ff064d5f0b10")
 		(property "Reference" "J101"
 			(at 26.67 35.56 0)
 			(show_name no)
@@ -2934,29 +2876,29 @@
 			)
 		)
 		(pin "1"
-			(uuid "c404cd62-3135-4aae-bed8-68384b3056d9")
+			(uuid "bb2aaf7a-a26d-4b2c-b011-44d3b95dea64")
 		)
 		(pin "2"
-			(uuid "60546f90-719d-4e99-986c-9b6e3449ce6e")
+			(uuid "d669e19e-c611-4bf2-9652-3463ecde3a7d")
 		)
 		(pin "3"
-			(uuid "0d30434d-3114-447f-a9fe-10adc36b51d0")
+			(uuid "36b49cde-2be1-4954-8502-c55aaad17e52")
 		)
 		(pin "4"
-			(uuid "17a6e38a-5a3d-449e-8f96-6d135e5bea8d")
+			(uuid "72da8eb1-4a56-452f-9751-b9061efbaf2f")
 		)
 		(pin "5"
-			(uuid "d8b19d93-ff3b-44f4-994f-7f05d72bf1dd")
+			(uuid "118cd52f-d86e-4333-b501-9bf009075802")
 		)
 		(pin "6"
-			(uuid "9d1d84bf-8d7d-491e-a0e5-ac7f796aea3f")
+			(uuid "61efc43f-df24-4165-bb4c-b6438b64d274")
 		)
 		(pin "7"
-			(uuid "cfb9d0c5-d09c-4f5a-b0c5-bf510325cec8")
+			(uuid "a7e06d0d-c3dc-4f9b-8c43-2b6de67c4d4b")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "J101")
 					(unit 1)
 				)
@@ -2974,7 +2916,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "e9d6bcce-7d1a-438e-912c-484876174bd8")
+		(uuid "1e88e429-6370-43df-8552-edfbb6191f72")
 		(property "Reference" "D101"
 			(at 27.94 53.34 0)
 			(show_name no)
@@ -3041,7 +2983,7 @@
 				)
 			)
 		)
-		(property "Note" "TVS on the pogo +5V (before the OVP switch)"
+		(property "Note" "TVS on the pogo +5V (before the OVP switch): pin 1 (cathode band) to +5V, pin 2 to GND"
 			(at 27.94 58.42 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3053,14 +2995,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "8afd8a60-4166-40e8-81e1-0b51a3a1f754")
+			(uuid "ec30673f-f88d-4f42-9b87-03bbb26f60b9")
 		)
 		(pin "2"
-			(uuid "4f1820dc-bbf3-4b22-8a78-bbf895e614ee")
+			(uuid "3493395a-eead-4db7-b722-4fc6ec121f67")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "D101")
 					(unit 1)
 				)
@@ -3078,7 +3020,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "dd65ddf9-15b0-46f1-98db-ded993722214")
+		(uuid "07070aad-2738-42e9-937e-240d59fc851e")
 		(property "Reference" "U101"
 			(at 35.56 68.58 0)
 			(show_name no)
@@ -3157,26 +3099,26 @@
 			)
 		)
 		(pin "1"
-			(uuid "b40cbf84-7e12-4b5b-a8f2-b36f95002023")
+			(uuid "dfd72644-9be8-4967-a02b-b40e0b8fd0bf")
 		)
 		(pin "6"
-			(uuid "61b9aa4a-c6bb-49c6-832f-3d6a447d687e")
+			(uuid "0ff87969-714d-4752-87dd-689c0bf31903")
 		)
 		(pin "3"
-			(uuid "9dfd52b9-190b-4077-b2c9-ce156d59c787")
+			(uuid "e0b7007f-10fb-496c-a473-ae47b6641901")
 		)
 		(pin "4"
-			(uuid "ae07f68a-5f85-4269-b42a-c55d6a713e33")
+			(uuid "1e80d7e7-51ba-4a8a-9842-6fc26f175b3a")
 		)
 		(pin "2"
-			(uuid "ac86ce31-bd82-41d5-ab13-ec8169d32794")
+			(uuid "419da7ef-f5e1-4426-b878-6e2e28b98319")
 		)
 		(pin "5"
-			(uuid "9e77a03d-bb56-494a-8651-ccc932d09d56")
+			(uuid "28017327-a144-4cab-825e-d660cb688bf4")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "U101")
 					(unit 1)
 				)
@@ -3194,7 +3136,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "fb44e51f-0a1b-497d-a76c-3281a072668e")
+		(uuid "fd870de7-a519-4d2b-9130-23c5b6ad13d4")
 		(property "Reference" "R101"
 			(at 22.61 91.44 0)
 			(show_name no)
@@ -3261,7 +3203,7 @@
 				)
 			)
 		)
-		(property "Note" "PAD_RX series (to ESP RXD0)"
+		(property "Note" "PAD_RX series (J101 pin 3 to ESP RXD0)"
 			(at 22.61 96.52 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3273,14 +3215,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "6a6af372-29a7-4522-ac48-487cce492f86")
+			(uuid "f6e1053c-f98e-4332-8040-dc1665f4c692")
 		)
 		(pin "2"
-			(uuid "ae642adf-76ef-4751-b451-c50fb2bed4bf")
+			(uuid "8317b662-8318-43f8-84a7-c244334e300b")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R101")
 					(unit 1)
 				)
@@ -3298,7 +3240,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "bd28c2d9-faed-451f-861a-897445d7bc65")
+		(uuid "ee07f34c-21f2-4c99-9e7e-794d745431a2")
 		(property "Reference" "R102"
 			(at 22.61 106.68 0)
 			(show_name no)
@@ -3365,7 +3307,7 @@
 				)
 			)
 		)
-		(property "Note" "PAD_TX series (from ESP TXD0)"
+		(property "Note" "PAD_TX series (ESP TXD0 to J101 pin 4)"
 			(at 22.61 111.76 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3377,14 +3319,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "777c3b33-bb6a-4046-a8a9-40bbdcf034d0")
+			(uuid "c107fd85-164c-4f5b-9dda-089c91813c81")
 		)
 		(pin "2"
-			(uuid "8f95c0c7-8ea0-4bb1-9cdb-fa3b3481adcb")
+			(uuid "925db8b6-c8f4-42ed-8927-2d589fecb720")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R102")
 					(unit 1)
 				)
@@ -3402,7 +3344,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "3c229259-31db-49bf-8d8f-9f76395f3e31")
+		(uuid "f428b95a-fb3b-4f44-a0fd-d12ac709588d")
 		(property "Reference" "U102"
 			(at 118.11 34.29 0)
 			(show_name no)
@@ -3481,35 +3423,35 @@
 			)
 		)
 		(pin "6"
-			(uuid "a26dd18e-1f38-45c7-9e60-71bb0f76b802")
+			(uuid "8067b3f1-02fa-45cf-bfa8-f92a495069ac")
 		)
 		(pin "7"
-			(uuid "ffa0c7b1-51ae-4361-a772-3906f2f67c1c")
+			(uuid "f5f9f484-4fdd-4113-a24f-691f6c2c0f31")
 		)
 		(pin "8"
-			(uuid "75610bc5-93bf-4cae-9f0d-61a4876cf1fd")
+			(uuid "a8c9c9d1-7d79-4a9d-84c9-2425023b107f")
 		)
 		(pin "5"
-			(uuid "9c5fbe64-4d14-4410-ab8d-24dd1a027d7a")
+			(uuid "a7e5d79b-c601-459f-99e0-1d6400906425")
 		)
 		(pin "1"
-			(uuid "256c6617-40ca-40a2-8232-4c9af2d5f3bf")
+			(uuid "ccc76452-92de-4d46-9bad-c6ad9e8e1e36")
 		)
 		(pin "2"
-			(uuid "622e6689-5ee8-4a58-a1f1-7a3f3d07e52a")
+			(uuid "57746208-faa7-4f87-a72a-6836537e9fdd")
 		)
 		(pin "3"
-			(uuid "4aa2b745-5c27-440e-943a-c9134aa92a0c")
+			(uuid "ff9ee41a-590a-4926-a8da-dfabaa307908")
 		)
 		(pin "4"
-			(uuid "bf56ffdd-17bf-4196-b702-17843e9be012")
+			(uuid "d31f18d3-6a96-4c77-a14c-35ccf4b148ea")
 		)
 		(pin "9"
-			(uuid "1c1fc496-2290-408c-b999-6ea26c22f7f4")
+			(uuid "29c28760-de79-41e3-b1fc-caa0916711b6")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "U102")
 					(unit 1)
 				)
@@ -3527,7 +3469,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "71594148-a5bd-4442-aa9f-331c0c244e96")
+		(uuid "54f781dc-e240-4208-9426-635f9e838f11")
 		(property "Reference" "C101"
 			(at 97.28 53.34 0)
 			(show_name no)
@@ -3606,14 +3548,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "129c33e0-3cce-4c29-b71a-8002389f71d9")
+			(uuid "c28679ce-e363-47ac-8cf9-a8dd8dbd109f")
 		)
 		(pin "2"
-			(uuid "7c079175-f9c2-4436-8082-f1d86e90bf41")
+			(uuid "1f28059f-98f3-4333-9962-b3977d4c3c58")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "C101")
 					(unit 1)
 				)
@@ -3631,7 +3573,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "2c2a6faf-c46a-4525-a4c6-8a65f8395e21")
+		(uuid "c5597318-8831-4443-9fd4-3cf96d3b442e")
 		(property "Reference" "R103"
 			(at 95.00 68.58 0)
 			(show_name no)
@@ -3710,14 +3652,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "03113e52-6c43-4b11-80ac-692f01ed4ba0")
+			(uuid "be5a8285-9ab1-48fa-91c6-bb83b2c055fa")
 		)
 		(pin "2"
-			(uuid "a686a1a6-6437-4eea-b1d4-20d456647d0a")
+			(uuid "82c1c8ed-91ee-4ac3-a7ca-8bb3803807e6")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R103")
 					(unit 1)
 				)
@@ -3735,7 +3677,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "71f6e1f4-0279-4ea7-9285-68b676d1b82c")
+		(uuid "520418da-54c4-4dcb-bb84-534eb46bb2cc")
 		(property "Reference" "R104"
 			(at 95.00 83.82 0)
 			(show_name no)
@@ -3814,14 +3756,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "7cd4ed61-aec0-4626-b973-0f1f9d27b64c")
+			(uuid "098b40f4-cc1e-4e1e-9cb4-ef6f8affd930")
 		)
 		(pin "2"
-			(uuid "125d6f99-496f-469a-8867-518508d720be")
+			(uuid "a38369bf-d5ba-443b-8af3-ebe20d702854")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R104")
 					(unit 1)
 				)
@@ -3839,7 +3781,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "f0b6484e-7f38-42c0-ae14-ba43a16f6d5c")
+		(uuid "a6561c60-b0d8-4200-a4da-6dd934a7f397")
 		(property "Reference" "R105"
 			(at 95.00 99.06 0)
 			(show_name no)
@@ -3918,14 +3860,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "1726a94b-04ee-4b88-91f4-e1b9e6a82d7c")
+			(uuid "48303c93-01dd-4428-88d2-84460d19a017")
 		)
 		(pin "2"
-			(uuid "b9fcb18b-6999-4e39-8c9b-15a82abfee83")
+			(uuid "487049ca-697b-461c-b093-c3a9f44f6f77")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R105")
 					(unit 1)
 				)
@@ -3943,7 +3885,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "c80f98db-a7b4-4875-bab4-ce6bc441843c")
+		(uuid "acdcdb2c-70fb-4be4-8ba7-87d4d7762a49")
 		(property "Reference" "R106"
 			(at 95.00 114.30 0)
 			(show_name no)
@@ -4010,7 +3952,7 @@
 				)
 			)
 		)
-		(property "Note" "dock-5V sense top (VIN_PROT -> ADC)"
+		(property "Note" "dock-5V sense top (VIN_PROT -> VIN_SENSE, IO11)"
 			(at 95.00 119.38 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4022,14 +3964,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "d373b72d-c9ce-4027-a913-c60485d47bbd")
+			(uuid "87bfd7c6-af4e-4b08-a443-22e231ef14f5")
 		)
 		(pin "2"
-			(uuid "c64bcaff-c7e8-4657-aec2-114a1e18e9eb")
+			(uuid "eecd9c23-2eaa-4b7d-adca-85e0669e8f02")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R106")
 					(unit 1)
 				)
@@ -4047,7 +3989,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "15c18e91-cb6a-483f-811e-c331c5e4757d")
+		(uuid "8caa4bb1-31ba-4459-856c-87733da76c02")
 		(property "Reference" "R107"
 			(at 95.00 129.54 0)
 			(show_name no)
@@ -4126,14 +4068,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "7e1fa82b-43a1-4543-bbec-556f98d91576")
+			(uuid "33e04b1c-b709-4201-b640-3458ae04aa15")
 		)
 		(pin "2"
-			(uuid "ff372ae0-5684-4773-a088-e1c4658c51d8")
+			(uuid "62ccf02f-4cd9-4c47-9f58-58de6dd14bf6")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R107")
 					(unit 1)
 				)
@@ -4151,7 +4093,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "e0953645-d56b-452b-935a-55c49ebc65e6")
+		(uuid "8db554ff-2d63-4694-8415-904bf0ff82f0")
 		(property "Reference" "U103"
 			(at 207.01 39.37 0)
 			(show_name no)
@@ -4218,7 +4160,7 @@
 				)
 			)
 		)
-		(property "Note" "ENPPB to GND; ENB low = charge; USB_DET high = ISET2; EP to GND"
+		(property "Note" "ENPPB to GND; ENB = CHG_EN_N (IO15); USB_DET = CHG_ISEL (IO21); STAT = CHG_STAT (IO14); EP to GND"
 			(at 207.01 44.45 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4230,59 +4172,59 @@
 			)
 		)
 		(pin "2"
-			(uuid "1846953f-bf77-43cf-9cdc-0d8cc56e0366")
+			(uuid "2849d16a-4ed4-41d2-b475-6776cff64444")
 		)
 		(pin "6"
-			(uuid "521d4876-3790-4170-990c-60faf97962f4")
+			(uuid "385731d4-1190-4116-b1df-977bf08cb7e3")
 		)
 		(pin "13"
-			(uuid "a1dd9df1-426d-4f97-882d-dd9ec88d4446")
+			(uuid "c23d5772-add5-4861-81df-c1aa6af5d1c3")
 		)
 		(pin "11"
-			(uuid "9ab14fc9-876b-4058-b8bd-f2f807201c4b")
+			(uuid "23bba488-a15c-4878-9d97-5a44a7f238cf")
 		)
 		(pin "12"
-			(uuid "06199e48-0aa1-4aa5-bce7-a461fd5fe9da")
+			(uuid "f2a18051-8be0-4643-96b8-6770f3dfc028")
 		)
 		(pin "7"
-			(uuid "d6e129ac-c027-4f26-bb0a-bb5fd784f729")
+			(uuid "d81d7136-1df0-4192-9947-9b86fefb6167")
 		)
 		(pin "8"
-			(uuid "e756eb0f-59f8-4153-9ab6-2b02018e10b7")
+			(uuid "65de13fe-5e2a-4798-a069-bd3e69ebd9ba")
 		)
 		(pin "9"
-			(uuid "4cd61c28-441f-429f-af76-9829d29c57c7")
+			(uuid "4e7afee6-c712-4cbd-b635-0959988a33dd")
 		)
 		(pin "3"
-			(uuid "66eb6625-90c1-42e9-bdb0-2cdf655381e5")
+			(uuid "ab79d730-9657-4c3a-b439-4e313631d2f4")
 		)
 		(pin "4"
-			(uuid "f50b683e-527d-4ded-8977-332ccaf778f5")
+			(uuid "d8f66363-3bd4-490e-83d3-956c4f57e24f")
 		)
 		(pin "1"
-			(uuid "c2d67958-b599-463d-94cf-5cc03d2a15d6")
+			(uuid "5b8befec-bd00-459e-8e69-55519473dca8")
 		)
 		(pin "15"
-			(uuid "3312befa-cc9b-47ae-8673-d16419cdb083")
+			(uuid "cc3112c6-0346-43fd-83e9-0a14ab1e5b8c")
 		)
 		(pin "14"
-			(uuid "a4c1d26e-e9e9-42a4-b493-ee0770785100")
+			(uuid "f1e02405-cbd9-46c1-b79d-56d52ec56a0e")
 		)
 		(pin "16"
-			(uuid "479e8018-d355-4af5-897e-9c1695ed9f55")
+			(uuid "156405f4-8b59-4be7-84fa-c239b79377fc")
 		)
 		(pin "5"
-			(uuid "c23b9547-0f58-4b8f-9c93-5fd613389596")
+			(uuid "6dea6433-3e1d-4bd5-a03c-35284fb4504e")
 		)
 		(pin "10"
-			(uuid "ffd86c91-9dde-4f0f-95e3-1eed64dd2b40")
+			(uuid "ec2cab13-424f-4de1-ac85-564e2f09bed2")
 		)
 		(pin "17"
-			(uuid "3a149c43-c05b-4c52-b948-0fae5e73961a")
+			(uuid "c11afeb4-1477-4173-99f3-a6557bd74b51")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "U103")
 					(unit 1)
 				)
@@ -4300,7 +4242,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "20fd9623-09be-43f8-8270-81bfef63fbba")
+		(uuid "de1eadb3-143f-4374-84b9-48b926b753be")
 		(property "Reference" "C102"
 			(at 179.83 63.50 0)
 			(show_name no)
@@ -4379,14 +4321,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "acf09df3-e861-4495-9812-1a7b6a696152")
+			(uuid "e0870016-a76f-4452-95a1-84a3f286df0e")
 		)
 		(pin "2"
-			(uuid "7624f8be-9fec-476f-835b-88826375b50c")
+			(uuid "23e441d8-2b38-4f39-bab7-95b6a3f99304")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "C102")
 					(unit 1)
 				)
@@ -4404,7 +4346,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "d00bc322-ea47-41a9-b643-aa81f8a1e585")
+		(uuid "1852e6e6-08cf-4168-9c9e-1529d7216b10")
 		(property "Reference" "C103"
 			(at 179.83 78.74 0)
 			(show_name no)
@@ -4483,14 +4425,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "e92f7c4d-629a-4815-bb18-6729ad90ea3e")
+			(uuid "5a8f46bd-d3af-420d-902e-8f8f036acc2a")
 		)
 		(pin "2"
-			(uuid "aa97ab48-2718-4a36-8511-967866078f91")
+			(uuid "cf14987f-7f63-43c6-b2ba-33623abdca0c")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "C103")
 					(unit 1)
 				)
@@ -4508,7 +4450,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "74fe2c0c-1f29-4f8e-bf81-2f1478dcb44d")
+		(uuid "e11a92f5-8f66-45a6-9d2e-01d7386d938c")
 		(property "Reference" "L101"
 			(at 177.16 93.98 0)
 			(show_name no)
@@ -4587,14 +4529,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "4c6bee29-0f2d-439a-922e-8e1de317e9c1")
+			(uuid "1bf9abb1-1b49-4d4e-84b3-a3a8a5c166c7")
 		)
 		(pin "2"
-			(uuid "ac438c1a-11dd-4c25-984d-93926f0dda1e")
+			(uuid "08dce4f2-e9c6-4def-aa86-19a5f41f97ea")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "L101")
 					(unit 1)
 				)
@@ -4612,7 +4554,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "d2e91f31-6c08-425e-85c9-a571f0af884f")
+		(uuid "8cfbc5dd-6736-4275-ad8d-adfc02ed2a47")
 		(property "Reference" "C104"
 			(at 179.83 109.22 0)
 			(show_name no)
@@ -4691,14 +4633,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "e82f1ad0-d529-49cb-a1cd-ce7df3569f8c")
+			(uuid "0cee5d42-53df-40b2-b535-53ae92a8d98d")
 		)
 		(pin "2"
-			(uuid "784259a7-486c-4a9b-91c4-147e0308d176")
+			(uuid "93c97f09-9129-4ed1-93bc-d9fc8f00fdc3")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "C104")
 					(unit 1)
 				)
@@ -4716,7 +4658,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "03a88e99-5aa4-4de6-8f8e-8e554bc4db0d")
+		(uuid "776e37ff-d06b-477e-b533-323dca8b6613")
 		(property "Reference" "C105"
 			(at 179.83 124.46 0)
 			(show_name no)
@@ -4795,14 +4737,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "55ac6f61-775c-4bd5-91d5-770957bceace")
+			(uuid "91b289a1-50ea-427f-baf2-f9d0b0f57c8b")
 		)
 		(pin "2"
-			(uuid "cd2e8fd0-5402-4ca2-be6f-16c06b0a4ce6")
+			(uuid "af6825f2-ebd0-4d9c-bb43-5e6550852a75")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "C105")
 					(unit 1)
 				)
@@ -4820,7 +4762,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "44a30f0c-d0e0-4001-aed4-96efd87281f9")
+		(uuid "c4599e96-b182-46d5-916d-e4aeb6ad1fe6")
 		(property "Reference" "C106"
 			(at 266.19 30.48 0)
 			(show_name no)
@@ -4899,14 +4841,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "c1c0f7ea-25c4-4814-be06-ec9e34199fc2")
+			(uuid "395da0ef-9ee1-46a1-ab5f-c3e0d53ccd01")
 		)
 		(pin "2"
-			(uuid "fd506121-940a-4cdb-ba98-f4ac161fd37b")
+			(uuid "81d596b7-6f76-4a93-95e3-cd8e8595e3eb")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "C106")
 					(unit 1)
 				)
@@ -4924,7 +4866,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "45544941-49e3-4cfa-8e35-88aa1e41be15")
+		(uuid "5ee9b03c-e9c5-478e-be66-8e009e47bbce")
 		(property "Reference" "R108"
 			(at 263.91 45.72 0)
 			(show_name no)
@@ -5003,14 +4945,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "68f16411-b3ff-4860-a139-a89a9ac6662a")
+			(uuid "1136ffe3-0267-43b9-adee-90e3f1cb6bc4")
 		)
 		(pin "2"
-			(uuid "383c8b85-b2cd-4497-abf7-e211532a648b")
+			(uuid "7e7abd58-8519-4859-939e-0b2581b3603c")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R108")
 					(unit 1)
 				)
@@ -5028,7 +4970,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "5137da55-4785-42dc-976c-4b59a645ab34")
+		(uuid "38f1e164-eee9-4d01-8039-ed115373ea60")
 		(property "Reference" "R109"
 			(at 263.91 60.96 0)
 			(show_name no)
@@ -5107,14 +5049,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "31cc7b22-53b7-4a7c-97d7-303375747a88")
+			(uuid "09c65796-c7b7-4e67-8bb1-fb47feaf5791")
 		)
 		(pin "2"
-			(uuid "c2cff130-69d4-4c78-bd72-c60483fbbf5a")
+			(uuid "f1ec99ac-fe33-442d-86ab-13038e8152d3")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R109")
 					(unit 1)
 				)
@@ -5132,7 +5074,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "d4f8bf43-f9bb-43b4-854a-5639f4f487ac")
+		(uuid "ee08525c-c5ef-4adb-b003-60d1b84546d1")
 		(property "Reference" "R110"
 			(at 263.91 76.20 0)
 			(show_name no)
@@ -5211,14 +5153,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "de2be5ee-f4a8-47cb-9903-41d142efd1e9")
+			(uuid "783e4d9d-166f-4030-b2df-0ba919405548")
 		)
 		(pin "2"
-			(uuid "60963a8e-52b4-4001-847f-cce3a20c59b4")
+			(uuid "46234dab-d7bf-4ae5-8ced-7215696a2483")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R110")
 					(unit 1)
 				)
@@ -5236,7 +5178,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "6e4b3cb8-5ee7-4e31-94f8-7ae45940d77d")
+		(uuid "14452caa-6030-4dc1-b8e9-8e48a6a2024e")
 		(property "Reference" "R111"
 			(at 263.91 91.44 0)
 			(show_name no)
@@ -5315,14 +5257,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "a43e4608-b6cb-4f31-9aa0-6c6704d3b69b")
+			(uuid "966bf251-c33a-4acf-b706-3b840f336966")
 		)
 		(pin "2"
-			(uuid "4579c461-62ab-422a-b017-30b0142fe332")
+			(uuid "20451db9-c442-45a7-822f-24f65fbc0cfd")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R111")
 					(unit 1)
 				)
@@ -5340,7 +5282,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "97ee0f9b-c3db-46ff-a503-9fff9aa23b50")
+		(uuid "0ab3a7a1-0116-4d51-ad88-479bbc20c5e6")
 		(property "Reference" "R112"
 			(at 263.91 106.68 0)
 			(show_name no)
@@ -5419,14 +5361,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "b75b0d8a-2cfd-439d-80b2-3d6e4cd92223")
+			(uuid "79083ecf-784b-46c1-8ac8-51de0ed20173")
 		)
 		(pin "2"
-			(uuid "04705295-73e2-4d46-b635-7253df1cb657")
+			(uuid "9ddb82b5-3cdc-454a-902c-2c01e7afa1bb")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R112")
 					(unit 1)
 				)
@@ -5444,7 +5386,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "acbcbd2a-d40f-4971-92cf-2765805521f2")
+		(uuid "aebded03-b018-4bf4-b2d5-f85f8fb0a929")
 		(property "Reference" "R113"
 			(at 263.91 121.92 0)
 			(show_name no)
@@ -5523,14 +5465,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "8bf0e00e-50dc-487e-b629-0b4a417d9930")
+			(uuid "d1595b98-1552-48d4-aa02-87a916eb63c1")
 		)
 		(pin "2"
-			(uuid "304de1f8-a15c-4b66-b2f3-614c940f2f36")
+			(uuid "5a39587e-a972-46cb-868c-4ccfaae81121")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R113")
 					(unit 1)
 				)
@@ -5548,7 +5490,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "cc784eb7-0464-4e03-affb-d0a3d00d4537")
+		(uuid "0cf060e3-6e70-421b-9761-dfa4a8912853")
 		(property "Reference" "R114"
 			(at 322.33 30.48 0)
 			(show_name no)
@@ -5627,14 +5569,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "14b9e4df-6a68-484d-bb58-840a57a14f63")
+			(uuid "cd135761-cc91-432f-b427-08fecf45e75e")
 		)
 		(pin "2"
-			(uuid "d0e5d02a-6822-49cc-8bc1-5977fef4eef2")
+			(uuid "0da286aa-5d97-400d-8e57-8e6a76a92787")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R114")
 					(unit 1)
 				)
@@ -5642,8 +5584,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x04")
-		(at 22.86 158.75 0)
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 22.86 156.21 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5652,8 +5594,19 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "5953ade4-9b07-4448-948c-dffb110bff4c")
+		(uuid "50dc0cab-94bc-4d7a-a63a-bcfe881acd64")
 		(property "Reference" "J102"
+			(at 26.67 154.94 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Battery 1x 21700 (holder with leads)"
 			(at 26.67 157.48 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5664,19 +5617,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Battery 1x 21700 + NTC"
-			(at 26.67 160.02 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Connector_JST:JST_XH_S4B-XH-A_1x04_P2.50mm_Horizontal"
-			(at 22.86 158.75 0)
+		(property "Footprint" "Connector_JST:JST_XH_S2B-XH-A_1x02_P2.50mm_Horizontal"
+			(at 22.86 156.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5687,7 +5629,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 22.86 158.75 0)
+			(at 22.86 156.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5697,8 +5639,8 @@
 				)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 22.86 158.75 0)
+		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 22.86 156.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5709,7 +5651,7 @@
 			)
 		)
 		(property "LCSC" ""
-			(at 22.86 158.75 0)
+			(at 22.86 156.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5719,8 +5661,8 @@
 				)
 			)
 		)
-		(property "Note" "HAND-SOLDER, bottom. 1 B+, 2 B-, 3 NTC, 4 NTC return (GND)"
-			(at 26.67 162.56 0)
+		(property "Note" "HAND-SOLDER, bottom. 1 B+, 2 B-"
+			(at 26.67 160.02 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5731,20 +5673,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "090bb92b-1b05-465f-921d-37a43c64e95d")
+			(uuid "cb936ce1-eba1-4f1f-8e38-22d6cafe7eb6")
 		)
 		(pin "2"
-			(uuid "95484d41-edee-4604-ae16-bd1f25af1c6f")
-		)
-		(pin "3"
-			(uuid "e59f2553-5314-4b42-92bf-254473c76be6")
-		)
-		(pin "4"
-			(uuid "bf110a2b-ae78-40a3-82fe-230d03761d5f")
+			(uuid "9afbab7f-bed8-4c73-ace6-3168d38e2013")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "J102")
 					(unit 1)
 				)
@@ -5752,8 +5688,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Battery_Management:DW01A")
-		(at 27.94 177.80 0)
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 22.86 168.91 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5762,9 +5698,113 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "3a441155-cb05-4bb4-9ded-397749fced70")
+		(uuid "ee91e716-ef65-4fef-a49e-bab4d5c4b35d")
+		(property "Reference" "J103"
+			(at 26.67 167.64 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "NTC 10k B3950 (on the cell)"
+			(at 26.67 170.18 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_XH_S2B-XH-A_1x02_P2.50mm_Horizontal"
+			(at 22.86 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 22.86 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 22.86 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" ""
+			(at 22.86 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Note" "HAND-SOLDER, bottom. 1 NTC, 2 GND. No thermistor: fit a 10k resistor across it"
+			(at 26.67 172.72 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.0 1.0)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "ee6885dd-0529-4bd2-a27e-7621ed6aa15d")
+		)
+		(pin "2"
+			(uuid "801f491b-8b8b-459f-882e-c78d25dd4411")
+		)
+		(instances
+			(project "pad-v2"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
+					(reference "J103")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Battery_Management:DW01A")
+		(at 27.94 185.42 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "4bfe1fc6-b2db-409f-9253-619b71884aa3")
 		(property "Reference" "U104"
-			(at 40.64 176.53 0)
+			(at 40.64 184.15 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5775,7 +5815,7 @@
 			)
 		)
 		(property "Value" "DW01A"
-			(at 40.64 179.07 0)
+			(at 40.64 186.69 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5786,7 +5826,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
-			(at 27.94 177.80 0)
+			(at 27.94 185.42 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5797,7 +5837,7 @@
 			)
 		)
 		(property "Datasheet" "https://hmsemi.com/downfile/DW01A.PDF"
-			(at 27.94 177.80 0)
+			(at 27.94 185.42 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5808,7 +5848,7 @@
 			)
 		)
 		(property "Description" "Overcharge, overcurrent and overdischarge protection IC for single cell lithium-ion/polymer battery"
-			(at 27.94 177.80 0)
+			(at 27.94 185.42 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5819,7 +5859,7 @@
 			)
 		)
 		(property "LCSC" "C351410"
-			(at 27.94 177.80 0)
+			(at 27.94 185.42 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5830,7 +5870,7 @@
 			)
 		)
 		(property "Note" "cell protection"
-			(at 40.64 181.61 0)
+			(at 40.64 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5841,26 +5881,26 @@
 			)
 		)
 		(pin "1"
-			(uuid "5000ee18-e387-4a98-8706-36eb057668dd")
+			(uuid "8e3cf723-e79d-4d7b-934d-cd6d212203e1")
 		)
 		(pin "2"
-			(uuid "01f5b188-cfe9-42a5-9f5e-9fadf917d7c1")
+			(uuid "b4544080-cdce-487d-8a37-4ed01537c8d1")
 		)
 		(pin "3"
-			(uuid "cd51ac35-ce55-4481-be65-74f783347ab0")
+			(uuid "0a673782-ddb6-409a-822d-cf0d0b17fbb7")
 		)
 		(pin "5"
-			(uuid "87c97d00-4760-41cf-8419-97a35ff6a8fd")
+			(uuid "0cd0808e-0dd2-48ef-a061-a2e1709ef586")
 		)
 		(pin "6"
-			(uuid "75844023-be97-4847-934b-76bc0271b816")
+			(uuid "e6e355dd-b010-4b50-905f-a82c5f013fde")
 		)
 		(pin "4"
-			(uuid "a2f0b985-e786-419a-a344-aa6d05f5e0bd")
+			(uuid "4875b134-6e67-4472-b58c-83e09f43d850")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "U104")
 					(unit 1)
 				)
@@ -5869,7 +5909,7 @@
 	)
 	(symbol
 		(lib_id "pad_v2_custom:FS8205A")
-		(at 27.94 200.66 0)
+		(at 27.94 208.28 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5878,9 +5918,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "f133cd90-aaea-4eac-8ad5-73506327fcf5")
+		(uuid "b86b5f4a-b1b6-47d0-b22b-c2176048bc54")
 		(property "Reference" "Q101"
-			(at 40.64 199.39 0)
+			(at 40.64 207.01 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5891,7 +5931,7 @@
 			)
 		)
 		(property "Value" "FS8205A"
-			(at 40.64 201.93 0)
+			(at 40.64 209.55 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5902,7 +5942,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:TSSOP-8_4.4x3mm_P0.65mm"
-			(at 27.94 200.66 0)
+			(at 27.94 208.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5913,7 +5953,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.ic-fortune.com/upload/Download/FS8205A-DS-17_EN.pdf"
-			(at 27.94 200.66 0)
+			(at 27.94 208.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5924,7 +5964,7 @@
 			)
 		)
 		(property "Description" "Dual N-channel MOSFET, common drain, 20 V, 28 mOhm, for 1-cell Li-ion protection, TSSOP-8"
-			(at 27.94 200.66 0)
+			(at 27.94 208.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5935,7 +5975,7 @@
 			)
 		)
 		(property "LCSC" "C14212"
-			(at 27.94 200.66 0)
+			(at 27.94 208.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5946,7 +5986,7 @@
 			)
 		)
 		(property "Note" "dual N-FET between B- and GND"
-			(at 40.64 204.47 0)
+			(at 40.64 212.09 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5957,32 +5997,32 @@
 			)
 		)
 		(pin "2"
-			(uuid "df6ec7a5-05e4-47bb-bcd2-ea93ce088d53")
+			(uuid "0c2928c5-ea32-406a-9373-77c2e3253a60")
 		)
 		(pin "3"
-			(uuid "5a1aa9fc-4f29-4959-bd81-1932ea491937")
+			(uuid "f202857f-3b83-4de9-ae7b-0e22354e90a5")
 		)
 		(pin "4"
-			(uuid "d79e0b65-d1bd-4fcf-896d-bbf418f21388")
+			(uuid "8cf0e32f-262c-4fd7-96d4-cc0b42ceb538")
 		)
 		(pin "6"
-			(uuid "f5403ddb-c4c7-4044-bd33-42c3a9e874ea")
+			(uuid "946161ca-6f67-445b-8416-73be46c6c075")
 		)
 		(pin "7"
-			(uuid "6c136bb5-ab53-4ae1-8353-3b7689aa4307")
+			(uuid "8e41bb52-edf9-4ceb-a9b8-25990f5a67ae")
 		)
 		(pin "5"
-			(uuid "333c1022-582d-4ca1-88c2-f0840db04c9d")
+			(uuid "a2e95503-d181-4079-a60c-6c7764e722bf")
 		)
 		(pin "1"
-			(uuid "d7357f63-c997-4931-9f33-1c9e59a5d72b")
+			(uuid "3b3ce521-31f6-4e7d-bd0d-29d1d484085d")
 		)
 		(pin "8"
-			(uuid "547b0acd-d147-40d9-a660-63aaac16dc7e")
+			(uuid "1c42eacb-df5f-44cc-a4dd-8f4c0869d560")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "Q101")
 					(unit 1)
 				)
@@ -5991,7 +6031,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 19.05 219.71 0)
+		(at 19.05 227.33 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6000,9 +6040,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "93a83e6d-0203-4354-bbdb-13e7981901aa")
+		(uuid "5d57b0b9-37a6-4d47-afec-2ac89322f67d")
 		(property "Reference" "R115"
-			(at 22.61 218.44 0)
+			(at 22.61 226.06 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6013,7 +6053,7 @@
 			)
 		)
 		(property "Value" "100"
-			(at 22.61 220.98 0)
+			(at 22.61 228.60 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6024,7 +6064,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 19.05 219.71 0)
+			(at 19.05 227.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6035,7 +6075,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 19.05 219.71 0)
+			(at 19.05 227.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6046,7 +6086,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 19.05 219.71 0)
+			(at 19.05 227.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6057,7 +6097,7 @@
 			)
 		)
 		(property "LCSC" ""
-			(at 19.05 219.71 0)
+			(at 19.05 227.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6068,7 +6108,7 @@
 			)
 		)
 		(property "Note" "DW01A VCC series (100 ohm; LCSC number at BOM time)"
-			(at 22.61 223.52 0)
+			(at 22.61 231.14 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6079,14 +6119,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "4b14cb3e-1d26-45a1-b531-0d0c7541ff78")
+			(uuid "541ece6e-e256-4196-8f15-fdc1c76898da")
 		)
 		(pin "2"
-			(uuid "4a0636d7-4cca-41e1-8f71-043184765f1a")
+			(uuid "7e7ccca5-69a5-497c-933b-9f8f04ba2103")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R115")
 					(unit 1)
 				)
@@ -6095,7 +6135,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 20.32 234.95 0)
+		(at 20.32 242.57 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6104,9 +6144,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "4bb7867a-d89d-4c7d-b1d9-b1946856d7f4")
+		(uuid "cb81eb09-5696-4ae5-b41d-5c8435c30415")
 		(property "Reference" "C107"
-			(at 24.89 233.68 0)
+			(at 24.89 241.30 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6117,7 +6157,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 24.89 236.22 0)
+			(at 24.89 243.84 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6128,7 +6168,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 20.32 234.95 0)
+			(at 20.32 242.57 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6139,7 +6179,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 20.32 234.95 0)
+			(at 20.32 242.57 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6150,7 +6190,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 20.32 234.95 0)
+			(at 20.32 242.57 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6161,7 +6201,7 @@
 			)
 		)
 		(property "LCSC" "C1525"
-			(at 20.32 234.95 0)
+			(at 20.32 242.57 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6172,7 +6212,7 @@
 			)
 		)
 		(property "Note" "DW01A VCC"
-			(at 24.89 238.76 0)
+			(at 24.89 246.38 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6183,14 +6223,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "37098a2e-7c16-4f97-85c6-4676b8f4b7ba")
+			(uuid "b9439680-d03e-4948-910d-7c1a1ba88095")
 		)
 		(pin "2"
-			(uuid "4f47f2de-2f16-42a3-991d-11952ab36d09")
+			(uuid "8869efb0-6a83-46c1-9f88-17d8d7709a53")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "C107")
 					(unit 1)
 				)
@@ -6199,7 +6239,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 19.05 250.19 0)
+		(at 19.05 257.81 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6208,9 +6248,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "8fc34497-8263-42a9-ad8b-34ca85a47cc4")
+		(uuid "d678951e-8ecf-4904-9ea3-8d891553ae5e")
 		(property "Reference" "R116"
-			(at 22.61 248.92 0)
+			(at 22.61 256.54 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6221,7 +6261,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 22.61 251.46 0)
+			(at 22.61 259.08 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6232,7 +6272,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 19.05 250.19 0)
+			(at 19.05 257.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6243,7 +6283,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 19.05 250.19 0)
+			(at 19.05 257.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6254,7 +6294,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 19.05 250.19 0)
+			(at 19.05 257.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6265,7 +6305,7 @@
 			)
 		)
 		(property "LCSC" "C11702"
-			(at 19.05 250.19 0)
+			(at 19.05 257.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6276,7 +6316,7 @@
 			)
 		)
 		(property "Note" "DW01A CS"
-			(at 22.61 254.00 0)
+			(at 22.61 261.62 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6287,14 +6327,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "a2a9beb1-2e23-47b5-a142-a5c3ee02d3ff")
+			(uuid "109d432d-c1ae-4c1d-a203-fa27f8992261")
 		)
 		(pin "2"
-			(uuid "0dcf1e35-0f1e-4596-8901-6d10e8d63637")
+			(uuid "5286d5c1-e6f3-4046-ae21-9d5e8808e563")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R116")
 					(unit 1)
 				)
@@ -6312,7 +6352,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "743fc4d1-cb4a-4f66-9128-6c1bada75d52")
+		(uuid "52514af3-9375-471b-b503-d9033689321e")
 		(property "Reference" "R117"
 			(at 97.54 157.48 0)
 			(show_name no)
@@ -6379,7 +6419,7 @@
 				)
 			)
 		)
-		(property "Note" "battery sense top (BATT -> ADC)"
+		(property "Note" "battery sense top (VBAT -> VBAT_SENSE, IO10)"
 			(at 97.54 162.56 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6391,14 +6431,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "8e76137e-b6f6-4343-a917-50a1c7785110")
+			(uuid "70dc3e31-eea1-484d-bda8-61a240f3ebb8")
 		)
 		(pin "2"
-			(uuid "c18aea35-9cc6-471c-8a6f-53ef8a2f7b77")
+			(uuid "a0c3bc8f-d9b2-4005-915b-49634713a7b3")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R117")
 					(unit 1)
 				)
@@ -6416,7 +6456,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "0e75b400-07d8-47a8-b387-59ee2093f8fe")
+		(uuid "72327e99-f163-457a-9389-058460863cd0")
 		(property "Reference" "R118"
 			(at 97.54 172.72 0)
 			(show_name no)
@@ -6495,14 +6535,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "9ae2cb7c-be31-4506-947d-5d9d4dfc9d46")
+			(uuid "69dd0af3-a318-4521-a905-482f8e73817c")
 		)
 		(pin "2"
-			(uuid "149b32fc-bb09-4314-b280-55143d874adc")
+			(uuid "69b0a8da-969b-4cca-917f-efb66d126545")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "R118")
 					(unit 1)
 				)
@@ -6520,7 +6560,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "c89fcad3-b827-44ff-9fec-55b5107d311a")
+		(uuid "75789f68-65b6-4b2c-a81a-191325b01a5e")
 		(property "Reference" "C108"
 			(at 99.82 187.96 0)
 			(show_name no)
@@ -6599,14 +6639,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "f3516cbd-61c1-4c02-9517-07e8646a2c8a")
+			(uuid "0b1fcb04-2a56-463a-b63f-3876b66c4425")
 		)
 		(pin "2"
-			(uuid "c9a1fba8-f161-4d54-80ea-bb99557eefa1")
+			(uuid "4fb1c5a3-fdce-46bb-ab9b-c189cbfdb75c")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "C108")
 					(unit 1)
 				)
@@ -6624,7 +6664,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "5f890e08-1fa7-4601-96db-713bd97f15f5")
+		(uuid "8ab60a68-dd8a-43a6-b459-2955354fd289")
 		(property "Reference" "U105"
 			(at 172.72 157.48 0)
 			(show_name no)
@@ -6703,23 +6743,23 @@
 			)
 		)
 		(pin "1"
-			(uuid "a04ae499-34f8-44eb-b92b-6fbf3d784fd2")
+			(uuid "a5436647-ecd0-4948-9549-3a0c71cd96c4")
 		)
 		(pin "2"
-			(uuid "e0dc5388-557d-414b-a128-adb5ab3e8bba")
+			(uuid "21c6eff7-1036-4e5e-8dc4-1265d3f8f7f1")
 		)
 		(pin "3"
-			(uuid "d8f1340d-bafb-46de-9ded-b011c7cf04cb")
+			(uuid "4bdb6fb4-9173-42d5-98ea-62bd9bd2e394")
 		)
 		(pin "4"
-			(uuid "99d883de-482b-452d-a9e4-6c76bb99dc86")
+			(uuid "2a1f5b7c-703b-4784-9b9f-ba3eecd07e7b")
 		)
 		(pin "5"
-			(uuid "8fceb6ef-8664-46d1-8e6f-9b477bffda10")
+			(uuid "aa2911a2-930b-46b2-999a-ad5ac3e88c20")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "U105")
 					(unit 1)
 				)
@@ -6737,7 +6777,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "d54014c2-2297-4b9b-a7f8-6309028f5eb6")
+		(uuid "9a176a58-3953-402b-b7ff-5e5b52aee341")
 		(property "Reference" "C109"
 			(at 162.05 176.53 0)
 			(show_name no)
@@ -6816,14 +6856,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "4a94e660-d01f-4fd1-a5d3-da66d3df7315")
+			(uuid "9d70928a-3611-40f8-8458-e43425eefb83")
 		)
 		(pin "2"
-			(uuid "334d3566-c3a8-42c8-a35e-f2b72a37a472")
+			(uuid "7290d859-46f4-42fc-80b9-d8a69e92ad14")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "C109")
 					(unit 1)
 				)
@@ -6841,7 +6881,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "cb4d2160-2922-4d47-86ed-319ac92f937f")
+		(uuid "d517b9b9-868b-488d-8ebb-f4dc748358f4")
 		(property "Reference" "C110"
 			(at 162.05 191.77 0)
 			(show_name no)
@@ -6920,14 +6960,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "03dbef0c-065c-4940-a636-ff5087f7f83b")
+			(uuid "9cd85576-c540-4264-8aa3-2faf8d4d4561")
 		)
 		(pin "2"
-			(uuid "281c9517-460e-4e34-b564-89381effdd99")
+			(uuid "f84d1f32-3eaa-46ac-a588-45db73143d5c")
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "C110")
 					(unit 1)
 				)
@@ -6945,7 +6985,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "ad95ffbb-a2cc-473d-976b-ecdf9ea8153a")
+		(uuid "d357316f-9d0e-4fd4-b17e-1a75e7cdee3f")
 		(property "Reference" "H101"
 			(at 229.87 153.67 0)
 			(show_name no)
@@ -7026,7 +7066,7 @@
 
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "H101")
 					(unit 1)
 				)
@@ -7044,7 +7084,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "ef9df872-ee58-4395-b2cd-0f8cbf71e4d8")
+		(uuid "740d62f8-e359-4e92-963b-52fd109ef2e0")
 		(property "Reference" "H102"
 			(at 229.87 161.29 0)
 			(show_name no)
@@ -7125,7 +7165,7 @@
 
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "H102")
 					(unit 1)
 				)
@@ -7143,7 +7183,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "5f265cd1-d6ca-4a97-9f13-79f5550dbb1c")
+		(uuid "e9d29ec6-d1b7-4883-807f-52926b824476")
 		(property "Reference" "H103"
 			(at 229.87 168.91 0)
 			(show_name no)
@@ -7224,7 +7264,7 @@
 
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "H103")
 					(unit 1)
 				)
@@ -7242,7 +7282,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "c73eed2f-7f3a-4ee8-b012-ed9554df2ed3")
+		(uuid "34a7a1b1-1795-4234-8494-684d9c32a99c")
 		(property "Reference" "H104"
 			(at 229.87 176.53 0)
 			(show_name no)
@@ -7323,7 +7363,7 @@
 
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "H104")
 					(unit 1)
 				)
@@ -7341,7 +7381,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "eee82f69-ee0e-42c5-a9ad-c53a907a5a3b")
+		(uuid "175c772f-1ee0-48c8-b49f-5a3de40169fd")
 		(property "Reference" "H105"
 			(at 229.87 184.15 0)
 			(show_name no)
@@ -7422,7 +7462,7 @@
 
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d/32e87f91-a442-4164-a6e4-4653e89053ed"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e/9f916b28-0d34-4479-b784-8e1a24ce7686"
 					(reference "H105")
 					(unit 1)
 				)

@@ -2,7 +2,7 @@
 	(version 20260306)
 	(generator "eeschema")
 	(generator_version "10.0")
-	(uuid "c348787c-35a6-4c40-81d7-0eeb948bfe4d")
+	(uuid "aa63e03b-1ac8-4926-b623-c7b31956768e")
 	(paper "A4")
 	(title_block
 		(title "Pad v2 - top level")
@@ -27,7 +27,7 @@
 		(fill
 			(color 0 0 0 0)
 		)
-		(uuid "32e87f91-a442-4164-a6e4-4653e89053ed")
+		(uuid "9f916b28-0d34-4479-b784-8e1a24ce7686")
 		(property "Sheetname" "POWER"
 			(at 20 49.1 0)
 			(show_name no)
@@ -52,7 +52,7 @@
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e"
 					(page "2")
 				)
 			)
@@ -73,7 +73,7 @@
 		(fill
 			(color 0 0 0 0)
 		)
-		(uuid "24fc9cbe-c5a7-4a31-aa16-34ec958d99a1")
+		(uuid "70237507-d4af-4628-8cf6-83ee1d44b238")
 		(property "Sheetname" "MCU"
 			(at 90 49.1 0)
 			(show_name no)
@@ -98,7 +98,7 @@
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e"
 					(page "3")
 				)
 			)
@@ -119,7 +119,7 @@
 		(fill
 			(color 0 0 0 0)
 		)
-		(uuid "3728a1c4-dc90-4859-af3f-dfb5c2605473")
+		(uuid "9f788691-5465-4206-8a9a-b890c56a605e")
 		(property "Sheetname" "INPUTS"
 			(at 160 49.1 0)
 			(show_name no)
@@ -144,7 +144,7 @@
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e"
 					(page "4")
 				)
 			)
@@ -165,7 +165,7 @@
 		(fill
 			(color 0 0 0 0)
 		)
-		(uuid "e3300751-2761-42e2-a754-483e49e25bfb")
+		(uuid "51566794-df4b-48d7-a7e3-f5ab4add393a")
 		(property "Sheetname" "RGB"
 			(at 20 94.1 0)
 			(show_name no)
@@ -190,7 +190,7 @@
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e"
 					(page "5")
 				)
 			)
@@ -211,7 +211,7 @@
 		(fill
 			(color 0 0 0 0)
 		)
-		(uuid "41e8144f-af4e-429a-84eb-e53a8ac26d50")
+		(uuid "0f52c6a6-8bfa-4bd4-83e5-5c5f20abff80")
 		(property "Sheetname" "DISPLAY"
 			(at 90 94.1 0)
 			(show_name no)
@@ -236,7 +236,7 @@
 		)
 		(instances
 			(project "pad-v2"
-				(path "/c348787c-35a6-4c40-81d7-0eeb948bfe4d"
+				(path "/aa63e03b-1ac8-4926-b623-c7b31956768e"
 					(page "6")
 				)
 			)

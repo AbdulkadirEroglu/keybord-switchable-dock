@@ -20,6 +20,7 @@ Drawing (to scale): [docs/pad-v2-pcb-top.png](../../docs/pad-v2-pcb-top.png).
 10. [Pogo board (pad floor and dock lid)](#10-pogo-board-pad-floor-and-dock-lid)
 11. [Net classes](#11-net-classes)
 12. [Open points](#12-open-points)
+13. [Routing plan (GPIO map)](#13-routing-plan-gpio-map)
 
 ## 1. What changed from v1
 
@@ -75,7 +76,7 @@ Before ordering: print the key area 1:1 and check a switch, a socket and the LED
 | ENC2 | mic/call (right) | (83.40, 15.10) | (75.90, 12.60) |
 
 - **Ring LEDs:** 12 per encoder, **top side**, on a **12.7 mm radius** (just outside a 20 mm knob), one every 30°. Each LED's 100 nF sits just outside the ring. The light reaches the case top through 12 small holes or a light-pipe ring (case design).
-- Clock positions: 12 = towards the back edge. Chain order runs clockwise from 6 o'clock on ring 1 and from 7 o'clock on ring 2 (as v1).
+- Clock positions: 12 = towards the back edge. Chain order: see below the table.
 
 | Clock | Ring 1 X | Ring 1 Y | Ring 2 X | Ring 2 Y |
 |---|---|---|---|---|
@@ -92,7 +93,7 @@ Before ordering: print the key area 1:1 and check a switch, a socket and the LED
 | 4 | 27.60 | 21.45 | 94.40 | 21.45 |
 | 5 | 22.95 | 26.10 | 89.75 | 26.10 |
 
-**LED chain (firmware index):** 0–11 ring 1 (6 → 5 o'clock clockwise), 12–15 keys 1–4, 16–27 ring 2 (7 → 6 o'clock), 28–31 keys 8, 7, 6, 5, 32–35 keys 9–12. The level shifter and its series resistor sit at the top of the left strip, next to ring 1's 6 o'clock LED.
+**LED chain (changed 2026-10-05, firmware index = reference − 401):** 0–3 keys 9, 10, 11, 12; 4–7 keys 8, 7, 6, 5; 8–11 keys 1, 2, 3, 4; 12–23 ring 2 counter-clockwise from 7 o'clock (7, 6, 5 … 9, 8); 24–35 ring 1 counter-clockwise from 4 o'clock (4, 3, 2 … 6, 5). The chain starts at key 9, next to the ESP32, so the level shifter U402 and R404 sit at the bottom of the left strip and the data line is short. One long hop: ring 2's 8 o'clock LED to ring 1's 4 o'clock LED (≈ 45 mm, under the display).
 
 ## 5. ESP32-S3-MINI-1 and the antenna
 
@@ -108,9 +109,9 @@ Zones are in the drawing. Exact positions are your call while routing; keep the 
 
 | Zone | Where | Parts |
 |---|---|---|
-| **Left strip** | x 0–14.4, y 31–84 (top) | top: encoder 1 RC filter (10 k + 10 nF ×2), **level shifter SN74AHCT1G125 + series resistor** (next to ring 1's 6 o'clock LED), **USB-C** at the left edge (≈ y 50; data only, for flashing/debug) with its **TPD4E1U06** ESD, **TLV75733P LDO** + caps (lower end, near the ESP), BOOT/RESET buttons, display power switch **AO3401** + gate resistor, battery and dock-5 V sense dividers |
+| **Left strip** | x 0–14.4, y 31–84 (top) | top: encoder 1 RC filter (upper end), RESET and BOOT buttons, **TLV75733P LDO** + caps and the **level shifter SN74AHCT1G125 + R404** (lower end, near the ESP and key 9) |
 | **Power strip** | x 85.6–100, y 31–84 (top) | top, from the back: encoder 2 RC filter, **ETA6003 charger** (QFN-16) + 2.2 µH + input/SYS/BAT caps + ISET1/ISET2 resistors, **DW01A + FS8205A** (TSSOP-8) protection, **TPS61023 boost** + 1 µH (≥ 4.5 A) + caps + FB divider. Keep each switcher's loop tight (input cap, IC, inductor, output cap within a few mm), FB dividers away from the inductors. The 3 MHz charger and 1 MHz boost stay on this side, away from the antenna |
-| **Front strip** | y 84.1–100, x 20.5–100 | ESP32 support (strapping resistors, GPIO fan-out), **pogo input:** SMBJ15A TVS, TPD4E1U06, 1 k series resistors on TX/RX, **WS3222D overvoltage switch** (cuts off at 5.69 V) feeding the charger |
+| **Front strip** | y 84.1–100, x 20.5–100 | **USB-C** at the front edge, centre x = 27 (right next to the module's USB pins) with its TPD4E1U06; **pogo input:** SMBJ15A TVS, TPD4E1U06, 1 k series resistors on TX/RX, **WS3222D overvoltage switch** (cuts off at 5.69 V) feeding the charger |
 | **Back strip** | x 30.5–69.5, y 0–31 | under the display module: **top side flat or empty** (≤ 1.2 mm parts at most); bottom: display connector |
 | **Key field** | between switches | only flat SMD parts in the 5 mm gaps between switch bodies: key-LED 100 nF caps, LED data vias |
 
@@ -122,9 +123,10 @@ All hand-soldered THT, **bottom side**, side-entry (horizontal) unless noted, op
 |---|---|---|---|
 | Display | JST-PH 9-pin, `S9B-PH-K` side entry | back strip, back edge | BLK CS DC RES SDA SCL VCC GND + GND |
 | Pogo cable | JST-XH 7-pin (same as the dock's J601) | front strip, bottom | 1:1 to the pad's pogo board in the floor |
-| Battery | JST-XH 4-pin | power strip, right edge | B+, B− (to FS8205A), NTC, NTC return (GND) |
+| Battery | JST-XH 2-pin | power strip, right edge | B+, B− (to FS8205A); from the 21700 holder's leads |
 | Toggle | JST-XH 3-pin | power strip, right edge | PERSONAL, COM (GND), WORK |
-| USB-C | TYPE-C-31-M-12 (as the dock), **top side, JLC** | left edge, ≈ y 50 | flashing / debug only (VBUS not used for charging) |
+| USB-C | TYPE-C-31-M-12 (as the dock), **top side, JLC** | **front edge, centre x = 27** | flashing / debug only (VBUS not used). Moved from the left edge: the ESP32's USB pins face this way, and it is ≥ 20 mm from the antenna |
+| NTC | JST-XH 2-pin | power strip, next to the battery header | 10 k B3950 thermistor taped to the cell (or a 10 k resistor if you skip it) |
 
 ## 8. Sides, heights and who solders what
 
@@ -135,10 +137,10 @@ All hand-soldered THT, **bottom side**, side-entry (horizontal) unless noted, op
 ## 9. Case, battery and docking
 
 - Wedge as in v1: **front ≈ 25 mm, back ≈ 44 mm**, slope ≈ 9–10°. The main board sits under the case top at the slope; encoder shafts and keys come through it; the display module is mounted to the case behind its window, cabled to the back strip.
-- **Battery:** one 21700 in a holder fixed to the case floor at the back, lying left-right under the back strip (the 4-pin battery cable runs to the power strip). With one cell the back could become a little lower than 44 mm; that's settled in the 3D model.
+- **Battery:** one 21700 in a holder fixed to the case floor at the back, lying left-right under the back strip (its two leads and the NTC pair run to the power strip). With one cell the back could become a little lower than 44 mm; that's settled in the 3D model.
 - **Floor:** flat, sits on the dock lid. The pad's pogo board is in the floor (§10); its position must match the dock lid board in the 3D design, with the magnets of the pogo set holding the pad.
 - **Toggle:** panel-mounted on the right side of the case, wired to the 3-pin header.
-- **USB-C:** opening in the left case wall.
+- **USB-C:** opening in the front case wall, left of centre.
 
 ## 10. Pogo board (pad floor and dock lid)
 
@@ -175,4 +177,23 @@ GND: pour on both layers, stitched; keep it out of the antenna keep-out and the 
 
 - Pogo footprint for the straight set (check against the part), Kailh socket + 5-pin MX footprint (v1's `dock:SW_MX_Hotswap_Kailh` plus peg holes).
 - Back height of the case with one cell.
-- Pin assignment of the ESP32-S3 GPIOs: done at schematic time with routing in mind (as on the dock).
+
+## 13. Routing plan (GPIO map)
+
+The full pin map is in [PAD_WIRING.md](PAD_WIRING.md) §2. It was chosen so each signal leaves the module on the side facing its destination. The module's four pad rows, as placed (rotation 90°):
+
+| Row | Module pins | Where it is | Signals | How they leave |
+|---|---|---|---|---|
+| **Front** | 1–15 (GND, 3V3, IO0–IO11) | y = 99.3, only 0.3 mm from the board edge | BOOT, keys 2, 6, 10, 3, 7, 11, 4, 8, 12, VBAT_SENSE, VIN_SENSE | no room outward: a via **under the module** next to each pad, then the **bottom layer** eastwards. The hot-swap sockets are on the bottom anyway, so the keys need no second via |
+| **Right** | 16–30 | x = 19.05, faces the front strip | south part (IO12–IO18): toggle, charger status/enable, encoder 2. Middle: USB D−/D+ to the connector 4 mm away. North part: CHG_ISEL, RGB_EN, then four display lines | south part is boxed in by the USB pair and connector: vias, bottom layer, eastwards. North part: top layer |
+| **Back** | 31–45 | y = 85.3, faces key 9 and the left strip | east end (IO35–37): three display lines. Then keys 9, 5, 1 (column 1, straight up the gap at x ≈ 13). West end: encoder 1, RGB data, EN | top layer; TXD0/RXD0 (pogo UART) drop to the bottom and run east under the module |
+| Antenna side | 46–60 | all GND | | |
+
+Bundles, in the order that avoids crossings:
+
+- **Key bus (bottom layer):** leaves under the module's right row at y ≈ 86–91 (north of the USB pads), runs east along the front strip. Order north → south = IO1 … IO9 = keys 2, 6, 10, 3, 7, 11, 4, 8, 12. It peels off northwards: keys 2 and 6 up the gap between columns 1 and 2 (x ≈ 31.5), key 10 straight to its socket, keys 3 and 7 up the next gap (x ≈ 50.6), key 11, keys 4 and 8 (x ≈ 69.6), key 12. Each key's **signal pad is its west socket pad** (x = column − 5.84), the east pad is GND.
+- **Right-strip bus (bottom layer, south of the key bus):** VBAT_SENSE, VIN_SENSE, then IO18 … IO12 = ENC2_A, ENC2_B, ENC2_SW, CHG_EN_N, CHG_STAT, TGL_PERSONAL, TGL_WORK. At the right strip it turns north: the encoder lines stay on the inside and continue to the top, the charger and toggle lines peel off to the east.
+- **Display bundle (top layer):** seven lines gather at the module's north-east corner, run east along y ≈ 85, then north through the gap between key columns 1 and 2 (top layer is free there between the peg holes, x 27.4–34.5), to J501 at the back. Lanes west → east: BLK, CS, DC, RES, SDA, SCL, DISP_EN_N = J501 pins 1–6 and Q501. Place J501 with pin 1 on the left; if the footprint ends up mirrored, tell me and I mirror the six assignments (they are free to swap).
+- **Left strip (top layer):** ENC1_A, ENC1_B, ENC1_SW up to the encoder; RGB_DATA to U402 at the bottom of the strip; EN to the RESET button.
+- **3V3 to the module (pin 3, at the front edge):** via behind the module → bottom layer under it → via next to pin 3. C201/C202 sit just behind the module (the module has its own decoupling inside).
+- **Top layer under the switches is free** except for each switch's five holes; the bottom layer there holds the sockets and LEDs.
